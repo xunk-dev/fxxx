@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.frameout.app.FrameOutApp
+import com.frameout.app.ads.bannerSlotHeightDp
 import com.frameout.app.LocalTabActive
 import com.frameout.app.LocalTabNav
 import com.frameout.app.MainTabBar
@@ -163,14 +164,15 @@ private val TileColumns = 2
 private class HomeSizing(val proHeight: Dp, val tallHeight: Dp, val shortHeight: Dp)
 
 @Composable
-private fun rememberHomeSizing(width: Dp, grow: Float): HomeSizing {
-    return remember(width, grow) {
+private fun rememberHomeSizing(width: Dp, grow: Float, available: Float, adTotal: Float): HomeSizing {
+    return remember(width, grow, available, adTotal) {
         val content = minOf(width.value, 640f) - 2f * HomeMetrics.ScreenPad.value
         val tileWidth = (content - HomeMetrics.TileGap.value * (TileColumns - 1)) / TileColumns
         val pro = (content * 0.46f).coerceIn(156f, 184f) + HomeMetrics.ProHeightGrow.value * grow
         val tall = (tileWidth * 0.98f).coerceIn(148f, 192f) + 14f * grow
         val short = (tall * 0.56f).coerceIn(66f, 96f) + 10f * grow
-        HomeSizing(pro.dp, tall.dp, short.dp)
+        val fit = fitHomeHeights(pro, tall, short, available, adTotal)
+        HomeSizing(fit.pro.dp, fit.tall.dp, fit.short.dp)
     }
 }
 
@@ -181,8 +183,10 @@ private fun HomeCards(actions: HomeActions, pickers: HomePickers, modifier: Modi
     val navBar = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val grow = (LocalDensity.current.fontScale - 1f).coerceIn(0f, 1f)
     val bottom = navBar + DockReserve
+    val hub = (LocalContext.current.applicationContext as FrameOutApp).ads
     BoxWithConstraints(modifier.fillMaxWidth()) {
-        val sizing = rememberHomeSizing(maxWidth, grow)
+        val adTotal = if (hub.active()) bannerSlotHeightDp(hub, (minOf(maxWidth.value, 640f) - 2f * HomeMetrics.ScreenPad.value).toInt()).toFloat() else 0f
+        val sizing = rememberHomeSizing(maxWidth, grow, maxHeight.value - bottom.value, adTotal)
         val proHeight = sizing.proHeight
         Column(
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
