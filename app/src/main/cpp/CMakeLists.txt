@@ -4,8 +4,11 @@ project(frameout_guard)
 set(FRAMEOUT_CERT_SHA256 "" CACHE STRING "Expected release signing certificate SHA-256 (hex)")
 set(FRAMEOUT_FINGERPRINT_MASK_HEX "a32ec5c422cb5e13e20939e9fdedb61a0773aeb5511f6cf37eb5b58e2664e86f")
 
-if(FRAMEOUT_CERT_SHA256 AND NOT FRAMEOUT_CERT_SHA256 MATCHES "^[0-9a-fA-F]{64}$")
-    message(FATAL_ERROR "FRAMEOUT_CERT_SHA256 must be empty or exactly 64 hex characters")
+string(LENGTH "${FRAMEOUT_CERT_SHA256}" FRAMEOUT_CERT_LEN)
+if(NOT FRAMEOUT_CERT_LEN EQUAL 0)
+    if(NOT FRAMEOUT_CERT_LEN EQUAL 64 OR NOT FRAMEOUT_CERT_SHA256 MATCHES "^[0-9a-fA-F]+$")
+        message(FATAL_ERROR "FRAMEOUT_CERT_SHA256 must be empty or exactly 64 hex characters")
+    endif()
 endif()
 
 function(frameout_xor_hex out_var a_hex b_hex)
