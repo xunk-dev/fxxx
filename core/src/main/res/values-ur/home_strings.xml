@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">ہوم</string>
+    <string name="home_extract_title">فریمز نکالیں</string>
+    <string name="home_extract_desc">ویڈیو منتخب کریں اور اس کے بہترین فریمز نکالیں۔</string>
+    <string name="home_mode_quick">تیز</string>
+    <string name="home_mode_pro">پرو</string>
+    <string name="home_mode_quick_desc">کلپ منتخب کریں اور فوراً نکالنا شروع کریں</string>
+    <string name="home_mode_quick_action">شروع کریں</string>
+    <string name="home_mode_pro_desc">معیار پر مکمل کنٹرول</string>
+    <string name="home_mode_pro_action">ایڈوانسڈ</string>
+    <string name="home_mode_pro_open">پرو موڈ کھولیں</string>
+    <string name="home_edit_title">فوٹو ایڈٹ کریں</string>
+    <string name="home_edit_desc">کراپ، فلٹرز، ڈرائنگ</string>
+    <string name="home_collage_title">کولاج</string>
+    <string name="home_collage_desc">تصاویر کو ایک میں ملائیں</string>
+    <string name="home_export_title">ایکسپورٹ</string>
+    <string name="home_export_desc">ویڈیو، GIF، ZIP، PDF اور مزید۔</string>
+    <string name="home_quick_title">فوری ایکسٹریکٹ</string>
+    <string name="home_quick_start">ابھی شروع کریں</string>
+    <string name="home_quick_length">دورانیہ</string>
+    <string name="home_quick_hint">رینج منتخب کرنے کے لیے ٹائم لائن پر ہینڈل گھسیٹیں۔ جوں کا توں چھوڑنے پر پوری کلپ استعمال ہوگی۔</string>
+    <string name="home_quick_started">نکالنا شروع ہو گیا</string>
+    <string name="home_export_tab_video">ویڈیو</string>
+    <string name="home_export_tab_images">تصاویر</string>
+    <string name="home_export_action">ایکسپورٹ</string>
+    <string name="home_export_action_count">ایکسپورٹ (%1$d)</string>
+    <string name="home_export_saving">محفوظ ہو رہا ہے… %1$d%%</string>
+    <string name="home_export_clip_title">%1$s کے طور پر ایکسپورٹ کریں</string>
+    <string name="home_export_clip_hint">ایکسپورٹ کا حصہ منتخب کرنے کے لیے ٹائم لائن پر ہینڈل گھسیٹیں۔</string>
+    <string name="home_export_source_title">تصاویر منتخب کریں</string>
+    <string name="home_export_source_empty">ابھی تک کوئی تصویر محفوظ نہیں۔ پہلے کسی ویڈیو سے فریمز محفوظ کریں۔</string>
+    <string name="home_export_select_all">سب منتخب کریں</string>
+    <string name="home_export_clear">صاف کریں</string>
+    <string name="home_compare_title">موازنہ</string>
+    <string name="home_compare_desc">سلائیڈ کر کے دو تصاویر کا موازنہ کریں</string>
+    <string name="home_compare_pick_two">موازنے کے لیے دو تصاویر منتخب کریں۔</string>
+    <string name="home_export_m_video">ویڈیو کو MP4، Live&#160;Photo، GIF یا WebP میں ایکسپورٹ کریں۔</string>
+    <string name="home_export_m_sheet">تصاویر کو کانٹیکٹ شیٹ کے طور پر ایکسپورٹ کریں۔</string>
+    <string name="home_export_m_images">تصاویر کو ZIP، PDF یا فولڈر میں ایکسپورٹ کریں۔</string>
+    <string name="home_video_title">ویڈیو ایکسپورٹ</string>
+    <string name="home_video_desc">MP4، GIF، Live&#160;Photo</string>
+    <string name="home_images_title">فریمز ایکسپورٹ</string>
+    <string name="home_images_desc">ZIP، PDF یا کانٹیکٹ شیٹ</string>
+</resources>

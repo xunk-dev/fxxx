@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">नए वीडियो के सुझाव</string>
+    <string name="nudge_channel_new_video_desc">फ़ोन में नया वीडियो आने पर कवर के साथ बताता है, और एक टैप में फ़्रेम निकालने की सुविधा देता है।</string>
+    <string name="nudge_channel_reminders">सुझाव और अनुस्मारक</string>
+    <string name="nudge_channel_reminders_desc">कभी-कभार भेजे जाने वाले हल्के अनुस्मारक। दिन में अधिकतम एक, और अनदेखा करने पर अपने-आप बंद हो जाते हैं।</string>
+    <string name="nudge_action_extract">फ़्रेम निकालें</string>
+    <string name="nudge_action_open">खोलें</string>
+    <string name="nudge_action_stop_reminders">अनुस्मारक बंद करें</string>
+    <string name="nudge_review_title">इस वीडियो पर एक नज़र डालें</string>
+    <string name="nudge_review_text">यह लंबा है, इसलिए पहले चुनें कि क्या निकालना है। खोलने के लिए टैप करें।</string>
+    <string name="nudge_failed_title">निकालना शुरू नहीं हो सका</string>
+    <string name="nudge_failed_text">वीडियो खोलने और दोबारा कोशिश करने के लिए टैप करें।</string>
+    <string name="nudge_waiting_title">आपका नया वीडियो अभी भी इंतज़ार कर रहा है</string>
+    <string name="nudge_waiting_text">%1$s तैयार है। एक टैप में सबसे अच्छे फ़्रेम निकालें।</string>
+    <string name="nudge_comeback_title_0">वीडियो के पलों को फ़ोटो में बदलें</string>
+    <string name="nudge_comeback_text_0">कोई भी वीडियो चुनें और Frame Out आपके लिए सबसे साफ़ फ़्रेम निकाल देगा।</string>
+    <string name="nudge_comeback_title_1">आपकी सबसे अच्छी तस्वीर किसी वीडियो में छिपी है</string>
+    <string name="nudge_comeback_text_1">सही फ़्रेम तक जाएँ और उसे पूरी क्वालिटी में सेव करें।</string>
+    <string name="nudge_comeback_title_2">अपने पसंदीदा फ़्रेम से कोलाज बनाएँ</string>
+    <string name="nudge_comeback_text_2">कुछ फ़्रेम निकालें और उन्हें एक इमेज में जोड़ दें।</string>
+    <string name="nudge_setting_new_video_title">नए वीडियो की सूचनाएँ</string>
+    <string name="nudge_setting_new_video_hint">नया वीडियो दिखने पर कवर के साथ सूचित करें</string>
+    <string name="nudge_setting_new_video_partial">नए वीडियो पहचानने के लिए वीडियो की पूरी एक्सेस ज़रूरी है</string>
+    <string name="nudge_setting_reminders_title">सुझाव और अनुस्मारक</string>
+    <string name="nudge_setting_reminders_hint">बीच-बीच में एक हल्का अनुस्मारक, रात में कभी नहीं</string>
+    <string name="nudge_setting_system_off">सिस्टम सेटिंग में Frame Out की सूचनाएँ बंद हैं</string>
+    <string name="nudge_new_video_title">नया वीडियो तैयार है</string>
+    <string name="nudge_stalled_title">जो शुरू किया था, उसे पूरा करें</string>
+    <string name="nudge_stalled_text">“%1$s” रुका हुआ है। जहाँ छोड़ा था, वहीं से जारी रखें।</string>
+    <string name="nudge_recap_title">फ़्रेम में आपका सप्ताह</string>
+    <string name="nudge_recap_text">इस सप्ताह निकाले गए फ़्रेम: %1$d</string>
+</resources>

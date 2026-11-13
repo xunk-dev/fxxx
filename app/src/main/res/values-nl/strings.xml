@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Frame vastleggen</string>
+    <string name="shortcut_capture_long">Leg een frame vast uit de laatste video</string>
+    <string name="tile_capture_label">Frame vastleggen</string>
+    <string name="incoming_copy_failed">De toegang tot een gedeelde video kon niet worden behouden. Open hem in plaats daarvan vanuit de galerij, of maak opslagruimte vrij en deel opnieuw.</string>
+    <string name="incoming_unsupported">Dit bestandstype kan niet worden geopend. Deel in plaats daarvan een video, GIF of afbeelding.</string>
+    <string name="incoming_photo_failed">De gedeelde foto kon niet worden geopend. Maak opslagruimte vrij en deel de foto opnieuw.</string>
+    <string name="incoming_photos_skipped">Foto’s zijn overgeslagen omdat ze samen met video’s zijn gedeeld. Deel foto’s afzonderlijk om ze te bewerken.</string>
+    <string name="compare_stack">Gestapeld</string>
+    <string name="compare_side">Naast elkaar</string>
+    <string name="compare_slider">Schuifregelaar</string>
+    <string name="compare_swap">Wisselen</string>
+    <string name="compare_fit">Passend</string>
+    <string name="compare_zoom_in">Inzoomen</string>
+    <string name="compare_zoom_out">Uitzoomen</string>
+    <string name="compare_reset_zoom">Zoom herstellen</string>
+    <string name="compare_hint">Knijp om te zoomen · dubbeltik</string>
+    <string name="compare_load_failed">Afbeelding kon niet worden geladen</string>
+    <string name="compare_divider">Scheidingslijn voor vergelijking</string>
+    <string name="compare_diff">Verschil</string>
+    <string name="compare_diff_busy">Verschillen berekenen…</string>
+    <string name="compare_link">Zoom koppelen</string>
+    <string name="compare_unlink">Zoom ontkoppelen</string>
+    <string name="compare_actual_size">Werkelijke pixels</string>
+    <string name="compare_diff_percent">Gewijzigd: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss of h:mm:ss</string>
+</resources>

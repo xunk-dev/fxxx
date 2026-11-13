@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">フレームをキャプチャ</string>
+    <string name="shortcut_capture_long">最後の動画からフレームをキャプチャ</string>
+    <string name="tile_capture_label">フレームをキャプチャ</string>
+    <string name="incoming_copy_failed">共有された動画へのアクセスを維持できませんでした。ギャラリーから開くか、ストレージの空き容量を確保してからもう一度共有してください。</string>
+    <string name="incoming_unsupported">このファイル形式は開けません。動画、GIF、または画像を共有してください。</string>
+    <string name="incoming_photo_failed">共有された写真を開けませんでした。ストレージの空き容量を確保して、もう一度共有してください。</string>
+    <string name="incoming_photos_skipped">動画と一緒に共有されたため、写真はスキップされました。写真を編集するには、写真のみを共有してください。</string>
+    <string name="compare_stack">上下</string>
+    <string name="compare_side">左右</string>
+    <string name="compare_slider">スライダー</string>
+    <string name="compare_swap">入れ替え</string>
+    <string name="compare_fit">全体表示</string>
+    <string name="compare_zoom_in">拡大</string>
+    <string name="compare_zoom_out">縮小</string>
+    <string name="compare_reset_zoom">拡大をリセット</string>
+    <string name="compare_hint">2本指で拡大 · ダブルタップ</string>
+    <string name="compare_load_failed">画像を読み込めませんでした</string>
+    <string name="compare_divider">比較の境界線</string>
+    <string name="compare_diff">差分</string>
+    <string name="compare_diff_busy">差分を計算中…</string>
+    <string name="compare_link">拡大を連動</string>
+    <string name="compare_unlink">拡大の連動を解除</string>
+    <string name="compare_actual_size">実寸ピクセル</string>
+    <string name="compare_diff_percent">変化: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss または h:mm:ss</string>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">নতুন ভিডিওর পরামর্শ</string>
+    <string name="nudge_channel_new_video_desc">ফোনে নতুন ভিডিও এলে কভারসহ জানিয়ে দেয় এবং এক ট্যাপে ফ্রেম বের করার সুবিধা দেয়।</string>
+    <string name="nudge_channel_reminders">টিপস ও রিমাইন্ডার</string>
+    <string name="nudge_channel_reminders_desc">মাঝেমধ্যে হালকা রিমাইন্ডার। দিনে সর্বোচ্চ একটি, আর উপেক্ষা করলে নিজে থেকেই বন্ধ হয়ে যায়।</string>
+    <string name="nudge_action_extract">ফ্রেম বের করুন</string>
+    <string name="nudge_action_open">খুলুন</string>
+    <string name="nudge_action_stop_reminders">রিমাইন্ডার বন্ধ করুন</string>
+    <string name="nudge_review_title">এই ভিডিওটি একবার দেখে নিন</string>
+    <string name="nudge_review_text">ভিডিওটি বড়, তাই আগে বেছে নিন কী বের করবেন। খুলতে ট্যাপ করুন।</string>
+    <string name="nudge_failed_title">ফ্রেম বের করা শুরু করা যায়নি</string>
+    <string name="nudge_failed_text">ভিডিওটি খুলে আবার চেষ্টা করতে ট্যাপ করুন।</string>
+    <string name="nudge_waiting_title">আপনার নতুন ভিডিও এখনও অপেক্ষা করছে</string>
+    <string name="nudge_waiting_text">%1$s প্রস্তুত। এক ট্যাপে সেরা ফ্রেমগুলো বের করে নিন।</string>
+    <string name="nudge_comeback_title_0">ভিডিওর মুহূর্তকে ছবিতে বদলান</string>
+    <string name="nudge_comeback_text_0">যেকোনো ভিডিও বেছে নিন, Frame Out আপনার জন্য সবচেয়ে স্পষ্ট ফ্রেমগুলো বের করে দেবে।</string>
+    <string name="nudge_comeback_title_1">আপনার সেরা ছবিটি লুকিয়ে আছে একটি ভিডিওর ভেতরে</string>
+    <string name="nudge_comeback_text_1">ঠিক ফ্রেমে গিয়ে সেটি পূর্ণ মানে সংরক্ষণ করুন।</string>
+    <string name="nudge_comeback_title_2">পছন্দের ফ্রেম দিয়ে কোলাজ বানান</string>
+    <string name="nudge_comeback_text_2">কয়েকটি ফ্রেম বের করে একটি ছবিতে জুড়ে নিন।</string>
+    <string name="nudge_setting_new_video_title">নতুন ভিডিওর সতর্কতা</string>
+    <string name="nudge_setting_new_video_hint">নতুন ভিডিও এলে কভারসহ আমাকে জানান</string>
+    <string name="nudge_setting_new_video_partial">নতুন ভিডিও শনাক্ত করতে ভিডিওতে পূর্ণ অ্যাক্সেস প্রয়োজন</string>
+    <string name="nudge_setting_reminders_title">টিপস ও রিমাইন্ডার</string>
+    <string name="nudge_setting_reminders_hint">মাঝেমধ্যে একটি হালকা রিমাইন্ডার, রাতে কখনোই নয়</string>
+    <string name="nudge_setting_system_off">সিস্টেম সেটিংসে Frame Out-এর বিজ্ঞপ্তি বন্ধ আছে</string>
+    <string name="nudge_new_video_title">নতুন ভিডিও প্রস্তুত</string>
+    <string name="nudge_stalled_title">যা শুরু করেছিলেন তা শেষ করুন</string>
+    <string name="nudge_stalled_text">“%1$s” থেমে আছে। যেখানে থামিয়েছিলেন সেখান থেকেই আবার শুরু করুন।</string>
+    <string name="nudge_recap_title">ফ্রেমে আপনার সপ্তাহ</string>
+    <string name="nudge_recap_text">এই সপ্তাহে বের করা ফ্রেম: %1$d</string>
+</resources>

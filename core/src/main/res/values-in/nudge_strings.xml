@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Saran video baru</string>
+    <string name="nudge_channel_new_video_desc">Memberi tahu Anda saat video baru masuk ke ponsel, lengkap dengan sampul dan ekstraksi sekali ketuk.</string>
+    <string name="nudge_channel_reminders">Tips dan pengingat</string>
+    <string name="nudge_channel_reminders_desc">Pengingat lembut sesekali. Paling banyak satu per hari, dan berhenti sendiri jika diabaikan.</string>
+    <string name="nudge_action_extract">Ekstrak frame</string>
+    <string name="nudge_action_open">Buka</string>
+    <string name="nudge_action_stop_reminders">Hentikan pengingat</string>
+    <string name="nudge_review_title">Video ini layak dilihat sekilas</string>
+    <string name="nudge_review_text">Videonya panjang, jadi pilih dulu bagian yang ingin diekstrak. Ketuk untuk membukanya.</string>
+    <string name="nudge_failed_title">Tidak dapat memulai ekstraksi</string>
+    <string name="nudge_failed_text">Ketuk untuk membuka video dan coba lagi.</string>
+    <string name="nudge_waiting_title">Video baru Anda masih menunggu</string>
+    <string name="nudge_waiting_text">%1$s sudah siap. Ambil frame terbaiknya hanya dengan sekali ketuk.</string>
+    <string name="nudge_comeback_title_0">Ubah momen video menjadi foto</string>
+    <string name="nudge_comeback_text_0">Pilih video apa saja, dan Frame Out akan mengekstrak frame tertajam untuk Anda.</string>
+    <string name="nudge_comeback_title_1">Foto terbaik Anda bersembunyi di dalam video</string>
+    <string name="nudge_comeback_text_1">Geser ke frame yang tepat dan simpan dalam kualitas penuh.</string>
+    <string name="nudge_comeback_title_2">Buat kolase dari frame favorit Anda</string>
+    <string name="nudge_comeback_text_2">Ekstrak beberapa frame lalu gabungkan menjadi satu gambar.</string>
+    <string name="nudge_setting_new_video_title">Notifikasi video baru</string>
+    <string name="nudge_setting_new_video_hint">Beri tahu saya beserta sampul saat ada video baru</string>
+    <string name="nudge_setting_new_video_partial">Akses penuh ke video diperlukan untuk mendeteksi video baru</string>
+    <string name="nudge_setting_reminders_title">Tips dan pengingat</string>
+    <string name="nudge_setting_reminders_hint">Pengingat lembut sesekali, tidak pernah di malam hari</string>
+    <string name="nudge_setting_system_off">Notifikasi Frame Out dinonaktifkan di pengaturan sistem</string>
+    <string name="nudge_new_video_title">Video baru siap</string>
+    <string name="nudge_stalled_title">Selesaikan yang sudah Anda mulai</string>
+    <string name="nudge_stalled_text">“%1$s” dijeda. Lanjutkan dari tempat Anda berhenti.</string>
+    <string name="nudge_recap_title">Minggu Anda dalam frame</string>
+    <string name="nudge_recap_text">Frame yang diekstrak minggu ini: %1$d</string>
+</resources>

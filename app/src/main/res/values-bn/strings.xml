@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">ফ্রেম ক্যাপচার করুন</string>
+    <string name="shortcut_capture_long">সর্বশেষ ভিডিও থেকে ফ্রেম ক্যাপচার করুন</string>
+    <string name="tile_capture_label">ফ্রেম ক্যাপচার করুন</string>
+    <string name="incoming_copy_failed">শেয়ার করা ভিডিওতে অ্যাক্সেস ধরে রাখা যায়নি। এটি গ্যালারি থেকে খুলুন, অথবা স্টোরেজ খালি করে আবার শেয়ার করুন।</string>
+    <string name="incoming_unsupported">এই ধরনের ফাইল খোলা যায় না। এর পরিবর্তে একটি ভিডিও, GIF বা ছবি শেয়ার করুন।</string>
+    <string name="incoming_photo_failed">শেয়ার করা ছবিটি খোলা যায়নি। স্টোরেজ খালি করে আবার শেয়ার করুন।</string>
+    <string name="incoming_photos_skipped">ভিডিওর সাথে শেয়ার করা হয়েছে বলে ছবিগুলো বাদ দেওয়া হয়েছে। সম্পাদনা করতে ছবিগুলো আলাদাভাবে শেয়ার করুন।</string>
+    <string name="compare_stack">উপর-নিচে</string>
+    <string name="compare_side">পাশাপাশি</string>
+    <string name="compare_slider">স্লাইডার</string>
+    <string name="compare_swap">অদলবদল</string>
+    <string name="compare_fit">ফিট</string>
+    <string name="compare_zoom_in">জুম ইন</string>
+    <string name="compare_zoom_out">জুম আউট</string>
+    <string name="compare_reset_zoom">জুম রিসেট করুন</string>
+    <string name="compare_hint">জুম করতে পিঞ্চ করুন · দুবার ট্যাপ করুন</string>
+    <string name="compare_load_failed">ছবি লোড করা যায়নি</string>
+    <string name="compare_divider">তুলনার বিভাজক</string>
+    <string name="compare_diff">পার্থক্য</string>
+    <string name="compare_diff_busy">পার্থক্য গণনা করা হচ্ছে…</string>
+    <string name="compare_link">জুম যুক্ত করুন</string>
+    <string name="compare_unlink">আলাদা জুম</string>
+    <string name="compare_actual_size">আসল পিক্সেল</string>
+    <string name="compare_diff_percent">পরিবর্তন: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss বা h:mm:ss</string>
+</resources>

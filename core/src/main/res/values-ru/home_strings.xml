@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Главная</string>
+    <string name="home_extract_title">Извлечь кадры</string>
+    <string name="home_extract_desc">Выберите видео и извлеките лучшие кадры.</string>
+    <string name="home_mode_quick">Быстрый</string>
+    <string name="home_mode_pro">Про</string>
+    <string name="home_mode_quick_desc">Выберите клип и сразу начните извлечение</string>
+    <string name="home_mode_quick_action">Начать</string>
+    <string name="home_mode_pro_desc">Полный контроль над качеством</string>
+    <string name="home_mode_pro_action">Расширенный</string>
+    <string name="home_mode_pro_open">Открыть режим Про</string>
+    <string name="home_edit_title">Правка фото</string>
+    <string name="home_edit_desc">Обрезка, фильтры, рисунок</string>
+    <string name="home_collage_title">Коллаж</string>
+    <string name="home_collage_desc">Объедините фото в одно</string>
+    <string name="home_export_title">Экспорт</string>
+    <string name="home_export_desc">Видео, GIF, ZIP, PDF и другое.</string>
+    <string name="home_quick_title">Быстрое извлечение</string>
+    <string name="home_quick_start">Начать сейчас</string>
+    <string name="home_quick_length">Длина</string>
+    <string name="home_quick_hint">Перетащите маркеры на шкале времени, чтобы выбрать диапазон. Оставьте как есть, чтобы взять весь клип.</string>
+    <string name="home_quick_started">Извлечение начато</string>
+    <string name="home_export_tab_video">Видео</string>
+    <string name="home_export_tab_images">Изображения</string>
+    <string name="home_export_action">Экспорт</string>
+    <string name="home_export_action_count">Экспорт (%1$d)</string>
+    <string name="home_export_saving">Сохранение… %1$d%%</string>
+    <string name="home_export_clip_title">Экспорт в %1$s</string>
+    <string name="home_export_clip_hint">Перетащите маркеры на шкале времени, чтобы выбрать часть для экспорта.</string>
+    <string name="home_export_source_title">Выбор изображений</string>
+    <string name="home_export_source_empty">Нет сохранённых изображений. Сначала сохраните кадры из видео.</string>
+    <string name="home_export_select_all">Выбрать все</string>
+    <string name="home_export_clear">Сбросить</string>
+    <string name="home_compare_title">Сравнить</string>
+    <string name="home_compare_desc">Проведите, чтобы сравнить фото</string>
+    <string name="home_compare_pick_two">Выберите два фото для сравнения.</string>
+    <string name="home_export_m_video">Экспортируйте видео в MP4, Live&#160;Photo, GIF или WebP.</string>
+    <string name="home_export_m_sheet">Экспортируйте изображения как контактный лист.</string>
+    <string name="home_export_m_images">Экспортируйте изображения в ZIP, PDF или папку.</string>
+    <string name="home_video_title">Экспорт видео</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Экспорт кадров</string>
+    <string name="home_images_desc">ZIP, PDF или контактный лист</string>
+</resources>

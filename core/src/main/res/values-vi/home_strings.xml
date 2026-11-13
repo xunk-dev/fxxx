@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Trang chủ</string>
+    <string name="home_extract_title">Trích khung hình</string>
+    <string name="home_extract_desc">Chọn video và lấy ra những khung hình đẹp nhất.</string>
+    <string name="home_mode_quick">Nhanh</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Chọn clip và bắt đầu trích xuất ngay</string>
+    <string name="home_mode_quick_action">Bắt đầu</string>
+    <string name="home_mode_pro_desc">Toàn quyền kiểm soát chất lượng</string>
+    <string name="home_mode_pro_action">Nâng cao</string>
+    <string name="home_mode_pro_open">Mở chế độ Pro</string>
+    <string name="home_edit_title">Chỉnh sửa ảnh</string>
+    <string name="home_edit_desc">Cắt, bộ lọc, vẽ</string>
+    <string name="home_collage_title">Ghép ảnh</string>
+    <string name="home_collage_desc">Gộp ảnh thành một</string>
+    <string name="home_export_title">Xuất</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF và hơn thế.</string>
+    <string name="home_quick_title">Trích xuất nhanh</string>
+    <string name="home_quick_start">Bắt đầu ngay</string>
+    <string name="home_quick_length">Độ dài</string>
+    <string name="home_quick_hint">Kéo các tay cầm trên dòng thời gian để chọn phạm vi. Giữ nguyên để dùng cả clip.</string>
+    <string name="home_quick_started">Đã bắt đầu trích xuất</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Ảnh</string>
+    <string name="home_export_action">Xuất</string>
+    <string name="home_export_action_count">Xuất (%1$d)</string>
+    <string name="home_export_saving">Đang lưu… %1$d%%</string>
+    <string name="home_export_clip_title">Xuất dạng %1$s</string>
+    <string name="home_export_clip_hint">Kéo các tay cầm trên dòng thời gian để chọn phần cần xuất.</string>
+    <string name="home_export_source_title">Chọn ảnh</string>
+    <string name="home_export_source_empty">Chưa có ảnh đã lưu. Hãy lưu khung hình từ video trước.</string>
+    <string name="home_export_select_all">Chọn tất cả</string>
+    <string name="home_export_clear">Xóa</string>
+    <string name="home_compare_title">So sánh</string>
+    <string name="home_compare_desc">Vuốt để so sánh hai ảnh</string>
+    <string name="home_compare_pick_two">Chọn hai ảnh để so sánh.</string>
+    <string name="home_export_m_video">Xuất video dạng MP4, Live&#160;Photo, GIF hoặc WebP.</string>
+    <string name="home_export_m_sheet">Xuất ảnh dạng bảng liên hệ.</string>
+    <string name="home_export_m_images">Xuất ảnh dạng ZIP, PDF hoặc thư mục.</string>
+    <string name="home_video_title">Xuất video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Xuất khung hình</string>
+    <string name="home_images_desc">ZIP, PDF hoặc bảng liên hệ</string>
+</resources>

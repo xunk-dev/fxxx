@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">فريم آوت</string>
+    <string name="shortcut_capture_short">التقاط إطار</string>
+    <string name="shortcut_capture_long">التقاط إطار من آخر فيديو</string>
+    <string name="tile_capture_label">التقاط إطار</string>
+    <string name="incoming_copy_failed">تعذّر الاحتفاظ بإمكانية الوصول إلى فيديو مشارَك. افتحه من المعرض، أو حرّر مساحة وأعد المشاركة.</string>
+    <string name="incoming_unsupported">لا يمكن فتح هذا النوع من الملفات. شارك فيديو أو GIF أو صورة بدلًا منه.</string>
+    <string name="incoming_photo_failed">تعذّر فتح الصورة المشاركة. حرّر مساحة وأعد المشاركة.</string>
+    <string name="incoming_photos_skipped">تم تخطي الصور لأنها شُورِكت مع فيديوهات. شارك الصور وحدها لتعديلها.</string>
+    <string name="compare_stack">عمودي</string>
+    <string name="compare_side">متجاور</string>
+    <string name="compare_slider">منزلق</string>
+    <string name="compare_swap">تبديل</string>
+    <string name="compare_fit">ملاءمة</string>
+    <string name="compare_zoom_in">تكبير</string>
+    <string name="compare_zoom_out">تصغير</string>
+    <string name="compare_reset_zoom">إعادة الحجم الأصلي</string>
+    <string name="compare_hint">اقرص للتكبير · انقر مرتين</string>
+    <string name="compare_load_failed">تعذّر تحميل الصورة</string>
+    <string name="compare_divider">مقبض المقارنة</string>
+    <string name="compare_diff">الفرق</string>
+    <string name="compare_diff_busy">جارٍ حساب الفروقات…</string>
+    <string name="compare_link">ربط التكبير</string>
+    <string name="compare_unlink">تكبير مستقل</string>
+    <string name="compare_actual_size">١٠٠٪ بالبكسل</string>
+    <string name="compare_diff_percent">اختلاف %1$s%%</string>
+    <string name="time_entry_hint">mm:ss أو h:mm:ss</string>
+</resources>

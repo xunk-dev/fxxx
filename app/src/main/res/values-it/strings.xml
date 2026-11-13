@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Cattura fotogramma</string>
+    <string name="shortcut_capture_long">Cattura un fotogramma dall’ultimo video</string>
+    <string name="tile_capture_label">Cattura fotogramma</string>
+    <string name="incoming_copy_failed">Non è stato possibile mantenere l’accesso a un video condiviso. Aprilo dalla galleria oppure libera spazio di archiviazione e condividilo di nuovo.</string>
+    <string name="incoming_unsupported">Questo tipo di file non può essere aperto. Condividi un video, una GIF o un’immagine.</string>
+    <string name="incoming_photo_failed">Impossibile aprire la foto condivisa. Libera spazio di archiviazione e condividila di nuovo.</string>
+    <string name="incoming_photos_skipped">Le foto sono state ignorate perché condivise insieme a dei video. Condividi le foto separatamente per modificarle.</string>
+    <string name="compare_stack">Sovrapposto</string>
+    <string name="compare_side">Affiancato</string>
+    <string name="compare_slider">Cursore</string>
+    <string name="compare_swap">Scambia</string>
+    <string name="compare_fit">Adatta</string>
+    <string name="compare_zoom_in">Ingrandisci</string>
+    <string name="compare_zoom_out">Riduci</string>
+    <string name="compare_reset_zoom">Reimposta zoom</string>
+    <string name="compare_hint">Pizzica per ingrandire · tocca due volte</string>
+    <string name="compare_load_failed">Impossibile caricare l’immagine</string>
+    <string name="compare_divider">Divisore di confronto</string>
+    <string name="compare_diff">Differenza</string>
+    <string name="compare_diff_busy">Calcolo delle differenze…</string>
+    <string name="compare_link">Collega zoom</string>
+    <string name="compare_unlink">Zoom indipendente</string>
+    <string name="compare_actual_size">Pixel reali</string>
+    <string name="compare_diff_percent">Modificato: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss o h:mm:ss</string>
+</resources>

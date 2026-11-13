@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Podpowiedzi o nowych filmach</string>
+    <string name="nudge_channel_new_video_desc">Informuje, gdy na telefonie pojawi się nowy film – z okładką i wyodrębnianiem jednym dotknięciem.</string>
+    <string name="nudge_channel_reminders">Wskazówki i przypomnienia</string>
+    <string name="nudge_channel_reminders_desc">Rzadkie, delikatne przypomnienia. Najwyżej jedno dziennie, a gdy je ignorujesz, same się wyłączają.</string>
+    <string name="nudge_action_extract">Wyodrębnij klatki</string>
+    <string name="nudge_action_open">Otwórz</string>
+    <string name="nudge_action_stop_reminders">Wyłącz przypomnienia</string>
+    <string name="nudge_review_title">Ten film wymaga szybkiego spojrzenia</string>
+    <string name="nudge_review_text">Jest długi, więc najpierw wybierz, co wyodrębnić. Dotknij, aby go otworzyć.</string>
+    <string name="nudge_failed_title">Nie udało się rozpocząć wyodrębniania</string>
+    <string name="nudge_failed_text">Dotknij, aby otworzyć film i spróbować ponownie.</string>
+    <string name="nudge_waiting_title">Twój nowy film wciąż czeka</string>
+    <string name="nudge_waiting_text">%1$s – gotowe. Wyciągnij najlepsze klatki jednym dotknięciem.</string>
+    <string name="nudge_comeback_title_0">Zamień chwile z filmów w zdjęcia</string>
+    <string name="nudge_comeback_text_0">Wybierz dowolny film, a Frame Out wyodrębni dla Ciebie najostrzejsze klatki.</string>
+    <string name="nudge_comeback_title_1">Twoje najlepsze ujęcie ukrywa się w filmie</string>
+    <string name="nudge_comeback_text_1">Przewiń do dokładnej klatki i zapisz ją w pełnej jakości.</string>
+    <string name="nudge_comeback_title_2">Stwórz kolaż z ulubionych klatek</string>
+    <string name="nudge_comeback_text_2">Wyodrębnij kilka klatek i połącz je w jeden obraz.</string>
+    <string name="nudge_setting_new_video_title">Powiadomienia o nowych filmach</string>
+    <string name="nudge_setting_new_video_hint">Powiadamiaj mnie z okładką, gdy pojawi się nowy film</string>
+    <string name="nudge_setting_new_video_partial">Do wykrywania nowych filmów potrzebny jest pełny dostęp do filmów</string>
+    <string name="nudge_setting_reminders_title">Wskazówki i przypomnienia</string>
+    <string name="nudge_setting_reminders_hint">Delikatne przypomnienie raz na jakiś czas, nigdy w nocy</string>
+    <string name="nudge_setting_system_off">Powiadomienia Frame Out są wyłączone w ustawieniach systemu</string>
+    <string name="nudge_new_video_title">Nowy film gotowy</string>
+    <string name="nudge_stalled_title">Wróć do przerwanego projektu</string>
+    <string name="nudge_stalled_text">„%1$s” jest wstrzymany. Kontynuuj od miejsca przerwania.</string>
+    <string name="nudge_recap_title">Twój tydzień w klatkach</string>
+    <string name="nudge_recap_text">Klatki wyodrębnione w tym tygodniu: %1$d</string>
+</resources>

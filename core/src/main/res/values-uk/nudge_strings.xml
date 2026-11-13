@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Підказки про нові відео</string>
+    <string name="nudge_channel_new_video_desc">Повідомляє, коли на телефоні з’являється нове відео, з обкладинкою та видобуванням одним дотиком.</string>
+    <string name="nudge_channel_reminders">Поради та нагадування</string>
+    <string name="nudge_channel_reminders_desc">Рідкісні й ненав’язливі нагадування. Не частіше одного на день, і вони припиняються, якщо їх ігнорувати.</string>
+    <string name="nudge_action_extract">Видобути кадри</string>
+    <string name="nudge_action_open">Відкрити</string>
+    <string name="nudge_action_stop_reminders">Вимкнути нагадування</string>
+    <string name="nudge_review_title">Це відео варто швидко переглянути</string>
+    <string name="nudge_review_text">Воно довге, тому спершу виберіть, що видобути. Торкніться, щоб відкрити.</string>
+    <string name="nudge_failed_title">Не вдалося почати видобування</string>
+    <string name="nudge_failed_text">Торкніться, щоб відкрити відео й спробувати ще раз.</string>
+    <string name="nudge_waiting_title">Ваше нове відео досі чекає</string>
+    <string name="nudge_waiting_text">%1$s: усе готово. Дістаньте найкращі кадри одним дотиком.</string>
+    <string name="nudge_comeback_title_0">Перетворюйте моменти з відео на фото</string>
+    <string name="nudge_comeback_text_0">Виберіть будь-яке відео, і Frame Out видобуде для вас найчіткіші кадри.</string>
+    <string name="nudge_comeback_title_1">Ваш найкращий знімок ховається у відео</string>
+    <string name="nudge_comeback_text_1">Перейдіть до потрібного кадру й збережіть його в повній якості.</string>
+    <string name="nudge_comeback_title_2">Зробіть колаж з улюблених кадрів</string>
+    <string name="nudge_comeback_text_2">Видобудьте кілька кадрів і поєднайте їх в одне зображення.</string>
+    <string name="nudge_setting_new_video_title">Сповіщення про нові відео</string>
+    <string name="nudge_setting_new_video_hint">Повідомляти з обкладинкою, коли з’являється нове відео</string>
+    <string name="nudge_setting_new_video_partial">Щоб помічати нові відео, потрібен повний доступ до відео</string>
+    <string name="nudge_setting_reminders_title">Поради та нагадування</string>
+    <string name="nudge_setting_reminders_hint">Ненав’язливе нагадування час від часу, але не вночі</string>
+    <string name="nudge_setting_system_off">Сповіщення Frame Out вимкнено в налаштуваннях системи</string>
+    <string name="nudge_new_video_title">Нове відео готове</string>
+    <string name="nudge_stalled_title">Завершіть розпочате</string>
+    <string name="nudge_stalled_text">«%1$s» призупинено. Продовжте з того місця, де зупинилися.</string>
+    <string name="nudge_recap_title">Ваш тиждень у кадрах</string>
+    <string name="nudge_recap_text">Видобуто кадрів за тиждень: %1$d</string>
+</resources>

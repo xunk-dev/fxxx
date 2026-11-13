@@ -1,0 +1,9 @@
+Herhangi bir videodan kusursuz kareyi çıkarın.
+
+• Tüm kareleri veya yalnızca en net kareleri, kilit anları ve sahne geçişlerini çıkarın
+• Kırpın, döndürün ve filtre ekleyin
+• Kolajlar oluşturun ve toplu dışa aktarın
+• JPG, PNG, WebP, GIF veya PDF olarak kaydedin
+• Her şey cihazınızda çalışır: hesap ve yükleme yok
+
+Başlamak ücretsiz. Pro; akıllı çıkarma, gelişmiş düzenleme ve dışa aktarmayı abonelik veya tek seferlik satın alma ile açar.

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Förslag på nya videor</string>
+    <string name="nudge_channel_new_video_desc">Meddelar dig när en ny video dyker upp på telefonen, med omslag och extrahering med ett tryck.</string>
+    <string name="nudge_channel_reminders">Tips och påminnelser</string>
+    <string name="nudge_channel_reminders_desc">Enstaka, vänliga påminnelser. Högst en per dag, och de slutar om du ignorerar dem.</string>
+    <string name="nudge_action_extract">Extrahera bildrutor</string>
+    <string name="nudge_action_open">Öppna</string>
+    <string name="nudge_action_stop_reminders">Stoppa påminnelser</string>
+    <string name="nudge_review_title">Den här videon behöver en snabb titt</string>
+    <string name="nudge_review_text">Den är lång, så välj först vad som ska extraheras. Tryck för att öppna den.</string>
+    <string name="nudge_failed_title">Det gick inte att starta extraheringen</string>
+    <string name="nudge_failed_text">Tryck för att öppna videon och försöka igen.</string>
+    <string name="nudge_waiting_title">Din nya video väntar fortfarande</string>
+    <string name="nudge_waiting_text">%1$s är klar. Plocka ut de bästa bildrutorna med ett tryck.</string>
+    <string name="nudge_comeback_title_0">Förvandla videoögonblick till foton</string>
+    <string name="nudge_comeback_text_0">Välj en video så extraherar Frame Out de skarpaste bildrutorna åt dig.</string>
+    <string name="nudge_comeback_title_1">Ditt bästa foto gömmer sig i en video</string>
+    <string name="nudge_comeback_text_1">Bläddra till exakt rätt bildruta och spara den i full kvalitet.</string>
+    <string name="nudge_comeback_title_2">Gör ett collage av dina favoritbildrutor</string>
+    <string name="nudge_comeback_text_2">Extrahera några bildrutor och slå ihop dem till en bild.</string>
+    <string name="nudge_setting_new_video_title">Aviseringar om nya videor</string>
+    <string name="nudge_setting_new_video_hint">Meddela mig med omslag när en ny video dyker upp</string>
+    <string name="nudge_setting_new_video_partial">Full videoåtkomst krävs för att upptäcka nya videor</string>
+    <string name="nudge_setting_reminders_title">Tips och påminnelser</string>
+    <string name="nudge_setting_reminders_hint">En vänlig påminnelse då och då, aldrig på natten</string>
+    <string name="nudge_setting_system_off">Aviseringar för Frame Out är avstängda i systeminställningarna</string>
+    <string name="nudge_new_video_title">Ny video redo</string>
+    <string name="nudge_stalled_title">Avsluta det du påbörjade</string>
+    <string name="nudge_stalled_text">”%1$s” är pausad. Fortsätt där du slutade.</string>
+    <string name="nudge_recap_title">Din vecka i bildrutor</string>
+    <string name="nudge_recap_text">Extraherade bildrutor den här veckan: %1$d</string>
+</resources>

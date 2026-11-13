@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">新影片提示</string>
+    <string name="nudge_channel_new_video_desc">手機出現新影片時通知你，附上封面，並可一鍵擷取。</string>
+    <string name="nudge_channel_reminders">提示與提醒</string>
+    <string name="nudge_channel_reminders_desc">偶爾送出的輕柔提醒。每天最多一則，若你一直不理會，就會自動停止。</string>
+    <string name="nudge_action_extract">擷取影格</string>
+    <string name="nudge_action_open">開啟</string>
+    <string name="nudge_action_stop_reminders">停止提醒</string>
+    <string name="nudge_review_title">這部影片值得看一眼</string>
+    <string name="nudge_review_text">影片較長，請先選擇要擷取的內容。點一下即可開啟。</string>
+    <string name="nudge_failed_title">無法開始擷取</string>
+    <string name="nudge_failed_text">點一下以開啟影片並重試。</string>
+    <string name="nudge_waiting_title">你的新影片還在等你</string>
+    <string name="nudge_waiting_text">%1$s 已準備好。一鍵就能取出最棒的影格。</string>
+    <string name="nudge_comeback_title_0">把影片瞬間變成照片</string>
+    <string name="nudge_comeback_text_0">選擇任何影片，Frame Out 會為你擷取最清晰的影格。</string>
+    <string name="nudge_comeback_title_1">你最棒的一張照片，藏在影片裡</string>
+    <string name="nudge_comeback_text_1">移動到精確的那一格，並以原始畫質儲存。</string>
+    <string name="nudge_comeback_title_2">用你最愛的影格製作拼貼</string>
+    <string name="nudge_comeback_text_2">擷取幾個影格，把它們合成一張圖片。</string>
+    <string name="nudge_setting_new_video_title">新影片通知</string>
+    <string name="nudge_setting_new_video_hint">發現新影片時，附上封面通知我</string>
+    <string name="nudge_setting_new_video_partial">需要完整的影片存取權限才能偵測新影片</string>
+    <string name="nudge_setting_reminders_title">提示與提醒</string>
+    <string name="nudge_setting_reminders_hint">偶爾輕輕提醒一次，夜間絕不打擾</string>
+    <string name="nudge_setting_system_off">系統設定中已關閉 Frame Out 的通知</string>
+    <string name="nudge_new_video_title">新影片已準備好</string>
+    <string name="nudge_stalled_title">把還沒做完的繼續完成吧</string>
+    <string name="nudge_stalled_text">「%1$s」已暫停。從上次停下的地方繼續吧。</string>
+    <string name="nudge_recap_title">你這一週的影格</string>
+    <string name="nudge_recap_text">本週已擷取的影格數：%1$d</string>
+</resources>

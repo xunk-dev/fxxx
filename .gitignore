@@ -1,0 +1,17 @@
+# Signing material and secrets: never commit
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+local.properties
+secrets.properties
+codecpack-signing-*
+build/codecpack-signing/
+# Build outputs
+build/
+.gradle/
+.idea/
+*.apk
+*.aab
+.cxx/

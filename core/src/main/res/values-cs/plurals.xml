@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="estimate">
+        <item quantity="one">≈ %1$d snímek · ~%2$s MB</item>
+        <item quantity="few">≈ %1$d snímky · ~%2$s MB</item>
+        <item quantity="many">≈ %1$d snímku · ~%2$s MB</item>
+        <item quantity="other">≈ %1$d snímků · ~%2$s MB</item>
+    </plurals>
+    <plurals name="plan_frames">
+        <item quantity="one">%1$d snímek</item>
+        <item quantity="few">%1$d snímky</item>
+        <item quantity="many">%1$d snímku</item>
+        <item quantity="other">%1$d snímků</item>
+    </plurals>
+    <plurals name="reduced_quality">
+        <item quantity="one">Jeden snímek byl uložen v nižším rozlišení, protože dekodér zařízení nedokázal vrátit plnou velikost.</item>
+        <item quantity="few">%1$d snímky byly uloženy v nižším rozlišení, protože dekodér zařízení nedokázal vrátit plnou velikost.</item>
+        <item quantity="many">%1$d snímku bylo uloženo v nižším rozlišení, protože dekodér zařízení nedokázal vrátit plnou velikost.</item>
+        <item quantity="other">%1$d snímků bylo uloženo v nižším rozlišení, protože dekodér zařízení nedokázal vrátit plnou velikost.</item>
+    </plurals>
+    <plurals name="reduced_quality_to">
+        <item quantity="one">Jeden snímek byl uložen v rozlišení %4$d×%5$d místo zdrojových %2$d×%3$d, aby se vešel do paměti zařízení.</item>
+        <item quantity="few">%1$d snímky byly uloženy v rozlišení %4$d×%5$d místo zdrojových %2$d×%3$d, aby se vešly do paměti zařízení.</item>
+        <item quantity="many">%1$d snímku bylo uloženo v rozlišení %4$d×%5$d místo zdrojových %2$d×%3$d, aby se vešlo do paměti zařízení.</item>
+        <item quantity="other">%1$d snímků bylo uloženo v rozlišení %4$d×%5$d místo zdrojových %2$d×%3$d, aby se vešlo do paměti zařízení.</item>
+    </plurals>
+    <plurals name="frame_count">
+        <item quantity="one">%1$d snímek</item>
+        <item quantity="few">%1$d snímky</item>
+        <item quantity="many">%1$d snímku</item>
+        <item quantity="other">%1$d snímků</item>
+    </plurals>
+    <plurals name="important_picked">
+        <item quantity="one">Vybrán klíčový okamžik</item>
+        <item quantity="few">Vybrány %1$d klíčové okamžiky</item>
+        <item quantity="many">Vybráno %1$d klíčového okamžiku</item>
+        <item quantity="other">Vybráno %1$d klíčových okamžiků</item>
+    </plurals>
+    <plurals name="sharpest_picked">
+        <item quantity="one">Vybrán nejostřejší snímek</item>
+        <item quantity="few">Vybrány %1$d nejostřejší snímky</item>
+        <item quantity="many">Vybráno %1$d nejostřejšího snímku</item>
+        <item quantity="other">Vybráno %1$d nejostřejších snímků</item>
+    </plurals>
+    <plurals name="duplicates_picked">
+        <item quantity="one">Vybrán %1$d duplicitní snímek</item>
+        <item quantity="few">Vybrány %1$d duplicitní snímky</item>
+        <item quantity="many">Vybráno %1$d duplicitního snímku</item>
+        <item quantity="other">Vybráno %1$d duplicitních snímků</item>
+    </plurals>
+    <plurals name="integrity_dup">
+        <item quantity="one">%1$d snímek sdílí stejnou časovou značku.</item>
+        <item quantity="few">%1$d snímky sdílejí stejnou časovou značku.</item>
+        <item quantity="many">%1$d snímku sdílí stejnou časovou značku.</item>
+        <item quantity="other">%1$d snímků sdílí stejnou časovou značku.</item>
+    </plurals>
+    <plurals name="crop_all_hint">
+        <item quantity="one">Stejná oblast pro %1$d snímek</item>
+        <item quantity="few">Stejná oblast pro %1$d snímky</item>
+        <item quantity="many">Stejná oblast pro %1$d snímku</item>
+        <item quantity="other">Stejná oblast pro %1$d snímků</item>
+    </plurals>
+    <plurals name="crop_all_applied">
+        <item quantity="one">Oříznutí použito na %1$d snímek</item>
+        <item quantity="few">Oříznutí použito na %1$d snímky</item>
+        <item quantity="many">Oříznutí použito na %1$d snímku</item>
+        <item quantity="other">Oříznutí použito na %1$d snímků</item>
+    </plurals>
+    <plurals name="share_limited">
+        <item quantity="one">Sdílí se pouze první %1$d snímek</item>
+        <item quantity="few">Sdílejí se pouze první %1$d snímky</item>
+        <item quantity="many">Sdílí se pouze prvního %1$d snímku</item>
+        <item quantity="other">Sdílí se pouze prvních %1$d snímků</item>
+    </plurals>
+    <plurals name="frames_deleted">
+        <item quantity="one">%1$d snímek přesunut do Smazaných</item>
+        <item quantity="few">%1$d snímky přesunuty do Smazaných</item>
+        <item quantity="many">%1$d snímku přesunuto do Smazaných</item>
+        <item quantity="other">%1$d snímků přesunuto do Smazaných</item>
+    </plurals>
+    <plurals name="batch_videos">
+        <item quantity="one">%1$d video</item>
+        <item quantity="few">%1$d videa</item>
+        <item quantity="many">%1$d videa</item>
+        <item quantity="other">%1$d videí</item>
+    </plurals>
+    <plurals name="projects_deleted">
+        <item quantity="one">Projekt smazán</item>
+        <item quantity="few">Smazány %1$d projekty</item>
+        <item quantity="many">Smazáno %1$d projektu</item>
+        <item quantity="other">Smazáno %1$d projektů</item>
+    </plurals>
+    <plurals name="projects_restored">
+        <item quantity="one">Projekt obnoven</item>
+        <item quantity="few">Obnoveny %1$d projekty</item>
+        <item quantity="many">Obnoveno %1$d projektu</item>
+        <item quantity="other">Obnoveno %1$d projektů</item>
+    </plurals>
+    <plurals name="saved_deleted_n">
+        <item quantity="one">Obrázek smazán</item>
+        <item quantity="few">Smazány %1$d obrázky</item>
+        <item quantity="many">Smazáno %1$d obrázku</item>
+        <item quantity="other">Smazáno %1$d obrázků</item>
+    </plurals>
+    <plurals name="saved_restored_n">
+        <item quantity="one">Obrázek obnoven</item>
+        <item quantity="few">Obnoveny %1$d obrázky</item>
+        <item quantity="many">Obnoveno %1$d obrázku</item>
+        <item quantity="other">Obnoveno %1$d obrázků</item>
+    </plurals>
+    <plurals name="saved_pruned_n">
+        <item quantity="one">Odstraněna 1 uložená položka, protože její soubor už není v zařízení</item>
+        <item quantity="few">Odstraněny %1$d uložené položky, protože jejich soubory už nejsou v zařízení</item>
+        <item quantity="many">Odstraněno %1$d uložené položky, protože jejich soubory už nejsou v zařízení</item>
+        <item quantity="other">Odstraněno %1$d uložených položek, protože jejich soubory už nejsou v zařízení</item>
+    </plurals>
+    <plurals name="confirm_delete_projects_n">
+        <item quantity="one">Smazat tento projekt?</item>
+        <item quantity="few">Smazat %1$d projekty?</item>
+        <item quantity="many">Smazat %1$d projektu?</item>
+        <item quantity="other">Smazat %1$d projektů?</item>
+    </plurals>
+    <plurals name="confirm_delete_saved_n">
+        <item quantity="one">Smazat tento uložený obrázek?</item>
+        <item quantity="few">Smazat %1$d uložené obrázky?</item>
+        <item quantity="many">Smazat %1$d uloženého obrázku?</item>
+        <item quantity="other">Smazat %1$d uložených obrázků?</item>
+    </plurals>
+    <plurals name="backup_saved_many_n">
+        <item quantity="one">Projekt exportován do vybrané složky</item>
+        <item quantity="few">%1$d projekty exportovány do vybrané složky</item>
+        <item quantity="many">%1$d projektu exportováno do vybrané složky</item>
+        <item quantity="other">%1$d projektů exportováno do vybrané složky</item>
+    </plurals>
+    <plurals name="export_done_many_n">
+        <item quantity="one">Projekt exportován</item>
+        <item quantity="few">%1$d projekty exportovány</item>
+        <item quantity="many">%1$d projektu exportováno</item>
+        <item quantity="other">%1$d projektů exportováno</item>
+    </plurals>
+    <plurals name="saved_export_done_n">
+        <item quantity="one">Exportován 1 obrázek</item>
+        <item quantity="few">Exportovány %1$d obrázky</item>
+        <item quantity="many">Exportováno %1$d obrázku</item>
+        <item quantity="other">Exportováno %1$d obrázků</item>
+    </plurals>
+    <plurals name="onboarding_pick_burst">
+        <item quantity="one">%1$d po sobě jdoucí snímek</item>
+        <item quantity="few">%1$d po sobě jdoucí snímky</item>
+        <item quantity="many">%1$d po sobě jdoucího snímku</item>
+        <item quantity="other">%1$d po sobě jdoucích snímků</item>
+    </plurals>
+    <plurals name="onboarding_pick_excluded">
+        <item quantity="one">Vyloučen: %1$d snímek</item>
+        <item quantity="few">Vyloučeny: %1$d snímky</item>
+        <item quantity="many">Vyloučeno: %1$d snímku</item>
+        <item quantity="other">Vyloučeno: %1$d snímků</item>
+    </plurals>
+    <plurals name="rating_stat">
+        <item quantity="one">%1$d úspěšné uložení zatím</item>
+        <item quantity="few">%1$d úspěšná uložení zatím</item>
+        <item quantity="many">%1$d úspěšného uložení zatím</item>
+        <item quantity="other">%1$d úspěšných uložení zatím</item>
+    </plurals>
+</resources>

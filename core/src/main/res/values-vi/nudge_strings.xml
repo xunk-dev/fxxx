@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Gợi ý video mới</string>
+    <string name="nudge_channel_new_video_desc">Báo cho bạn khi có video mới trên điện thoại, kèm ảnh bìa và nút trích xuất chỉ với một chạm.</string>
+    <string name="nudge_channel_reminders">Mẹo và lời nhắc</string>
+    <string name="nudge_channel_reminders_desc">Những lời nhắc nhẹ nhàng, thỉnh thoảng mới có. Tối đa một lần mỗi ngày và sẽ tự dừng nếu bạn bỏ qua.</string>
+    <string name="nudge_action_extract">Trích xuất khung hình</string>
+    <string name="nudge_action_open">Mở</string>
+    <string name="nudge_action_stop_reminders">Dừng lời nhắc</string>
+    <string name="nudge_review_title">Video này đáng để xem qua</string>
+    <string name="nudge_review_text">Video khá dài, hãy chọn phần cần trích xuất trước. Chạm để mở.</string>
+    <string name="nudge_failed_title">Không thể bắt đầu trích xuất</string>
+    <string name="nudge_failed_text">Chạm để mở video và thử lại.</string>
+    <string name="nudge_waiting_title">Video mới của bạn vẫn đang chờ</string>
+    <string name="nudge_waiting_text">%1$s đã sẵn sàng. Lấy những khung hình đẹp nhất chỉ với một chạm.</string>
+    <string name="nudge_comeback_title_0">Biến khoảnh khắc trong video thành ảnh</string>
+    <string name="nudge_comeback_text_0">Chọn bất kỳ video nào, Frame Out sẽ trích xuất những khung hình sắc nét nhất cho bạn.</string>
+    <string name="nudge_comeback_title_1">Bức ảnh đẹp nhất của bạn đang ẩn trong một video</string>
+    <string name="nudge_comeback_text_1">Tua đến đúng khung hình và lưu ở chất lượng đầy đủ.</string>
+    <string name="nudge_comeback_title_2">Tạo ảnh ghép từ các khung hình yêu thích</string>
+    <string name="nudge_comeback_text_2">Trích xuất vài khung hình rồi ghép thành một ảnh.</string>
+    <string name="nudge_setting_new_video_title">Thông báo video mới</string>
+    <string name="nudge_setting_new_video_hint">Báo cho tôi kèm ảnh bìa khi có video mới</string>
+    <string name="nudge_setting_new_video_partial">Cần quyền truy cập đầy đủ vào video để phát hiện video mới</string>
+    <string name="nudge_setting_reminders_title">Mẹo và lời nhắc</string>
+    <string name="nudge_setting_reminders_hint">Thỉnh thoảng nhắc nhẹ nhàng, không bao giờ vào ban đêm</string>
+    <string name="nudge_setting_system_off">Thông báo của Frame Out đang tắt trong cài đặt hệ thống</string>
+    <string name="nudge_new_video_title">Video mới đã sẵn sàng</string>
+    <string name="nudge_stalled_title">Hoàn thành việc bạn đang làm dở</string>
+    <string name="nudge_stalled_text">“%1$s” đang tạm dừng. Hãy tiếp tục từ chỗ bạn đã dừng.</string>
+    <string name="nudge_recap_title">Tuần của bạn qua các khung hình</string>
+    <string name="nudge_recap_text">Khung hình đã trích xuất tuần này: %1$d</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Hem</string>
+    <string name="home_extract_title">Extrahera bildrutor</string>
+    <string name="home_extract_desc">Välj en video och plocka ut de bästa bildrutorna.</string>
+    <string name="home_mode_quick">Snabb</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Välj ett klipp och börja extrahera direkt</string>
+    <string name="home_mode_quick_action">Starta</string>
+    <string name="home_mode_pro_desc">Full kontroll över kvaliteten</string>
+    <string name="home_mode_pro_action">Avancerat</string>
+    <string name="home_mode_pro_open">Öppna Pro-läge</string>
+    <string name="home_edit_title">Redigera foton</string>
+    <string name="home_edit_desc">Beskär, filter, rita</string>
+    <string name="home_collage_title">Collage</string>
+    <string name="home_collage_desc">Slå ihop foton till ett</string>
+    <string name="home_export_title">Exportera</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF med mera.</string>
+    <string name="home_quick_title">Snabb extrahering</string>
+    <string name="home_quick_start">Starta nu</string>
+    <string name="home_quick_length">Längd</string>
+    <string name="home_quick_hint">Dra i handtagen på tidslinjen för att välja ett intervall. Lämna dem som de är för att använda hela klippet.</string>
+    <string name="home_quick_started">Extrahering startad</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Bilder</string>
+    <string name="home_export_action">Exportera</string>
+    <string name="home_export_action_count">Exportera (%1$d)</string>
+    <string name="home_export_saving">Sparar… %1$d %%</string>
+    <string name="home_export_clip_title">Exportera som %1$s</string>
+    <string name="home_export_clip_hint">Dra i handtagen på tidslinjen för att välja delen som ska exporteras.</string>
+    <string name="home_export_source_title">Välj bilder</string>
+    <string name="home_export_source_empty">Inga sparade bilder ännu. Spara först bildrutor från en video.</string>
+    <string name="home_export_select_all">Markera alla</string>
+    <string name="home_export_clear">Rensa</string>
+    <string name="home_compare_title">Jämför</string>
+    <string name="home_compare_desc">Svep för att jämföra två foton</string>
+    <string name="home_compare_pick_two">Välj två foton att jämföra.</string>
+    <string name="home_export_m_video">Exportera videon som MP4, Live&#160;Photo, GIF eller WebP.</string>
+    <string name="home_export_m_sheet">Exportera bilder som kontaktkopia.</string>
+    <string name="home_export_m_images">Exportera bilder som ZIP, PDF eller mapp.</string>
+    <string name="home_video_title">Exportera video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Exportera bilder</string>
+    <string name="home_images_desc">ZIP, PDF eller kontaktkopia</string>
+</resources>

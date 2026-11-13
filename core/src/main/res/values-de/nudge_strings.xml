@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Vorschläge für neue Videos</string>
+    <string name="nudge_channel_new_video_desc">Sagt dir Bescheid, wenn ein neues Video auf deinem Handy landet – mit Titelbild und Extraktion per Fingertipp.</string>
+    <string name="nudge_channel_reminders">Tipps und Erinnerungen</string>
+    <string name="nudge_channel_reminders_desc">Gelegentliche, sanfte Erinnerungen. Höchstens eine pro Tag – und sie hören auf, wenn du sie ignorierst.</string>
+    <string name="nudge_action_extract">Frames extrahieren</string>
+    <string name="nudge_action_open">Öffnen</string>
+    <string name="nudge_action_stop_reminders">Erinnerungen stoppen</string>
+    <string name="nudge_review_title">Dieses Video braucht einen kurzen Blick</string>
+    <string name="nudge_review_text">Es ist lang – wähle zuerst aus, was extrahiert werden soll. Tippe, um es zu öffnen.</string>
+    <string name="nudge_failed_title">Extraktion konnte nicht gestartet werden</string>
+    <string name="nudge_failed_text">Tippe, um das Video zu öffnen und es erneut zu versuchen.</string>
+    <string name="nudge_waiting_title">Dein neues Video wartet noch</string>
+    <string name="nudge_waiting_text">%1$s ist bereit. Hol die besten Frames mit einem Fingertipp heraus.</string>
+    <string name="nudge_comeback_title_0">Verwandle Videomomente in Fotos</string>
+    <string name="nudge_comeback_text_0">Wähle ein beliebiges Video – Frame Out extrahiert die schärfsten Frames für dich.</string>
+    <string name="nudge_comeback_title_1">Dein bester Schnappschuss steckt in einem Video</string>
+    <string name="nudge_comeback_text_1">Spule zum genauen Frame und speichere ihn in voller Qualität.</string>
+    <string name="nudge_comeback_title_2">Erstelle eine Collage aus deinen Lieblings-Frames</string>
+    <string name="nudge_comeback_text_2">Extrahiere ein paar Frames und kombiniere sie zu einem Bild.</string>
+    <string name="nudge_setting_new_video_title">Hinweise zu neuen Videos</string>
+    <string name="nudge_setting_new_video_hint">Mit Titelbild benachrichtigen, wenn ein neues Video erscheint</string>
+    <string name="nudge_setting_new_video_partial">Voller Videozugriff ist nötig, um neue Videos zu erkennen</string>
+    <string name="nudge_setting_reminders_title">Tipps und Erinnerungen</string>
+    <string name="nudge_setting_reminders_hint">Hin und wieder eine sanfte Erinnerung, nie nachts</string>
+    <string name="nudge_setting_system_off">Benachrichtigungen für Frame Out sind in den Systemeinstellungen ausgeschaltet</string>
+    <string name="nudge_new_video_title">Neues Video bereit</string>
+    <string name="nudge_stalled_title">Mach weiter, wo du aufgehört hast</string>
+    <string name="nudge_stalled_text">„%1$s“ ist pausiert. Setze die Extraktion fort.</string>
+    <string name="nudge_recap_title">Deine Woche in Frames</string>
+    <string name="nudge_recap_text">In dieser Woche extrahierte Frames: %1$d</string>
+</resources>
