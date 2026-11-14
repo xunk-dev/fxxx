@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="estimate">
+        <item quantity="one">≈ %1$d frame · ~%2$s MB</item>
+        <item quantity="other">≈ %1$d frames · ~%2$s MB</item>
+    </plurals>
+    <plurals name="plan_frames">
+        <item quantity="one">%1$d frame</item>
+        <item quantity="other">%1$d frames</item>
+    </plurals>
+    <plurals name="reduced_quality">
+        <item quantity="one">One frame was saved at reduced resolution because the device decoder could not return it in full size.</item>
+        <item quantity="other">%1$d frames were saved at reduced resolution because the device decoder could not return them in full size.</item>
+    </plurals>
+    <plurals name="reduced_quality_to">
+        <item quantity="one">One frame was saved at %4$d×%5$d instead of the source %2$d×%3$d to fit the device memory.</item>
+        <item quantity="other">%1$d frames were saved at %4$d×%5$d instead of the source %2$d×%3$d to fit the device memory.</item>
+    </plurals>
+    <plurals name="frame_count">
+        <item quantity="one">%1$d frame</item>
+        <item quantity="other">%1$d frames</item>
+    </plurals>
+    <plurals name="important_picked">
+        <item quantity="one">Selected the key moment</item>
+        <item quantity="other">Selected %1$d key moments</item>
+    </plurals>
+    <plurals name="sharpest_picked">
+        <item quantity="one">Selected the sharpest frame</item>
+        <item quantity="other">Selected %1$d sharpest frames</item>
+    </plurals>
+    <plurals name="duplicates_picked">
+        <item quantity="one">Selected %1$d duplicate frame</item>
+        <item quantity="other">Selected %1$d duplicate frames</item>
+    </plurals>
+    <plurals name="integrity_dup">
+        <item quantity="one">%1$d frame shares the same timestamp.</item>
+        <item quantity="other">%1$d frames share the same timestamp.</item>
+    </plurals>
+    <plurals name="crop_all_hint">
+        <item quantity="one">Same area for %1$d frame</item>
+        <item quantity="other">Same area for %1$d frames</item>
+    </plurals>
+    <plurals name="crop_all_applied">
+        <item quantity="one">Crop applied to %1$d frame</item>
+        <item quantity="other">Crop applied to %1$d frames</item>
+    </plurals>
+    <plurals name="share_limited">
+        <item quantity="one">Sharing the first %1$d frame only</item>
+        <item quantity="other">Sharing the first %1$d frames only</item>
+    </plurals>
+    <plurals name="frames_deleted">
+        <item quantity="one">%1$d frame moved to Deleted</item>
+        <item quantity="other">%1$d frames moved to Deleted</item>
+    </plurals>
+    <plurals name="batch_videos">
+        <item quantity="one">%1$d video</item>
+        <item quantity="other">%1$d videos</item>
+    </plurals>
+    <plurals name="projects_deleted">
+        <item quantity="one">Project deleted</item>
+        <item quantity="other">%1$d projects deleted</item>
+    </plurals>
+    <plurals name="projects_restored">
+        <item quantity="one">Project restored</item>
+        <item quantity="other">%1$d projects restored</item>
+    </plurals>
+    <plurals name="saved_deleted_n">
+        <item quantity="one">Image deleted</item>
+        <item quantity="other">%1$d images deleted</item>
+    </plurals>
+    <plurals name="saved_restored_n">
+        <item quantity="one">Image restored</item>
+        <item quantity="other">%1$d images restored</item>
+    </plurals>
+    <plurals name="saved_pruned_n">
+        <item quantity="one">1 saved item removed because its file is no longer on the device</item>
+        <item quantity="other">%1$d saved items removed because their files are no longer on the device</item>
+    </plurals>
+    <plurals name="confirm_delete_projects_n">
+        <item quantity="one">Delete this project?</item>
+        <item quantity="other">Delete %1$d projects?</item>
+    </plurals>
+    <plurals name="confirm_delete_saved_n">
+        <item quantity="one">Delete this saved image?</item>
+        <item quantity="other">Delete %1$d saved images?</item>
+    </plurals>
+    <plurals name="backup_saved_many_n">
+        <item quantity="one">Project exported to the chosen folder</item>
+        <item quantity="other">%1$d projects exported to the chosen folder</item>
+    </plurals>
+    <plurals name="export_done_many_n">
+        <item quantity="one">Project exported</item>
+        <item quantity="other">%1$d projects exported</item>
+    </plurals>
+    <plurals name="saved_export_done_n">
+        <item quantity="one">Exported 1 image</item>
+        <item quantity="other">Exported %1$d images</item>
+    </plurals>
+    <plurals name="onboarding_pick_burst">
+        <item quantity="one">%1$d consecutive frame</item>
+        <item quantity="other">%1$d consecutive frames</item>
+    </plurals>
+    <plurals name="onboarding_pick_excluded">
+        <item quantity="one">Excluded: %1$d frame</item>
+        <item quantity="other">Excluded: %1$d frames</item>
+    </plurals>
+    <plurals name="rating_stat">
+        <item quantity="one">%1$d successful save so far</item>
+        <item quantity="other">%1$d successful saves so far</item>
+    </plurals>
+</resources>

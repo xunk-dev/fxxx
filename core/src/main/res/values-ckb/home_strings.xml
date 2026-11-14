@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">ماڵەوە</string>
+    <string name="home_extract_title">دەرهێنانی فرەیمەکان</string>
+    <string name="home_extract_desc">ڤیدیۆیەک هەڵبژێرە و باشترین فرەیمەکانی دەربهێنە.</string>
+    <string name="home_mode_quick">خێرا</string>
+    <string name="home_mode_pro">پرۆ</string>
+    <string name="home_mode_quick_desc">کلیپێک هەڵبژێرە و دەستبەجێ دەست بە دەرهێنان بکە</string>
+    <string name="home_mode_quick_action">دەستپێبکە</string>
+    <string name="home_mode_pro_desc">کۆنترۆڵی تەواو بەسەر کوالیتیدا</string>
+    <string name="home_mode_pro_action">پێشکەوتوو</string>
+    <string name="home_mode_pro_open">کردنەوەی دۆخی پرۆ</string>
+    <string name="home_edit_title">دەستکاریکردنی وێنە</string>
+    <string name="home_edit_desc">بڕین، فلتەر، کێشان</string>
+    <string name="home_collage_title">کۆلاج</string>
+    <string name="home_collage_desc">وێنەکان بکە بە یەک</string>
+    <string name="home_export_title">ناردنەدەرەوە</string>
+    <string name="home_export_desc">ڤیدیۆ، GIF، ZIP، PDF و زیاتر.</string>
+    <string name="home_quick_title">دەرهێنانی خێرا</string>
+    <string name="home_quick_start">ئێستا دەستپێبکە</string>
+    <string name="home_quick_length">درێژی</string>
+    <string name="home_quick_hint">دەستگرەکان لەسەر هێڵی کات ڕابکێشە بۆ هەڵبژاردنی مەودا. وەک خۆی بیهێڵەرەوە بۆ بەکارهێنانی تەواوی کلیپەکە.</string>
+    <string name="home_quick_started">دەرهێنان دەستی پێکرد</string>
+    <string name="home_export_tab_video">ڤیدیۆ</string>
+    <string name="home_export_tab_images">وێنەکان</string>
+    <string name="home_export_action">ناردنەدەرەوە</string>
+    <string name="home_export_action_count">ناردنەدەرەوە (%1$d)</string>
+    <string name="home_export_saving">پاشەکەوتکردن… %1$d%%</string>
+    <string name="home_export_clip_title">ناردنەدەرەوە وەک %1$s</string>
+    <string name="home_export_clip_hint">دەستگرەکان لەسەر هێڵی کات ڕابکێشە بۆ هەڵبژاردنی بەشی ناردنەدەرەوە.</string>
+    <string name="home_export_source_title">هەڵبژاردنی وێنە</string>
+    <string name="home_export_source_empty">هێشتا هیچ وێنەیەک پاشەکەوت نەکراوە. سەرەتا فرەیمەکان لە ڤیدیۆیەک پاشەکەوت بکە.</string>
+    <string name="home_export_select_all">هەڵبژاردنی هەموو</string>
+    <string name="home_export_clear">پاککردنەوە</string>
+    <string name="home_compare_title">بەراورد</string>
+    <string name="home_compare_desc">بخزێنە بۆ بەراوردکردنی دوو وێنە</string>
+    <string name="home_compare_pick_two">دوو وێنە هەڵبژێرە بۆ بەراوردکردن.</string>
+    <string name="home_export_m_video">ڤیدیۆ وەک MP4، Live&#160;Photo، GIF یان WebP بنێرە دەرەوە.</string>
+    <string name="home_export_m_sheet">وێنەکان وەک شیتی پەیوەندی بنێرە دەرەوە.</string>
+    <string name="home_export_m_images">وێنەکان وەک ZIP، PDF یان بوخچە بنێرە دەرەوە.</string>
+    <string name="home_video_title">ناردنی ڤیدیۆ</string>
+    <string name="home_video_desc">MP4، GIF، Live&#160;Photo</string>
+    <string name="home_images_title">ناردنی فرەیم</string>
+    <string name="home_images_desc">ZIP، PDF یان شیتی پەیوەندی</string>
+</resources>

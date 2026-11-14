@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Tipy na nová videa</string>
+    <string name="nudge_channel_new_video_desc">Upozorní vás, když se v telefonu objeví nové video, s úvodním obrázkem a extrakcí jedním klepnutím.</string>
+    <string name="nudge_channel_reminders">Tipy a připomenutí</string>
+    <string name="nudge_channel_reminders_desc">Občasné, nenápadné připomínky. Nejvýše jedna denně a přestanou, pokud je ignorujete.</string>
+    <string name="nudge_action_extract">Extrahovat snímky</string>
+    <string name="nudge_action_open">Otevřít</string>
+    <string name="nudge_action_stop_reminders">Zastavit připomínky</string>
+    <string name="nudge_review_title">Toto video si zaslouží rychlý pohled</string>
+    <string name="nudge_review_text">Je dlouhé, takže nejprve vyberte, co extrahovat. Klepnutím ho otevřete.</string>
+    <string name="nudge_failed_title">Extrakci se nepodařilo spustit</string>
+    <string name="nudge_failed_text">Klepnutím otevřete video a zkuste to znovu.</string>
+    <string name="nudge_waiting_title">Vaše nové video stále čeká</string>
+    <string name="nudge_waiting_text">%1$s je připraveno. Získejte nejlepší snímky jedním klepnutím.</string>
+    <string name="nudge_comeback_title_0">Změňte okamžiky z videí na fotky</string>
+    <string name="nudge_comeback_text_0">Vyberte libovolné video a Frame Out za vás extrahuje nejostřejší snímky.</string>
+    <string name="nudge_comeback_title_1">Váš nejlepší záběr se skrývá ve videu</string>
+    <string name="nudge_comeback_text_1">Přejděte na přesný snímek a uložte ho v plné kvalitě.</string>
+    <string name="nudge_comeback_title_2">Vytvořte koláž z oblíbených snímků</string>
+    <string name="nudge_comeback_text_2">Extrahujte několik snímků a spojte je do jednoho obrázku.</string>
+    <string name="nudge_setting_new_video_title">Upozornění na nová videa</string>
+    <string name="nudge_setting_new_video_hint">Upozornit s úvodním obrázkem, když se objeví nové video</string>
+    <string name="nudge_setting_new_video_partial">K rozpoznání nových videí je potřeba plný přístup k videím</string>
+    <string name="nudge_setting_reminders_title">Tipy a připomenutí</string>
+    <string name="nudge_setting_reminders_hint">Nenápadné připomenutí jednou za čas, nikdy v noci</string>
+    <string name="nudge_setting_system_off">Oznámení aplikace Frame Out jsou vypnutá v nastavení systému</string>
+    <string name="nudge_new_video_title">Nové video je připraveno</string>
+    <string name="nudge_stalled_title">Dokončete, co jste začali</string>
+    <string name="nudge_stalled_text">„%1$s“ je pozastaveno. Pokračujte tam, kde jste skončili.</string>
+    <string name="nudge_recap_title">Váš týden ve snímcích</string>
+    <string name="nudge_recap_text">Snímky extrahované tento týden: %1$d</string>
+</resources>

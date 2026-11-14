@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Beranda</string>
+    <string name="home_extract_title">Ekstrak frame</string>
+    <string name="home_extract_desc">Pilih video dan ambil frame terbaiknya.</string>
+    <string name="home_mode_quick">Cepat</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Pilih klip dan langsung mulai mengekstrak</string>
+    <string name="home_mode_quick_action">Mulai</string>
+    <string name="home_mode_pro_desc">Kontrol penuh atas kualitas</string>
+    <string name="home_mode_pro_action">Lanjutan</string>
+    <string name="home_mode_pro_open">Buka mode Pro</string>
+    <string name="home_edit_title">Edit foto</string>
+    <string name="home_edit_desc">Potong, filter, gambar</string>
+    <string name="home_collage_title">Kolase</string>
+    <string name="home_collage_desc">Gabungkan foto jadi satu</string>
+    <string name="home_export_title">Ekspor</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF, dan lainnya.</string>
+    <string name="home_quick_title">Ekstrak cepat</string>
+    <string name="home_quick_start">Mulai sekarang</string>
+    <string name="home_quick_length">Durasi</string>
+    <string name="home_quick_hint">Seret gagang di lini masa untuk memilih rentang. Biarkan apa adanya untuk memakai seluruh klip.</string>
+    <string name="home_quick_started">Ekstraksi dimulai</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Gambar</string>
+    <string name="home_export_action">Ekspor</string>
+    <string name="home_export_action_count">Ekspor (%1$d)</string>
+    <string name="home_export_saving">Menyimpan… %1$d%%</string>
+    <string name="home_export_clip_title">Ekspor sebagai %1$s</string>
+    <string name="home_export_clip_hint">Seret gagang di lini masa untuk memilih bagian yang diekspor.</string>
+    <string name="home_export_source_title">Pilih gambar</string>
+    <string name="home_export_source_empty">Belum ada gambar tersimpan. Simpan frame dari video terlebih dahulu.</string>
+    <string name="home_export_select_all">Pilih semua</string>
+    <string name="home_export_clear">Hapus</string>
+    <string name="home_compare_title">Bandingkan</string>
+    <string name="home_compare_desc">Geser untuk membandingkan dua foto</string>
+    <string name="home_compare_pick_two">Pilih dua foto untuk dibandingkan.</string>
+    <string name="home_export_m_video">Ekspor video sebagai MP4, Live&#160;Photo, GIF, atau WebP.</string>
+    <string name="home_export_m_sheet">Ekspor gambar sebagai lembar kontak.</string>
+    <string name="home_export_m_images">Ekspor gambar sebagai ZIP, PDF, atau folder.</string>
+    <string name="home_video_title">Ekspor video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Ekspor frame</string>
+    <string name="home_images_desc">ZIP, PDF, atau lembar kontak</string>
+</resources>

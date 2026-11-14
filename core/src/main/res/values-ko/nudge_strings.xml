@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">새 동영상 알림</string>
+    <string name="nudge_channel_new_video_desc">휴대폰에 새 동영상이 생기면 커버와 함께 알려 주고, 한 번의 탭으로 추출할 수 있어요.</string>
+    <string name="nudge_channel_reminders">팁과 알림</string>
+    <string name="nudge_channel_reminders_desc">가끔 보내는 부드러운 알림이에요. 하루에 최대 한 번이며, 계속 무시하면 자동으로 멈춰요.</string>
+    <string name="nudge_action_extract">프레임 추출</string>
+    <string name="nudge_action_open">열기</string>
+    <string name="nudge_action_stop_reminders">알림 끄기</string>
+    <string name="nudge_review_title">이 동영상을 한번 살펴보세요</string>
+    <string name="nudge_review_text">길이가 길어서 먼저 추출할 구간을 선택해야 해요. 탭하여 열어 보세요.</string>
+    <string name="nudge_failed_title">추출을 시작하지 못했어요</string>
+    <string name="nudge_failed_text">탭하여 동영상을 열고 다시 시도하세요.</string>
+    <string name="nudge_waiting_title">새 동영상이 아직 기다리고 있어요</string>
+    <string name="nudge_waiting_text">%1$s 준비 완료. 한 번의 탭으로 가장 좋은 프레임을 뽑아 보세요.</string>
+    <string name="nudge_comeback_title_0">동영상 속 순간을 사진으로</string>
+    <string name="nudge_comeback_text_0">아무 동영상이나 고르면 Frame Out이 가장 선명한 프레임을 추출해 드려요.</string>
+    <string name="nudge_comeback_title_1">최고의 한 컷이 동영상 속에 숨어 있어요</string>
+    <string name="nudge_comeback_text_1">원하는 프레임까지 이동해 원본 화질로 저장하세요.</string>
+    <string name="nudge_comeback_title_2">좋아하는 프레임으로 콜라주를 만들어 보세요</string>
+    <string name="nudge_comeback_text_2">프레임을 몇 장 추출해 한 장의 이미지로 합쳐 보세요.</string>
+    <string name="nudge_setting_new_video_title">새 동영상 알림</string>
+    <string name="nudge_setting_new_video_hint">새 동영상이 나타나면 커버와 함께 알림</string>
+    <string name="nudge_setting_new_video_partial">새 동영상을 감지하려면 동영상 전체 접근 권한이 필요해요</string>
+    <string name="nudge_setting_reminders_title">팁과 알림</string>
+    <string name="nudge_setting_reminders_hint">가끔 부드럽게 알려 드려요. 밤에는 보내지 않아요</string>
+    <string name="nudge_setting_system_off">시스템 설정에서 Frame Out 알림이 꺼져 있어요</string>
+    <string name="nudge_new_video_title">새 동영상 준비 완료</string>
+    <string name="nudge_stalled_title">하던 작업을 마무리해 보세요</string>
+    <string name="nudge_stalled_text">“%1$s” 작업이 일시중지되었어요. 멈춘 곳에서 이어서 진행하세요.</string>
+    <string name="nudge_recap_title">이번 주의 프레임</string>
+    <string name="nudge_recap_text">이번 주 추출한 프레임: %1$d</string>
+</resources>

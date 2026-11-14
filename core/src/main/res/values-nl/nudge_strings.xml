@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Suggesties voor nieuwe video’s</string>
+    <string name="nudge_channel_new_video_desc">Laat je weten wanneer er een nieuwe video op je telefoon komt, met omslag en extractie met één tik.</string>
+    <string name="nudge_channel_reminders">Tips en herinneringen</string>
+    <string name="nudge_channel_reminders_desc">Af en toe een rustige herinnering. Hooguit één per dag, en ze stoppen als je ze negeert.</string>
+    <string name="nudge_action_extract">Frames extraheren</string>
+    <string name="nudge_action_open">Openen</string>
+    <string name="nudge_action_stop_reminders">Herinneringen stoppen</string>
+    <string name="nudge_review_title">Deze video verdient een snelle blik</string>
+    <string name="nudge_review_text">Hij is lang, dus kies eerst wat je wilt extraheren. Tik om te openen.</string>
+    <string name="nudge_failed_title">Extractie kon niet starten</string>
+    <string name="nudge_failed_text">Tik om de video te openen en het opnieuw te proberen.</string>
+    <string name="nudge_waiting_title">Je nieuwe video wacht nog op je</string>
+    <string name="nudge_waiting_text">%1$s is klaar. Haal de beste frames er met één tik uit.</string>
+    <string name="nudge_comeback_title_0">Verander videomomenten in foto’s</string>
+    <string name="nudge_comeback_text_0">Kies een video en Frame Out haalt de scherpste frames voor je eruit.</string>
+    <string name="nudge_comeback_title_1">Je beste opname zit verstopt in een video</string>
+    <string name="nudge_comeback_text_1">Scrol naar het exacte frame en bewaar het in volledige kwaliteit.</string>
+    <string name="nudge_comeback_title_2">Maak een collage van je favoriete frames</string>
+    <string name="nudge_comeback_text_2">Extraheer een paar frames en combineer ze tot één afbeelding.</string>
+    <string name="nudge_setting_new_video_title">Meldingen voor nieuwe video’s</string>
+    <string name="nudge_setting_new_video_hint">Meld het met een omslag als er een nieuwe video verschijnt</string>
+    <string name="nudge_setting_new_video_partial">Volledige videotoegang is nodig om nieuwe video’s te zien</string>
+    <string name="nudge_setting_reminders_title">Tips en herinneringen</string>
+    <string name="nudge_setting_reminders_hint">Af en toe een rustige herinnering, nooit ’s nachts</string>
+    <string name="nudge_setting_system_off">Meldingen voor Frame Out staan uit in de systeeminstellingen</string>
+    <string name="nudge_new_video_title">Nieuwe video klaar</string>
+    <string name="nudge_stalled_title">Maak af wat je begonnen bent</string>
+    <string name="nudge_stalled_text">“%1$s” staat op pauze. Ga verder waar je gebleven was.</string>
+    <string name="nudge_recap_title">Jouw week in frames</string>
+    <string name="nudge_recap_text">Deze week geëxtraheerde frames: %1$d</string>
+</resources>

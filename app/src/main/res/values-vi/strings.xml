@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Chụp khung hình</string>
+    <string name="shortcut_capture_long">Chụp một khung hình từ video gần nhất</string>
+    <string name="tile_capture_label">Chụp khung hình</string>
+    <string name="incoming_copy_failed">Không thể giữ quyền truy cập vào video được chia sẻ. Hãy mở video từ thư viện ảnh, hoặc giải phóng bộ nhớ rồi chia sẻ lại.</string>
+    <string name="incoming_unsupported">Không thể mở loại tệp này. Hãy chia sẻ video, GIF hoặc ảnh.</string>
+    <string name="incoming_photo_failed">Không thể mở ảnh được chia sẻ. Hãy giải phóng bộ nhớ và chia sẻ lại.</string>
+    <string name="incoming_photos_skipped">Ảnh đã bị bỏ qua vì được chia sẻ cùng với video. Hãy chia sẻ riêng ảnh để chỉnh sửa.</string>
+    <string name="compare_stack">Xếp dọc</string>
+    <string name="compare_side">Cạnh nhau</string>
+    <string name="compare_slider">Thanh trượt</string>
+    <string name="compare_swap">Hoán đổi</string>
+    <string name="compare_fit">Vừa khung</string>
+    <string name="compare_zoom_in">Phóng to</string>
+    <string name="compare_zoom_out">Thu nhỏ</string>
+    <string name="compare_reset_zoom">Đặt lại thu phóng</string>
+    <string name="compare_hint">Chụm hai ngón để thu phóng · nhấn đúp</string>
+    <string name="compare_load_failed">Không thể tải ảnh</string>
+    <string name="compare_divider">Thanh chia so sánh</string>
+    <string name="compare_diff">Khác biệt</string>
+    <string name="compare_diff_busy">Đang tính toán khác biệt…</string>
+    <string name="compare_link">Thu phóng đồng bộ</string>
+    <string name="compare_unlink">Thu phóng riêng</string>
+    <string name="compare_actual_size">Điểm ảnh thực tế</string>
+    <string name="compare_diff_percent">Thay đổi: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss hoặc h:mm:ss</string>
+</resources>

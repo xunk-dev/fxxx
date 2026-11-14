@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Sugestii pentru videoclipuri noi</string>
+    <string name="nudge_channel_new_video_desc">Te anunță când apare un videoclip nou pe telefon, cu copertă și extragere dintr-o atingere.</string>
+    <string name="nudge_channel_reminders">Sfaturi și mementouri</string>
+    <string name="nudge_channel_reminders_desc">Mementouri rare și discrete. Cel mult unul pe zi, iar se opresc dacă le ignori.</string>
+    <string name="nudge_action_extract">Extrage cadre</string>
+    <string name="nudge_action_open">Deschide</string>
+    <string name="nudge_action_stop_reminders">Oprește mementourile</string>
+    <string name="nudge_review_title">Acest videoclip merită o privire rapidă</string>
+    <string name="nudge_review_text">Este lung, așa că alege mai întâi ce vrei să extragi. Atinge pentru a-l deschide.</string>
+    <string name="nudge_failed_title">Extragerea nu a putut porni</string>
+    <string name="nudge_failed_text">Atinge pentru a deschide videoclipul și a încerca din nou.</string>
+    <string name="nudge_waiting_title">Videoclipul tău nou încă așteaptă</string>
+    <string name="nudge_waiting_text">%1$s este gata. Scoate cele mai bune cadre dintr-o atingere.</string>
+    <string name="nudge_comeback_title_0">Transformă momentele din videoclipuri în fotografii</string>
+    <string name="nudge_comeback_text_0">Alege orice videoclip, iar Frame Out extrage pentru tine cele mai clare cadre.</string>
+    <string name="nudge_comeback_title_1">Cea mai bună fotografie a ta se ascunde într-un videoclip</string>
+    <string name="nudge_comeback_text_1">Derulează la cadrul exact și salvează-l la calitate maximă.</string>
+    <string name="nudge_comeback_title_2">Fă un colaj din cadrele tale preferate</string>
+    <string name="nudge_comeback_text_2">Extrage câteva cadre și combină-le într-o singură imagine.</string>
+    <string name="nudge_setting_new_video_title">Alerte pentru videoclipuri noi</string>
+    <string name="nudge_setting_new_video_hint">Anunță-mă cu coperta când apare un videoclip nou</string>
+    <string name="nudge_setting_new_video_partial">Este nevoie de acces complet la videoclipuri pentru a le observa pe cele noi</string>
+    <string name="nudge_setting_reminders_title">Sfaturi și mementouri</string>
+    <string name="nudge_setting_reminders_hint">Un memento discret din când în când, niciodată noaptea</string>
+    <string name="nudge_setting_system_off">Notificările pentru Frame Out sunt dezactivate în setările sistemului</string>
+    <string name="nudge_new_video_title">Videoclip nou gata</string>
+    <string name="nudge_stalled_title">Termină ce ai început</string>
+    <string name="nudge_stalled_text">„%1$s” este în pauză. Continuă de unde ai rămas.</string>
+    <string name="nudge_recap_title">Săptămâna ta în cadre</string>
+    <string name="nudge_recap_text">Cadre extrase săptămâna aceasta: %1$d</string>
+</resources>

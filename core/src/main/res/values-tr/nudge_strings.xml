@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Yeni video önerileri</string>
+    <string name="nudge_channel_new_video_desc">Telefonuna yeni bir video geldiğinde kapak görseliyle ve tek dokunuşla çıkarma seçeneğiyle haber verir.</string>
+    <string name="nudge_channel_reminders">İpuçları ve hatırlatmalar</string>
+    <string name="nudge_channel_reminders_desc">Ara sıra gelen nazik hatırlatmalar. Günde en fazla bir tane; görmezden gelirsen durur.</string>
+    <string name="nudge_action_extract">Kareleri çıkar</string>
+    <string name="nudge_action_open">Aç</string>
+    <string name="nudge_action_stop_reminders">Hatırlatmaları durdur</string>
+    <string name="nudge_review_title">Bu videoya hızlıca göz atmalısın</string>
+    <string name="nudge_review_text">Video uzun, bu yüzden önce neyi çıkaracağını seç. Açmak için dokun.</string>
+    <string name="nudge_failed_title">Çıkarma başlatılamadı</string>
+    <string name="nudge_failed_text">Videoyu açıp tekrar denemek için dokun.</string>
+    <string name="nudge_waiting_title">Yeni videon hâlâ seni bekliyor</string>
+    <string name="nudge_waiting_text">%1$s hazır. En iyi kareleri tek dokunuşla çıkar.</string>
+    <string name="nudge_comeback_title_0">Video anlarını fotoğrafa dönüştür</string>
+    <string name="nudge_comeback_text_0">Herhangi bir video seç, Frame Out senin için en net kareleri çıkarsın.</string>
+    <string name="nudge_comeback_title_1">En iyi karen bir videonun içinde saklanıyor</string>
+    <string name="nudge_comeback_text_1">Tam istediğin kareye git ve tam kalitede kaydet.</string>
+    <string name="nudge_comeback_title_2">Favori karelerinden kolaj yap</string>
+    <string name="nudge_comeback_text_2">Birkaç kare çıkar ve tek bir görselde birleştir.</string>
+    <string name="nudge_setting_new_video_title">Yeni video bildirimleri</string>
+    <string name="nudge_setting_new_video_hint">Yeni bir video göründüğünde kapak görseliyle bildir</string>
+    <string name="nudge_setting_new_video_partial">Yeni videoları fark etmek için videolara tam erişim gerekir</string>
+    <string name="nudge_setting_reminders_title">İpuçları ve hatırlatmalar</string>
+    <string name="nudge_setting_reminders_hint">Ara sıra nazik bir hatırlatma, geceleri asla</string>
+    <string name="nudge_setting_system_off">Frame Out bildirimleri sistem ayarlarında kapalı</string>
+    <string name="nudge_new_video_title">Yeni video hazır</string>
+    <string name="nudge_stalled_title">Başladığın işi bitir</string>
+    <string name="nudge_stalled_text">“%1$s” duraklatıldı. Kaldığın yerden devam et.</string>
+    <string name="nudge_recap_title">Karelerle haftan</string>
+    <string name="nudge_recap_text">Bu hafta çıkarılan kareler: %1$d</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">首頁</string>
+    <string name="home_extract_title">提取影格</string>
+    <string name="home_extract_desc">選擇影片，提取其中最佳的影格。</string>
+    <string name="home_mode_quick">快速</string>
+    <string name="home_mode_pro">專業</string>
+    <string name="home_mode_quick_desc">選擇片段，立即開始提取</string>
+    <string name="home_mode_quick_action">開始</string>
+    <string name="home_mode_pro_desc">全面掌控設定與畫質</string>
+    <string name="home_mode_pro_action">進階</string>
+    <string name="home_mode_pro_open">開啟專業模式</string>
+    <string name="home_edit_title">編輯照片</string>
+    <string name="home_edit_desc">裁切、濾鏡、繪圖</string>
+    <string name="home_collage_title">拼貼</string>
+    <string name="home_collage_desc">將照片合成一張</string>
+    <string name="home_export_title">匯出</string>
+    <string name="home_export_desc">影片、GIF、ZIP、PDF 等。</string>
+    <string name="home_quick_title">快速提取</string>
+    <string name="home_quick_start">立即開始</string>
+    <string name="home_quick_length">時長</string>
+    <string name="home_quick_hint">拖曳時間軸上的控點選擇範圍；保持不變則使用整段片段。</string>
+    <string name="home_quick_started">已開始提取</string>
+    <string name="home_export_tab_video">影片</string>
+    <string name="home_export_tab_images">圖片</string>
+    <string name="home_export_action">匯出</string>
+    <string name="home_export_action_count">匯出 (%1$d)</string>
+    <string name="home_export_saving">正在儲存… %1$d%%</string>
+    <string name="home_export_clip_title">匯出為 %1$s</string>
+    <string name="home_export_clip_hint">拖曳時間軸上的控點，選擇要匯出的部分。</string>
+    <string name="home_export_source_title">選擇圖片</string>
+    <string name="home_export_source_empty">尚無已儲存的圖片。請先從影片中儲存影格。</string>
+    <string name="home_export_select_all">全選</string>
+    <string name="home_export_clear">清除</string>
+    <string name="home_compare_title">對比</string>
+    <string name="home_compare_desc">滑動對比兩張照片</string>
+    <string name="home_compare_pick_two">請選擇兩張照片進行對比。</string>
+    <string name="home_export_m_video">將影片匯出為 MP4、Live&#160;Photo、GIF 或 WebP。</string>
+    <string name="home_export_m_sheet">將圖片匯出為聯絡表。</string>
+    <string name="home_export_m_images">將圖片匯出為 ZIP、PDF 或資料夾。</string>
+    <string name="home_video_title">匯出影片</string>
+    <string name="home_video_desc">MP4、GIF、Live&#160;Photo</string>
+    <string name="home_images_title">匯出影格</string>
+    <string name="home_images_desc">ZIP、PDF 或聯絡表</string>
+</resources>

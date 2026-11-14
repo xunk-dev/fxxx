@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Mga mungkahing bagong video</string>
+    <string name="nudge_channel_new_video_desc">Ipinapaalam sa iyo kapag may bagong video sa iyong telepono, may cover at isang tap lang para i-extract.</string>
+    <string name="nudge_channel_reminders">Mga tip at paalala</string>
+    <string name="nudge_channel_reminders_desc">Paminsan-minsan at banayad na mga paalala. Isa lang kada araw, at titigil ito kung hindi mo pansinin.</string>
+    <string name="nudge_action_extract">I-extract ang mga frame</string>
+    <string name="nudge_action_open">Buksan</string>
+    <string name="nudge_action_stop_reminders">Itigil ang mga paalala</string>
+    <string name="nudge_review_title">Sulit silipin ang video na ito</string>
+    <string name="nudge_review_text">Mahaba ito, kaya piliin muna kung ano ang ie-extract. I-tap para buksan.</string>
+    <string name="nudge_failed_title">Hindi masimulan ang pag-extract</string>
+    <string name="nudge_failed_text">I-tap para buksan ang video at subukan muli.</string>
+    <string name="nudge_waiting_title">Naghihintay pa rin ang bago mong video</string>
+    <string name="nudge_waiting_text">Handa na ang %1$s. Kunin ang pinakamagagandang frame sa isang tap.</string>
+    <string name="nudge_comeback_title_0">Gawing larawan ang mga sandali sa video</string>
+    <string name="nudge_comeback_text_0">Pumili ng kahit anong video at ie-extract ng Frame Out ang pinakamalilinaw na frame para sa iyo.</string>
+    <string name="nudge_comeback_title_1">Nakatago sa isang video ang pinakamaganda mong kuha</string>
+    <string name="nudge_comeback_text_1">Pumunta sa eksaktong frame at i-save ito sa buong kalidad.</string>
+    <string name="nudge_comeback_title_2">Gumawa ng collage mula sa mga paborito mong frame</string>
+    <string name="nudge_comeback_text_2">Mag-extract ng ilang frame at pagsamahin ang mga ito sa isang larawan.</string>
+    <string name="nudge_setting_new_video_title">Mga alerto sa bagong video</string>
+    <string name="nudge_setting_new_video_hint">Abisuhan ako na may cover kapag may lumabas na bagong video</string>
+    <string name="nudge_setting_new_video_partial">Kailangan ng buong access sa mga video para makita ang mga bago</string>
+    <string name="nudge_setting_reminders_title">Mga tip at paalala</string>
+    <string name="nudge_setting_reminders_hint">Banayad na paalala paminsan-minsan, hindi kailanman sa gabi</string>
+    <string name="nudge_setting_system_off">Naka-off ang mga notification ng Frame Out sa mga setting ng system</string>
+    <string name="nudge_new_video_title">Handa na ang bagong video</string>
+    <string name="nudge_stalled_title">Tapusin ang sinimulan mo</string>
+    <string name="nudge_stalled_text">Naka-pause ang “%1$s”. Ipagpatuloy kung saan ka huminto.</string>
+    <string name="nudge_recap_title">Ang linggo mo sa mga frame</string>
+    <string name="nudge_recap_text">Mga frame na na-extract ngayong linggo: %1$d</string>
+</resources>

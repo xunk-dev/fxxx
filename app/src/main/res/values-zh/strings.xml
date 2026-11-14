@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">截取帧</string>
+    <string name="shortcut_capture_long">从最近的视频中截取一帧</string>
+    <string name="tile_capture_label">截取帧</string>
+    <string name="incoming_copy_failed">无法保持对所分享视频的访问。请改为从相册中打开，或释放存储空间后再次分享。</string>
+    <string name="incoming_unsupported">无法打开此文件类型。请改为分享视频、GIF 或图片。</string>
+    <string name="incoming_photo_failed">无法打开分享的照片。请释放存储空间后重新分享。</string>
+    <string name="incoming_photos_skipped">由于照片与视频一起分享，照片已被跳过。请单独分享照片以进行编辑。</string>
+    <string name="compare_stack">上下</string>
+    <string name="compare_side">左右</string>
+    <string name="compare_slider">滑块</string>
+    <string name="compare_swap">互换</string>
+    <string name="compare_fit">适应屏幕</string>
+    <string name="compare_zoom_in">放大</string>
+    <string name="compare_zoom_out">缩小</string>
+    <string name="compare_reset_zoom">重置缩放</string>
+    <string name="compare_hint">双指缩放 · 双击</string>
+    <string name="compare_load_failed">无法加载图片</string>
+    <string name="compare_divider">对比分隔线</string>
+    <string name="compare_diff">差异</string>
+    <string name="compare_diff_busy">正在计算差异…</string>
+    <string name="compare_link">同步缩放</string>
+    <string name="compare_unlink">取消同步缩放</string>
+    <string name="compare_actual_size">实际像素</string>
+    <string name="compare_diff_percent">变化：%1$s%%</string>
+    <string name="time_entry_hint">mm:ss 或 h:mm:ss</string>
+</resources>

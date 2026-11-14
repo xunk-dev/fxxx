@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Home</string>
+    <string name="home_extract_title">Extract frames</string>
+    <string name="home_extract_desc">Pick a video and pull out its best frames.</string>
+    <string name="home_mode_quick">Quick</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Pick a clip and start extracting right away</string>
+    <string name="home_mode_quick_action">Start</string>
+    <string name="home_mode_pro_desc">Full control over settings and quality</string>
+    <string name="home_mode_pro_action">Advanced</string>
+    <string name="home_mode_pro_open">Open Pro mode</string>
+    <string name="home_edit_title">Edit photos</string>
+    <string name="home_edit_desc">Crop, filters, draw</string>
+    <string name="home_collage_title">Collage</string>
+    <string name="home_collage_desc">Merge photos into one</string>
+    <string name="home_export_title">Export</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF and more.</string>
+    <string name="home_quick_title">Quick extract</string>
+    <string name="home_quick_start">Start now</string>
+    <string name="home_quick_length">Length</string>
+    <string name="home_quick_hint">Drag the handles on the timeline to choose a range. Leave them as is to use the whole clip.</string>
+    <string name="home_quick_started">Extraction started</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Images</string>
+    <string name="home_export_action">Export</string>
+    <string name="home_export_action_count">Export (%1$d)</string>
+    <string name="home_export_saving">Saving… %1$d%%</string>
+    <string name="home_export_clip_title">Export as %1$s</string>
+    <string name="home_export_clip_hint">Drag the handles on the timeline to choose the part to export.</string>
+    <string name="home_export_source_title">Choose images</string>
+    <string name="home_export_source_empty">No saved images yet. Save frames from a video first.</string>
+    <string name="home_export_select_all">Select all</string>
+    <string name="home_export_clear">Clear</string>
+    <string name="home_compare_title">Compare</string>
+    <string name="home_compare_desc">Slide to compare two photos</string>
+    <string name="home_compare_pick_two">Pick two photos to compare.</string>
+    <string name="home_export_m_video">Export video as MP4, Live Photo, GIF or WebP.</string>
+    <string name="home_export_m_sheet">Export images as a contact sheet.</string>
+    <string name="home_export_m_images">Export images as ZIP, PDF or a folder.</string>
+    <string name="home_video_title">Export video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Export frames</string>
+    <string name="home_images_desc">ZIP, PDF or contact sheet</string>
+</resources>

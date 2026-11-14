@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">หน้าหลัก</string>
+    <string name="home_extract_title">แยกเฟรม</string>
+    <string name="home_extract_desc">เลือกวิดีโอแล้วดึงเฟรมที่ดีที่สุดออกมา</string>
+    <string name="home_mode_quick">เร็ว</string>
+    <string name="home_mode_pro">โปร</string>
+    <string name="home_mode_quick_desc">เลือกคลิปแล้วเริ่มแยกได้ทันที</string>
+    <string name="home_mode_quick_action">เริ่ม</string>
+    <string name="home_mode_pro_desc">ควบคุมคุณภาพได้เต็มที่</string>
+    <string name="home_mode_pro_action">ขั้นสูง</string>
+    <string name="home_mode_pro_open">เปิดโหมดโปร</string>
+    <string name="home_edit_title">แก้ไขรูปภาพ</string>
+    <string name="home_edit_desc">ครอป ฟิลเตอร์ วาด</string>
+    <string name="home_collage_title">คอลลาจ</string>
+    <string name="home_collage_desc">รวมรูปภาพเป็นภาพเดียว</string>
+    <string name="home_export_title">ส่งออก</string>
+    <string name="home_export_desc">วิดีโอ, GIF, ZIP, PDF และอื่นๆ</string>
+    <string name="home_quick_title">แยกเฟรมด่วน</string>
+    <string name="home_quick_start">เริ่มเลย</string>
+    <string name="home_quick_length">ความยาว</string>
+    <string name="home_quick_hint">ลากที่จับบนไทม์ไลน์เพื่อเลือกช่วง หากไม่ปรับจะใช้ทั้งคลิป</string>
+    <string name="home_quick_started">เริ่มแยกเฟรมแล้ว</string>
+    <string name="home_export_tab_video">วิดีโอ</string>
+    <string name="home_export_tab_images">รูปภาพ</string>
+    <string name="home_export_action">ส่งออก</string>
+    <string name="home_export_action_count">ส่งออก (%1$d)</string>
+    <string name="home_export_saving">กำลังบันทึก… %1$d%%</string>
+    <string name="home_export_clip_title">ส่งออกเป็น %1$s</string>
+    <string name="home_export_clip_hint">ลากที่จับบนไทม์ไลน์เพื่อเลือกส่วนที่จะส่งออก</string>
+    <string name="home_export_source_title">เลือกรูปภาพ</string>
+    <string name="home_export_source_empty">ยังไม่มีรูปภาพที่บันทึกไว้ บันทึกเฟรมจากวิดีโอก่อน</string>
+    <string name="home_export_select_all">เลือกทั้งหมด</string>
+    <string name="home_export_clear">ล้าง</string>
+    <string name="home_compare_title">เปรียบเทียบ</string>
+    <string name="home_compare_desc">ปัดเพื่อเปรียบเทียบสองรูป</string>
+    <string name="home_compare_pick_two">เลือกรูปภาพสองรูปเพื่อเปรียบเทียบ</string>
+    <string name="home_export_m_video">ส่งออกวิดีโอเป็น MP4, Live&#160;Photo, GIF หรือ WebP</string>
+    <string name="home_export_m_sheet">ส่งออกรูปภาพเป็นแผ่นรวมภาพ</string>
+    <string name="home_export_m_images">ส่งออกรูปภาพเป็น ZIP, PDF หรือโฟลเดอร์</string>
+    <string name="home_video_title">ส่งออกวิดีโอ</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">ส่งออกเฟรม</string>
+    <string name="home_images_desc">ZIP, PDF หรือแผ่นรวมภาพ</string>
+</resources>

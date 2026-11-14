@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">新视频提示</string>
+    <string name="nudge_channel_new_video_desc">手机里有新视频时通知你，附带封面，并支持一键提取。</string>
+    <string name="nudge_channel_reminders">提示与提醒</string>
+    <string name="nudge_channel_reminders_desc">偶尔发送的轻柔提醒。每天最多一条，如果你一直不理会，就会自动停止。</string>
+    <string name="nudge_action_extract">提取帧</string>
+    <string name="nudge_action_open">打开</string>
+    <string name="nudge_action_stop_reminders">停止提醒</string>
+    <string name="nudge_review_title">这个视频值得看一眼</string>
+    <string name="nudge_review_text">视频较长，请先选择要提取的内容。点按即可打开。</string>
+    <string name="nudge_failed_title">无法开始提取</string>
+    <string name="nudge_failed_text">点按以打开视频并重试。</string>
+    <string name="nudge_waiting_title">你的新视频还在等你</string>
+    <string name="nudge_waiting_text">%1$s 已就绪。一键即可取出最佳帧。</string>
+    <string name="nudge_comeback_title_0">把视频瞬间变成照片</string>
+    <string name="nudge_comeback_text_0">选择任意视频，Frame Out 会为你提取最清晰的帧。</string>
+    <string name="nudge_comeback_title_1">你最棒的一张照片，藏在视频里</string>
+    <string name="nudge_comeback_text_1">定位到精确的那一帧，并以原画质保存。</string>
+    <string name="nudge_comeback_title_2">用你最爱的帧制作拼贴</string>
+    <string name="nudge_comeback_text_2">提取几帧，把它们合成一张图片。</string>
+    <string name="nudge_setting_new_video_title">新视频提醒</string>
+    <string name="nudge_setting_new_video_hint">发现新视频时，带封面通知我</string>
+    <string name="nudge_setting_new_video_partial">需要完整的视频访问权限才能发现新视频</string>
+    <string name="nudge_setting_reminders_title">提示与提醒</string>
+    <string name="nudge_setting_reminders_hint">偶尔轻轻提醒一次，夜间绝不打扰</string>
+    <string name="nudge_setting_system_off">系统设置中已关闭 Frame Out 的通知</string>
+    <string name="nudge_new_video_title">新视频已就绪</string>
+    <string name="nudge_stalled_title">把没做完的继续完成吧</string>
+    <string name="nudge_stalled_text">“%1$s”已暂停。从上次停下的地方继续吧。</string>
+    <string name="nudge_recap_title">你这一周的帧</string>
+    <string name="nudge_recap_text">本周已提取的帧数：%1$d</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Zachytit snímek</string>
+    <string name="shortcut_capture_long">Zachytit snímek z posledního videa</string>
+    <string name="tile_capture_label">Zachytit snímek</string>
+    <string name="incoming_copy_failed">Nepodařilo se zachovat přístup ke sdílenému videu. Otevřete jej raději z galerie, nebo uvolněte místo v úložišti a sdílejte znovu.</string>
+    <string name="incoming_unsupported">Tento typ souboru nelze otevřít. Sdílejte místo něj video, GIF nebo obrázek.</string>
+    <string name="incoming_photo_failed">Sdílenou fotku se nepodařilo otevřít. Uvolněte místo v úložišti a sdílejte ji znovu.</string>
+    <string name="incoming_photos_skipped">Fotky byly přeskočeny, protože byly sdíleny spolu s videi. Chcete-li je upravit, sdílejte fotky samostatně.</string>
+    <string name="compare_stack">Překrytí</string>
+    <string name="compare_side">Vedle sebe</string>
+    <string name="compare_slider">Posuvník</string>
+    <string name="compare_swap">Prohodit</string>
+    <string name="compare_fit">Přizpůsobit</string>
+    <string name="compare_zoom_in">Přiblížit</string>
+    <string name="compare_zoom_out">Oddálit</string>
+    <string name="compare_reset_zoom">Obnovit zoom</string>
+    <string name="compare_hint">Sevřením přibližte · dvojité klepnutí</string>
+    <string name="compare_load_failed">Obrázek se nepodařilo načíst</string>
+    <string name="compare_divider">Dělicí čára porovnání</string>
+    <string name="compare_diff">Rozdíl</string>
+    <string name="compare_diff_busy">Výpočet rozdílů…</string>
+    <string name="compare_link">Propojit zoom</string>
+    <string name="compare_unlink">Oddělit zoom</string>
+    <string name="compare_actual_size">Skutečné pixely</string>
+    <string name="compare_diff_percent">Změněno: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss nebo h:mm:ss</string>
+</resources>

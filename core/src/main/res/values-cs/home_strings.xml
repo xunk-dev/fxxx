@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Domů</string>
+    <string name="home_extract_title">Extrahovat snímky</string>
+    <string name="home_extract_desc">Vyberte video a získejte jeho nejlepší snímky.</string>
+    <string name="home_mode_quick">Rychlý</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Vyberte klip a hned začněte s extrakcí</string>
+    <string name="home_mode_quick_action">Start</string>
+    <string name="home_mode_pro_desc">Plná kontrola nad kvalitou</string>
+    <string name="home_mode_pro_action">Pokročilý</string>
+    <string name="home_mode_pro_open">Otevřít režim Pro</string>
+    <string name="home_edit_title">Úprava fotek</string>
+    <string name="home_edit_desc">Ořez, filtry, kreslení</string>
+    <string name="home_collage_title">Koláž</string>
+    <string name="home_collage_desc">Spojte fotky do jedné</string>
+    <string name="home_export_title">Export</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF a další.</string>
+    <string name="home_quick_title">Rychlá extrakce</string>
+    <string name="home_quick_start">Spustit</string>
+    <string name="home_quick_length">Délka</string>
+    <string name="home_quick_hint">Přetažením úchytů na časové ose vyberte rozsah. Beze změny se použije celý klip.</string>
+    <string name="home_quick_started">Extrakce spuštěna</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Obrázky</string>
+    <string name="home_export_action">Exportovat</string>
+    <string name="home_export_action_count">Exportovat (%1$d)</string>
+    <string name="home_export_saving">Ukládání… %1$d %%</string>
+    <string name="home_export_clip_title">Exportovat jako %1$s</string>
+    <string name="home_export_clip_hint">Přetažením úchytů na časové ose vyberte část k exportu.</string>
+    <string name="home_export_source_title">Výběr obrázků</string>
+    <string name="home_export_source_empty">Zatím žádné uložené obrázky. Nejprve uložte snímky z videa.</string>
+    <string name="home_export_select_all">Vybrat vše</string>
+    <string name="home_export_clear">Vymazat</string>
+    <string name="home_compare_title">Porovnat</string>
+    <string name="home_compare_desc">Přejetím porovnáte dvě fotky</string>
+    <string name="home_compare_pick_two">Vyberte dvě fotky k porovnání.</string>
+    <string name="home_export_m_video">Exportujte video jako MP4, Live&#160;Photo, GIF nebo WebP.</string>
+    <string name="home_export_m_sheet">Exportujte obrázky jako kontaktní arch.</string>
+    <string name="home_export_m_images">Exportujte obrázky jako ZIP, PDF nebo do složky.</string>
+    <string name="home_video_title">Export videa</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Export snímků</string>
+    <string name="home_images_desc">ZIP, PDF nebo kontaktní arch</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Acasă</string>
+    <string name="home_extract_title">Extrage cadre</string>
+    <string name="home_extract_desc">Alege un videoclip și extrage cele mai bune cadre.</string>
+    <string name="home_mode_quick">Rapid</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Alege un clip și începe extragerea imediat</string>
+    <string name="home_mode_quick_action">Start</string>
+    <string name="home_mode_pro_desc">Control total asupra calității</string>
+    <string name="home_mode_pro_action">Avansat</string>
+    <string name="home_mode_pro_open">Deschide modul Pro</string>
+    <string name="home_edit_title">Editare foto</string>
+    <string name="home_edit_desc">Decupare, filtre, desen</string>
+    <string name="home_collage_title">Colaj</string>
+    <string name="home_collage_desc">Îmbină fotografii</string>
+    <string name="home_export_title">Export</string>
+    <string name="home_export_desc">Videoclip, GIF, ZIP, PDF și altele.</string>
+    <string name="home_quick_title">Extragere rapidă</string>
+    <string name="home_quick_start">Începe acum</string>
+    <string name="home_quick_length">Durată</string>
+    <string name="home_quick_hint">Trage mânerele de pe cronologie pentru a alege un interval. Lasă-le neschimbate pentru tot clipul.</string>
+    <string name="home_quick_started">Extragerea a început</string>
+    <string name="home_export_tab_video">Videoclip</string>
+    <string name="home_export_tab_images">Imagini</string>
+    <string name="home_export_action">Exportă</string>
+    <string name="home_export_action_count">Exportă (%1$d)</string>
+    <string name="home_export_saving">Se salvează… %1$d%%</string>
+    <string name="home_export_clip_title">Exportă ca %1$s</string>
+    <string name="home_export_clip_hint">Trage mânerele de pe cronologie pentru a alege partea de exportat.</string>
+    <string name="home_export_source_title">Alege imaginile</string>
+    <string name="home_export_source_empty">Nu există imagini salvate. Salvează mai întâi cadre dintr-un videoclip.</string>
+    <string name="home_export_select_all">Selectează tot</string>
+    <string name="home_export_clear">Șterge</string>
+    <string name="home_compare_title">Compară</string>
+    <string name="home_compare_desc">Glisează și compară două poze</string>
+    <string name="home_compare_pick_two">Alege două fotografii de comparat.</string>
+    <string name="home_export_m_video">Exportă videoclipul ca MP4, Live&#160;Photo, GIF sau WebP.</string>
+    <string name="home_export_m_sheet">Exportă imaginile ca planșă de contact.</string>
+    <string name="home_export_m_images">Exportă imaginile ca ZIP, PDF sau într-un folder.</string>
+    <string name="home_video_title">Export video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Export cadre</string>
+    <string name="home_images_desc">ZIP, PDF sau planșă de contact</string>
+</resources>

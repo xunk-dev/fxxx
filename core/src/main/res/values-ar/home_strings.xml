@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">الرئيسية</string>
+    <string name="home_extract_title">استخراج الإطارات</string>
+    <string name="home_extract_desc">اختر فيديو واستخرج أفضل إطاراته.</string>
+    <string name="home_mode_quick">سريع</string>
+    <string name="home_mode_pro">احترافي</string>
+    <string name="home_mode_quick_desc">اختر المقطع وابدأ الاستخراج فوراً</string>
+    <string name="home_mode_quick_action">ابدأ</string>
+    <string name="home_mode_pro_desc">تحكّم كامل بالإطارات</string>
+    <string name="home_mode_pro_action">متقدّم</string>
+    <string name="home_mode_pro_open">فتح الوضع الاحترافي</string>
+    <string name="home_edit_title">تعديل الصور</string>
+    <string name="home_edit_desc">قصّ وفلاتر ورسم</string>
+    <string name="home_collage_title">كولاج</string>
+    <string name="home_collage_desc">ادمج صورك في صورة واحدة</string>
+    <string name="home_export_title">تصدير</string>
+    <string name="home_export_desc">فيديو وGIF وZIP وPDF وغيرها.</string>
+    <string name="home_quick_title">استخراج سريع</string>
+    <string name="home_quick_start">ابدأ الآن</string>
+    <string name="home_quick_length">المدة</string>
+    <string name="home_quick_hint">اسحب المقبضين على الخط الزمني لتحديد النطاق، أو اتركهما ليُستخرج المقطع كله.</string>
+    <string name="home_quick_started">بدأ الاستخراج</string>
+    <string name="home_export_tab_video">فيديو</string>
+    <string name="home_export_tab_images">صور</string>
+    <string name="home_export_action">تصدير</string>
+    <string name="home_export_action_count">تصدير (%1$d)</string>
+    <string name="home_export_saving">جارٍ الحفظ… %1$d%%</string>
+    <string name="home_export_clip_title">تصدير بصيغة %1$s</string>
+    <string name="home_export_clip_hint">اسحب المقبضين على الخط الزمني لتحديد الجزء المراد تصديره.</string>
+    <string name="home_export_source_title">اختر الصور</string>
+    <string name="home_export_source_empty">لا توجد صور محفوظة بعد. احفظ إطارات من فيديو أولًا.</string>
+    <string name="home_export_select_all">تحديد الكل</string>
+    <string name="home_export_clear">إلغاء التحديد</string>
+    <string name="home_compare_title">مقارنة</string>
+    <string name="home_compare_desc">قارن بين صورتين بسحبة واحدة</string>
+    <string name="home_compare_pick_two">اختر صورتين للمقارنة.</string>
+    <string name="home_export_m_video">صدّر الفيديو بصيغ MP4 وLive Photo وGIF وWebP.</string>
+    <string name="home_export_m_sheet">صدّر الصور كلوحة مصغّرات.</string>
+    <string name="home_export_m_images">صدّر الصور كملف ZIP أو PDF أو في مجلد.</string>
+    <string name="home_video_title">تصدير الفيديو</string>
+    <string name="home_video_desc">MP4 وGIF وLive&#160;Photo</string>
+    <string name="home_images_title">تصدير الإطارات</string>
+    <string name="home_images_desc">ZIP أو PDF أو لوحة مصغّرات</string>
+</resources>

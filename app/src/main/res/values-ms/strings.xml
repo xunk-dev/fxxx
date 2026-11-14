@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Tangkap bingkai</string>
+    <string name="shortcut_capture_long">Tangkap bingkai daripada video terakhir</string>
+    <string name="tile_capture_label">Tangkap bingkai</string>
+    <string name="incoming_copy_failed">Tidak dapat mengekalkan akses kepada video yang dikongsi. Buka video itu dari galeri atau bebaskan ruang storan, kemudian kongsi semula.</string>
+    <string name="incoming_unsupported">Jenis fail ini tidak boleh dibuka. Sila kongsi video, GIF atau imej.</string>
+    <string name="incoming_photo_failed">Tidak dapat membuka foto yang dikongsi. Kosongkan storan dan kongsi semula.</string>
+    <string name="incoming_photos_skipped">Foto dilangkau kerana dikongsi bersama video. Kongsi foto secara berasingan untuk mengeditnya.</string>
+    <string name="compare_stack">Bertindan</string>
+    <string name="compare_side">Bersebelahan</string>
+    <string name="compare_slider">Peluncur</string>
+    <string name="compare_swap">Tukar</string>
+    <string name="compare_fit">Muatkan</string>
+    <string name="compare_zoom_in">Zum masuk</string>
+    <string name="compare_zoom_out">Zum keluar</string>
+    <string name="compare_reset_zoom">Set semula zum</string>
+    <string name="compare_hint">Cubit untuk zum · ketik dua kali</string>
+    <string name="compare_load_failed">Tidak dapat memuatkan imej</string>
+    <string name="compare_divider">Pembahagi perbandingan</string>
+    <string name="compare_diff">Perbezaan</string>
+    <string name="compare_diff_busy">Mengira perbezaan…</string>
+    <string name="compare_link">Pautkan zum</string>
+    <string name="compare_unlink">Zum bebas</string>
+    <string name="compare_actual_size">Piksel sebenar</string>
+    <string name="compare_diff_percent">Berubah: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss atau h:mm:ss</string>
+</resources>

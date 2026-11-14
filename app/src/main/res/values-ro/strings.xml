@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Captează un cadru</string>
+    <string name="shortcut_capture_long">Captează un cadru din ultimul videoclip</string>
+    <string name="tile_capture_label">Captează un cadru</string>
+    <string name="incoming_copy_failed">Nu s-a putut salva accesul la videoclipul partajat. Deschide-l din galerie sau eliberează spațiu și partajează-l din nou.</string>
+    <string name="incoming_unsupported">Acest tip de fișier nu poate fi deschis. Partajează în schimb un videoclip, un GIF sau o imagine.</string>
+    <string name="incoming_photo_failed">Fotografia partajată nu a putut fi deschisă. Eliberează spațiu de stocare și partajeaz-o din nou.</string>
+    <string name="incoming_photos_skipped">Fotografiile au fost omise deoarece au fost partajate împreună cu videoclipuri. Partajează fotografiile separat pentru a le edita.</string>
+    <string name="compare_stack">Suprapus</string>
+    <string name="compare_side">Una lângă alta</string>
+    <string name="compare_slider">Glisor</string>
+    <string name="compare_swap">Schimbă</string>
+    <string name="compare_fit">Potrivește</string>
+    <string name="compare_zoom_in">Mărește</string>
+    <string name="compare_zoom_out">Micșorează</string>
+    <string name="compare_reset_zoom">Resetează zoomul</string>
+    <string name="compare_hint">Ciupește pentru zoom · atinge de două ori</string>
+    <string name="compare_load_failed">Imaginea nu a putut fi încărcată</string>
+    <string name="compare_divider">Separator de comparare</string>
+    <string name="compare_diff">Diferență</string>
+    <string name="compare_diff_busy">Se calculează diferențele…</string>
+    <string name="compare_link">Cuplează zoomul</string>
+    <string name="compare_unlink">Zoom independent</string>
+    <string name="compare_actual_size">Pixeli reali</string>
+    <string name="compare_diff_percent">Modificat: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss sau h:mm:ss</string>
+</resources>
