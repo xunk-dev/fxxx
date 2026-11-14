@@ -253,22 +253,22 @@ private fun LinksCard(onLicenses: () -> Unit) {
 @Composable
 private fun LicensesRow(onClick: () -> Unit) {
     val colors = FrameTheme.colors
-        Row(
-            Modifier.fillMaxWidth().frameClickable(onClick = onClick).padding(horizontal = 16.dp, vertical = 14.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(14.dp)
-        ) {
-            IconBadge(FrameIcons.Info, colors.accentC)
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                FrameText(ModeStrings.aboutLicensesTitle(), style = FrameTheme.typography.titleSmall)
-                FrameText(
-                    "Apache 2.0 · OFL 1.1 · LGPL · BSD",
-                    style = FrameTheme.typography.monoSmall.copy(textDirection = TextDirection.Ltr),
-                    color = colors.onSurfaceVariant
-                )
-            }
-            Image(painterResource(FrameIconsExtra.Chevron), null, Modifier.size(18.dp), colorFilter = ColorFilter.tint(colors.onSurfaceVariant))
+    Row(
+        Modifier.fillMaxWidth().frameClickable(onClick = onClick).padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+        IconBadge(FrameIcons.Info, colors.accentC)
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            FrameText(ModeStrings.aboutLicensesTitle(), style = FrameTheme.typography.titleSmall)
+            FrameText(
+                "Apache 2.0 · OFL 1.1 · LGPL · BSD",
+                style = FrameTheme.typography.monoSmall.copy(textDirection = TextDirection.Ltr),
+                color = colors.onSurfaceVariant
+            )
         }
+        Image(painterResource(FrameIconsExtra.Chevron), null, Modifier.size(18.dp), colorFilter = ColorFilter.tint(colors.onSurfaceVariant))
+    }
 }
 
 @Composable
