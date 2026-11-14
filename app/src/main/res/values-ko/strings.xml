@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">프레임 캡처</string>
+    <string name="shortcut_capture_long">마지막 동영상에서 프레임 캡처</string>
+    <string name="tile_capture_label">프레임 캡처</string>
+    <string name="incoming_copy_failed">공유된 동영상에 계속 접근할 수 없습니다. 갤러리에서 직접 열거나, 저장 공간을 확보한 후 다시 공유해 주세요.</string>
+    <string name="incoming_unsupported">이 파일 형식은 열 수 없습니다. 동영상, GIF 또는 이미지를 공유해 주세요.</string>
+    <string name="incoming_photo_failed">공유된 사진을 열 수 없습니다. 저장 공간을 확보한 후 다시 공유하세요.</string>
+    <string name="incoming_photos_skipped">동영상과 함께 공유되어 사진을 건너뛰었습니다. 사진을 편집하려면 사진만 따로 공유하세요.</string>
+    <string name="compare_stack">위아래</string>
+    <string name="compare_side">좌우</string>
+    <string name="compare_slider">슬라이더</string>
+    <string name="compare_swap">바꾸기</string>
+    <string name="compare_fit">맞춤</string>
+    <string name="compare_zoom_in">확대</string>
+    <string name="compare_zoom_out">축소</string>
+    <string name="compare_reset_zoom">확대 초기화</string>
+    <string name="compare_hint">두 손가락으로 확대 · 두 번 탭</string>
+    <string name="compare_load_failed">이미지를 불러오지 못했습니다</string>
+    <string name="compare_divider">비교 구분선</string>
+    <string name="compare_diff">차이</string>
+    <string name="compare_diff_busy">차이 계산 중…</string>
+    <string name="compare_link">확대 연동</string>
+    <string name="compare_unlink">확대 분리</string>
+    <string name="compare_actual_size">실제 픽셀</string>
+    <string name="compare_diff_percent">변화: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss 또는 h:mm:ss</string>
+</resources>

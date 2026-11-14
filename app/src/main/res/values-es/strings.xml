@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Capturar fotograma</string>
+    <string name="shortcut_capture_long">Capturar un fotograma del último video</string>
+    <string name="tile_capture_label">Capturar fotograma</string>
+    <string name="incoming_copy_failed">No se pudo conservar el acceso a un video compartido. Ábrelo desde la galería o libera espacio de almacenamiento y vuelve a compartirlo.</string>
+    <string name="incoming_unsupported">Este tipo de archivo no se puede abrir. Comparte un video, un GIF o una imagen.</string>
+    <string name="incoming_photo_failed">No se pudo abrir la foto compartida. Libera espacio de almacenamiento y vuelve a compartirla.</string>
+    <string name="incoming_photos_skipped">Se omitieron las fotos porque se compartieron junto con vídeos. Comparte las fotos por separado para editarlas.</string>
+    <string name="compare_stack">Superpuesto</string>
+    <string name="compare_side">Lado a lado</string>
+    <string name="compare_slider">Control deslizante</string>
+    <string name="compare_swap">Intercambiar</string>
+    <string name="compare_fit">Ajustar</string>
+    <string name="compare_zoom_in">Acercar</string>
+    <string name="compare_zoom_out">Alejar</string>
+    <string name="compare_reset_zoom">Restablecer zoom</string>
+    <string name="compare_hint">Pellizca para hacer zoom · toca dos veces</string>
+    <string name="compare_load_failed">No se pudo cargar la imagen</string>
+    <string name="compare_divider">Divisor de comparación</string>
+    <string name="compare_diff">Diferencia</string>
+    <string name="compare_diff_busy">Calculando diferencias…</string>
+    <string name="compare_link">Vincular zoom</string>
+    <string name="compare_unlink">Zoom independiente</string>
+    <string name="compare_actual_size">Píxeles reales</string>
+    <string name="compare_diff_percent">Cambiado: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss o h:mm:ss</string>
+</resources>

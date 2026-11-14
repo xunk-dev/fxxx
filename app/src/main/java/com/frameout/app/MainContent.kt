@@ -1,0 +1,221 @@
+package com.frameout.app
+
+import android.net.Uri
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.PredictiveBackHandler
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
+import com.frameout.app.oem.OemGuideScreen
+import com.frameout.app.onboarding.OnboardingScreen
+import com.frameout.core.media.LatestVideoFinder
+import com.frameout.designsystem.a11y.LocalSystemA11y
+import com.frameout.designsystem.motion.LocalThemeWave
+import com.frameout.designsystem.motion.ThemeWaveHost
+import com.frameout.designsystem.motion.ThemeWaveState
+import java.util.concurrent.CancellationException
+
+@Composable
+fun MainContent(activity: ComponentActivity, app: FrameOutApp, incoming: List<Uri> = emptyList(), capture: Boolean = false, onCaptureHandled: () -> Unit = {}, pendingBackup: Uri? = null, onBackupConfirm: (Uri) -> Unit = {}, onBackupDismiss: () -> Unit = {}, notifPrompt: Boolean = false, onNotifAllow: () -> Unit = {}, onNotifDismiss: () -> Unit = {}, onIncomingHandled: () -> Unit = {}) {
+    var splash by rememberSaveable { mutableStateOf(incoming.isEmpty() && !capture) }
+    val wave = remember { ThemeWaveState() }
+    CompositionLocalProvider(LocalThemeWave provides wave) {
+        androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
+            MainContentBody(activity, app, incoming, capture, onCaptureHandled, pendingBackup, onBackupConfirm, onBackupDismiss, notifPrompt, onNotifAllow, onNotifDismiss, onIncomingHandled, splashActive = splash)
+            ThemeWaveHost(wave)
+            IncomingBusyOverlay()
+            com.frameout.app.security.IntegrityGate(activity)
+            if (splash) com.frameout.app.splash.BrandSplash(fast = app.container.prefs.onboardingDone()) { splash = false }
+        }
+    }
+}
+
+@Composable
+private fun MainContentBody(activity: ComponentActivity, app: FrameOutApp, incoming: List<Uri> = emptyList(), capture: Boolean = false, onCaptureHandled: () -> Unit = {}, pendingBackup: Uri? = null, onBackupConfirm: (Uri) -> Unit = {}, onBackupDismiss: () -> Unit = {}, notifPrompt: Boolean = false, onNotifAllow: () -> Unit = {}, onNotifDismiss: () -> Unit = {}, onIncomingHandled: () -> Unit = {}, splashActive: Boolean = false) {
+    val stack = rememberSaveable(saver = routeStackSaver) { mutableStateListOf<AppRoute>(AppRoute.Home) }
+    var showOem by remember { mutableStateOf(app.container.prefs.recoveryPending() && app.container.device.oemFamily != "stock") }
+    var showOnboarding by remember { mutableStateOf(!app.container.prefs.onboardingDone()) }
+    var handoff by remember { mutableStateOf(false) }
+    val settle = remember { androidx.compose.animation.core.Animatable(1f) }
+    LaunchedEffect(handoff) {
+        if (handoff) {
+            settle.snapTo(1.08f)
+            settle.animateTo(1f, androidx.compose.animation.core.tween(900, easing = com.frameout.designsystem.motion.FlowEase.Quint))
+        }
+    }
+    val scope = rememberCoroutineScope()
+    var direction by remember { mutableIntStateOf(1) }
+    val fab = remember { FabRevealState() }
+    val viewerReveal = remember { ViewerRevealState() }
+    fun navigate(route: AppRoute) {
+        if (stack.lastOrNull() != route) { com.frameout.app.ads.AdsGateway.action(); viewerReveal.onNavigate(stack.lastOrNull(), route); if (isTabSwitch(stack.lastOrNull(), route)) fab.reset() else fab.onNavigate(route); direction = 1; stack.add(route) }
+    }
+    fun back() {
+        if (stack.lastOrNull() is AppRoute.Extracting) {
+            fab.reset()
+            viewerReveal.reset()
+            direction = -1
+            stack.clear()
+            stack.add(AppRoute.Home)
+            return
+        }
+        if (stack.size > 1) { viewerReveal.onBack(stack.last()); if (isTabSwitch(stack.last(), stack[stack.lastIndex - 1])) fab.reset() else fab.onBack(stack.last()); direction = -1; stack.removeAt(stack.lastIndex); if (isTabRoute(stack.last())) com.frameout.app.ads.AdsGateway.screenBreak() }
+    }
+    fun finishExtraction(projectId: Long) {
+        val target = AppRoute.Frames(projectId)
+        if (stack.lastOrNull() == target) return
+        fab.reset()
+        viewerReveal.reset()
+        direction = 0
+        while (stack.size > 1 && !isTabRoute(stack.last())) stack.removeAt(stack.lastIndex)
+        stack.add(AppRoute.Frames(projectId))
+    }
+    fun replaceTop(route: AppRoute) {
+        if (isTabSwitch(stack.lastOrNull(), route)) fab.reset() else fab.onReplace(route)
+        viewerReveal.reset()
+        direction = if (isTabRoute(route)) 0 else 1
+        if (isTabRoute(route)) {
+            stack.clear()
+            stack.add(route)
+        } else {
+            if (stack.size > 1) stack.removeAt(stack.lastIndex)
+            stack.add(route)
+        }
+    }
+    var backProgress by remember { mutableFloatStateOf(0f) }
+    PredictiveBackHandler(enabled = (stack.size > 1 || stack.lastOrNull() is AppRoute.Extracting) && !showOem) { progress ->
+        try {
+            progress.collect { backEvent -> backProgress = backEvent.progress.coerceIn(0f, 1f) }
+            back()
+        } catch (e: CancellationException) {
+            throw e
+        } finally {
+            backProgress = 0f
+        }
+    }
+    LaunchedEffect(PendingOpen.projectId) {
+        val id = PendingOpen.projectId
+        if (id < 0L) return@LaunchedEffect
+        PendingOpen.projectId = -1L
+        navigate(AppRoute.Frames(id))
+    }
+    LaunchedEffect(capture) {
+        if (!capture) return@LaunchedEffect
+        val latest = LatestVideoFinder.find(activity)?.uri
+        val last = app.container.prefs.lastVideoUri()
+        val target = latest ?: last.takeIf { it.isNotBlank() }?.let(Uri::parse)
+        val route = if (target == null) AppRoute.Picker else pickerRoute(listOf(target))
+        onCaptureHandled()
+        navigate(route)
+    }
+    LaunchedEffect(showOnboarding, showOem) { app.ads.holdNotices(showOnboarding || showOem) }
+    var shareNotice by remember { mutableStateOf<String?>(null) }
+    IncomingShareHost(activity, incoming, !showOem && !showOnboarding, onIncomingHandled, { navigate(pickerRoute(it)) }, { stillRoute(it)?.let(::navigate) }) { shareNotice = it }
+    if (showOem) {
+        OemGuideScreen(app.container.device.oemFamily) {
+            app.container.prefs.setOemGuideDone()
+            app.container.prefs.setRecoveryPending(false)
+            showOem = false
+        }
+        return
+    }
+    if (showOnboarding) {
+        OnboardingScreen(
+            onAllowNotifications = onNotifAllow,
+            ready = !splashActive,
+            onStart = {
+                app.container.prefs.setOnboardingDone()
+                app.container.prefs.setOemGuideDone()
+                showOnboarding = false
+                handoff = true
+                if (!incomingPending()) navigate(AppRoute.Picker)
+            },
+            onDone = {
+                app.container.prefs.setOnboardingDone()
+                app.container.prefs.setOemGuideDone()
+                showOnboarding = false
+                handoff = true
+            }
+        )
+        return
+    }
+    val backDirection = if (LocalLayoutDirection.current == LayoutDirection.Rtl) -1f else 1f
+    androidx.compose.foundation.layout.Box(
+        Modifier.fillMaxSize().graphicsLayer {
+            translationX = 56.dp.toPx() * backProgress * backDirection
+            alpha = 1f - (backProgress * 0.06f)
+            scaleX = settle.value
+            scaleY = settle.value
+        }
+    ) {
+        val lowEnd = remember { (activity.getSystemService(android.content.Context.ACTIVITY_SERVICE) as? android.app.ActivityManager)?.isLowRamDevice == true }
+        val reduceMotion = LocalSystemA11y.current.reduceMotion || lowEnd
+        val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+        androidx.compose.runtime.SideEffect {
+            fab.allowed = !reduceMotion
+            viewerReveal.allowed = !reduceMotion
+        }
+        AnimatedContent(
+            targetState = stack.last(),
+            contentKey = ::contentKeyOf,
+            transitionSpec = { if (zoomKind(initialState, targetState) == 3) routeTransition(0, rtl, reduceMotion, 3) else if (fab.active && !reduceMotion) fabTransition(fab.opening) else if (viewerReveal.active && !reduceMotion) fabTransition(viewerReveal.opening) else routeTransition(direction, rtl, reduceMotion, zoomKind(initialState, targetState)) },
+            label = "route"
+        ) { route ->
+            FabRevealHost(route, fab) { ViewerRevealHost(route, viewerReveal) { RouteContent(route, ::navigate, ::finishExtraction, ::back, ::replaceTop, activity, app, scope, atRoot = stack.size == 1) { shareNotice = it } } }
+        }
+        com.frameout.designsystem.components.FrameToastHost(
+            shareNotice,
+            Modifier.align(androidx.compose.ui.Alignment.TopCenter),
+            kind = com.frameout.designsystem.components.ToastKind.Error,
+            onDismiss = { shareNotice = null }
+        )
+    }
+    if (handoff) {
+        PreferredFrameTheme {
+            com.frameout.designsystem.motion.IrisReveal(
+                playing = true,
+                color = com.frameout.designsystem.theme.FrameTheme.colors.background,
+                ring = com.frameout.designsystem.theme.FrameTheme.accent.a,
+                onFinished = { handoff = false }
+            )
+        }
+    }
+    if (notifPrompt && pendingBackup == null) {
+        com.frameout.designsystem.components.FrameConfirmDialog(
+            title = com.frameout.core.util.FrameStrings.notifRationaleTitle(),
+            body = com.frameout.core.util.FrameStrings.notifRationaleBody(),
+            confirmLabel = com.frameout.core.util.FrameStrings.notifAllow(),
+            dismissLabel = com.frameout.core.util.FrameStrings.notifNotNow(),
+            onConfirm = onNotifAllow,
+            onDismiss = onNotifDismiss
+        )
+    }
+    com.frameout.app.rating.RatingPromptHost(app, stack.lastOrNull(), blocked = notifPrompt || pendingBackup != null)
+    if (pendingBackup != null) {
+        com.frameout.designsystem.components.FrameConfirmDialog(
+            title = com.frameout.core.util.FrameStrings.backupConfirmTitle(),
+            body = com.frameout.core.util.FrameStrings.backupConfirmBody(com.frameout.app.batch.BatchNaming.displayName(app, pendingBackup.toString())),
+            confirmLabel = com.frameout.core.util.FrameStrings.importProject(),
+            dismissLabel = com.frameout.core.util.FrameStrings.cancel(),
+            onConfirm = { onBackupConfirm(pendingBackup) },
+            onDismiss = onBackupDismiss, icon = com.frameout.designsystem.icons.FrameIconsExtra.Import
+        )
+    }
+}

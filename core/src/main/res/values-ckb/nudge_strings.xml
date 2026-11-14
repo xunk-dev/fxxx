@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">پێشنیارەکانی ڤیدیۆی نوێ</string>
+    <string name="nudge_channel_new_video_desc">کاتێک ڤیدیۆیەکی نوێ دەگاتە مۆبایلەکەت، لەگەڵ ڕووپۆش و دەرهێنان بە یەک دەنک ئاگادارت دەکاتەوە.</string>
+    <string name="nudge_channel_reminders">ئامۆژگاری و بیرخستنەوەکان</string>
+    <string name="nudge_channel_reminders_desc">بیرخستنەوەی نەرم و جار جار. ڕۆژانە زۆرترین یەکێک، و ئەگەر پشتگوێیان بخەیت خۆیان ڕادەوەستن.</string>
+    <string name="nudge_action_extract">دەرهێنانی فرەیمەکان</string>
+    <string name="nudge_action_open">کردنەوە</string>
+    <string name="nudge_action_stop_reminders">ڕاگرتنی بیرخستنەوەکان</string>
+    <string name="nudge_review_title">ئەم ڤیدیۆیە سەیرێکی خێرای دەوێت</string>
+    <string name="nudge_review_text">درێژە، بۆیە سەرەتا هەڵبژێرە چی دەربهێنرێت. بۆ کردنەوەی دەنک بکە.</string>
+    <string name="nudge_failed_title">دەرهێنان دەستی پێنەکرد</string>
+    <string name="nudge_failed_text">بۆ کردنەوەی ڤیدیۆکە و هەوڵدانەوە دەنک بکە.</string>
+    <string name="nudge_waiting_title">ڤیدیۆ نوێیەکەت هێشتا چاوەڕێت دەکات</string>
+    <string name="nudge_waiting_text">%1$s ئامادەیە. باشترین فرەیمەکان بە یەک دەنک دەربهێنە.</string>
+    <string name="nudge_comeback_title_0">ساتەکانی ڤیدیۆ بکە بە وێنە</string>
+    <string name="nudge_comeback_text_0">هەر ڤیدیۆیەک هەڵبژێرە و Frame Out ڕوونترین فرەیمەکانت بۆ دەردەهێنێت.</string>
+    <string name="nudge_comeback_title_1">باشترین وێنەکەت لە ناو ڤیدیۆیەکدا شاراوەتەوە</string>
+    <string name="nudge_comeback_text_1">بڕۆ بۆ فرەیمی ورد و بە کوالیتی تەواو پاشەکەوتی بکە.</string>
+    <string name="nudge_comeback_title_2">لە فرەیمە دڵخوازەکانتەوە کۆلاژ دروست بکە</string>
+    <string name="nudge_comeback_text_2">چەند فرەیمێک دەربهێنە و بیانکە بە یەک وێنە.</string>
+    <string name="nudge_setting_new_video_title">ئاگادارکردنەوەی ڤیدیۆی نوێ</string>
+    <string name="nudge_setting_new_video_hint">کاتێک ڤیدیۆیەکی نوێ دەرکەوت لەگەڵ ڕووپۆش ئاگادارم بکەرەوە</string>
+    <string name="nudge_setting_new_video_partial">بۆ دۆزینەوەی ڤیدیۆ نوێیەکان، دەستگەیشتنی تەواو بە ڤیدیۆکان پێویستە</string>
+    <string name="nudge_setting_reminders_title">ئامۆژگاری و بیرخستنەوەکان</string>
+    <string name="nudge_setting_reminders_hint">جار جار بیرخستنەوەیەکی نەرم، هەرگیز لە شەودا</string>
+    <string name="nudge_setting_system_off">ئاگادارکردنەوەکانی Frame Out لە ڕێکخستنەکانی سیستەم داخراون</string>
+    <string name="nudge_new_video_title">ڤیدیۆی نوێ ئامادەیە</string>
+    <string name="nudge_stalled_title">ئەوەی دەستت پێکردبوو تەواوی بکە</string>
+    <string name="nudge_stalled_text">«%1$s» ڕاگیراوە. لەو شوێنەوە بەردەوام بە کە وەستابوویت.</string>
+    <string name="nudge_recap_title">هەفتەی تۆ لە فرەیمەکاندا</string>
+    <string name="nudge_recap_text">فرەیمە دەرهێنراوەکانی ئەم هەفتەیە: %1$d</string>
+</resources>

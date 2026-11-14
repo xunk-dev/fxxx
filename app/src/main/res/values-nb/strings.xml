@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Ta bilde</string>
+    <string name="shortcut_capture_long">Ta et bilde fra den siste videoen</string>
+    <string name="tile_capture_label">Ta bilde</string>
+    <string name="incoming_copy_failed">Kunne ikke beholde tilgangen til en delt video. Åpne den fra galleriet i stedet, eller frigjør lagringsplass og del den på nytt.</string>
+    <string name="incoming_unsupported">Denne filtypen kan ikke åpnes. Del en video, GIF eller et bilde i stedet.</string>
+    <string name="incoming_photo_failed">Kunne ikke åpne det delte bildet. Frigjør lagringsplass og del det på nytt.</string>
+    <string name="incoming_photos_skipped">Bilder ble hoppet over fordi de ble delt sammen med videoer. Del bilder alene for å redigere dem.</string>
+    <string name="compare_stack">Oppå hverandre</string>
+    <string name="compare_side">Side ved side</string>
+    <string name="compare_slider">Glidebryter</string>
+    <string name="compare_swap">Bytt</string>
+    <string name="compare_fit">Tilpass</string>
+    <string name="compare_zoom_in">Zoom inn</string>
+    <string name="compare_zoom_out">Zoom ut</string>
+    <string name="compare_reset_zoom">Tilbakestill zoom</string>
+    <string name="compare_hint">Knip for å zoome · dobbelttrykk</string>
+    <string name="compare_load_failed">Kunne ikke laste bildet</string>
+    <string name="compare_divider">Skillelinje for sammenligning</string>
+    <string name="compare_diff">Forskjell</string>
+    <string name="compare_diff_busy">Beregner forskjeller…</string>
+    <string name="compare_link">Koble zoom</string>
+    <string name="compare_unlink">Uavhengig zoom</string>
+    <string name="compare_actual_size">Faktiske piksler</string>
+    <string name="compare_diff_percent">Endret: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss eller h:mm:ss</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_bg_amoled">#000000</color>
+    <color name="ic_launcher_bg_indigo_dark">#01092C</color>
+    <color name="ic_launcher_bg_indigo_light">#E3E7FA</color>
+    <color name="ic_launcher_bg_ocean_dark">#0B192E</color>
+    <color name="ic_launcher_bg_ocean_light">#DCEEFA</color>
+    <color name="ic_launcher_bg_emerald_dark">#071F22</color>
+    <color name="ic_launcher_bg_emerald_light">#DAF2E8</color>
+    <color name="ic_launcher_bg_sunset_dark">#261015</color>
+    <color name="ic_launcher_bg_sunset_light">#FBE3D8</color>
+    <color name="ic_launcher_bg_rose_dark">#260E1C</color>
+    <color name="ic_launcher_bg_rose_light">#FBDFE9</color>
+    <color name="ic_launcher_bg_gold_dark">#271710</color>
+    <color name="ic_launcher_bg_gold_light">#F9EDCB</color>
+    <color name="ic_launcher_bg_crimson_dark">#210A16</color>
+    <color name="ic_launcher_bg_crimson_light">#FBDADA</color>
+    <color name="ic_launcher_bg_lime_dark">#1A2414</color>
+    <color name="ic_launcher_bg_lime_light">#EAF5D3</color>
+    <color name="ic_launcher_bg_violet_dark">#20102F</color>
+    <color name="ic_launcher_bg_violet_light">#F0E3FB</color>
+    <color name="ic_launcher_bg_mocha_dark">#191416</color>
+    <color name="ic_launcher_bg_mocha_light">#F0E2D3</color>
+    <color name="ic_launcher_bg_black_dark">#181A21</color>
+    <color name="ic_launcher_bg_black_light">#E6E6E6</color>
+    <color name="ic_launcher_bg_dynamic_dark">#030F36</color>
+    <color name="ic_launcher_bg_dynamic_light">#E3E7FA</color>
+</resources>

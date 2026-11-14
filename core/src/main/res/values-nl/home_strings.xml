@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Start</string>
+    <string name="home_extract_title">Frames extraheren</string>
+    <string name="home_extract_desc">Kies een video en haal de beste frames eruit.</string>
+    <string name="home_mode_quick">Snel</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Kies een clip en begin direct met extraheren</string>
+    <string name="home_mode_quick_action">Start</string>
+    <string name="home_mode_pro_desc">Volledige controle over kwaliteit</string>
+    <string name="home_mode_pro_action">Geavanceerd</string>
+    <string name="home_mode_pro_open">Pro-modus openen</string>
+    <string name="home_edit_title">Foto\'s bewerken</string>
+    <string name="home_edit_desc">Bijsnijden, filters, tekenen</string>
+    <string name="home_collage_title">Collage</string>
+    <string name="home_collage_desc">Voeg foto\'s samen tot één</string>
+    <string name="home_export_title">Exporteren</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF en meer.</string>
+    <string name="home_quick_title">Snel extraheren</string>
+    <string name="home_quick_start">Nu starten</string>
+    <string name="home_quick_length">Lengte</string>
+    <string name="home_quick_hint">Sleep de handvatten op de tijdlijn om een bereik te kiezen. Laat ze staan om de hele clip te gebruiken.</string>
+    <string name="home_quick_started">Extractie gestart</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Afbeeldingen</string>
+    <string name="home_export_action">Exporteren</string>
+    <string name="home_export_action_count">Exporteren (%1$d)</string>
+    <string name="home_export_saving">Opslaan… %1$d%%</string>
+    <string name="home_export_clip_title">Exporteren als %1$s</string>
+    <string name="home_export_clip_hint">Sleep de handvatten op de tijdlijn om het te exporteren deel te kiezen.</string>
+    <string name="home_export_source_title">Afbeeldingen kiezen</string>
+    <string name="home_export_source_empty">Nog geen opgeslagen afbeeldingen. Sla eerst frames van een video op.</string>
+    <string name="home_export_select_all">Alles selecteren</string>
+    <string name="home_export_clear">Wissen</string>
+    <string name="home_compare_title">Vergelijken</string>
+    <string name="home_compare_desc">Veeg om twee foto\'s te vergelijken</string>
+    <string name="home_compare_pick_two">Kies twee foto\'s om te vergelijken.</string>
+    <string name="home_export_m_video">Exporteer de video als MP4, Live&#160;Photo, GIF of WebP.</string>
+    <string name="home_export_m_sheet">Exporteer afbeeldingen als contactvel.</string>
+    <string name="home_export_m_images">Exporteer afbeeldingen als ZIP, PDF of map.</string>
+    <string name="home_video_title">Video exporteren</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Frames exporteren</string>
+    <string name="home_images_desc">ZIP, PDF of contactvel</string>
+</resources>

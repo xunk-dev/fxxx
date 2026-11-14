@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="nudge_new_videos_title">
+        <item quantity="other">新しい動画 %1$d 本の準備完了</item>
+    </plurals>
+</resources>

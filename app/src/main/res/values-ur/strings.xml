@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">فریم حاصل کریں</string>
+    <string name="shortcut_capture_long">آخری ویڈیو سے فریم حاصل کریں</string>
+    <string name="tile_capture_label">فریم حاصل کریں</string>
+    <string name="incoming_copy_failed">شیئر کی گئی ویڈیو تک رسائی برقرار نہیں رہ سکی۔ اسے گیلری سے کھولیں، یا اسٹوریج خالی کر کے دوبارہ شیئر کریں۔</string>
+    <string name="incoming_unsupported">یہ فائل کی قسم کھولی نہیں جا سکتی۔ اس کے بجائے ویڈیو، GIF یا تصویر شیئر کریں۔</string>
+    <string name="incoming_photo_failed">شیئر کی گئی تصویر نہیں کھل سکی۔ اسٹوریج خالی کریں اور دوبارہ شیئر کریں۔</string>
+    <string name="incoming_photos_skipped">تصاویر چھوڑ دی گئیں کیونکہ انہیں ویڈیوز کے ساتھ شیئر کیا گیا تھا۔ ترمیم کے لیے تصاویر کو الگ سے شیئر کریں۔</string>
+    <string name="compare_stack">عمودی</string>
+    <string name="compare_side">پہلو بہ پہلو</string>
+    <string name="compare_slider">سلائیڈر</string>
+    <string name="compare_swap">جگہ بدلیں</string>
+    <string name="compare_fit">فٹ</string>
+    <string name="compare_zoom_in">زوم اِن</string>
+    <string name="compare_zoom_out">زوم آؤٹ</string>
+    <string name="compare_reset_zoom">زوم ری سیٹ</string>
+    <string name="compare_hint">زوم کے لیے پنچ کریں · دو بار ٹیپ کریں</string>
+    <string name="compare_load_failed">تصویر لوڈ نہیں ہو سکی</string>
+    <string name="compare_divider">موازنے کا ڈیوائیڈر</string>
+    <string name="compare_diff">فرق</string>
+    <string name="compare_diff_busy">فرق کا حساب لگایا جا رہا ہے…</string>
+    <string name="compare_link">زوم جوڑیں</string>
+    <string name="compare_unlink">آزاد زوم</string>
+    <string name="compare_actual_size">اصل پکسلز</string>
+    <string name="compare_diff_percent">تبدیلی: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss یا h:mm:ss</string>
+</resources>

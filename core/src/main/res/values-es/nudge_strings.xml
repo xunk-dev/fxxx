@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Sugerencias de videos nuevos</string>
+    <string name="nudge_channel_new_video_desc">Te avisa cuando llega un video nuevo a tu teléfono, con portada y extracción con un toque.</string>
+    <string name="nudge_channel_reminders">Consejos y recordatorios</string>
+    <string name="nudge_channel_reminders_desc">Recordatorios ocasionales y discretos. Como máximo uno al día, y se detienen si los ignoras.</string>
+    <string name="nudge_action_extract">Extraer fotogramas</string>
+    <string name="nudge_action_open">Abrir</string>
+    <string name="nudge_action_stop_reminders">Detener recordatorios</string>
+    <string name="nudge_review_title">Este video merece un vistazo</string>
+    <string name="nudge_review_text">Es largo, así que elige primero qué extraer. Toca para abrirlo.</string>
+    <string name="nudge_failed_title">No se pudo iniciar la extracción</string>
+    <string name="nudge_failed_text">Toca para abrir el video e intentarlo de nuevo.</string>
+    <string name="nudge_waiting_title">Tu video nuevo sigue esperando</string>
+    <string name="nudge_waiting_text">%1$s está listo. Saca sus mejores fotogramas con un toque.</string>
+    <string name="nudge_comeback_title_0">Convierte momentos de video en fotos</string>
+    <string name="nudge_comeback_text_0">Elige cualquier video y Frame Out extrae los fotogramas más nítidos por ti.</string>
+    <string name="nudge_comeback_title_1">Tu mejor foto está escondida en un video</string>
+    <string name="nudge_comeback_text_1">Desplázate hasta el fotograma exacto y guárdalo en calidad completa.</string>
+    <string name="nudge_comeback_title_2">Crea un collage con tus fotogramas favoritos</string>
+    <string name="nudge_comeback_text_2">Extrae unos cuantos fotogramas y combínalos en una sola imagen.</string>
+    <string name="nudge_setting_new_video_title">Avisos de videos nuevos</string>
+    <string name="nudge_setting_new_video_hint">Avisarme con la portada cuando aparezca un video nuevo</string>
+    <string name="nudge_setting_new_video_partial">Se necesita acceso completo a los videos para detectar los nuevos</string>
+    <string name="nudge_setting_reminders_title">Consejos y recordatorios</string>
+    <string name="nudge_setting_reminders_hint">Un recordatorio discreto de vez en cuando, nunca de noche</string>
+    <string name="nudge_setting_system_off">Las notificaciones de Frame Out están desactivadas en los ajustes del sistema</string>
+    <string name="nudge_new_video_title">Video nuevo listo</string>
+    <string name="nudge_stalled_title">Termina lo que empezaste</string>
+    <string name="nudge_stalled_text">“%1$s” está en pausa. Retómalo donde lo dejaste.</string>
+    <string name="nudge_recap_title">Tu semana en fotogramas</string>
+    <string name="nudge_recap_text">Fotogramas extraídos esta semana: %1$d</string>
+</resources>
