@@ -109,7 +109,7 @@ private fun PickerSelectionLifecycle(vm: PickerViewModel, active: Boolean) {
 
 @Composable
 fun PickerScreen(onContinue: (List<Uri>) -> Unit, onClose: () -> Unit, vm: PickerViewModel = viewModel(), mode: PickerMode = PickerMode.Multi) {
-    remember(mode) { if (mode == PickerMode.QuickVideo) vm.setFilter(MediaKind.Video) }
+    LaunchedEffect(mode) { if (mode == PickerMode.QuickVideo) vm.setFilter(MediaKind.Video) }
     val state by vm.state.collectAsState()
     val pages = vm.paging.collectAsLazyPagingItems()
     val context = LocalContext.current
