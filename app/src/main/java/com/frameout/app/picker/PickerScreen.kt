@@ -10,19 +10,15 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.content.Context
-import android.provider.Settings
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.snapshotFlow
 import androidx.paging.LoadState
@@ -55,6 +51,7 @@ import com.frameout.core.media.MediaItem
 import com.frameout.core.media.MediaKind
 import androidx.compose.foundation.layout.padding
 import com.frameout.core.media.PermissionHelper
+import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.core.util.FrameStrings
 import com.frameout.app.PreferredFrameTheme
 import com.frameout.designsystem.motion.frameSpring
@@ -87,48 +84,6 @@ private class PickMediaChooser : ActivityResultContract<Array<String>, List<Uri>
     }
 }
 
-private class PermissionFlow(
-    val showRationale: Boolean,
-    val permanentDenied: Boolean,
-    val requestOrSettings: () -> Unit,
-    val requestAccess: () -> Unit
-)
-
-private fun openAppSettings(context: Context) {
-    try {
-        val i = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        i.data = Uri.fromParts("package", context.packageName, null)
-        context.startActivity(i)
-    } catch (_: Exception) {
-    }
-}
-
-@Composable
-private fun rememberPermissionFlow(vm: PickerViewModel): PermissionFlow {
-    val context = LocalContext.current
-    val activity = LocalActivity.current
-    var showRationale by remember { mutableStateOf(false) }
-    var permanentDenied by remember { mutableStateOf(false) }
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { _ ->
-        vm.refreshPermission(force = true)
-        if (!PermissionHelper.hasMediaAccess(context)) {
-            val anyRationale = activity != null && PermissionHelper.mediaPermissions().any { activity.shouldShowRequestPermissionRationale(it) }
-            permanentDenied = !anyRationale
-        }
-    }
-    LaunchedEffect(Unit) {
-        if (PermissionHelper.hasMediaAccess(context)) vm.refreshPermission() else showRationale = true
-    }
-    val request = { launcher.launch(PermissionHelper.mediaPermissions()) }
-    val requestOrSettings = {
-        if (permanentDenied) openAppSettings(context) else {
-            showRationale = false
-            request()
-        }
-    }
-    return PermissionFlow(showRationale, permanentDenied, requestOrSettings, { request() })
-}
-
 @Composable
 private fun rememberSafLauncher(vm: PickerViewModel, onContinue: (List<Uri>) -> Unit): androidx.activity.result.ActivityResultLauncher<Array<String>> {
     val context = LocalContext.current
@@ -154,13 +109,14 @@ private fun PickerSelectionLifecycle(vm: PickerViewModel, active: Boolean) {
 
 @Composable
 fun PickerScreen(onContinue: (List<Uri>) -> Unit, onClose: () -> Unit, vm: PickerViewModel = viewModel(), mode: PickerMode = PickerMode.Multi) {
+    remember(mode) { if (mode == PickerMode.QuickVideo) vm.setFilter(MediaKind.Video) }
     val state by vm.state.collectAsState()
     val pages = vm.paging.collectAsLazyPagingItems()
     val context = LocalContext.current
     val permission = rememberPermissionFlow(vm)
     val safLauncher = rememberSafLauncher(vm, onContinue)
+    val openFiles = { safLauncher.launch(PICK_MIME_TYPES) }
     PickerSelectionLifecycle(vm, state.selected.isNotEmpty())
-    LaunchedEffect(mode) { if (mode == PickerMode.QuickVideo) vm.setFilter(MediaKind.Video) }
     val quickTap: (MediaItem) -> Unit = { item ->
         if (item.kind == MediaKind.Video) onContinue(listOf(Uri.parse(item.uri)))
     }
@@ -174,13 +130,14 @@ fun PickerScreen(onContinue: (List<Uri>) -> Unit, onClose: () -> Unit, vm: Picke
                 var headerPx by remember { mutableIntStateOf(0) }
                 val headerDp = with(LocalDensity.current) { headerPx.toDp() }
                 CompositionLocalProvider(LocalPickerTopInset provides headerDp) {
-                    PickerContent(state, pages, selected, vm, permission, Modifier.fillMaxSize(), onSingle)
+                    PickerContent(state, pages, selected, vm, permission, openFiles, Modifier.fillMaxSize(), onSingle)
                 }
                 PickerHeader(
                     state, vm, { headerPx = it }, { vm.clearSelection(); onClose() },
-                    { safLauncher.launch(PICK_MIME_TYPES) }, if (partial) permission.requestAccess else null,
+                    openFiles, if (partial) permission.requestAccess else null,
                     Modifier.align(Alignment.TopCenter)
                 )
+                PermissionNoticeToast(permission, openFiles, Modifier.align(Alignment.TopCenter))
                 PickerTray(selected, vm, {
                     val picked = state.selected.keys.map(Uri::parse)
                     vm.clearSelection()
@@ -201,6 +158,7 @@ private fun PickerContent(
     selected: List<MediaItem>,
     vm: PickerViewModel,
     permission: PermissionFlow,
+    onFiles: () -> Unit,
     modifier: Modifier,
     onSingle: ((MediaItem) -> Unit)? = null
 ) {
@@ -211,11 +169,16 @@ private fun PickerContent(
     val switching = rememberSwitching(state.generation, pages)
     val empty = pages.itemCount == 0
     when {
-        permission.showRationale && denied -> PickerMessage(FrameStrings.permissionRationale(), padded, FrameStrings.manageAccess()) { permission.requestOrSettings() }
+        permission.showRationale && denied -> PickerMessage(
+            FrameStrings.permissionRationale(), padded, FrameStrings.manageAccess(),
+            secondaryLabel = FrameStrings.files(), onSecondary = onFiles
+        ) { permission.requestOrSettings() }
         denied && !state.loading -> PickerMessage(
             if (permission.permanentDenied) FrameStrings.permissionDeniedPermanent() else FrameStrings.mediaPermissionRequired(),
             padded,
-            if (permission.permanentDenied) FrameStrings.openAppSettings() else FrameStrings.manageAccess()
+            if (permission.permanentDenied) FrameStrings.openAppSettings() else FrameStrings.manageAccess(),
+            if (permission.permanentDenied) FrameIconsExtra.Warning else FrameIconsExtra.Album,
+            FrameStrings.files(), onFiles
         ) { permission.requestOrSettings() }
         switching || (empty && (state.loading || refresh is LoadState.Loading)) -> Box(padded) {
             PickerSkeleton(Modifier.fillMaxSize())
@@ -251,7 +214,7 @@ private const val SWITCH_GRACE_MS = 400L
 @Composable
 private fun MediaGrid(pages: LazyPagingItems<MediaItem>, selected: List<MediaItem>, vm: PickerViewModel, modifier: Modifier, onSingle: ((MediaItem) -> Unit)? = null) {
     val order = remember(selected) { selected.withIndex().associate { (index, media) -> media.uri to index } }
-    val bottom = 104.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    val bottom = 104.dp + pickerBottomInsets.asPaddingValues().calculateBottomPadding()
     val gridState = rememberLazyGridState()
     val context = LocalContext.current
     PrefetchAhead(gridState, 40) { index ->

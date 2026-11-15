@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">İzin verilmedi. Tekrar dene veya bir dosya seç.</string>
+    <string name="perm_toast_forever">İzin reddedildi. Medya erişimine izin vermek için uygulama ayarlarını aç.</string>
+    <string name="perm_toast_granted">Erişim verildi. Kitaplığın yükleniyor…</string>
+</resources>

@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
@@ -38,7 +38,7 @@ import com.frameout.designsystem.theme.fieldFill
 @Composable
 fun PickerTopBar(onClose: () -> Unit, onSaf: () -> Unit, onManageAccess: (() -> Unit)? = null) {
     Row(
-        Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 4.dp),
+        Modifier.fillMaxWidth().windowInsetsPadding(pickerTopInsets).padding(horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         TopBarIconButton(FrameIcons.Close, FrameStrings.close(), onClose)

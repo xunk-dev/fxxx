@@ -60,7 +60,7 @@ class PickerViewModel(app: Application) : AndroidViewModel(app) {
         val access = accessSignature()
         val accessChanged = access != lastAccess
         lastAccess = access
-        _state.update { it.copy(permissionGranted = granted) }
+        _state.update { it.copy(permissionGranted = granted, loading = if (granted) it.loading else false) }
         if (!granted) return
         viewModelScope.launch {
             val before = FolderMediaIndex.peek()

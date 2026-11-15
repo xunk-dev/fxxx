@@ -5,6 +5,9 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,8 +29,9 @@ fun rememberQuickVideoPick(onPicked: (Uri) -> Unit): () -> Unit {
     val prefs = remember { (context.applicationContext as FrameOutApp).container.prefs }
     var custom by rememberSaveable { mutableStateOf(false) }
     val system = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> uri?.let(onPicked) }
+    val bars = WindowInsets.systemBars
     if (custom) {
-        QuickPickerDialog(onPicked = { uri -> custom = false; onPicked(uri) }, onClose = { custom = false })
+        QuickPickerDialog(bars, onPicked = { uri -> custom = false; onPicked(uri) }, onClose = { custom = false })
     }
     return {
         val full = PermissionHelper.hasFullVideoAccess(context)
@@ -42,18 +46,20 @@ fun rememberQuickVideoPick(onPicked: (Uri) -> Unit): () -> Unit {
 }
 
 @Composable
-private fun QuickPickerDialog(onPicked: (Uri) -> Unit, onClose: () -> Unit) {
+private fun QuickPickerDialog(bars: WindowInsets, onPicked: (Uri) -> Unit, onClose: () -> Unit) {
     Dialog(
         onDismissRequest = onClose,
         properties = DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)
     ) {
         Box(Modifier.fillMaxSize()) {
-            PickerScreen(
-                onContinue = { uris -> uris.firstOrNull()?.let(onPicked) ?: onClose() },
-                onClose = onClose,
-                vm = viewModel(key = "picker-quick"),
-                mode = PickerMode.QuickVideo
-            )
+            CompositionLocalProvider(LocalPickerInsets provides bars) {
+                PickerScreen(
+                    onContinue = { uris -> uris.firstOrNull()?.let(onPicked) ?: onClose() },
+                    onClose = onClose,
+                    vm = viewModel(key = "picker-quick"),
+                    mode = PickerMode.QuickVideo
+                )
+            }
         }
     }
 }

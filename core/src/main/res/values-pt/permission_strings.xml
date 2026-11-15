@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Permissão não concedida. Tente de novo ou escolha um arquivo.</string>
+    <string name="perm_toast_forever">Permissão negada. Abra as configurações do app para permitir o acesso à mídia.</string>
+    <string name="perm_toast_granted">Acesso concedido. Carregando sua biblioteca…</string>
+</resources>

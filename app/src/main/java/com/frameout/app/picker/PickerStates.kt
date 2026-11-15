@@ -16,6 +16,8 @@ import com.frameout.app.thumb.rememberThumbPulse
 import com.frameout.designsystem.a11y.LocalSystemA11y
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -47,6 +49,7 @@ import com.frameout.designsystem.theme.FrameGradients
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.fieldFill
+import com.frameout.designsystem.theme.frameHairline
 
 @Composable
 fun PickerMessage(
@@ -54,6 +57,8 @@ fun PickerMessage(
     modifier: Modifier = Modifier,
     actionLabel: String? = null,
     @DrawableRes icon: Int = FrameIconsExtra.Album,
+    secondaryLabel: String? = null,
+    onSecondary: (() -> Unit)? = null,
     onAction: (() -> Unit)? = null
 ) {
     val colors = FrameTheme.colors
@@ -82,6 +87,20 @@ fun PickerMessage(
                     .background(FrameGradients.Brand, FrameShapes.pill)
                     .padding(horizontal = 24.dp, vertical = 12.dp)
             )
+        }
+        if (secondaryLabel != null && onSecondary != null) {
+            Row(
+                Modifier
+                    .padding(top = 12.dp)
+                    .frameClickable(onClick = onSecondary)
+                    .border(1.dp, frameHairline(), FrameShapes.pill)
+                    .padding(horizontal = 20.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Image(painterResource(FrameIconsExtra.Folder), null, Modifier.size(18.dp), colorFilter = ColorFilter.tint(colors.primary))
+                FrameText(secondaryLabel, style = FrameTheme.typography.label, color = colors.onSurface)
+            }
         }
     }
 }

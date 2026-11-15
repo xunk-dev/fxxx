@@ -43,16 +43,17 @@ internal class ColorParams(
         const val MATRIX_YCGCO = 8
         const val MATRIX_BT2020_CL = 10
         const val MATRIX_ICTCP = 14
+        private const val COLOR_FORMAT_P010 = 54
 
         fun from(primary: MediaFormat?, secondary: MediaFormat? = null): ColorParams {
             val declaredFirst = containerDeclared(secondary)
             val transfer = resolveTransfer(primary, secondary, declaredFirst)
-            val standard = colorInt(primary, secondary, MediaFormat.KEY_COLOR_STANDARD, declaredFirst)
             val hdrTransfer = transfer == MediaFormat.COLOR_TRANSFER_ST2084 || transfer == MediaFormat.COLOR_TRANSFER_HLG
+            val matrix = firstInt(primary, secondary, ColorHints.KEY_MATRIX, 0)
+            val standard = standardOf(primary, secondary, declaredFirst, hdrTransfer, matrix)
             val explicit709 = standard == MediaFormat.COLOR_STANDARD_BT709 || standard == MediaFormat.COLOR_STANDARD_BT601_PAL || standard == MediaFormat.COLOR_STANDARD_BT601_NTSC
             val bt2020 = standard == MediaFormat.COLOR_STANDARD_BT2020 || (hdrTransfer && !explicit709)
             val jpeg = isJpegFamily(primary, secondary)
-            val matrix = firstInt(primary, secondary, ColorHints.KEY_MATRIX, 0)
             val primariesClass = primariesClassOf(firstInt(primary, secondary, ColorHints.KEY_PRIMARIES, 0), bt2020, standard, hdrTransfer)
             val declaredRange = colorInt(primary, secondary, MediaFormat.KEY_COLOR_RANGE, declaredFirst)
             val limited = when (declaredRange) {
@@ -73,6 +74,15 @@ internal class ColorParams(
                 bt601 = !bt2020 && matrix != MATRIX_SMPTE240M && (standard == MediaFormat.COLOR_STANDARD_BT601_PAL || standard == MediaFormat.COLOR_STANDARD_BT601_NTSC ||
                     (standard == 0 && jpeg) || (standard != MediaFormat.COLOR_STANDARD_BT709 && isSd(primary, secondary)))
             )
+        }
+
+        private fun standardOf(primary: MediaFormat?, secondary: MediaFormat?, declaredFirst: Boolean, hdrTransfer: Boolean, matrix: Int): Int {
+            val raw = colorInt(primary, secondary, MediaFormat.KEY_COLOR_STANDARD, declaredFirst)
+            if (raw != MediaFormat.COLOR_STANDARD_BT2020 || hdrTransfer) return raw
+            val container = secondary?.takeIf { it.containsKey(MediaFormat.KEY_COLOR_STANDARD) }?.getInteger(MediaFormat.KEY_COLOR_STANDARD)
+            val explicit = matrix == 9 || matrix == 10 || matrix == MATRIX_ICTCP || firstInt(primary, secondary, ColorHints.KEY_PRIMARIES, 0) == ColorHints.PRIMARIES_BT2020
+            val tenBit = firstInt(primary, null, MediaFormat.KEY_COLOR_FORMAT, 0) == COLOR_FORMAT_P010
+            return if (container == raw || explicit || tenBit) raw else 0
         }
 
         private fun primariesClassOf(code: Int, bt2020: Boolean, standard: Int, hdr: Boolean): Int = when (code) {
