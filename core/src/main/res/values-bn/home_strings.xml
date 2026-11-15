@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">হোম</string>
+    <string name="home_extract_title">ফ্রেম এক্সট্র্যাক্ট</string>
+    <string name="home_extract_desc">একটি ভিডিও বেছে নিন এবং সেরা ফ্রেমগুলো বের করুন।</string>
+    <string name="home_mode_quick">দ্রুত</string>
+    <string name="home_mode_pro">প্রো</string>
+    <string name="home_mode_quick_desc">ক্লিপ বেছে নিয়ে সঙ্গে সঙ্গে এক্সট্র্যাক্ট শুরু করুন</string>
+    <string name="home_mode_quick_action">শুরু</string>
+    <string name="home_mode_pro_desc">মান নিয়ে পূর্ণ নিয়ন্ত্রণ</string>
+    <string name="home_mode_pro_action">উন্নত</string>
+    <string name="home_mode_pro_open">প্রো মোড খুলুন</string>
+    <string name="home_edit_title">ছবি সম্পাদনা</string>
+    <string name="home_edit_desc">ক্রপ, ফিল্টার, আঁকা</string>
+    <string name="home_collage_title">কোলাজ</string>
+    <string name="home_collage_desc">ছবিগুলো একসাথে জুড়ুন</string>
+    <string name="home_export_title">এক্সপোর্ট</string>
+    <string name="home_export_desc">ভিডিও, GIF, ZIP, PDF এবং আরও।</string>
+    <string name="home_quick_title">দ্রুত এক্সট্র্যাক্ট</string>
+    <string name="home_quick_start">এখনই শুরু করুন</string>
+    <string name="home_quick_length">দৈর্ঘ্য</string>
+    <string name="home_quick_hint">পরিসর বেছে নিতে টাইমলাইনের হ্যান্ডল টানুন। যেমন আছে রাখলে পুরো ক্লিপ ব্যবহার হবে।</string>
+    <string name="home_quick_started">এক্সট্র্যাক্ট শুরু হয়েছে</string>
+    <string name="home_export_tab_video">ভিডিও</string>
+    <string name="home_export_tab_images">ছবি</string>
+    <string name="home_export_action">এক্সপোর্ট</string>
+    <string name="home_export_action_count">এক্সপোর্ট (%1$d)</string>
+    <string name="home_export_saving">সংরক্ষণ হচ্ছে… %1$d%%</string>
+    <string name="home_export_clip_title">%1$s হিসেবে এক্সপোর্ট</string>
+    <string name="home_export_clip_hint">এক্সপোর্টের অংশ বেছে নিতে টাইমলাইনের হ্যান্ডল টানুন।</string>
+    <string name="home_export_source_title">ছবি বাছুন</string>
+    <string name="home_export_source_empty">এখনও কোনো ছবি সংরক্ষিত নেই। আগে ভিডিও থেকে ফ্রেম সংরক্ষণ করুন।</string>
+    <string name="home_export_select_all">সব নির্বাচন করুন</string>
+    <string name="home_export_clear">মুছে দিন</string>
+    <string name="home_compare_title">তুলনা করুন</string>
+    <string name="home_compare_desc">স্লাইড করে দুটি ছবি তুলনা করুন</string>
+    <string name="home_compare_pick_two">তুলনার জন্য দুটি ছবি বেছে নিন।</string>
+    <string name="home_export_m_video">ভিডিও MP4, Live&#160;Photo, GIF বা WebP হিসেবে এক্সপোর্ট করুন।</string>
+    <string name="home_export_m_sheet">ছবি কন্ট্যাক্ট শিট হিসেবে এক্সপোর্ট করুন।</string>
+    <string name="home_export_m_images">ছবি ZIP, PDF বা ফোল্ডারে এক্সপোর্ট করুন।</string>
+    <string name="home_video_title">ভিডিও এক্সপোর্ট</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">ফ্রেম এক্সপোর্ট</string>
+    <string name="home_images_desc">ZIP, PDF বা কন্ট্যাক্ট শিট</string>
+</resources>

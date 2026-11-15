@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">ホーム</string>
+    <string name="home_extract_title">フレームを抽出</string>
+    <string name="home_extract_desc">動画から最適なフレームを取り出します。</string>
+    <string name="home_mode_quick">クイック</string>
+    <string name="home_mode_pro">プロ</string>
+    <string name="home_mode_quick_desc">クリップを選んですぐ抽出を開始</string>
+    <string name="home_mode_quick_action">開始</string>
+    <string name="home_mode_pro_desc">設定と画質を細かく調整</string>
+    <string name="home_mode_pro_action">詳細</string>
+    <string name="home_mode_pro_open">プロモードを開く</string>
+    <string name="home_edit_title">写真を編集</string>
+    <string name="home_edit_desc">トリミング、フィルタ、描画</string>
+    <string name="home_collage_title">コラージュ</string>
+    <string name="home_collage_desc">写真を1枚にまとめる</string>
+    <string name="home_export_title">書き出し</string>
+    <string name="home_export_desc">動画、GIF、ZIP、PDFなど。</string>
+    <string name="home_quick_title">クイック抽出</string>
+    <string name="home_quick_start">今すぐ開始</string>
+    <string name="home_quick_length">長さ</string>
+    <string name="home_quick_hint">タイムラインのハンドルをドラッグして範囲を選択します。そのままなら全体を使用します。</string>
+    <string name="home_quick_started">抽出を開始しました</string>
+    <string name="home_export_tab_video">動画</string>
+    <string name="home_export_tab_images">画像</string>
+    <string name="home_export_action">書き出し</string>
+    <string name="home_export_action_count">書き出し (%1$d)</string>
+    <string name="home_export_saving">保存中… %1$d%%</string>
+    <string name="home_export_clip_title">%1$sで書き出し</string>
+    <string name="home_export_clip_hint">タイムラインのハンドルをドラッグして、書き出す範囲を選択します。</string>
+    <string name="home_export_source_title">画像を選択</string>
+    <string name="home_export_source_empty">保存済みの画像がありません。まず動画からフレームを保存してください。</string>
+    <string name="home_export_select_all">すべて選択</string>
+    <string name="home_export_clear">クリア</string>
+    <string name="home_compare_title">比較</string>
+    <string name="home_compare_desc">スワイプで2枚の写真を比較</string>
+    <string name="home_compare_pick_two">比較する写真を2枚選んでください。</string>
+    <string name="home_export_m_video">動画をMP4、Live&#160;Photo、GIF、WebPで書き出します。</string>
+    <string name="home_export_m_sheet">画像をコンタクトシートで書き出します。</string>
+    <string name="home_export_m_images">画像をZIP、PDF、フォルダで書き出します。</string>
+    <string name="home_video_title">動画を書き出し</string>
+    <string name="home_video_desc">MP4、GIF、Live&#160;Photo</string>
+    <string name="home_images_title">フレームを書き出し</string>
+    <string name="home_images_desc">ZIP、PDF、コンタクトシート</string>
+</resources>

@@ -1,0 +1,9 @@
+Kunin ang perpektong larawan mula sa kahit anong video.
+
+• I-extract ang lahat ng frame, o ang pinakamalinaw lang, mga pangunahing sandali at pagpalit ng eksena
+• Mag-trim, mag-crop, mag-rotate at magdagdag ng filter
+• Gumawa ng collage at mag-export nang sabay-sabay
+• I-save bilang JPG, PNG, WebP, GIF o PDF
+• Lahat ay tumatakbo sa device mo: walang account at walang upload
+
+Libre ang simula. Binubuksan ng Pro ang smart extraction, advanced na pag-edit at export, bilang subscription o isang beses na bayad.

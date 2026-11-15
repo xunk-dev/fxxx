@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Frame aufnehmen</string>
+    <string name="shortcut_capture_long">Frame aus dem letzten Video aufnehmen</string>
+    <string name="tile_capture_label">Frame aufnehmen</string>
+    <string name="incoming_copy_failed">Der Zugriff auf ein geteiltes Video konnte nicht gesichert werden. Öffne es stattdessen über die Galerie oder gib Speicher frei und teile es erneut.</string>
+    <string name="incoming_unsupported">Dieser Dateityp kann nicht geöffnet werden. Teile stattdessen ein Video, GIF oder Bild.</string>
+    <string name="incoming_photo_failed">Das geteilte Foto konnte nicht geöffnet werden. Gib Speicher frei und teile es erneut.</string>
+    <string name="incoming_photos_skipped">Fotos wurden übersprungen, weil sie zusammen mit Videos geteilt wurden. Teile Fotos einzeln, um sie zu bearbeiten.</string>
+    <string name="compare_stack">Gestapelt</string>
+    <string name="compare_side">Nebeneinander</string>
+    <string name="compare_slider">Schieberegler</string>
+    <string name="compare_swap">Tauschen</string>
+    <string name="compare_fit">Einpassen</string>
+    <string name="compare_zoom_in">Vergrößern</string>
+    <string name="compare_zoom_out">Verkleinern</string>
+    <string name="compare_reset_zoom">Zoom zurücksetzen</string>
+    <string name="compare_hint">Zum Zoomen zusammenziehen · doppeltippen</string>
+    <string name="compare_load_failed">Bild konnte nicht geladen werden</string>
+    <string name="compare_divider">Vergleichstrenner</string>
+    <string name="compare_diff">Differenz</string>
+    <string name="compare_diff_busy">Unterschiede werden berechnet…</string>
+    <string name="compare_link">Zoom koppeln</string>
+    <string name="compare_unlink">Zoom unabhängig</string>
+    <string name="compare_actual_size">Echte Pixel</string>
+    <string name="compare_diff_percent">Geändert: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss oder h:mm:ss</string>
+</resources>
