@@ -68,6 +68,8 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      - name: Fetch Arabic OCR model for the asset pack
+        run: ARA_DEST=ara_model/src/main/assets/tessdata/ara.traineddata bash scripts/fetch-ara-model.sh
       - name: Check fonts
         run: bash scripts/check-fonts.sh
       - name: Install NDK and FFmpeg build tools
