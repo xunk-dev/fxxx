@@ -714,8 +714,8 @@
     <string name="open_frames">Otwórz klatki</string>
     <string name="extract_done_channel">Wyniki wyodrębniania</string>
     <string name="announcements_channel">Ogłoszenia</string>
-    <string name="tamper_title">Nieoficjalna kopia</string>
-    <string name="tamper_body">Ta kopia Frame Out została zmodyfikowana lub podpisana przez kogoś innego, więc jej używanie może być niebezpieczne. Zainstaluj oficjalną wersję ze strony wydań aplikacji w serwisie GitHub.</string>
+    <string name="tamper_title">Wymagana wersja oficjalna</string>
+    <string name="tamper_body">Ta kopia wygląda na zainstalowaną spoza oficjalnego źródła. Aby uzyskać najlepszą wydajność i bezpieczeństwo, zainstaluj Frame Out z Google Play.</string>
     <string name="tamper_exit">Wyjdź</string>
     <string name="shape_arrow">Strzałka</string>
     <string name="shape_taper">Zwężająca się strzałka</string>

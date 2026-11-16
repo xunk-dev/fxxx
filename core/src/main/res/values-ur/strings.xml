@@ -714,8 +714,8 @@
     <string name="open_frames">فریمز کھولیں</string>
     <string name="extract_done_channel">فریم نکالنے کے نتائج</string>
     <string name="announcements_channel">اعلانات</string>
-    <string name="tamper_title">غیر سرکاری کاپی</string>
-    <string name="tamper_body">Frame Out کی یہ کاپی کسی اور نے تبدیل یا سائن کی ہے، اس لیے اس کا استعمال محفوظ نہیں ہو سکتا۔ ایپ کے GitHub ریلیزز صفحے سے سرکاری ورژن انسٹال کریں۔</string>
+    <string name="tamper_title">سرکاری ورژن درکار ہے</string>
+    <string name="tamper_body">ایسا لگتا ہے کہ یہ کاپی سرکاری ذریعے سے انسٹال نہیں کی گئی۔ بہترین کارکردگی اور سیکیورٹی کے لیے Frame Out کو Google Play سے انسٹال کریں۔</string>
     <string name="tamper_exit">باہر نکلیں</string>
     <string name="shape_arrow">تیر</string>
     <string name="shape_taper">نوکیلا تیر</string>

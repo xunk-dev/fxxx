@@ -714,8 +714,8 @@
     <string name="open_frames">เปิดเฟรม</string>
     <string name="extract_done_channel">ผลการแยกเฟรม</string>
     <string name="announcements_channel">ประกาศ</string>
-    <string name="tamper_title">สำเนาที่ไม่เป็นทางการ</string>
-    <string name="tamper_body">สำเนา Frame Out นี้ถูกแก้ไขหรือลงนามโดยผู้อื่น จึงอาจไม่ปลอดภัยในการใช้งาน ติดตั้งเวอร์ชันทางการจากหน้ารุ่นบน GitHub ของแอป</string>
+    <string name="tamper_title">ต้องใช้เวอร์ชันทางการ</string>
+    <string name="tamper_body">ดูเหมือนสำเนานี้ไม่ได้ติดตั้งจากแหล่งทางการ เพื่อประสิทธิภาพและความปลอดภัยที่ดีที่สุด โปรดติดตั้ง Frame Out จาก Google Play</string>
     <string name="tamper_exit">ออก</string>
     <string name="shape_arrow">ลูกศร</string>
     <string name="shape_taper">ลูกศรเรียว</string>

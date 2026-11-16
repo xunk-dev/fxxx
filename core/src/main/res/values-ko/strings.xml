@@ -714,8 +714,8 @@
     <string name="open_frames">프레임 열기</string>
     <string name="extract_done_channel">추출 결과</string>
     <string name="announcements_channel">공지사항</string>
-    <string name="tamper_title">비공식 사본</string>
-    <string name="tamper_body">이 Frame Out 사본은 다른 사람이 수정하거나 서명했기 때문에 사용하기에 안전하지 않을 수 있어요. 앱의 GitHub 릴리스 페이지에서 공식 버전을 설치해 주세요.</string>
+    <string name="tamper_title">공식 버전이 필요합니다</string>
+    <string name="tamper_body">이 사본은 공식 출처에서 설치되지 않은 것 같습니다. 최상의 성능과 보안을 위해 Google Play에서 Frame Out을 설치하세요.</string>
     <string name="tamper_exit">종료</string>
     <string name="shape_arrow">화살표</string>
     <string name="shape_taper">끝이 가는 화살표</string>

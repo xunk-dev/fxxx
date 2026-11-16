@@ -714,8 +714,8 @@
     <string name="open_frames">Deschide cadrele</string>
     <string name="extract_done_channel">Rezultatele extragerii</string>
     <string name="announcements_channel">Noutăți</string>
-    <string name="tamper_title">Copie neoficială</string>
-    <string name="tamper_body">Această copie a aplicației Frame Out a fost modificată sau semnată de altcineva, deci este posibil să nu fie sigură. Instalează versiunea oficială de pe pagina de versiuni GitHub a aplicației.</string>
+    <string name="tamper_title">Este necesară versiunea oficială</string>
+    <string name="tamper_body">Această copie nu pare să fi fost instalată din sursa oficială. Pentru cele mai bune performanțe și securitate, instalează Frame Out din Google Play.</string>
     <string name="tamper_exit">Ieșire</string>
     <string name="shape_arrow">Săgeată</string>
     <string name="shape_taper">Săgeată subțiată</string>

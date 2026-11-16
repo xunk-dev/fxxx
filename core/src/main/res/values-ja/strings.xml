@@ -714,8 +714,8 @@
     <string name="open_frames">フレームを開く</string>
     <string name="extract_done_channel">抽出結果</string>
     <string name="announcements_channel">お知らせ</string>
-    <string name="tamper_title">非公式のコピー</string>
-    <string name="tamper_body">この Frame Out は第三者によって改変または署名されているため、安全でない可能性があります。アプリの GitHub リリースページから公式版をインストールしてください。</string>
+    <string name="tamper_title">公式バージョンが必要です</string>
+    <string name="tamper_body">このコピーは公式の提供元からインストールされていないようです。最適なパフォーマンスと安全性のため、Google Play から Frame Out をインストールしてください。</string>
     <string name="tamper_exit">終了</string>
     <string name="shape_arrow">矢印</string>
     <string name="shape_taper">先細りの矢印</string>

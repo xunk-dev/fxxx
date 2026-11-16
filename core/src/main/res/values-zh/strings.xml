@@ -714,8 +714,8 @@
     <string name="open_frames">打开帧</string>
     <string name="extract_done_channel">提取结果</string>
     <string name="announcements_channel">公告</string>
-    <string name="tamper_title">非官方副本</string>
-    <string name="tamper_body">此 Frame Out 副本已被他人修改或签名，使用可能不安全。请从应用的 GitHub 发布页面安装官方版本。</string>
+    <string name="tamper_title">需要官方版本</string>
+    <string name="tamper_body">此副本似乎不是从官方来源安装的。为获得最佳性能与安全性，请从 Google Play 安装 Frame Out。</string>
     <string name="tamper_exit">退出</string>
     <string name="shape_arrow">箭头</string>
     <string name="shape_taper">渐细箭头</string>

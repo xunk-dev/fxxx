@@ -714,8 +714,8 @@
     <string name="open_frames">Ouvrir les images</string>
     <string name="extract_done_channel">Résultats de l’extraction</string>
     <string name="announcements_channel">Actualités</string>
-    <string name="tamper_title">Copie non officielle</string>
-    <string name="tamper_body">Cette copie de Frame Out a été modifiée ou signée par quelqu’un d’autre ; son utilisation peut donc être risquée. Installez la version officielle depuis la page des versions GitHub de l’application.</string>
+    <string name="tamper_title">Version officielle requise</string>
+    <string name="tamper_body">Cette copie ne semble pas avoir été installée depuis la source officielle. Pour de meilleures performances et plus de sécurité, installez Frame Out depuis Google Play.</string>
     <string name="tamper_exit">Quitter</string>
     <string name="shape_arrow">Flèche</string>
     <string name="shape_taper">Flèche effilée</string>

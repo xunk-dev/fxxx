@@ -730,8 +730,8 @@
     <string name="open_frames">افتح الإطارات</string>
     <string name="extract_done_channel">نتائج الاستخراج</string>
     <string name="announcements_channel">أخبار التطبيق</string>
-    <string name="tamper_title">هذه النسخة غير رسمية</string>
-    <string name="tamper_body">عُدِّل هذا التطبيق أو وقّعه شخص آخر، فقد لا يكون استخدامه آمنًا. نزّل النسخة الرسمية من صفحة إصدارات التطبيق على GitHub.</string>
+    <string name="tamper_title">يلزم تثبيت النسخة الرسمية</string>
+    <string name="tamper_body">يبدو أن هذه النسخة لم تُثبَّت من المصدر الرسمي. للحصول على أفضل أداء وأمان، ثبّت Frame out من Google Play.</string>
     <string name="tamper_exit">خروج</string>
     <string name="shape_arrow">سهم</string>
     <string name="shape_taper">سهم مدبّب</string>

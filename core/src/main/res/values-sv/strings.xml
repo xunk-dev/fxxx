@@ -714,8 +714,8 @@
     <string name="open_frames">Öppna bildrutor</string>
     <string name="extract_done_channel">Extraheringsresultat</string>
     <string name="announcements_channel">Meddelanden</string>
-    <string name="tamper_title">Inofficiell kopia</string>
-    <string name="tamper_body">Den här kopian av Frame Out har ändrats eller signerats av någon annan och kanske inte är säker att använda. Installera den officiella versionen från appens GitHub-utgivningssida.</string>
+    <string name="tamper_title">Officiell version krävs</string>
+    <string name="tamper_body">Den här kopian verkar inte vara installerad från den officiella källan. För bästa prestanda och säkerhet, installera Frame Out från Google Play.</string>
     <string name="tamper_exit">Avsluta</string>
     <string name="shape_arrow">Pil</string>
     <string name="shape_taper">Avsmalnande pil</string>

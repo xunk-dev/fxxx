@@ -714,8 +714,8 @@
     <string name="open_frames">Kareleri aç</string>
     <string name="extract_done_channel">Çıkarma sonuçları</string>
     <string name="announcements_channel">Duyurular</string>
-    <string name="tamper_title">Resmî olmayan kopya</string>
-    <string name="tamper_body">Frame Out\'un bu kopyası değiştirilmiş veya başkası tarafından imzalanmış, bu yüzden kullanımı güvenli olmayabilir. Resmî sürümü uygulamanın GitHub sürümler sayfasından yükle.</string>
+    <string name="tamper_title">Resmî sürüm gerekli</string>
+    <string name="tamper_body">Bu kopya resmî kaynaktan yüklenmemiş gibi görünüyor. En iyi performans ve güvenlik için Frame Out\'u Google Play\'den yükleyin.</string>
     <string name="tamper_exit">Çık</string>
     <string name="shape_arrow">Ok</string>
     <string name="shape_taper">Sivri ok</string>

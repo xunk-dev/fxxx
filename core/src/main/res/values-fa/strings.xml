@@ -714,8 +714,8 @@
     <string name="open_frames">باز کردن فریم‌ها</string>
     <string name="extract_done_channel">نتایج استخراج</string>
     <string name="announcements_channel">اطلاعیه‌ها</string>
-    <string name="tamper_title">نسخهٔ غیررسمی</string>
-    <string name="tamper_body">این نسخه از Frame Out تغییر داده شده یا توسط شخص دیگری امضا شده است، پس ممکن است استفاده از آن امن نباشد. نسخهٔ رسمی را از صفحهٔ انتشارهای GitHub برنامه نصب کنید.</string>
+    <string name="tamper_title">نسخهٔ رسمی لازم است</string>
+    <string name="tamper_body">به نظر می‌رسد این نسخه از منبع رسمی نصب نشده است. برای بهترین عملکرد و امنیت، Frame Out را از Google Play نصب کنید.</string>
     <string name="tamper_exit">خروج</string>
     <string name="shape_arrow">پیکان</string>
     <string name="shape_taper">پیکان باریک‌شونده</string>

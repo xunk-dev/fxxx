@@ -714,8 +714,8 @@
     <string name="open_frames">Frames openen</string>
     <string name="extract_done_channel">Extractieresultaten</string>
     <string name="announcements_channel">Aankondigingen</string>
-    <string name="tamper_title">Onofficiële kopie</string>
-    <string name="tamper_body">Deze kopie van Frame Out is gewijzigd of door iemand anders ondertekend en is mogelijk niet veilig om te gebruiken. Installeer de officiële versie vanaf de GitHub-releasepagina van de app.</string>
+    <string name="tamper_title">Officiële versie vereist</string>
+    <string name="tamper_body">Deze kopie lijkt niet vanuit de officiële bron te zijn geïnstalleerd. Installeer Frame Out voor de beste prestaties en veiligheid vanuit Google Play.</string>
     <string name="tamper_exit">Afsluiten</string>
     <string name="shape_arrow">Pijl</string>
     <string name="shape_taper">Taps toelopende pijl</string>

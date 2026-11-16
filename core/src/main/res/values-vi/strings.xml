@@ -714,8 +714,8 @@
     <string name="open_frames">Mở khung hình</string>
     <string name="extract_done_channel">Kết quả trích xuất</string>
     <string name="announcements_channel">Thông báo</string>
-    <string name="tamper_title">Bản sao không chính thức</string>
-    <string name="tamper_body">Bản sao Frame Out này đã bị chỉnh sửa hoặc được ký bởi người khác nên có thể không an toàn để sử dụng. Hãy cài đặt phiên bản chính thức từ trang phát hành GitHub của ứng dụng.</string>
+    <string name="tamper_title">Cần phiên bản chính thức</string>
+    <string name="tamper_body">Bản sao này dường như không được cài đặt từ nguồn chính thức. Để có hiệu suất và bảo mật tốt nhất, hãy cài Frame Out từ Google Play.</string>
     <string name="tamper_exit">Thoát</string>
     <string name="shape_arrow">Mũi tên</string>
     <string name="shape_taper">Mũi tên thon</string>

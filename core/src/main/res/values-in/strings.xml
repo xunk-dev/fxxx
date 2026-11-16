@@ -714,8 +714,8 @@
     <string name="open_frames">Buka frame</string>
     <string name="extract_done_channel">Hasil ekstraksi</string>
     <string name="announcements_channel">Pengumuman</string>
-    <string name="tamper_title">Salinan tidak resmi</string>
-    <string name="tamper_body">Salinan Frame Out ini telah dimodifikasi atau ditandatangani oleh pihak lain, sehingga mungkin tidak aman digunakan. Pasang versi resmi dari halaman rilis GitHub aplikasi.</string>
+    <string name="tamper_title">Versi resmi diperlukan</string>
+    <string name="tamper_body">Salinan ini sepertinya tidak dipasang dari sumber resmi. Untuk performa dan keamanan terbaik, pasang Frame Out dari Google Play.</string>
     <string name="tamper_exit">Keluar</string>
     <string name="shape_arrow">Panah</string>
     <string name="shape_taper">Panah meruncing</string>

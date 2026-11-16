@@ -714,8 +714,8 @@
     <string name="open_frames">Buksan ang mga frame</string>
     <string name="extract_done_channel">Mga resulta ng extraction</string>
     <string name="announcements_channel">Mga anunsyo</string>
-    <string name="tamper_title">Hindi opisyal na kopya</string>
-    <string name="tamper_body">Binago o nilagdaan ng iba ang kopyang ito ng Frame Out, kaya maaaring hindi ito ligtas gamitin. I-install ang opisyal na bersyon mula sa pahina ng GitHub releases ng app.</string>
+    <string name="tamper_title">Kailangan ang opisyal na bersyon</string>
+    <string name="tamper_body">Mukhang hindi ito na-install mula sa opisyal na pinagmulan. Para sa pinakamahusay na performance at seguridad, i-install ang Frame Out mula sa Google Play.</string>
     <string name="tamper_exit">Lumabas</string>
     <string name="shape_arrow">Palaso</string>
     <string name="shape_taper">Palasong patulis</string>

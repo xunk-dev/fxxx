@@ -714,8 +714,8 @@
     <string name="open_frames">ফ্রেম খুলুন</string>
     <string name="extract_done_channel">এক্সট্র্যাকশনের ফলাফল</string>
     <string name="announcements_channel">ঘোষণা</string>
-    <string name="tamper_title">অনানুষ্ঠানিক কপি</string>
-    <string name="tamper_body">Frame Out-এর এই কপিটি অন্য কেউ পরিবর্তন বা সাইন করেছে, তাই এটি ব্যবহার করা নিরাপদ নাও হতে পারে। অ্যাপের GitHub রিলিজ পেজ থেকে অফিসিয়াল সংস্করণ ইনস্টল করুন।</string>
+    <string name="tamper_title">অফিসিয়াল সংস্করণ প্রয়োজন</string>
+    <string name="tamper_body">মনে হচ্ছে এই কপিটি অফিসিয়াল উৎস থেকে ইনস্টল করা হয়নি। সেরা পারফরম্যান্স ও নিরাপত্তার জন্য Google Play থেকে Frame Out ইনস্টল করুন।</string>
     <string name="tamper_exit">বেরিয়ে যান</string>
     <string name="shape_arrow">তীর</string>
     <string name="shape_taper">সরু হয়ে আসা তীর</string>

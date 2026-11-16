@@ -714,8 +714,8 @@
     <string name="open_frames">Відкрити кадри</string>
     <string name="extract_done_channel">Результати видобування</string>
     <string name="announcements_channel">Новини</string>
-    <string name="tamper_title">Неофіційна копія</string>
-    <string name="tamper_body">Цю копію Frame Out змінила або підписала інша особа, тому користуватися нею може бути небезпечно. Установіть офіційну версію зі сторінки випусків застосунку на GitHub.</string>
+    <string name="tamper_title">Потрібна офіційна версія</string>
+    <string name="tamper_body">Схоже, цю копію встановлено не з офіційного джерела. Для найкращої продуктивності та безпеки встановіть Frame Out із Google Play.</string>
     <string name="tamper_exit">Вийти</string>
     <string name="shape_arrow">Стрілка</string>
     <string name="shape_taper">Звужена стрілка</string>

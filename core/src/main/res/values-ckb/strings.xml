@@ -710,8 +710,8 @@
     <string name="open_frames">کردنەوەی فرەیمەکان</string>
     <string name="extract_done_channel">ئەنجامەکانی دەرهێنان</string>
     <string name="announcements_channel">ڕاگەیاندنەکان</string>
-    <string name="tamper_title">کۆپییەکی نافەرمی</string>
-    <string name="tamper_body">ئەم کۆپییەی Frame Out دەستکاری کراوە یان کەسێکی تر واژۆی کردووە، بۆیە لەوانەیە بەکارهێنانی سەلامەت نەبێت. وەشانی فەرمی لە لاپەڕەی بڵاوکراوەکانی GitHubی ئەپەکە دابمەزرێنە.</string>
+    <string name="tamper_title">وەشانی فەرمی پێویستە</string>
+    <string name="tamper_body">وا دیارە ئەم کۆپییە لە سەرچاوەی فەرمییەوە دانەمەزراوە. بۆ باشترین کارایی و پاراستن، Frame Out لە Google Play دابمەزرێنە۔</string>
     <string name="tamper_exit">دەرچوون</string>
     <string name="shape_arrow">تیر</string>
     <string name="shape_taper">تیری باریک</string>

@@ -730,8 +730,8 @@
     <string name="open_frames">Open frames</string>
     <string name="extract_done_channel">Extraction results</string>
     <string name="announcements_channel">Announcements</string>
-    <string name="tamper_title">Unofficial copy</string>
-    <string name="tamper_body">This copy of Frame Out was modified or signed by someone else, so it may not be safe to use. Install the official version from the app\'s GitHub releases page.</string>
+    <string name="tamper_title">Official version required</string>
+    <string name="tamper_body">This copy doesn\'t seem to have been installed from the official source. For the best performance and security, install Frame Out from Google Play.</string>
     <string name="tamper_exit">Exit</string>
     <string name="shape_arrow">Arrow</string>
     <string name="shape_taper">Tapered arrow</string>

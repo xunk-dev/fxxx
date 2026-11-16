@@ -714,8 +714,8 @@
     <string name="open_frames">Abrir quadros</string>
     <string name="extract_done_channel">Resultados da extração</string>
     <string name="announcements_channel">Avisos</string>
-    <string name="tamper_title">Cópia não oficial</string>
-    <string name="tamper_body">Esta cópia do Frame Out foi modificada ou assinada por outra pessoa, então pode não ser segura. Instale a versão oficial na página de versões do app no GitHub.</string>
+    <string name="tamper_title">Versão oficial necessária</string>
+    <string name="tamper_body">Esta cópia parece não ter sido instalada a partir da fonte oficial. Para melhor desempenho e segurança, instale o Frame Out pela Google Play.</string>
     <string name="tamper_exit">Sair</string>
     <string name="shape_arrow">Seta</string>
     <string name="shape_taper">Seta afilada</string>

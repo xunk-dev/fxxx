@@ -714,8 +714,8 @@
     <string name="open_frames">Otevřít snímky</string>
     <string name="extract_done_channel">Výsledky extrakce</string>
     <string name="announcements_channel">Oznámení</string>
-    <string name="tamper_title">Neoficiální kopie</string>
-    <string name="tamper_body">Tuto kopii Frame Out upravil nebo podepsal někdo jiný, takže její používání nemusí být bezpečné. Nainstalujte oficiální verzi ze stránky vydání aplikace na GitHubu.</string>
+    <string name="tamper_title">Je vyžadována oficiální verze</string>
+    <string name="tamper_body">Zdá se, že tato kopie nebyla nainstalována z oficiálního zdroje. Pro nejlepší výkon a bezpečnost nainstalujte Frame Out z Google Play.</string>
     <string name="tamper_exit">Ukončit</string>
     <string name="shape_arrow">Šipka</string>
     <string name="shape_taper">Zúžená šipka</string>
