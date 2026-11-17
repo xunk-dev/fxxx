@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Доступ не надано. Спробуйте ще раз або виберіть файл.</string>
+    <string name="perm_toast_forever">Доступ заборонено. Відкрийте налаштування застосунку, щоб дозволити доступ до медіа.</string>
+    <string name="perm_toast_granted">Доступ надано. Завантажуємо вашу бібліотеку…</string>
+</resources>

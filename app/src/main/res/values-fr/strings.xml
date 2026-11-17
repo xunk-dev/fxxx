@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Capturer une image</string>
+    <string name="shortcut_capture_long">Capturer une image de la dernière vidéo</string>
+    <string name="tile_capture_label">Capturer une image</string>
+    <string name="incoming_copy_failed">Impossible de conserver l’accès à une vidéo partagée. Ouvrez-la plutôt depuis la galerie, ou libérez de l’espace de stockage et partagez-la à nouveau.</string>
+    <string name="incoming_unsupported">Ce type de fichier ne peut pas être ouvert. Partagez plutôt une vidéo, un GIF ou une image.</string>
+    <string name="incoming_photo_failed">Impossible d’ouvrir la photo partagée. Libérez de l’espace de stockage et partagez-la à nouveau.</string>
+    <string name="incoming_photos_skipped">Les photos ont été ignorées car elles ont été partagées avec des vidéos. Partagez les photos séparément pour les modifier.</string>
+    <string name="compare_stack">Empilé</string>
+    <string name="compare_side">Côte à côte</string>
+    <string name="compare_slider">Curseur</string>
+    <string name="compare_swap">Échanger</string>
+    <string name="compare_fit">Ajuster</string>
+    <string name="compare_zoom_in">Zoom avant</string>
+    <string name="compare_zoom_out">Zoom arrière</string>
+    <string name="compare_reset_zoom">Réinitialiser le zoom</string>
+    <string name="compare_hint">Pincez pour zoomer · touchez deux fois</string>
+    <string name="compare_load_failed">Impossible de charger l’image</string>
+    <string name="compare_divider">Séparateur de comparaison</string>
+    <string name="compare_diff">Différence</string>
+    <string name="compare_diff_busy">Calcul des différences…</string>
+    <string name="compare_link">Lier le zoom</string>
+    <string name="compare_unlink">Zoom indépendant</string>
+    <string name="compare_actual_size">Pixels réels</string>
+    <string name="compare_diff_percent">Modifié : %1$s%%</string>
+    <string name="time_entry_hint">mm:ss ou h:mm:ss</string>
+</resources>

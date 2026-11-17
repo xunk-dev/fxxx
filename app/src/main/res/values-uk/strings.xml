@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Захопити кадр</string>
+    <string name="shortcut_capture_long">Захопити кадр з останнього відео</string>
+    <string name="tile_capture_label">Захопити кадр</string>
+    <string name="incoming_copy_failed">Не вдалося зберегти доступ до відео, яким поділилися. Відкрийте його з галереї або звільніть місце й поділіться ним знову.</string>
+    <string name="incoming_unsupported">Цей тип файлу не можна відкрити. Натомість поділіться відео, GIF або зображенням.</string>
+    <string name="incoming_photo_failed">Не вдалося відкрити надіслане фото. Звільніть місце в сховищі та надішліть його знову.</string>
+    <string name="incoming_photos_skipped">Фото пропущено, оскільки їх надіслано разом із відео. Надішліть фото окремо, щоб редагувати їх.</string>
+    <string name="compare_stack">Накладання</string>
+    <string name="compare_side">Поруч</string>
+    <string name="compare_slider">Повзунок</string>
+    <string name="compare_swap">Поміняти місцями</string>
+    <string name="compare_fit">Вмістити</string>
+    <string name="compare_zoom_in">Збільшити</string>
+    <string name="compare_zoom_out">Зменшити</string>
+    <string name="compare_reset_zoom">Скинути масштаб</string>
+    <string name="compare_hint">Розведіть пальці для масштабування · торкніться двічі</string>
+    <string name="compare_load_failed">Не вдалося завантажити зображення</string>
+    <string name="compare_divider">Роздільник порівняння</string>
+    <string name="compare_diff">Різниця</string>
+    <string name="compare_diff_busy">Обчислення відмінностей…</string>
+    <string name="compare_link">Зв’язати масштаб</string>
+    <string name="compare_unlink">Незалежний масштаб</string>
+    <string name="compare_actual_size">Справжні пікселі</string>
+    <string name="compare_diff_percent">Змінено: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss або h:mm:ss</string>
+</resources>

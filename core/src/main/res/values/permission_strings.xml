@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Permission not granted. Try again or pick a file.</string>
+    <string name="perm_toast_forever">Permission denied. Open app settings to allow media access.</string>
+    <string name="perm_toast_granted">Access granted. Loading your library…</string>
+</resources>

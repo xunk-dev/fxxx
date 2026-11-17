@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Chưa được cấp quyền. Hãy thử lại hoặc chọn một tệp.</string>
+    <string name="perm_toast_forever">Quyền bị từ chối. Mở cài đặt ứng dụng để cho phép truy cập phương tiện.</string>
+    <string name="perm_toast_granted">Đã được cấp quyền. Đang tải thư viện của bạn…</string>
+</resources>

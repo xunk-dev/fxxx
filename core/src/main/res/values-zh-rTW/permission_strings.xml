@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">未授予權限。請重試或直接選擇檔案。</string>
+    <string name="perm_toast_forever">權限已被拒絕。請開啟應用程式設定以允許存取媒體。</string>
+    <string name="perm_toast_granted">已授予存取權限，正在載入你的資料庫…</string>
+</resources>

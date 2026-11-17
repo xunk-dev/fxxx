@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Kunin ang frame</string>
+    <string name="shortcut_capture_long">Kunin ang frame mula sa pinakabagong video</string>
+    <string name="tile_capture_label">Kunin ang frame</string>
+    <string name="incoming_copy_failed">Hindi napanatili ang access sa ibinahaging video. Buksan na lang ito mula sa gallery, o magbakante ng espasyo at ibahagi muli.</string>
+    <string name="incoming_unsupported">Hindi mabubuksan ang ganitong uri ng file. Mag-share na lang ng video, GIF o larawan.</string>
+    <string name="incoming_photo_failed">Hindi mabuksan ang ibinahaging larawan. Magbakante ng storage at ibahagi itong muli.</string>
+    <string name="incoming_photos_skipped">Nilaktawan ang mga larawan dahil ibinahagi ang mga ito kasama ng mga video. Ibahagi nang hiwalay ang mga larawan para ma-edit ang mga ito.</string>
+    <string name="compare_stack">Patong-patong</string>
+    <string name="compare_side">Magkatabi</string>
+    <string name="compare_slider">Slider</string>
+    <string name="compare_swap">Magpalit</string>
+    <string name="compare_fit">Isukat</string>
+    <string name="compare_zoom_in">Mag-zoom in</string>
+    <string name="compare_zoom_out">Mag-zoom out</string>
+    <string name="compare_reset_zoom">I-reset ang zoom</string>
+    <string name="compare_hint">Mag-pinch para mag-zoom · mag-double tap</string>
+    <string name="compare_load_failed">Hindi na-load ang larawan</string>
+    <string name="compare_divider">Divider ng paghahambing</string>
+    <string name="compare_diff">Pagkakaiba</string>
+    <string name="compare_diff_busy">Kinukuwenta ang mga pagkakaiba…</string>
+    <string name="compare_link">Ikonekta ang zoom</string>
+    <string name="compare_unlink">Hiwalay na zoom</string>
+    <string name="compare_actual_size">Totoong pixel</string>
+    <string name="compare_diff_percent">Nagbago: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss o h:mm:ss</string>
+</resources>

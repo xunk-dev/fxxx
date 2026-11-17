@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="estimate">
+        <item quantity="one">≈ یەک فرەیم · ~%2$s MB</item>
+        <item quantity="other">≈ %1$d فرەیم · ~%2$s MB</item>
+    </plurals>
+    <plurals name="plan_frames">
+        <item quantity="one">یەک فرەیم</item>
+        <item quantity="other">%1$d فرەیم</item>
+    </plurals>
+    <plurals name="reduced_quality">
+        <item quantity="one">یەک فرەیم بە ڕێزۆلووشنی کەمکراوە پاشەکەوت کرا، چونکە کۆدەرەوەی ئامێرەکە نەیتوانی بە قەبارەی تەواو بیگەڕێنێتەوە.</item>
+        <item quantity="other">%1$d فرەیم بە ڕێزۆلووشنی کەمکراوە پاشەکەوت کران، چونکە کۆدەرەوەی ئامێرەکە نەیتوانی بە قەبارەی تەواو بیانگەڕێنێتەوە.</item>
+    </plurals>
+    <plurals name="reduced_quality_to">
+        <item quantity="one">یەک فرەیم بە %4$d×%5$d پاشەکەوت کرا لەبری %2$d×%3$dـی سەرچاوە، بۆ ئەوەی لەگەڵ بیرگەی ئامێرەکە بگونجێت.</item>
+        <item quantity="other">%1$d فرەیم بە %4$d×%5$d پاشەکەوت کران لەبری %2$d×%3$dـی سەرچاوە، بۆ ئەوەی لەگەڵ بیرگەی ئامێرەکە بگونجێن.</item>
+    </plurals>
+    <plurals name="frame_count">
+        <item quantity="one">یەک فرەیم</item>
+        <item quantity="other">%1$d فرەیم</item>
+    </plurals>
+    <plurals name="important_picked">
+        <item quantity="one">ساتە سەرەکییەکە هەڵبژێردرا</item>
+        <item quantity="other">%1$d ساتی سەرەکی هەڵبژێردران</item>
+    </plurals>
+    <plurals name="sharpest_picked">
+        <item quantity="one">ڕوونترین فرەیم هەڵبژێردرا</item>
+        <item quantity="other">%1$d ڕوونترین فرەیم هەڵبژێردران</item>
+    </plurals>
+    <plurals name="duplicates_picked">
+        <item quantity="one">یەک فرەیمی دووبارە هەڵبژێردرا</item>
+        <item quantity="other">%1$d فرەیمی دووبارە هەڵبژێردران</item>
+    </plurals>
+    <plurals name="integrity_dup">
+        <item quantity="one">یەک فرەیم هەمان کاتی هەیە.</item>
+        <item quantity="other">%1$d فرەیم هەمان کاتیان هەیە.</item>
+    </plurals>
+    <plurals name="crop_all_hint">
+        <item quantity="one">هەمان ناوچە بۆ یەک فرەیم</item>
+        <item quantity="other">هەمان ناوچە بۆ %1$d فرەیم</item>
+    </plurals>
+    <plurals name="crop_all_applied">
+        <item quantity="one">بڕین بۆ یەک فرەیم جێبەجێ کرا</item>
+        <item quantity="other">بڕین بۆ %1$d فرەیم جێبەجێ کرا</item>
+    </plurals>
+    <plurals name="share_limited">
+        <item quantity="one">تەنیا یەکەم فرەیم هاوبەش دەکرێت</item>
+        <item quantity="other">تەنیا یەکەمین %1$d فرەیم هاوبەش دەکرێن</item>
+    </plurals>
+    <plurals name="frames_deleted">
+        <item quantity="one">یەک فرەیم گوازرایەوە بۆ سڕاوەکان</item>
+        <item quantity="other">%1$d فرەیم گوازرانەوە بۆ سڕاوەکان</item>
+    </plurals>
+    <plurals name="batch_videos">
+        <item quantity="one">یەک ڤیدیۆ</item>
+        <item quantity="other">%1$d ڤیدیۆ</item>
+    </plurals>
+    <plurals name="projects_deleted">
+        <item quantity="one">پڕۆژەکە سڕایەوە</item>
+        <item quantity="other">%1$d پڕۆژە سڕانەوە</item>
+    </plurals>
+    <plurals name="projects_restored">
+        <item quantity="one">پڕۆژەکە گەڕێندرایەوە</item>
+        <item quantity="other">%1$d پڕۆژە گەڕێندرانەوە</item>
+    </plurals>
+    <plurals name="saved_deleted_n">
+        <item quantity="one">وێنەکە سڕایەوە</item>
+        <item quantity="other">%1$d وێنە سڕانەوە</item>
+    </plurals>
+    <plurals name="saved_restored_n">
+        <item quantity="one">وێنەکە گەڕێندرایەوە</item>
+        <item quantity="other">%1$d وێنە گەڕێندرانەوە</item>
+    </plurals>
+    <plurals name="saved_pruned_n">
+        <item quantity="one">یەک بڕگەی پاشەکەوتکراو لابرا چونکە فایلەکەی چیتر لەسەر ئامێرەکە نییە</item>
+        <item quantity="other">%1$d بڕگەی پاشەکەوتکراو لابران چونکە فایلەکانیان چیتر لەسەر ئامێرەکە نین</item>
+    </plurals>
+    <plurals name="confirm_delete_projects_n">
+        <item quantity="one">ئەم پڕۆژەیە بسڕدرێتەوە؟</item>
+        <item quantity="other">%1$d پڕۆژە بسڕدرێنەوە؟</item>
+    </plurals>
+    <plurals name="confirm_delete_saved_n">
+        <item quantity="one">ئەم وێنە پاشەکەوتکراوە بسڕدرێتەوە؟</item>
+        <item quantity="other">%1$d وێنەی پاشەکەوتکراو بسڕدرێنەوە؟</item>
+    </plurals>
+    <plurals name="backup_saved_many_n">
+        <item quantity="one">پڕۆژەکە بۆ فۆڵدەری هەڵبژێردراو هەناردە کرا</item>
+        <item quantity="other">%1$d پڕۆژە بۆ فۆڵدەری هەڵبژێردراو هەناردە کران</item>
+    </plurals>
+    <plurals name="export_done_many_n">
+        <item quantity="one">پڕۆژەکە هەناردە کرا</item>
+        <item quantity="other">%1$d پڕۆژە هەناردە کران</item>
+    </plurals>
+    <plurals name="saved_export_done_n">
+        <item quantity="one">یەک وێنە هەناردە کرا</item>
+        <item quantity="other">%1$d وێنە هەناردە کران</item>
+    </plurals>
+    <plurals name="onboarding_pick_burst">
+        <item quantity="one">یەک فرەیمی دوای یەک</item>
+        <item quantity="other">%1$d فرەیمی دوای یەک</item>
+    </plurals>
+    <plurals name="onboarding_pick_excluded">
+        <item quantity="one">دەرکراو: یەک فرەیم</item>
+        <item quantity="other">دەرکراو: %1$d فرەیم</item>
+    </plurals>
+    <plurals name="rating_stat">
+        <item quantity="one">تا ئێستا یەک پاشەکەوتکردنی سەرکەوتوو</item>
+        <item quantity="other">تا ئێستا %1$d پاشەکەوتکردنی سەرکەوتوو</item>
+    </plurals>
+</resources>

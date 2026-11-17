@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Zugriff nicht erteilt. Versuche es erneut oder wähle eine Datei.</string>
+    <string name="perm_toast_forever">Zugriff verweigert. Öffne die App-Einstellungen, um den Medienzugriff zu erlauben.</string>
+    <string name="perm_toast_granted">Zugriff erteilt. Deine Mediathek wird geladen …</string>
+</resources>

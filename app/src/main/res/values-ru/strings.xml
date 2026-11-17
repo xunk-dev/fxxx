@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Захватить кадр</string>
+    <string name="shortcut_capture_long">Захватить кадр из последнего видео</string>
+    <string name="tile_capture_label">Захватить кадр</string>
+    <string name="incoming_copy_failed">Не удалось сохранить доступ к полученному видео. Откройте его из галереи или освободите память и отправьте снова.</string>
+    <string name="incoming_unsupported">Этот тип файла нельзя открыть. Отправьте видео, GIF или изображение.</string>
+    <string name="incoming_photo_failed">Не удалось открыть отправленное фото. Освободите место в хранилище и отправьте его снова.</string>
+    <string name="incoming_photos_skipped">Фото пропущены, так как они были отправлены вместе с видео. Отправьте фото отдельно, чтобы редактировать их.</string>
+    <string name="compare_stack">Столбец</string>
+    <string name="compare_side">Рядом</string>
+    <string name="compare_slider">Ползунок</string>
+    <string name="compare_swap">Поменять</string>
+    <string name="compare_fit">По размеру</string>
+    <string name="compare_zoom_in">Приблизить</string>
+    <string name="compare_zoom_out">Отдалить</string>
+    <string name="compare_reset_zoom">Сбросить масштаб</string>
+    <string name="compare_hint">Сведите пальцы для масштаба · дважды коснитесь</string>
+    <string name="compare_load_failed">Не удалось загрузить изображение</string>
+    <string name="compare_divider">Разделитель сравнения</string>
+    <string name="compare_diff">Разница</string>
+    <string name="compare_diff_busy">Вычисление различий…</string>
+    <string name="compare_link">Связать масштаб</string>
+    <string name="compare_unlink">Независимый масштаб</string>
+    <string name="compare_actual_size">Реальные пиксели</string>
+    <string name="compare_diff_percent">Изменено: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss или h:mm:ss</string>
+</resources>

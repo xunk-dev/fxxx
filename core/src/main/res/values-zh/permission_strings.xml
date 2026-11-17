@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">未授予权限。请重试或直接选择文件。</string>
+    <string name="perm_toast_forever">权限被拒绝。请打开应用设置以允许访问媒体。</string>
+    <string name="perm_toast_granted">已授予访问权限，正在加载你的媒体库…</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Izin belum diberikan. Coba lagi atau pilih file.</string>
+    <string name="perm_toast_forever">Izin ditolak. Buka setelan aplikasi untuk mengizinkan akses media.</string>
+    <string name="perm_toast_granted">Akses diizinkan. Memuat pustaka Anda…</string>
+</resources>

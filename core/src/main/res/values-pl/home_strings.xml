@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Start</string>
+    <string name="home_extract_title">Wyodrębnij klatki</string>
+    <string name="home_extract_desc">Wybierz film i wyodrębnij najlepsze klatki.</string>
+    <string name="home_mode_quick">Szybki</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Wybierz klip i od razu zacznij wyodrębnianie</string>
+    <string name="home_mode_quick_action">Start</string>
+    <string name="home_mode_pro_desc">Pełna kontrola nad jakością</string>
+    <string name="home_mode_pro_action">Zaawansowany</string>
+    <string name="home_mode_pro_open">Otwórz tryb Pro</string>
+    <string name="home_edit_title">Edytuj zdjęcia</string>
+    <string name="home_edit_desc">Przycinanie, filtry, rysowanie</string>
+    <string name="home_collage_title">Kolaż</string>
+    <string name="home_collage_desc">Połącz zdjęcia w jedno</string>
+    <string name="home_export_title">Eksport</string>
+    <string name="home_export_desc">Wideo, GIF, ZIP, PDF i więcej.</string>
+    <string name="home_quick_title">Szybka ekstrakcja</string>
+    <string name="home_quick_start">Zacznij teraz</string>
+    <string name="home_quick_length">Długość</string>
+    <string name="home_quick_hint">Przeciągnij uchwyty na osi czasu, aby wybrać zakres. Pozostaw bez zmian, aby użyć całego klipu.</string>
+    <string name="home_quick_started">Rozpoczęto wyodrębnianie</string>
+    <string name="home_export_tab_video">Wideo</string>
+    <string name="home_export_tab_images">Obrazy</string>
+    <string name="home_export_action">Eksportuj</string>
+    <string name="home_export_action_count">Eksportuj (%1$d)</string>
+    <string name="home_export_saving">Zapisywanie… %1$d%%</string>
+    <string name="home_export_clip_title">Eksportuj jako %1$s</string>
+    <string name="home_export_clip_hint">Przeciągnij uchwyty na osi czasu, aby wybrać część do eksportu.</string>
+    <string name="home_export_source_title">Wybierz obrazy</string>
+    <string name="home_export_source_empty">Brak zapisanych obrazów. Najpierw zapisz klatki z filmu.</string>
+    <string name="home_export_select_all">Zaznacz wszystko</string>
+    <string name="home_export_clear">Wyczyść</string>
+    <string name="home_compare_title">Porównaj</string>
+    <string name="home_compare_desc">Przesuń, by porównać dwa zdjęcia</string>
+    <string name="home_compare_pick_two">Wybierz dwa zdjęcia do porównania.</string>
+    <string name="home_export_m_video">Wyeksportuj film jako MP4, Live&#160;Photo, GIF lub WebP.</string>
+    <string name="home_export_m_sheet">Wyeksportuj obrazy jako arkusz kontaktowy.</string>
+    <string name="home_export_m_images">Wyeksportuj obrazy jako ZIP, PDF lub do folderu.</string>
+    <string name="home_video_title">Eksport wideo</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Eksport klatek</string>
+    <string name="home_images_desc">ZIP, PDF lub arkusz kontaktowy</string>
+</resources>
