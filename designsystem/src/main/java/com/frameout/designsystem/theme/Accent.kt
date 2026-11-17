@@ -134,7 +134,7 @@ object FrameAccents {
         light = longArrayOf(0xFF141414, 0xFFF7F7F7, 0xFFDADADA),
         neutral = true,
         lightStops = longArrayOf(0xFF2B2B2B, 0xFF4A4A4A, 0xFF6B6B6B),
-        preview = longArrayOf(0xFFF5F5F5, 0xFF8A8A8A, 0xFF0A0A0A)
+        preview = longArrayOf(0xFF8A8A8A, 0xFF1C1C1C, 0xFF0A0A0A)
     )
 
     val All: List<FrameAccent> = listOf(Indigo, Ocean, Black, Emerald, Sunset, Crimson, Lime, Rose, Gold, Violet, Mocha)
