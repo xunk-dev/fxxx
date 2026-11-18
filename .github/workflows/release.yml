@@ -61,6 +61,8 @@ jobs:
         run: bash scripts/check-merged-manifest.sh
       - name: Lint
         run: gradle :app:lintRelease --no-daemon
+      - name: Generate Room schema
+        run: gradle :core:kspDebugKotlin --no-daemon
       - name: Unit tests
         run: gradle :engine:test :core:test :codecpack:test --no-daemon
       - name: Require signing configuration

@@ -94,6 +94,8 @@ jobs:
           name: room-schemas
           path: core/schemas
           if-no-files-found: warn
+      - name: Generate Room schema
+        run: gradle :core:kspDebugKotlin --no-daemon
       - name: Unit tests
         id: unit_tests
         continue-on-error: true
