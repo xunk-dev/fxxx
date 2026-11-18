@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">گرتنی فرەیم</string>
+    <string name="shortcut_capture_long">گرتنی فرەیم لە دوایین ڤیدیۆ</string>
+    <string name="tile_capture_label">گرتنی فرەیم</string>
+    <string name="incoming_copy_failed">نەتوانرا دەستپێگەیشتن بە ڤیدیۆی هاوبەشکراو بپارێزرێت. لە گالەرییەوە بیکەرەوە، یان شوێنی هەڵگرتن چۆل بکە و دووبارە هاوبەشی بکە.</string>
+    <string name="incoming_unsupported">ئەم جۆرە فایلە ناکرێتەوە. لەبری ئەمە ڤیدیۆ، GIF یان وێنە هاوبەش بکە.</string>
+    <string name="incoming_photo_failed">نەتوانرا ئەو وێنەیەی هاوبەش کراوە بکرێتەوە. شوێنی هەڵگرتن چۆل بکە و دووبارە هاوبەشی بکە.</string>
+    <string name="incoming_photos_skipped">وێنەکان بازدران چونکە لەگەڵ ڤیدیۆ هاوبەش کرابوون. بۆ دەستکاریکردنیان، وێنەکان بە تەنیا هاوبەش بکە.</string>
+    <string name="compare_stack">ستوونی</string>
+    <string name="compare_side">تەنیشت یەک</string>
+    <string name="compare_slider">سلایدەر</string>
+    <string name="compare_swap">جێگۆڕکێ</string>
+    <string name="compare_fit">گونجاندن</string>
+    <string name="compare_zoom_in">گەورەکردن</string>
+    <string name="compare_zoom_out">بچووککردن</string>
+    <string name="compare_reset_zoom">ڕێکخستنەوەی زووم</string>
+    <string name="compare_hint">بۆ زووم پەنجەکان لێک بکەرەوە · دوو جار دەستلێدان</string>
+    <string name="compare_load_failed">وێنەکە بار نەکرا</string>
+    <string name="compare_divider">جیاکەرەوەی بەراورد</string>
+    <string name="compare_diff">جیاوازی</string>
+    <string name="compare_diff_busy">جیاوازی دەژمێردرێت…</string>
+    <string name="compare_link">بەستنەوەی زووم</string>
+    <string name="compare_unlink">زوومی سەربەخۆ</string>
+    <string name="compare_actual_size">پیکسڵی ڕاستەقینە</string>
+    <string name="compare_diff_percent">گۆڕانکاری: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss یان h:mm:ss</string>
+</resources>

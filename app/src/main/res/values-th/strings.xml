@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">จับภาพเฟรม</string>
+    <string name="shortcut_capture_long">จับภาพเฟรมจากวิดีโอล่าสุด</string>
+    <string name="tile_capture_label">จับภาพเฟรม</string>
+    <string name="incoming_copy_failed">ไม่สามารถคงสิทธิ์เข้าถึงวิดีโอที่แชร์มาได้ ลองเปิดจากแกลเลอรี หรือเพิ่มพื้นที่ว่างแล้วแชร์อีกครั้ง</string>
+    <string name="incoming_unsupported">ไม่สามารถเปิดไฟล์ประเภทนี้ได้ โปรดแชร์วิดีโอ GIF หรือรูปภาพแทน</string>
+    <string name="incoming_photo_failed">เปิดรูปภาพที่แชร์ไม่ได้ โปรดเพิ่มพื้นที่เก็บข้อมูลแล้วแชร์อีกครั้ง</string>
+    <string name="incoming_photos_skipped">ข้ามรูปภาพเนื่องจากแชร์มาพร้อมกับวิดีโอ แชร์รูปภาพแยกต่างหากเพื่อแก้ไข</string>
+    <string name="compare_stack">ซ้อนบนล่าง</string>
+    <string name="compare_side">เคียงข้างกัน</string>
+    <string name="compare_slider">แถบเลื่อน</string>
+    <string name="compare_swap">สลับ</string>
+    <string name="compare_fit">พอดี</string>
+    <string name="compare_zoom_in">ซูมเข้า</string>
+    <string name="compare_zoom_out">ซูมออก</string>
+    <string name="compare_reset_zoom">รีเซ็ตการซูม</string>
+    <string name="compare_hint">ใช้สองนิ้วถ่างเพื่อซูม · แตะสองครั้ง</string>
+    <string name="compare_load_failed">โหลดรูปภาพไม่สำเร็จ</string>
+    <string name="compare_divider">ตัวแบ่งการเปรียบเทียบ</string>
+    <string name="compare_diff">ส่วนต่าง</string>
+    <string name="compare_diff_busy">กำลังคำนวณส่วนต่าง…</string>
+    <string name="compare_link">ซูมพร้อมกัน</string>
+    <string name="compare_unlink">ซูมแยกกัน</string>
+    <string name="compare_actual_size">พิกเซลจริง</string>
+    <string name="compare_diff_percent">เปลี่ยนแปลง: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss หรือ h:mm:ss</string>
+</resources>

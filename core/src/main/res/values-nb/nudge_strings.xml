@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Forslag om nye videoer</string>
+    <string name="nudge_channel_new_video_desc">Gir beskjed når en ny video havner på telefonen, med forsidebilde og uttrekk med ett trykk.</string>
+    <string name="nudge_channel_reminders">Tips og påminnelser</string>
+    <string name="nudge_channel_reminders_desc">Sjeldne, vennlige påminnelser. Maks én om dagen, og de stopper hvis du ignorerer dem.</string>
+    <string name="nudge_action_extract">Trekk ut bilder</string>
+    <string name="nudge_action_open">Åpne</string>
+    <string name="nudge_action_stop_reminders">Stopp påminnelser</string>
+    <string name="nudge_review_title">Denne videoen trenger et raskt blikk</string>
+    <string name="nudge_review_text">Den er lang, så velg først hva som skal trekkes ut. Trykk for å åpne den.</string>
+    <string name="nudge_failed_title">Kunne ikke starte uttrekket</string>
+    <string name="nudge_failed_text">Trykk for å åpne videoen og prøve igjen.</string>
+    <string name="nudge_waiting_title">Den nye videoen din venter fortsatt</string>
+    <string name="nudge_waiting_text">%1$s er klar. Hent ut de beste bildene med ett trykk.</string>
+    <string name="nudge_comeback_title_0">Gjør videoøyeblikk om til bilder</string>
+    <string name="nudge_comeback_text_0">Velg en video, så trekker Frame Out ut de skarpeste bildene for deg.</string>
+    <string name="nudge_comeback_title_1">Det beste bildet ditt gjemmer seg i en video</string>
+    <string name="nudge_comeback_text_1">Spol til akkurat det riktige bildet og lagre det i full kvalitet.</string>
+    <string name="nudge_comeback_title_2">Lag et kollasj av favorittbildene dine</string>
+    <string name="nudge_comeback_text_2">Trekk ut noen bilder og slå dem sammen til ett.</string>
+    <string name="nudge_setting_new_video_title">Varsler om nye videoer</string>
+    <string name="nudge_setting_new_video_hint">Varsle meg med forsidebilde når en ny video dukker opp</string>
+    <string name="nudge_setting_new_video_partial">Full videotilgang trengs for å oppdage nye videoer</string>
+    <string name="nudge_setting_reminders_title">Tips og påminnelser</string>
+    <string name="nudge_setting_reminders_hint">En vennlig påminnelse nå og da, aldri om natten</string>
+    <string name="nudge_setting_system_off">Varsler for Frame Out er slått av i systeminnstillingene</string>
+    <string name="nudge_new_video_title">Ny video klar</string>
+    <string name="nudge_stalled_title">Fullfør det du startet</string>
+    <string name="nudge_stalled_text">«%1$s» er satt på pause. Fortsett der du slapp.</string>
+    <string name="nudge_recap_title">Uken din i bilder</string>
+    <string name="nudge_recap_text">Bilder trukket ut denne uken: %1$d</string>
+</resources>

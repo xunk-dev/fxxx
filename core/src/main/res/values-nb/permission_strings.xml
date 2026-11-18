@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Tillatelse ikke gitt. Prøv igjen eller velg en fil.</string>
+    <string name="perm_toast_forever">Tillatelse avslått. Åpne appinnstillingene for å gi tilgang til medier.</string>
+    <string name="perm_toast_granted">Tilgang gitt. Laster biblioteket ditt …</string>
+</resources>

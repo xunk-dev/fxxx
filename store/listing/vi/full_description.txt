@@ -1,0 +1,9 @@
+Lấy ra khung hình hoàn hảo từ bất kỳ video nào.
+
+• Trích xuất mọi khung hình, hoặc chỉ những khung nét nhất, khoảnh khắc chính và điểm chuyển cảnh
+• Cắt, xoay và thêm bộ lọc
+• Tạo ảnh ghép và xuất hàng loạt
+• Lưu dưới dạng JPG, PNG, WebP, GIF hoặc PDF
+• Mọi thứ chạy trên thiết bị của bạn: không cần tài khoản, không tải lên
+
+Bắt đầu miễn phí. Pro mở khóa trích xuất thông minh, chỉnh sửa nâng cao và xuất file, theo gói đăng ký hoặc mua một lần.

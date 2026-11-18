@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Kebenaran tidak diberikan. Cuba lagi atau pilih fail.</string>
+    <string name="perm_toast_forever">Kebenaran ditolak. Buka tetapan apl untuk membenarkan akses media.</string>
+    <string name="perm_toast_granted">Akses dibenarkan. Memuatkan pustaka anda…</string>
+</resources>

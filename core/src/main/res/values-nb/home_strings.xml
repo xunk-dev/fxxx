@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Hjem</string>
+    <string name="home_extract_title">Trekk ut bilder</string>
+    <string name="home_extract_desc">Velg en video og hent ut de beste bildene.</string>
+    <string name="home_mode_quick">Rask</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Velg et klipp og begynn å trekke ut med en gang</string>
+    <string name="home_mode_quick_action">Start</string>
+    <string name="home_mode_pro_desc">Full kontroll over kvaliteten</string>
+    <string name="home_mode_pro_action">Avansert</string>
+    <string name="home_mode_pro_open">Åpne Pro-modus</string>
+    <string name="home_edit_title">Rediger bilder</string>
+    <string name="home_edit_desc">Beskjær, filtre, tegn</string>
+    <string name="home_collage_title">Collage</string>
+    <string name="home_collage_desc">Slå sammen bilder til ett</string>
+    <string name="home_export_title">Eksport</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF og mer.</string>
+    <string name="home_quick_title">Rask uttrekk</string>
+    <string name="home_quick_start">Start nå</string>
+    <string name="home_quick_length">Lengde</string>
+    <string name="home_quick_hint">Dra håndtakene på tidslinjen for å velge et område. La dem stå for å bruke hele klippet.</string>
+    <string name="home_quick_started">Uttrekk startet</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Bilder</string>
+    <string name="home_export_action">Eksporter</string>
+    <string name="home_export_action_count">Eksporter (%1$d)</string>
+    <string name="home_export_saving">Lagrer… %1$d %%</string>
+    <string name="home_export_clip_title">Eksporter som %1$s</string>
+    <string name="home_export_clip_hint">Dra håndtakene på tidslinjen for å velge delen som skal eksporteres.</string>
+    <string name="home_export_source_title">Velg bilder</string>
+    <string name="home_export_source_empty">Ingen lagrede bilder ennå. Lagre først bilder fra en video.</string>
+    <string name="home_export_select_all">Velg alle</string>
+    <string name="home_export_clear">Tøm</string>
+    <string name="home_compare_title">Sammenlign</string>
+    <string name="home_compare_desc">Sveip for å sammenligne to bilder</string>
+    <string name="home_compare_pick_two">Velg to bilder å sammenligne.</string>
+    <string name="home_export_m_video">Eksporter videoen som MP4, Live&#160;Photo, GIF eller WebP.</string>
+    <string name="home_export_m_sheet">Eksporter bilder som kontaktark.</string>
+    <string name="home_export_m_images">Eksporter bilder som ZIP, PDF eller mappe.</string>
+    <string name="home_video_title">Eksporter video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Eksporter bilder</string>
+    <string name="home_images_desc">ZIP, PDF eller kontaktark</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">خانه</string>
+    <string name="home_extract_title">استخراج فریم‌ها</string>
+    <string name="home_extract_desc">یک ویدیو انتخاب کنید و بهترین فریم‌هایش را بیرون بکشید.</string>
+    <string name="home_mode_quick">سریع</string>
+    <string name="home_mode_pro">حرفه‌ای</string>
+    <string name="home_mode_quick_desc">کلیپ را انتخاب کنید و بلافاصله شروع کنید</string>
+    <string name="home_mode_quick_action">شروع</string>
+    <string name="home_mode_pro_desc">کنترل کامل کیفیت</string>
+    <string name="home_mode_pro_action">پیشرفته</string>
+    <string name="home_mode_pro_open">ورود به حالت حرفه‌ای</string>
+    <string name="home_edit_title">ویرایش عکس</string>
+    <string name="home_edit_desc">برش، فیلتر، طراحی</string>
+    <string name="home_collage_title">کلاژ</string>
+    <string name="home_collage_desc">عکس‌ها را یکی کنید</string>
+    <string name="home_export_title">خروجی</string>
+    <string name="home_export_desc">ویدیو، GIF، ZIP، PDF و بیشتر.</string>
+    <string name="home_quick_title">استخراج سریع</string>
+    <string name="home_quick_start">همین حالا شروع کن</string>
+    <string name="home_quick_length">طول</string>
+    <string name="home_quick_hint">برای انتخاب بازه، دستگیره‌ها را روی خط زمانی بکشید. بدون تغییر، کل کلیپ استفاده می‌شود.</string>
+    <string name="home_quick_started">استخراج شروع شد</string>
+    <string name="home_export_tab_video">ویدیو</string>
+    <string name="home_export_tab_images">تصاویر</string>
+    <string name="home_export_action">خروجی</string>
+    <string name="home_export_action_count">خروجی (%1$d)</string>
+    <string name="home_export_saving">در حال ذخیره… %1$d%%</string>
+    <string name="home_export_clip_title">خروجی به‌صورت %1$s</string>
+    <string name="home_export_clip_hint">برای انتخاب بخش خروجی، دستگیره‌ها را روی خط زمانی بکشید.</string>
+    <string name="home_export_source_title">انتخاب تصاویر</string>
+    <string name="home_export_source_empty">هنوز تصویری ذخیره نشده. ابتدا فریم‌ها را از یک ویدیو ذخیره کنید.</string>
+    <string name="home_export_select_all">انتخاب همه</string>
+    <string name="home_export_clear">پاک کردن</string>
+    <string name="home_compare_title">مقایسه</string>
+    <string name="home_compare_desc">بکشید تا دو عکس را مقایسه کنید</string>
+    <string name="home_compare_pick_two">دو عکس برای مقایسه انتخاب کنید.</string>
+    <string name="home_export_m_video">ویدیو را با فرمت MP4، Live&#160;Photo، GIF یا WebP خروجی بگیرید.</string>
+    <string name="home_export_m_sheet">تصاویر را به‌صورت کنتاکت‌شیت خروجی بگیرید.</string>
+    <string name="home_export_m_images">تصاویر را با فرمت ZIP، PDF یا در یک پوشه خروجی بگیرید.</string>
+    <string name="home_video_title">خروجی ویدیو</string>
+    <string name="home_video_desc">MP4، GIF، Live&#160;Photo</string>
+    <string name="home_images_title">خروجی فریم</string>
+    <string name="home_images_desc">ZIP، PDF یا کنتاکت‌شیت</string>
+</resources>

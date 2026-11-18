@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">پیشنهادهای ویدیوی جدید</string>
+    <string name="nudge_channel_new_video_desc">وقتی ویدیوی جدیدی روی گوشی‌تان بیاید، با تصویر روی جلد و استخراج با یک ضربه به شما خبر می‌دهد.</string>
+    <string name="nudge_channel_reminders">نکته‌ها و یادآوری‌ها</string>
+    <string name="nudge_channel_reminders_desc">یادآوری‌های ملایم و گاه‌به‌گاه. حداکثر روزی یکی، و اگر نادیده‌شان بگیرید خودبه‌خود متوقف می‌شوند.</string>
+    <string name="nudge_action_extract">استخراج فریم‌ها</string>
+    <string name="nudge_action_open">باز کردن</string>
+    <string name="nudge_action_stop_reminders">توقف یادآوری‌ها</string>
+    <string name="nudge_review_title">این ویدیو یک نگاه سریع می‌خواهد</string>
+    <string name="nudge_review_text">این ویدیو بلند است؛ پس ابتدا انتخاب کنید چه چیزی استخراج شود. برای باز کردن ضربه بزنید.</string>
+    <string name="nudge_failed_title">شروع استخراج ممکن نشد</string>
+    <string name="nudge_failed_text">برای باز کردن ویدیو و تلاش دوباره ضربه بزنید.</string>
+    <string name="nudge_waiting_title">ویدیوی جدیدتان هنوز منتظر است</string>
+    <string name="nudge_waiting_text">%1$s آماده است. بهترین فریم‌ها را با یک ضربه بیرون بکشید.</string>
+    <string name="nudge_comeback_title_0">لحظه‌های ویدیو را به عکس تبدیل کنید</string>
+    <string name="nudge_comeback_text_0">یک ویدیو انتخاب کنید و Frame Out واضح‌ترین فریم‌ها را برایتان استخراج می‌کند.</string>
+    <string name="nudge_comeback_title_1">بهترین عکستان در یک ویدیو پنهان است</string>
+    <string name="nudge_comeback_text_1">به فریم دقیق بروید و آن را با کیفیت کامل ذخیره کنید.</string>
+    <string name="nudge_comeback_title_2">از فریم‌های محبوبتان کلاژ بسازید</string>
+    <string name="nudge_comeback_text_2">چند فریم استخراج کنید و آن‌ها را در یک تصویر ترکیب کنید.</string>
+    <string name="nudge_setting_new_video_title">هشدارهای ویدیوی جدید</string>
+    <string name="nudge_setting_new_video_hint">وقتی ویدیوی جدیدی ظاهر شد، با تصویر روی جلد به من خبر بده</string>
+    <string name="nudge_setting_new_video_partial">برای تشخیص ویدیوهای جدید، دسترسی کامل به ویدیوها لازم است</string>
+    <string name="nudge_setting_reminders_title">نکته‌ها و یادآوری‌ها</string>
+    <string name="nudge_setting_reminders_hint">گاهی یک یادآوری ملایم، هرگز در شب</string>
+    <string name="nudge_setting_system_off">اعلان‌های Frame Out در تنظیمات سیستم خاموش است</string>
+    <string name="nudge_new_video_title">ویدیوی جدید آماده است</string>
+    <string name="nudge_stalled_title">کاری را که شروع کردید تمام کنید</string>
+    <string name="nudge_stalled_text">«%1$s» متوقف شده است. از همان جا که رها کردید ادامه دهید.</string>
+    <string name="nudge_recap_title">هفته‌ی شما در فریم‌ها</string>
+    <string name="nudge_recap_text">فریم‌های استخراج‌شده در این هفته: %1$d</string>
+</resources>

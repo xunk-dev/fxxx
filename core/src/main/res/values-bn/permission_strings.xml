@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">অনুমতি দেওয়া হয়নি। আবার চেষ্টা করুন বা একটি ফাইল বেছে নিন।</string>
+    <string name="perm_toast_forever">অনুমতি প্রত্যাখ্যাত। মিডিয়া অ্যাক্সেসের অনুমতি দিতে অ্যাপ সেটিংস খুলুন।</string>
+    <string name="perm_toast_granted">অ্যাক্সেস দেওয়া হয়েছে। আপনার লাইব্রেরি লোড হচ্ছে…</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Nie przyznano uprawnienia. Spróbuj ponownie lub wybierz plik.</string>
+    <string name="perm_toast_forever">Odmówiono uprawnienia. Otwórz ustawienia aplikacji, aby zezwolić na dostęp do multimediów.</string>
+    <string name="perm_toast_granted">Przyznano dostęp. Wczytuję Twoją bibliotekę…</string>
+</resources>

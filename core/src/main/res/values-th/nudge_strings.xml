@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">คำแนะนำวิดีโอใหม่</string>
+    <string name="nudge_channel_new_video_desc">แจ้งเตือนเมื่อมีวิดีโอใหม่เข้ามาในโทรศัพท์ พร้อมภาพปกและปุ่มดึงเฟรมในแตะเดียว</string>
+    <string name="nudge_channel_reminders">เคล็ดลับและการเตือนความจำ</string>
+    <string name="nudge_channel_reminders_desc">การเตือนที่เบาๆ เป็นครั้งคราว สูงสุดวันละหนึ่งครั้ง และจะหยุดเองหากคุณไม่สนใจ</string>
+    <string name="nudge_action_extract">ดึงเฟรม</string>
+    <string name="nudge_action_open">เปิด</string>
+    <string name="nudge_action_stop_reminders">หยุดการเตือนความจำ</string>
+    <string name="nudge_review_title">วิดีโอนี้น่าลองดูสักหน่อย</string>
+    <string name="nudge_review_text">วิดีโอยาว ดังนั้นเลือกก่อนว่าจะดึงส่วนไหน แตะเพื่อเปิด</string>
+    <string name="nudge_failed_title">เริ่มดึงเฟรมไม่ได้</string>
+    <string name="nudge_failed_text">แตะเพื่อเปิดวิดีโอแล้วลองอีกครั้ง</string>
+    <string name="nudge_waiting_title">วิดีโอใหม่ของคุณยังรออยู่</string>
+    <string name="nudge_waiting_text">%1$s พร้อมแล้ว ดึงเฟรมที่ดีที่สุดออกมาได้ในแตะเดียว</string>
+    <string name="nudge_comeback_title_0">เปลี่ยนช่วงเวลาในวิดีโอให้เป็นภาพถ่าย</string>
+    <string name="nudge_comeback_text_0">เลือกวิดีโอใดก็ได้ แล้ว Frame Out จะดึงเฟรมที่คมชัดที่สุดให้คุณ</string>
+    <string name="nudge_comeback_title_1">ภาพที่ดีที่สุดของคุณซ่อนอยู่ในวิดีโอ</string>
+    <string name="nudge_comeback_text_1">เลื่อนไปที่เฟรมที่ต้องการแล้วบันทึกด้วยคุณภาพเต็ม</string>
+    <string name="nudge_comeback_title_2">ทำคอลลาจจากเฟรมโปรดของคุณ</string>
+    <string name="nudge_comeback_text_2">ดึงเฟรมสองสามเฟรมแล้วรวมเป็นภาพเดียว</string>
+    <string name="nudge_setting_new_video_title">แจ้งเตือนวิดีโอใหม่</string>
+    <string name="nudge_setting_new_video_hint">แจ้งเตือนพร้อมภาพปกเมื่อมีวิดีโอใหม่</string>
+    <string name="nudge_setting_new_video_partial">ต้องให้สิทธิ์เข้าถึงวิดีโอทั้งหมดเพื่อตรวจพบวิดีโอใหม่</string>
+    <string name="nudge_setting_reminders_title">เคล็ดลับและการเตือนความจำ</string>
+    <string name="nudge_setting_reminders_hint">เตือนเบาๆ เป็นครั้งคราว และไม่เตือนตอนกลางคืน</string>
+    <string name="nudge_setting_system_off">การแจ้งเตือนของ Frame Out ปิดอยู่ในการตั้งค่าระบบ</string>
+    <string name="nudge_new_video_title">วิดีโอใหม่พร้อมแล้ว</string>
+    <string name="nudge_stalled_title">ทำสิ่งที่เริ่มไว้ให้เสร็จ</string>
+    <string name="nudge_stalled_text">“%1$s” ถูกหยุดชั่วคราว ทำต่อจากจุดที่ค้างไว้ได้เลย</string>
+    <string name="nudge_recap_title">สัปดาห์ของคุณในรูปเฟรม</string>
+    <string name="nudge_recap_text">เฟรมที่ดึงในสัปดาห์นี้: %1$d</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">مۆڵەت نەدرا. دووبارە هەوڵ بدەرەوە یان فایلێک هەڵبژێرە.</string>
+    <string name="perm_toast_forever">مۆڵەت ڕەتکرایەوە. ڕێکخستنەکانی ئەپ بکەرەوە بۆ ڕێگەدان بە دەستگەیشتن بە میدیا.</string>
+    <string name="perm_toast_granted">دەستگەیشتن درا. کتێبخانەکەت بار دەکرێت…</string>
+</resources>

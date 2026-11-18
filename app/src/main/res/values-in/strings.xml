@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Tangkap frame</string>
+    <string name="shortcut_capture_long">Tangkap frame dari video terakhir</string>
+    <string name="tile_capture_label">Tangkap frame</string>
+    <string name="incoming_copy_failed">Tidak dapat mempertahankan akses ke video yang dibagikan. Buka video dari galeri atau kosongkan ruang penyimpanan, lalu bagikan lagi.</string>
+    <string name="incoming_unsupported">Jenis file ini tidak dapat dibuka. Silakan bagikan video, GIF, atau gambar.</string>
+    <string name="incoming_photo_failed">Tidak dapat membuka foto yang dibagikan. Kosongkan penyimpanan dan bagikan lagi.</string>
+    <string name="incoming_photos_skipped">Foto dilewati karena dibagikan bersama video. Bagikan foto secara terpisah untuk mengeditnya.</string>
+    <string name="compare_stack">Bertumpuk</string>
+    <string name="compare_side">Berdampingan</string>
+    <string name="compare_slider">Penggeser</string>
+    <string name="compare_swap">Tukar</string>
+    <string name="compare_fit">Pas layar</string>
+    <string name="compare_zoom_in">Perbesar</string>
+    <string name="compare_zoom_out">Perkecil</string>
+    <string name="compare_reset_zoom">Atur ulang zoom</string>
+    <string name="compare_hint">Cubit untuk zoom · ketuk dua kali</string>
+    <string name="compare_load_failed">Tidak dapat memuat gambar</string>
+    <string name="compare_divider">Pembagi perbandingan</string>
+    <string name="compare_diff">Perbedaan</string>
+    <string name="compare_diff_busy">Menghitung perbedaan…</string>
+    <string name="compare_link">Tautkan zoom</string>
+    <string name="compare_unlink">Zoom independen</string>
+    <string name="compare_actual_size">Piksel asli</string>
+    <string name="compare_diff_percent">Berubah: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss atau h:mm:ss</string>
+</resources>
