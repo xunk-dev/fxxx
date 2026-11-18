@@ -106,11 +106,30 @@ jobs:
         with:
           name: frameout-play-bundle
           path: dist/*
-      - name: Upload bundle to Google Play internal track
-        uses: r0adkll/upload-google-play@v1.1.5
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.frameout.app
-          releaseFiles: dist/*.aab
-          track: internal
-          status: completed
+      - name: Upload AAB to Google Drive
+        env:
+          CID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          CSEC: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          RT: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          NAME: frameout-${{ github.event.inputs.tag }}-${{ github.run_number }}.aab
+        run: |
+          set -euo pipefail
+          AAB=$(ls dist/*.aab | head -n 1)
+          test -n "$AAB"
+          TOKEN=$(curl -sS --fail -X POST https://oauth2.googleapis.com/token \
+            -d client_id="$CID" -d client_secret="$CSEC" \
+            -d refresh_token="$RT" -d grant_type=refresh_token \
+            | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          LOC=$(curl -sS --fail -D - -o /dev/null -X POST \
+            "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json; charset=UTF-8" \
+            -d "{\"name\":\"$NAME\"}" \
+            | grep -i '^location:' | cut -d' ' -f2- | tr -d '\r')
+          test -n "$LOC"
+          echo "::add-mask::$LOC"
+          curl -sS --fail -X PUT "$LOC" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary @"$AAB" -o /dev/null
+          echo "Uploaded $NAME"

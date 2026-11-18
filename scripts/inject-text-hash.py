@@ -41,7 +41,8 @@ def find_text_segment(data, is64, eh):
         else:
             p_type, p_offset, _va, _pa, p_filesz, _memsz, p_flags, _align = struct.unpack_from("<IIIIIIII", data, base)
         if p_type == PT_LOAD and (p_flags & PF_X):
-            matches.append((p_offset, p_filesz))
+            skip = eh["e_ehsize"] if p_offset == 0 else 0
+            matches.append((p_offset + skip, p_filesz - skip))
     if len(matches) != 1:
         raise SystemExit("expected exactly one executable PT_LOAD segment, found %d" % len(matches))
     return matches[0]

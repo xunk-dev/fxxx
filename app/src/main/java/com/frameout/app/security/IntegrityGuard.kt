@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Debug
 import com.frameout.app.BuildConfig
+import com.frameout.core.util.DiagLog
 import java.io.File
 import java.security.MessageDigest
 
@@ -38,13 +39,28 @@ object IntegrityGuard {
     fun inspect(context: Context): Verdict {
         if (BuildConfig.DEBUG) return Verdict.Clean
         val native = nativeVerdict(context)
-        if (debuggableFlag(context) || signerMismatch(context) || native == NativeGuard.MISMATCH) return Verdict.Tampered
+        val debuggable = debuggableFlag(context)
+        val signer = signerMismatch(context)
+        if (debuggable || signer || native == NativeGuard.MISMATCH) {
+            DiagLog.append("integrity", "tamper debuggable=$debuggable signer=$signer native=$native ${signerReport(context)}")
+            return Verdict.Tampered
+        }
         if (activeInstrumentation() || xposedPresent() || native == NativeGuard.UNAVAILABLE) return Verdict.Hooked
         return Verdict.Clean
     }
 
     private fun nativeVerdict(context: Context): Int =
         if (BuildConfig.CERT_SHA256.isEmpty()) NativeGuard.UNCHECKED else NativeGuard.verdict(context.applicationInfo.sourceDir)
+
+    private fun signerReport(context: Context): String {
+        val fromFile = ApkSigningBlock.signerDigests(File(context.applicationInfo.sourceDir))
+        val fromManager = runCatching { managerDigests(context) }.getOrNull().orEmpty()
+        val installer = runCatching {
+            if (Build.VERSION.SDK_INT >= 30) context.packageManager.getInstallSourceInfo(context.packageName).installingPackageName
+            else @Suppress("DEPRECATION") context.packageManager.getInstallerPackageName(context.packageName)
+        }.getOrNull()
+        return "expected=${BuildConfig.CERT_SHA256.take(12)} file=${fromFile.map { it.take(12) }} manager=${fromManager.map { it.take(12) }} installer=$installer"
+    }
 
     private fun debuggableFlag(context: Context): Boolean =
         context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0

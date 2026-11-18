@@ -1,5 +1,6 @@
 #include "guard_core.h"
 #include "guard_impl.h"
+#include <link.h>
 
 namespace guard {
 
@@ -79,49 +80,40 @@ __attribute__((section(".frameout_text_ref"), used, aligned(16)))
 unsigned char g_frameoutTextRef[40] = {0};
 }
 
-bool locateOwnTextSegment(std::uintptr_t selfAddr, std::uintptr_t& outStart, std::uintptr_t& outEnd) {
-    const long fd = rawOpen("/proc/self/maps");
-    if (fd < 0) return false;
-    std::string buf;
-    char chunk[4096];
-    for (;;) {
-        long n;
-#if defined(__aarch64__) || defined(__x86_64__)
-        n = syscall(SYS_read, fd, chunk, sizeof(chunk));
-#else
-        n = read(static_cast<int>(fd), chunk, sizeof(chunk));
-#endif
-        if (n < 0) {
-            syscall(SYS_close, fd);
-            return false;
-        }
-        if (n == 0) break;
-        buf.append(chunk, static_cast<std::size_t>(n));
-        if (buf.size() > 8u * 1024 * 1024) {
-            syscall(SYS_close, fd);
-            return false;
-        }
-    }
-    syscall(SYS_close, fd);
+namespace {
 
-    bool found = false;
-    std::size_t pos = 0;
-    while (pos < buf.size()) {
-        const std::size_t eol = buf.find('\n', pos);
-        const std::size_t lineLen = (eol == std::string::npos ? buf.size() : eol) - pos;
-        std::uintptr_t s = 0, e = 0;
-        bool execMapping = false;
-        if (parseMapsLine(buf.data() + pos, lineLen, s, e, execMapping) && execMapping) {
-            if (selfAddr >= s && selfAddr < e) {
-                if (found) return false;
-                outStart = s;
-                outEnd = e;
-                found = true;
-            }
-        }
-        pos = (eol == std::string::npos ? buf.size() : eol + 1);
+struct SegmentQuery {
+    std::uintptr_t selfAddr;
+    std::uintptr_t start;
+    std::uintptr_t end;
+    int matches;
+};
+
+int collectSegment(dl_phdr_info* info, std::size_t, void* data) {
+    auto* q = static_cast<SegmentQuery*>(data);
+    for (int i = 0; i < info->dlpi_phnum; ++i) {
+        const ElfW(Phdr)& ph = info->dlpi_phdr[i];
+        if (ph.p_type != PT_LOAD || !(ph.p_flags & PF_X)) continue;
+        const std::uintptr_t lo = info->dlpi_addr + ph.p_vaddr;
+        if (q->selfAddr < lo || q->selfAddr >= lo + ph.p_memsz) continue;
+        const std::uintptr_t skip = ph.p_offset == 0 ? sizeof(ElfW(Ehdr)) : 0;
+        if (ph.p_filesz <= skip) continue;
+        q->start = lo + skip;
+        q->end = lo + ph.p_filesz;
+        ++q->matches;
     }
-    return found;
+    return 0;
+}
+
+}
+
+bool locateOwnTextSegment(std::uintptr_t selfAddr, std::uintptr_t& outStart, std::uintptr_t& outEnd) {
+    SegmentQuery q{selfAddr, 0, 0, 0};
+    dl_iterate_phdr(collectSegment, &q);
+    if (q.matches != 1) return false;
+    outStart = q.start;
+    outEnd = q.end;
+    return true;
 }
 
 TextIntegrity verifyTextIntegrity() {
