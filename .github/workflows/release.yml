@@ -62,7 +62,9 @@ jobs:
       - name: Lint
         run: gradle :app:lintRelease --no-daemon
       - name: Generate Room schema
-        run: gradle :core:kspDebugKotlin --no-daemon
+        run: |
+          gradle :core:kspDebugKotlin --rerun --no-build-cache --no-daemon
+          ls -R core/schemas
       - name: Unit tests
         run: gradle :engine:test :core:test :codecpack:test --no-daemon
       - name: Require signing configuration
