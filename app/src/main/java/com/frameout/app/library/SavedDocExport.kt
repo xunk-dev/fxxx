@@ -4,7 +4,7 @@ import com.frameout.core.storage.insertTracked
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
 import com.frameout.app.trim.SavedCapture
 import com.frameout.core.db.SavedImageEntity

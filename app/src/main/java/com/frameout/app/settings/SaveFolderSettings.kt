@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalConfiguration
 import com.frameout.designsystem.a11y.frameClickable
 import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.theme.FrameShapes
@@ -32,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.frameout.core.prefs.AppPrefs
 import com.frameout.core.util.FrameStrings
+import com.frameout.app.ui.windowHeightDp
 
 private const val DEFAULT_PATH = com.frameout.core.storage.AppFolders.PICTURES
 
@@ -93,7 +93,7 @@ internal fun SaveFolderSheet(
     onClose: () -> Unit
 ) {
     val context = LocalContext.current
-    val maxHeight = (LocalConfiguration.current.screenHeightDp * 0.78f).dp
+    val maxHeight = windowHeightDp() * 0.78f
     BottomSheetFrame(visible, onClose, FrameStrings.saveFolder()) {
         Column(Modifier.heightIn(max = maxHeight).verticalScroll(rememberScrollState())) {
             FolderSection(context, FrameStrings.saveFolder(), FrameStrings.saveFolderHint(), DEFAULT_PATH, imagesUri, { changeFolder(context, prefs) { prefs.clearSaveFolderUri() } }, onPickImages, onClose)

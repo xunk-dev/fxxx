@@ -125,7 +125,7 @@ def main():
                   f'    <background android:drawable="{bg_ref(a, m)}" />\n'
                   f'    <foreground android:drawable="@drawable/{fg_name(a, m)}" />\n'
                   '    <monochrome android:drawable="@drawable/ic_launcher_monochrome" />\n</adaptive-icon>\n')
-            write(f'mipmap-anydpi-v24/ic_launcher_{key}.xml',
+            write(f'mipmap-anydpi/ic_launcher_{key}.xml',
                   '<?xml version="1.0" encoding="utf-8"?>\n<layer-list xmlns:android="http://schemas.android.com/apk/res/android">\n'
                   '    <item>\n        <inset android:insetLeft="7%" android:insetTop="7%" android:insetRight="7%" android:insetBottom="7%">\n'
                   '            <shape android:shape="rectangle">\n'
@@ -139,7 +139,7 @@ def main():
           '    <background android:drawable="@drawable/ic_launcher_tile_indigo" />\n'
           '    <foreground android:drawable="@drawable/ic_launcher_fg_indigo_dark" />\n'
           '    <monochrome android:drawable="@drawable/ic_launcher_monochrome" />\n</adaptive-icon>\n')
-    write('mipmap-anydpi-v24/ic_launcher.xml', open(os.path.join(RES, 'mipmap-anydpi-v24/ic_launcher_indigo_dark.xml')).read())
+    write('mipmap-anydpi/ic_launcher.xml', open(os.path.join(RES, 'mipmap-anydpi/ic_launcher_indigo_dark.xml')).read())
     # ---- manifest aliases
     out = []
     for key in aliases:

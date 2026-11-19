@@ -15,6 +15,10 @@ import com.google.firebase.messaging.RemoteMessage
 import java.net.URL
 
 class PushService : FirebaseMessagingService() {
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+    }
+
     override fun onMessageReceived(message: RemoteMessage) {
         val title = message.notification?.title ?: message.data["title"] ?: return
         val body = message.notification?.body ?: message.data["body"].orEmpty()

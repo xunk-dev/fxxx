@@ -85,7 +85,7 @@ android {
         applicationId = "com.frameout.app"
         minSdk = 24
         targetSdk = 37
-        versionCode = 50
+        versionCode = 48
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("boolean", "PLAY_BILLING", storeBuild.toString())
@@ -236,6 +236,8 @@ dependencies {
     implementation(libs.androidx.work.runtime)
 
     implementation(libs.androidx.core.ktx)
+
+    implementation(libs.androidx.exifinterface)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.media3.ui)

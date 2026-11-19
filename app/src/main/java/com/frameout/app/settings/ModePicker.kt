@@ -35,7 +35,6 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -55,6 +54,7 @@ import com.frameout.designsystem.theme.fieldFill
 import com.frameout.designsystem.theme.frameHairline
 import com.frameout.engine.extract.ExtractMode
 import com.frameout.engine.extract.ExtractModeCodec
+import com.frameout.app.ui.windowHeightDp
 
 private const val CELLS = 12
 
@@ -75,7 +75,7 @@ internal fun ExtractModePicker(selected: String, onSelect: (String) -> Unit, mod
 @Composable
 internal fun ModeSheet(visible: Boolean, prefs: AppPrefs, stored: String, onClose: () -> Unit) {
     val mode = ExtractModeCodec.decode(stored)
-    val maxHeight = (LocalConfiguration.current.screenHeightDp - 340).coerceAtLeast(220).dp
+    val maxHeight = (windowHeightDp().value - 340f).coerceAtLeast(220f).dp
     BottomSheetFrame(visible, onClose, FrameStrings.defaultMode()) {
         Column(Modifier.heightIn(max = maxHeight).verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 4.dp)) {
             ExtractModePicker(kindOf(mode), { kind -> gateMode(kind) { prefs.setExtractMode(ExtractModeCodec.encode(modeFor(kind, mode))) } }, explainer = false)

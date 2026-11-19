@@ -32,7 +32,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
@@ -52,13 +51,14 @@ import com.frameout.designsystem.theme.FrameGradients
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameHairline
+import com.frameout.app.ui.windowHeightDp
 
 internal fun contentSummary(spec: ContentSpec, lang: String): String =
     if (spec.tags.isEmpty()) ContentStrings.noneSelected() else ContentCatalog.summary(spec.tags, lang)
 
 @Composable
 internal fun ContentSheet(visible: Boolean, spec: ContentSpec, onChange: (ContentSpec) -> Unit, onClose: () -> Unit) {
-    val maxHeight = (LocalConfiguration.current.screenHeightDp * 0.72f).dp
+    val maxHeight = windowHeightDp() * 0.72f
     BottomSheetFrame(visible, onClose, ContentStrings.title()) {
         Column(Modifier.heightIn(max = maxHeight).verticalScroll(rememberScrollState())) {
             ContentSheetBody(spec, onChange, Modifier.padding(horizontal = 16.dp, vertical = 4.dp))

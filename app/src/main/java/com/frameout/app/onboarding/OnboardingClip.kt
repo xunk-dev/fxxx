@@ -40,6 +40,7 @@ import com.frameout.app.R
 import com.frameout.designsystem.a11y.LocalSystemA11y
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import android.widget.FrameLayout
 
 internal object OnboardingClips {
     const val REEL = "onboarding/reel.mp4"
@@ -130,7 +131,7 @@ internal fun ClipSurface(exo: ExoPlayer, modifier: Modifier = Modifier, corner: 
     val radius = with(LocalDensity.current) { corner.toPx() }
     AndroidView(
         factory = { ctx ->
-            (LayoutInflater.from(ctx).inflate(R.layout.player_texture, null) as PlayerView).apply {
+            (LayoutInflater.from(ctx).inflate(R.layout.player_texture, FrameLayout(ctx), false) as PlayerView).apply {
                 resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
                 player = exo
                 clipRounded(radius)

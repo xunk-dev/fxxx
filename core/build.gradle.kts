@@ -24,6 +24,7 @@ androidComponents {
 dependencies {
     implementation(project(":codecpack"))
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.exifinterface)
     api(libs.androidx.room.runtime)
     api(libs.androidx.room.paging)
     implementation(libs.androidx.paging.runtime)

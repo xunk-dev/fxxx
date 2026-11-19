@@ -33,7 +33,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.frameout.core.util.FrameStrings
 import com.frameout.designsystem.components.FrameText
@@ -42,6 +41,7 @@ import com.frameout.designsystem.icons.FrameIcons
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameHairline
+import com.frameout.app.ui.windowHeightDp
 
 private val SheetTop = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
 
@@ -50,7 +50,7 @@ internal fun BoxScope.TrimSheetHost(visible: Boolean, title: String, onClose: ()
     if (!visible) return
     com.frameout.designsystem.dock.DockCover(true)
     BackHandler(onBack = onClose)
-    val maxHeight = (LocalConfiguration.current.screenHeightDp * 0.82f).dp
+    val maxHeight = windowHeightDp() * 0.82f
     Box(
         Modifier.matchParentSize().background(Color.Black.copy(alpha = 0.55f)).pointerInput(Unit) { detectTapGestures { onClose() } },
         Alignment.BottomCenter

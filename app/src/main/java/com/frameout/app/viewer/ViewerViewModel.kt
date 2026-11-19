@@ -244,7 +244,6 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         _state.value.bitmap?.takeUnless { it.isRecycled }?.recycle()
         retired?.takeUnless { it.isRecycled }?.recycle()
         retired = null
-        super.onCleared()
     }
 
     private suspend fun loadSeamless(frame: FrameEntity) {

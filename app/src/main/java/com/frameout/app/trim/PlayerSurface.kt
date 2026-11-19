@@ -56,6 +56,7 @@ import com.frameout.engine.player.PlayerController
 import com.frameout.engine.player.PlayerUiState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import androidx.compose.ui.platform.LocalResources
 
 @Composable
 internal fun PlayerSurface(
@@ -85,7 +86,7 @@ internal fun PlayerSurface(
     val activity = LocalActivity.current
     val hdrContext = LocalContext.current
     val displayHdr = remember(hdrContext) { com.frameout.engine.player.HdrDisplay.supported(hdrContext) }
-    val coverage = hdrContext.resources.displayMetrics.let {
+    val coverage = LocalResources.current.displayMetrics.let {
         com.frameout.engine.player.HdrDisplayPolicy.coverage(box.width.toLong() * box.height, it.widthPixels.toLong() * it.heightPixels)
     }
     val nativeHdr = hdrSource && com.frameout.engine.player.HdrDisplayPolicy.useNativeSurface(Build.VERSION.SDK_INT, displayHdr, coverage)

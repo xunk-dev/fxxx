@@ -1,6 +1,6 @@
 package com.frameout.core.storage
 
-import android.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface
 
 internal fun applyExifTags(exif: ExifInterface, stamp: ExifStamp) {
     exif.setAttribute(ExifInterface.TAG_DATETIME_ORIGINAL, ExifText.dateTime(stamp.takenAt))

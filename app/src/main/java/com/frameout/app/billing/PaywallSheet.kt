@@ -50,7 +50,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -66,6 +65,7 @@ import com.frameout.designsystem.theme.FrameAccent
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameHairline
 import kotlinx.coroutines.launch
+import com.frameout.app.ui.windowHeightDp
 
 private val SheetShape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)
 private const val REVEAL_MS = 1500f
@@ -118,7 +118,7 @@ fun PaywallSheet(
     val selected = offers.firstOrNull { it.plan == chosen } ?: offers.firstOrNull()
     var picked by remember(initialAccent) { mutableStateOf(initialAccent) }
     val motion = rememberSheetMotion(onDismiss)
-    val shortScreen = LocalConfiguration.current.screenHeightDp < 480
+    val shortScreen = windowHeightDp() < 480.dp
     val footer: @Composable () -> Unit = {
         Column(Modifier.padding(start = 12.dp, end = 12.dp, top = 0.dp, bottom = 2.dp)) {
             CompactPlanBar(offers, selected?.plan, { chosen = it })

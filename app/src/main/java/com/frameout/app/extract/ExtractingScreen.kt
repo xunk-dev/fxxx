@@ -17,7 +17,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import android.provider.Settings
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.frameout.app.PreferredFrameTheme
 import com.frameout.app.frames.FramesScreen
@@ -113,8 +112,7 @@ fun ExtractingScreen(
                         notifReminder = false
                         prefs.exhaustNotificationReminders()
                         context.startActivity(
-                            Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                                .putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+                            com.frameout.app.NotificationSettings.intent(context)
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         )
                     },

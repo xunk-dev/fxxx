@@ -4,7 +4,6 @@ import android.content.Context
 import android.media.MediaExtractor
 import android.media.MediaFormat
 import android.net.Uri
-import android.os.Build
 import android.os.ParcelFileDescriptor
 import android.util.LruCache
 import com.frameout.app.FrameOutApp
@@ -73,7 +72,7 @@ private fun probeExtractor(context: Context, uri: Uri): Partial? {
             if (!mime.startsWith("video/")) continue
             val w = intOrNull(f, MediaFormat.KEY_WIDTH) ?: 0
             val h = intOrNull(f, MediaFormat.KEY_HEIGHT) ?: 0
-            val transfer = if (Build.VERSION.SDK_INT >= 24) intOrNull(f, MediaFormat.KEY_COLOR_TRANSFER) else null
+            val transfer = intOrNull(f, MediaFormat.KEY_COLOR_TRANSFER)
             val dolby = mime == "video/dolby-vision"
             val hdr = dolby || transfer == MediaFormat.COLOR_TRANSFER_ST2084 || transfer == MediaFormat.COLOR_TRANSFER_HLG
             return Partial(if (w > 0 && h > 0) minOf(w, h) else 0, hdr, dolby, codecLabel(mime), floatOrNull(f, MediaFormat.KEY_FRAME_RATE))

@@ -82,6 +82,7 @@ import com.frameout.designsystem.haptics.rememberFrameHaptics
 import com.frameout.designsystem.icons.FrameIcons
 import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameTheme
+import androidx.compose.ui.platform.LocalResources
 
 internal val Orange = Color(0xFFF97316)
 internal val Sky = Color(0xFF0EA5E9)
@@ -113,7 +114,8 @@ internal fun HomeImage(
     filter: ColorFilter? = null
 ) {
     val context = LocalContext.current
-    val id = remember(name) { context.resources.getIdentifier(name, "drawable", context.packageName) }
+    val resources = LocalResources.current
+    val id = remember(name, resources) { resources.getIdentifier(name, "drawable", context.packageName) }
     Box(modifier.clipToBounds().background(Color(0xFF1E2625))) {
         if (id != 0) {
             Image(

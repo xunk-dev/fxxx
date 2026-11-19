@@ -3,7 +3,7 @@ package com.frameout.core.storage
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface
 import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Build

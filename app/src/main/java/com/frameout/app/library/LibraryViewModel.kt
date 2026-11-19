@@ -137,7 +137,6 @@ class LibraryViewModel(app: Application) : AndroidViewModel(app) {
             getApplication<FrameOutApp>().appScope.launch { removeProjects(rest) }
         }
         trash.commit()
-        super.onCleared()
     }
     fun shareSelectedSaved(onReady: (android.content.Intent) -> Unit) = viewModelScope.launch {
         val ids = _state.value.selectedSaved.toList()

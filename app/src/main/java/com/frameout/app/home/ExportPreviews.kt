@@ -33,6 +33,7 @@ import com.frameout.core.util.TrimStrings
 import com.frameout.designsystem.a11y.LocalSystemA11y
 import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameTheme
+import androidx.compose.ui.platform.LocalResources
 
 private const val PREVIEW_MS = 2800
 
@@ -103,13 +104,14 @@ internal fun rememberPreviewPhase(reduceMotion: Boolean): State<Float> {
 @Composable
 internal fun ExportPreview(style: ExportStyle, phase: State<Float>, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    val id = remember(style) { context.resources.getIdentifier(style.asset, "drawable", context.packageName) }
+    val resources = LocalResources.current
+    val id = remember(style, resources) { resources.getIdentifier(style.asset, "drawable", context.packageName) }
     val colors = FrameTheme.colors
     val accent = colors.primary
     val ink = colors.onSurface
     val play = !LocalSystemA11y.current.reduceMotion
     var failed by remember(style) { mutableStateOf(false) }
-    val glassId = remember(style) { context.resources.getIdentifier("glass_${style.asset}", "drawable", context.packageName) }
+    val glassId = remember(style, resources) { resources.getIdentifier("glass_${style.asset}", "drawable", context.packageName) }
     val vector = remember(id, glassId) { glassId != 0 || (id != 0 && isXmlDrawable(context, id)) }
     val stage = if (vector) glassStageOrNull() else null
     Box(modifier.background(stage ?: Brush.linearGradient(listOf(accent.copy(alpha = 0.30f), colors.containerHigh, accent.copy(alpha = 0.10f))))) {

@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
@@ -46,6 +45,7 @@ import com.frameout.designsystem.icons.FrameIcons
 import com.frameout.designsystem.theme.FrameGradients
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.app.ui.windowHeightDp
 
 internal enum class SettingsSheet { Language, Format, Mode, Folder, Content }
 
@@ -100,7 +100,7 @@ private fun specFor(sheet: SettingsSheet, prefs: AppPrefs, context: Context, v: 
 internal fun ChoiceSheet(visible: Boolean, spec: SheetSpec, onClose: () -> Unit) {
     var query by remember { mutableStateOf("") }
     LaunchedEffect(visible) { if (!visible) query = "" }
-    val maxHeight = (LocalConfiguration.current.screenHeightDp * 0.62f).dp
+    val maxHeight = windowHeightDp() * 0.62f
     val searchable = spec.searchHint != null && spec.options.size > SEARCH_THRESHOLD
     val shown = if (query.isBlank()) spec.options else spec.options.filter {
         it.label.contains(query.trim(), ignoreCase = true) || it.key.contains(query.trim(), ignoreCase = true)

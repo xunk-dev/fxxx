@@ -140,9 +140,10 @@ object IncomingMedia {
 
     private fun readsWithoutGrant(context: Context, uri: Uri): Boolean {
         fun held(name: String) = context.checkSelfPermission(name) == PackageManager.PERMISSION_GRANTED
+        val media = Build.VERSION.SDK_INT >= 33
         return canReadWithoutCopy(
             uri.authority, Build.VERSION.SDK_INT,
-            held(Manifest.permission.READ_MEDIA_VIDEO), held(Manifest.permission.READ_MEDIA_IMAGES),
+            media && held(Manifest.permission.READ_MEDIA_VIDEO), media && held(Manifest.permission.READ_MEDIA_IMAGES),
             held(Manifest.permission.READ_EXTERNAL_STORAGE)
         )
     }

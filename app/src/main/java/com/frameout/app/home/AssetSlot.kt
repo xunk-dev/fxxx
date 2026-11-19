@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.frameout.designsystem.theme.FrameTheme
+import androidx.compose.ui.platform.LocalResources
 
 @Composable
 internal fun AssetSlot(
@@ -28,12 +29,13 @@ internal fun AssetSlot(
     contentScale: ContentScale = ContentScale.Crop
 ) {
     val context = LocalContext.current
-    val glass = remember(name) { context.resources.getIdentifier("glass_$name", "drawable", context.packageName) }
+    val resources = LocalResources.current
+    val glass = remember(name, resources) { resources.getIdentifier("glass_$name", "drawable", context.packageName) }
     if (glass != 0) {
         GlassArtwork(glass, FrameTheme.colors.onDarkAccent, FrameTheme.accent.c, modifier, contentScale)
         return
     }
-    val id = remember(name) { context.resources.getIdentifier(name, "drawable", context.packageName) }
+    val id = remember(name, resources) { resources.getIdentifier(name, "drawable", context.packageName) }
     if (id != 0) {
         val xml = remember(id) { isXmlDrawable(context, id) }
         if (xml) {

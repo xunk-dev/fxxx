@@ -21,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
@@ -41,6 +40,7 @@ import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameCardEdge
+import androidx.compose.ui.res.stringResource
 
 internal class ShareExport(
     val uris: List<Uri>,
@@ -131,8 +131,7 @@ private fun ShareChoiceSheet(done: IncomingMedia.Stabilized?, onClose: () -> Uni
     if (done != null) last = done
     val shown = last
     val images = shown != null && shown.stills.size >= 2
-    val context = LocalContext.current
-    val title = context.getString(if (images) R.string.share_photos_title else R.string.share_videos_title)
+    val title = stringResource(if (images) R.string.share_photos_title else R.string.share_videos_title)
     FramesSheet(done != null, title, onClose) {
         Column(Modifier.fillMaxWidth(), Arrangement.spacedBy(10.dp)) {
             (if (images) ShareChoice.Images else ShareChoice.Videos).forEach { ShareChoiceRow(it) { onPick(it) } }

@@ -1,7 +1,7 @@
 package com.frameout.core.storage
 
 import android.graphics.Bitmap
-import android.media.ExifInterface
+import androidx.exifinterface.media.ExifInterface
 import java.io.File
 import java.io.FileOutputStream
 

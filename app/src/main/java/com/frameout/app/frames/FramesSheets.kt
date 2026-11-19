@@ -32,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.frameout.app.settings.NavRow
 import com.frameout.app.settings.SettingsCard
@@ -51,13 +50,14 @@ import com.frameout.designsystem.motion.frameExit
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameHairline
+import com.frameout.app.ui.windowHeightDp
 
 private val SheetTopShape = androidx.compose.foundation.shape.RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
 
 @Composable
 internal fun FramesSheet(visible: Boolean, title: String, onClose: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
     val colors = FrameTheme.colors
-    val maxHeight = (LocalConfiguration.current.screenHeightDp * 0.82f).dp
+    val maxHeight = windowHeightDp() * 0.82f
     BackHandler(enabled = visible, onBack = onClose)
     com.frameout.designsystem.dock.DockCover(visible)
     AnimatedVisibility(visible, enter = fadeIn(), exit = fadeOut()) {

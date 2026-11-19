@@ -165,15 +165,12 @@ class MainActivity : ComponentActivity() {
 
     private fun openNotificationSettings() {
         runCatching {
-            startActivity(
-                Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                    .putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, packageName)
-            )
+            startActivity(NotificationSettings.intent(this))
         }
     }
 
     private fun requestNotifications(app: FrameOutApp) {
         app.container.prefs.setNotificationAsked()
-        notifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        if (Build.VERSION.SDK_INT >= 33) notifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 }
