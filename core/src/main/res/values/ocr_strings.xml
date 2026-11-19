@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Arabic text</string>
+    <string name="ocr_ara_downloading">Downloading the Arabic text model… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Waiting for Wi-Fi to download the Arabic text model</string>
+    <string name="ocr_ara_confirm">Google Play needs your approval to download the Arabic text model</string>
+    <string name="ocr_ara_failed">Couldn’t download the Arabic text model</string>
+    <string name="ocr_ara_unavailable">Google Play is needed to download the Arabic text model. Arabic text can’t be read without it.</string>
+    <string name="ocr_text_title">Latin text</string>
+    <string name="ocr_text_pending">The text model isn’t ready yet. Check your connection and try again.</string>
+    <string name="ocr_text_no_play">Google Play services are missing or turned off, so Latin text and codes can’t be read.</string>
+    <string name="ocr_text_outdated">Update Google Play services to read Latin text and codes.</string>
+</resources>

@@ -34,6 +34,12 @@ object ArabicOcr {
         appContext = context.applicationContext
     }
 
+    fun ready(): Boolean {
+        if (broken) return false
+        val pack = packRoot ?: return appContext != null
+        return pack() != null
+    }
+
     suspend fun read(source: Bitmap): List<ScannedWord> {
         if (broken || source.isRecycled) return emptyList()
         return lock.withLock {

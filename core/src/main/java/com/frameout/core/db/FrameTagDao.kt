@@ -55,6 +55,8 @@ abstract class FrameTagDao {
     abstract suspend fun clearScans(projectId: Long)
     @Query("DELETE FROM frame_scans")
     abstract suspend fun clearAllScans()
+    @Query("DELETE FROM frame_scans WHERE projectId = :projectId AND frameId NOT IN (SELECT frameId FROM frame_tags WHERE projectId = :projectId AND tag = :tag)")
+    abstract suspend fun clearScansWithoutTag(projectId: Long, tag: String)
     @Query("SELECT id FROM frames WHERE projectId = :projectId AND isDeleted = 0 AND id IN (SELECT frameId FROM frame_scans) ORDER BY `index` ASC")
     abstract suspend fun scannedFrameIds(projectId: Long): List<Long>
     @Query("DELETE FROM frame_tags WHERE id IN (:ids)")

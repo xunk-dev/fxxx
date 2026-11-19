@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">अरबी पाठ</string>
+    <string name="ocr_ara_downloading">अरबी पाठ मॉडल डाउनलोड हो रहा है… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">अरबी पाठ मॉडल डाउनलोड करने के लिए Wi-Fi का इंतज़ार है</string>
+    <string name="ocr_ara_confirm">अरबी पाठ मॉडल डाउनलोड करने के लिए Google Play को आपकी मंज़ूरी चाहिए</string>
+    <string name="ocr_ara_failed">अरबी पाठ मॉडल डाउनलोड नहीं हो सका</string>
+    <string name="ocr_ara_unavailable">अरबी पाठ मॉडल डाउनलोड करने के लिए Google Play ज़रूरी है। इसके बिना अरबी पाठ नहीं पढ़ा जा सकता।</string>
+    <string name="ocr_text_title">लैटिन पाठ</string>
+    <string name="ocr_text_pending">पाठ मॉडल अभी तैयार नहीं है। कनेक्शन जाँचें और फिर कोशिश करें।</string>
+    <string name="ocr_text_no_play">Google Play सेवाएँ मौजूद नहीं हैं या बंद हैं, इसलिए लैटिन पाठ और कोड नहीं पढ़े जा सकते।</string>
+    <string name="ocr_text_outdated">लैटिन पाठ और कोड पढ़ने के लिए Google Play सेवाएँ अपडेट करें।</string>
+</resources>

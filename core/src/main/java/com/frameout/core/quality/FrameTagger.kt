@@ -134,8 +134,10 @@ object FrameTagger {
             throw e
         } catch (e: Exception) {
             failure = e
+            TextModelHealth.noteFailure(e)
             null
         }
+        if (latin != null) TextModelHealth.noteSuccess()
         val arabic = ArabicOcr.read(argb)
         val hits = TagRules.textTags(
             latin?.text.orEmpty() + " " + arabic.joinToString(" ") { it.text },

@@ -7,16 +7,20 @@ URLS=(
   "https://cdn.jsdelivr.net/gh/tesseract-ocr/tessdata_fast@main/ara.traineddata"
 )
 mkdir -p "$(dirname "$DEST")"
-if [ -s "$DEST" ]; then
-  echo "OK: $DEST already present ($(stat -c%s "$DEST") bytes)"
-  exit 0
-fi
 valid() {
   [ -s "$DEST" ] || return 1
   local size
   size=$(stat -c%s "$DEST")
   [ "$size" -ge 500000 ] && [ "$size" -le 4000000 ]
 }
+if valid; then
+  echo "OK: $DEST already present ($(stat -c%s "$DEST") bytes)"
+  exit 0
+fi
+if [ -e "$DEST" ]; then
+  echo "WARN: $DEST has an invalid size ($(stat -c%s "$DEST") bytes, expected 500000-4000000); fetching again"
+  rm -f "$DEST"
+fi
 for round in 1 2 3; do
   for url in "${URLS[@]}"; do
     echo "Attempt $round: $url"

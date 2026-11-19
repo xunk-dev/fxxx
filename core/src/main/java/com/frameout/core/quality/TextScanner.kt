@@ -25,7 +25,7 @@ object TextScanner {
     const val DETECTORS = 2
     private val gate = Semaphore(1)
 
-    private val recognizer by lazy { TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS) }
+    internal val recognizer by lazy { TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS) }
     private val barcodes by lazy {
         BarcodeScanning.getClient(BarcodeScannerOptions.Builder().setBarcodeFormats(Barcode.FORMAT_ALL_FORMATS).build())
     }
@@ -51,7 +51,11 @@ object TextScanner {
             val image = InputImage.fromBitmap(work, 0)
             val out = ArrayList<ScannedWord>()
             val failed = ArrayList<String>()
-            if (!attempt("text") { readText(image, work, work.width, work.height, out) }) failed += "text"
+            if (attempt("text") { readText(image, work, work.width, work.height, out) }) {
+                TextModelHealth.noteSuccess()
+            } else {
+                failed += "text"
+            }
             if (!attempt("barcodes") { readCodes(image, work.width, work.height, out) }) failed += "barcodes"
             TextScanResult(out, failed)
         } finally {
@@ -106,6 +110,7 @@ object TextScanner {
         throw e
     } catch (e: Exception) {
         DetectorHealth.failed(name, e)
+        if (name == "text") TextModelHealth.noteFailure(e)
         false
     }
 

@@ -51,6 +51,10 @@ abstract class SessionPrefs(protected val prefs: SharedPreferences) {
     fun setTaggerVersion(version: Int) {
         prefs.edit().putInt(KEY_TAGGER_VERSION, version).apply()
     }
+    fun arabicRescanRaw(): String = prefs.getString(KEY_ARA_RESCAN, "") ?: ""
+    fun setArabicRescanRaw(value: String) {
+        prefs.edit().putString(KEY_ARA_RESCAN, value).apply()
+    }
     fun onboardingDone(): Boolean = prefs.getBoolean(KEY_ONBOARDING, false)
     fun setOnboardingDone() {
         prefs.edit().putBoolean(KEY_ONBOARDING, true).apply()
@@ -101,5 +105,6 @@ abstract class SessionPrefs(protected val prefs: SharedPreferences) {
         const val KEY_LAST_SESSION = "last_library_session"
         const val KEY_SUGGESTION_HANDLED = "suggestion_handled_id"
         const val KEY_TAGGER_VERSION = "tagger_version"
+        const val KEY_ARA_RESCAN = "arabic_rescan_pending"
     }
 }

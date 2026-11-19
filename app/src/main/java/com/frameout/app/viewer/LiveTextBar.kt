@@ -45,7 +45,7 @@ internal fun LiveTextBar(
         ) {
             when {
                 state.scanning -> ChromePill { FrameText(QualityStrings.liveTextReading(), style = FrameTheme.typography.label, color = colors.onSurfaceVariant) }
-                state.failed -> ChromePill { FrameText(QualityStrings.liveTextFailed(), style = FrameTheme.typography.label, color = colors.error) }
+                state.failed -> ChromePill { FrameText(com.frameout.core.util.OcrStrings.textMessage(com.frameout.core.quality.TextModelHealth.state.value) ?: QualityStrings.liveTextFailed(), style = FrameTheme.typography.label, color = colors.error) }
                 state.words.isEmpty() -> ChromePill { FrameText(QualityStrings.liveTextNone(), style = FrameTheme.typography.label, color = colors.onSurfaceVariant) }
                 state.hasSelection -> {
                     ChromePill(Modifier.frameClickable(onClick = onCopy)) {

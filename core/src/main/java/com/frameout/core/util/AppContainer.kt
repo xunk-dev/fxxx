@@ -17,6 +17,7 @@ class AppContainer(context: Context, proEnforced: Boolean = false) {
     val editHistory = EditHistoryRepository(database)
     val videoIndex = database.videoIndexDao()
     val frameTags = database.frameTagDao()
+    val arabicRescan = com.frameout.core.quality.ArabicRescan(com.frameout.core.quality.PrefsPendingStore(prefs))
     val sharpest = database.sharpestDao()
     val device = DeviceCapability(context).also { DeviceLimits.install(it) }
     val bitmaps = ThumbCache.pool

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">النص العربي</string>
+    <string name="ocr_ara_downloading">جارٍ تنزيل نموذج النص العربي… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">بانتظار Wi-Fi لتنزيل نموذج النص العربي</string>
+    <string name="ocr_ara_confirm">يحتاج Google Play إلى موافقتك لتنزيل نموذج النص العربي</string>
+    <string name="ocr_ara_failed">تعذّر تنزيل نموذج النص العربي</string>
+    <string name="ocr_ara_unavailable">يلزم Google Play لتنزيل نموذج النص العربي. لا يمكن قراءة النص العربي بدونه.</string>
+    <string name="ocr_text_title">النص اللاتيني</string>
+    <string name="ocr_text_pending">نموذج النص غير جاهز بعد. تحقق من الاتصال وحاول مرة أخرى.</string>
+    <string name="ocr_text_no_play">خدمات Google Play غير متوفرة أو معطّلة، لذا لا يمكن قراءة النص اللاتيني والرموز.</string>
+    <string name="ocr_text_outdated">حدّث خدمات Google Play لقراءة النص اللاتيني والرموز.</string>
+</resources>

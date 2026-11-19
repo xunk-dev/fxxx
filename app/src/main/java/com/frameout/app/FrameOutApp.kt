@@ -48,9 +48,17 @@ class FrameOutApp : Application(), Configuration.Provider {
         com.frameout.core.quality.ArabicOcr.init(this)
         if (BuildConfig.PLAY_BILLING) AraModelPack.start(this)
         container = AppContainer(this, BuildConfig.PLAY_BILLING)
+        if (BuildConfig.PLAY_BILLING) watchArabicPack()
+        appScope.launch { com.frameout.core.quality.TextModelHealth.check(this@FrameOutApp) }
         settleAccentTrial()
         container.entitlements.welcome.adoptExisting(container.prefs.onboardingDone(), container.prefs.accent.value)
         guardAccent()
+    }
+
+    private fun watchArabicPack() {
+        appScope.launch {
+            AraModelPack.state.collect { if (it == PackState.Ready) container.arabicRescan.releaseTo(container.frameTags, true) }
+        }
     }
 
     private fun initAppCheck() {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Teks Arab</string>
+    <string name="ocr_ara_downloading">Memuat turun model teks Arab… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Menunggu Wi-Fi untuk memuat turun model teks Arab</string>
+    <string name="ocr_ara_confirm">Google Play memerlukan kelulusan anda untuk memuat turun model teks Arab</string>
+    <string name="ocr_ara_failed">Model teks Arab tidak dapat dimuat turun</string>
+    <string name="ocr_ara_unavailable">Google Play diperlukan untuk memuat turun model teks Arab. Tanpanya, teks Arab tidak dapat dibaca.</string>
+    <string name="ocr_text_title">Teks Latin</string>
+    <string name="ocr_text_pending">Model teks belum sedia. Semak sambungan anda dan cuba lagi.</string>
+    <string name="ocr_text_no_play">Perkhidmatan Google Play tiada atau dimatikan, jadi teks Latin dan kod tidak dapat dibaca.</string>
+    <string name="ocr_text_outdated">Kemas kini perkhidmatan Google Play untuk membaca teks Latin dan kod.</string>
+</resources>

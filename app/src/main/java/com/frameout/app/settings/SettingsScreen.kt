@@ -98,6 +98,7 @@ private fun SettingsContent(context: Context, prefs: AppPrefs, onBack: () -> Uni
             AppearanceSettings(prefs, v.theme, v.lang) { sheet = SettingsSheet.Language }
             ExportSettings(prefs, folderText, exportFolderText, v, { sheet = SettingsSheet.Format }, { sheet = SettingsSheet.Folder })
             ExtractionSettings(prefs, v.extract) { sheet = SettingsSheet.Mode }
+            OcrSettings()
             MoreSettings(context, prefs, v.datePolicy, onAbout)
             Spacer(Modifier.height(120.dp))
         }

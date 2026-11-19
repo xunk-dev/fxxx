@@ -2,6 +2,7 @@ package com.frameout.app.frames
 
 import com.frameout.core.db.AlbumCover
 import com.frameout.core.db.TagCount
+import com.frameout.core.quality.ArabicOcr
 import com.frameout.core.quality.FocusRegion
 import com.frameout.core.quality.FrameTagScanner
 import com.frameout.core.quality.CoverLanes
@@ -167,6 +168,7 @@ internal class FramesTags(
         if (scanSeq != token) return
         lastUiMs = 0L
         state.update { it.copy(scanning = true, scanDone = 0, scanTotal = 0, scanFailed = 0) }
+        container.arabicRescan.beginScan(id, ArabicOcr.ready())
         try {
             val report = FrameTagScanner.scan(container.frameTags, id) { p -> onScanProgress(id, token, p) }
             if (scanSeq == token) reportMessage(report)?.let { text -> state.update { it.copy(message = text, messageIcon = FrameIconsExtra.Tag) } }
@@ -174,6 +176,7 @@ internal class FramesTags(
             withContext(NonCancellable) {
                 release(token)
                 refreshCounts()
+                container.arabicRescan.releaseTo(container.frameTags, ArabicOcr.ready())
             }
         }
     }

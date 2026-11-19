@@ -70,7 +70,7 @@ object ContentFilter {
 
     private suspend fun evaluateReaders(argb: Bitmap, image: InputImage, spec: ContentSpec, tags: List<ContentTag>, hits: MutableSet<String>): Boolean {
         tags.firstOrNull { it.detector == ContentDetector.Text }?.let { tag ->
-            val read = detect("content-text") { text.process(image).await().text + " " + ArabicOcr.plainText(argb) } ?: return true
+            val read = detect("content-text") { latinText(image) + " " + ArabicOcr.plainText(argb) } ?: return true
             if (ContentMatcher.textHit(read)) hits += tag.id
         }
         tags.firstOrNull { it.detector == ContentDetector.Code }?.let { tag ->
@@ -131,6 +131,16 @@ object ContentFilter {
         val copy = small.copy(Bitmap.Config.ARGB_8888, false)
         if (small !== source) small.recycle()
         return copy
+    }
+
+    private suspend fun latinText(image: InputImage): String = try {
+        text.process(image).await().text
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        if (!ArabicOcr.ready()) throw e
+        DetectorHealth.failed("content-text-latin", e)
+        ""
     }
 
     private suspend fun <T> detect(name: String, block: suspend () -> T): T? = try {
