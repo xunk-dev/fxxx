@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">ยังไม่ได้รับอนุญาต ลองอีกครั้งหรือเลือกไฟล์</string>
+    <string name="perm_toast_forever">ปฏิเสธการอนุญาตแล้ว เปิดการตั้งค่าแอปเพื่ออนุญาตการเข้าถึงสื่อ</string>
+    <string name="perm_toast_granted">อนุญาตแล้ว กำลังโหลดคลังของคุณ…</string>
+</resources>

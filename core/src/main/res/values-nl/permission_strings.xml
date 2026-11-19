@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Toestemming niet verleend. Probeer het opnieuw of kies een bestand.</string>
+    <string name="perm_toast_forever">Toestemming geweigerd. Open de app-instellingen om toegang tot media toe te staan.</string>
+    <string name="perm_toast_granted">Toegang verleend. Je bibliotheek wordt geladen…</string>
+</resources>

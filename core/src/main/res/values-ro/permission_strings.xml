@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Permisiune neacordată. Încearcă din nou sau alege un fișier.</string>
+    <string name="perm_toast_forever">Permisiune refuzată. Deschide setările aplicației pentru a permite accesul la media.</string>
+    <string name="perm_toast_granted">Acces permis. Se încarcă biblioteca ta…</string>
+</resources>

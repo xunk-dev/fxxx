@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">اجازت نہیں دی گئی۔ دوبارہ کوشش کریں یا کوئی فائل منتخب کریں۔</string>
+    <string name="perm_toast_forever">اجازت مسترد ہو گئی۔ میڈیا تک رسائی کی اجازت کے لیے ایپ کی سیٹنگز کھولیں۔</string>
+    <string name="perm_toast_granted">رسائی مل گئی۔ آپ کی لائبریری لوڈ ہو رہی ہے…</string>
+</resources>

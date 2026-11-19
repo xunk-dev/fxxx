@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="nudge_new_videos_title">
+        <item quantity="one">%1$d нове відео готове</item>
+        <item quantity="few">%1$d нові відео готові</item>
+        <item quantity="many">%1$d нових відео готові</item>
+        <item quantity="other">%1$d нового відео готове</item>
+    </plurals>
+</resources>
