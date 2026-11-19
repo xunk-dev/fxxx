@@ -40,7 +40,7 @@ class AraPackStateTest {
     fun failuresKeepTheirCodeUnlessPlayItselfIsMissing() {
         assertEquals(PackState.Failed(AssetPackErrorCode.NETWORK_ERROR), state(AssetPackStatus.FAILED, AssetPackErrorCode.NETWORK_ERROR))
         assertEquals(PackState.Failed(AssetPackErrorCode.INSUFFICIENT_STORAGE), state(AssetPackStatus.CANCELED, AssetPackErrorCode.INSUFFICIENT_STORAGE))
-        assertEquals(PackState.Unavailable, state(AssetPackStatus.FAILED, AssetPackErrorCode.PLAY_STORE_NOT_FOUND))
+        assertEquals(PackState.Unavailable, state(AssetPackStatus.FAILED, AssetPackErrorCode.UNRECOGNIZED_INSTALLATION))
         assertEquals(PackState.Unavailable, PackStates.failure(AssetPackErrorCode.API_NOT_AVAILABLE))
         assertEquals(PackState.Unavailable, PackStates.failure(AssetPackErrorCode.APP_NOT_OWNED))
     }

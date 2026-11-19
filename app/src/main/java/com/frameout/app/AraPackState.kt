@@ -18,7 +18,7 @@ enum class PackAction { None, Retry, Confirm }
 internal object PackStates {
     private val NO_PLAY = setOf(
         AssetPackErrorCode.API_NOT_AVAILABLE,
-        AssetPackErrorCode.PLAY_STORE_NOT_FOUND,
+        AssetPackErrorCode.UNRECOGNIZED_INSTALLATION,
         AssetPackErrorCode.APP_NOT_OWNED
     )
 
