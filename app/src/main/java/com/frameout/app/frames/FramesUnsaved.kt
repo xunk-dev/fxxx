@@ -28,16 +28,23 @@ internal class FramesUnsaved(
         scope.launch { UnsavedEdits.version.collect { refresh() } }
     }
 
-    private suspend fun frames(): List<FrameEntity> {
-        val ids = UnsavedEdits.snapshot()
+    private suspend fun frames(ids: List<Long> = UnsavedEdits.snapshot()): List<FrameEntity> {
         if (ids.isEmpty()) return emptyList()
         return container.frames.getByIdsChunked(ids).filter { !it.isDeleted && it.projectId == projectId() }
     }
 
     fun refresh() {
         scope.launch {
-            val count = frames().size
-            state.update { if (it.unsaved == count) it else it.copy(unsaved = count) }
+            val all = frames().size
+            val ask = frames(UnsavedEdits.pending()).size
+            state.update { if (it.unsaved == all && it.unsavedAsk == ask) it else it.copy(unsaved = all, unsavedAsk = ask) }
+        }
+    }
+
+    fun leaveThen(then: () -> Unit) {
+        scope.launch {
+            UnsavedEdits.acknowledge(frames(UnsavedEdits.pending()).map { it.id })
+            then()
         }
     }
 

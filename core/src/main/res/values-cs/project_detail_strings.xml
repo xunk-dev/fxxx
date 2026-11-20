@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Podrobnosti</string>
+    <string name="detail_date">Datum přidání</string>
+    <string name="detail_duration">Délka</string>
+    <string name="detail_quality">Kvalita</string>
+    <string name="detail_codec">Kodek</string>
+    <string name="detail_fps">Snímková frekvence</string>
+    <string name="detail_status">Stav</string>
+</resources>

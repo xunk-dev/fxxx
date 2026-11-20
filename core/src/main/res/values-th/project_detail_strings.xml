@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">รายละเอียด</string>
+    <string name="detail_date">วันที่เพิ่ม</string>
+    <string name="detail_duration">ระยะเวลา</string>
+    <string name="detail_quality">คุณภาพ</string>
+    <string name="detail_codec">โคเดก</string>
+    <string name="detail_fps">อัตราเฟรม</string>
+    <string name="detail_status">สถานะ</string>
+</resources>

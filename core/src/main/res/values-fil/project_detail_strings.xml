@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Mga detalye</string>
+    <string name="detail_date">Petsa ng pagdagdag</string>
+    <string name="detail_duration">Haba</string>
+    <string name="detail_quality">Kalidad</string>
+    <string name="detail_codec">Codec</string>
+    <string name="detail_fps">Frame rate</string>
+    <string name="detail_status">Katayuan</string>
+</resources>

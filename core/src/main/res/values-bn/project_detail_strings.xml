@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">বিবরণ</string>
+    <string name="detail_date">যোগ করার তারিখ</string>
+    <string name="detail_duration">সময়কাল</string>
+    <string name="detail_quality">মান</string>
+    <string name="detail_codec">কোডেক</string>
+    <string name="detail_fps">ফ্রেম রেট</string>
+    <string name="detail_status">অবস্থা</string>
+</resources>

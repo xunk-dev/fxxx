@@ -88,6 +88,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     internal val savedDelete = ViewerSavedDelete(c.storage, c.savedImages, com.frameout.core.storage.GalleryBackup(app))
 
     fun open(projectId: Long, frameId: Long, savedId: Long? = null, openEdit: Boolean = false) {
+        leave.begin(projectId, frameId, savedId)
         replaceSavedId = savedId
         replaceFrameId = savedId?.let { frameId }
         savedIds = if (savedId == null) emptyList() else SavedPlaylist.ids.takeIf { savedId in it } ?: listOf(savedId)

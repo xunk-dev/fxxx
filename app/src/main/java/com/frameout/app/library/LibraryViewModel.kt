@@ -217,7 +217,9 @@ class LibraryViewModel(app: Application) : AndroidViewModel(app) {
         val project = container.projects.getById(id) ?: return true
         val storageDeleted = withContext(Dispatchers.IO) { container.storage.deleteProject(id) }
         if (!storageDeleted) return false
+        val frameIds = container.frames.listActiveIds(id)
         container.database.deleteProjectAtomic(id)
+        com.frameout.core.edit.UnsavedEdits.markAll(frameIds, false)
         com.frameout.core.util.FailureMarker.clear(getApplication(), id)
         withContext(Dispatchers.IO) {
             runCatching {

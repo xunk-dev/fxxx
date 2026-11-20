@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Detaljer</string>
+    <string name="detail_date">Dato lagt til</string>
+    <string name="detail_duration">Varighet</string>
+    <string name="detail_quality">Kvalitet</string>
+    <string name="detail_codec">Kodek</string>
+    <string name="detail_fps">Bildefrekvens</string>
+    <string name="detail_status">Status</string>
+</resources>

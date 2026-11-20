@@ -82,7 +82,7 @@ fun FramesScreen(projectId: Long, onBack: () -> Unit, onCollage: (List<Long>) ->
         vm.refreshUnsaved()
     }
     var pendingLeave by remember { mutableStateOf<(() -> Unit)?>(null) }
-    val guard: (() -> Unit) -> Unit = { action -> if (state.unsaved > 0 && !state.messageBusy) pendingLeave = action else action() }
+    val guard: (() -> Unit) -> Unit = { action -> if (state.unsavedAsk > 0 && !state.messageBusy) pendingLeave = action else action() }
     val leave: () -> Unit = { if (!vm.holdBack()) guard(onBack) }
     val backConsumes = state.messageBusy || contactOpen || datasetOpen || state.cropAll != null || state.integrityOpen || state.tagsOpen || state.toolsOpen || state.filterOpen || state.selectionMode || state.isDeletedView
     androidx.activity.compose.BackHandler(enabled = backConsumes) {
@@ -99,7 +99,7 @@ fun FramesScreen(projectId: Long, onBack: () -> Unit, onCollage: (List<Long>) ->
             state.isDeletedView -> vm.setFilter(FrameFilter.All)
         }
     }
-    androidx.activity.compose.BackHandler(enabled = !backConsumes && state.unsaved > 0 && pendingLeave == null && state.gallerySave == null) { leave() }
+    androidx.activity.compose.BackHandler(enabled = !backConsumes && state.unsavedAsk > 0 && pendingLeave == null && state.gallerySave == null) { leave() }
     LaunchedEffect(state.message, state.analyzing, state.messageBusy) {
         val message = state.message
         if (message != null && !state.analyzing && !state.messageBusy) {
@@ -229,7 +229,7 @@ fun FramesScreen(projectId: Long, onBack: () -> Unit, onCollage: (List<Long>) ->
             pendingLeave?.let { action ->
                 com.frameout.app.UnsavedLeaveDialog(
                     onSaveLeave = { pendingLeave = null; vm.saveUnsavedThen(action) },
-                    onLeave = { pendingLeave = null; action() },
+                    onLeave = { pendingLeave = null; vm.leaveUnsavedThen(action) },
                     onStay = { pendingLeave = null }
                 )
             }

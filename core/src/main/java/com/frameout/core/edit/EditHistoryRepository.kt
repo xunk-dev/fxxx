@@ -45,6 +45,7 @@ class EditHistoryRepository(private val db: AppDatabase) {
         dao.upsert(saved)
         dao.insertHistory(saved.toHistory())
         frames.restore(listOf(frameId))
+        UnsavedEdits.mark(frameId, !saved.toEdit().isIdentity)
         saved
     }
 

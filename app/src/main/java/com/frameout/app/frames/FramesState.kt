@@ -74,6 +74,7 @@ data class FramesState(
     val confirmGallerySave: Int = 0,
     val lockPrompt: com.frameout.core.pro.ProEditGuard.LockReport? = null,
     val unsaved: Int = 0,
+    val unsavedAsk: Int = 0,
     val undoGalleryIds: List<Long> = emptyList(),
     val gallerySave: GallerySaveProgress? = null,
     val exportSaved: com.frameout.app.trim.SavedCapture? = null,

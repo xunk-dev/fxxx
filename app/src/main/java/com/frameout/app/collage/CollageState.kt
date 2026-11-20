@@ -216,10 +216,10 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
         }
         paths = usable.map { materialized[it] }
         ready = true
+        markClean()
         val fallback = previews
         val side = previewSideFor(maxOf(template.cells.size, paths.size))
         previews = Fanout.map(paths.indices.toList()) { i -> loadPreview(paths[i], side) ?: fallback.getOrNull(i) }
-        markClean()
         history.start()
         if (requested.size > ids.size) {
             messageIsError = true

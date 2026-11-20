@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -25,6 +27,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import com.frameout.engine.work.LiveExtractProgress
 import androidx.compose.runtime.produceState
@@ -52,9 +55,6 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameCardBrush
 import com.frameout.designsystem.theme.frameCardEdge
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -74,7 +74,7 @@ fun ProjectCard(
     val failure = produceState<MediaFailure?>(null, project.status, project.updatedAt) {
         value = if (project.status == "Failed") withContext(Dispatchers.IO) { FailureMarker.read(context, project.id) } else null
     }.value
-    val specs = produceState(peekSpecs(project), project.id, project.sourceUri) { value = loadSpecs(context, project) }.value
+    var details by remember { androidx.compose.runtime.mutableStateOf(false) }
     val live = isLive(project.status)
     val pulse = livePulse(live)
     val shape = FrameShapes.xl
@@ -103,12 +103,8 @@ fun ProjectCard(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             ProjectThumb(thumb, project, 76.dp)
-            ProjectInfo(project, specs, failure, percent, Modifier.weight(1f))
-            Box(Modifier.size(48.dp), Alignment.Center) {
-                if (!selected) {
-                    if (hasStateAction(project)) StateAction(project, onResume, onPause) else DeleteAction(onDelete)
-                }
-            }
+            ProjectInfo(project, failure, percent, Modifier.weight(1f))
+            CardTrailing(project, selected, onResume, onPause, { details = true }, onDelete)
         }
         if (progress != CardProgress.None) {
             ProjectProgressBar(
@@ -118,6 +114,17 @@ fun ProjectCard(
                 shape = androidx.compose.ui.graphics.RectangleShape,
                 brush = if (project.status == "Paused") Brush.horizontalGradient(listOf(colors.warning, colors.warning)) else null
             )
+        }
+        if (details) ProjectDetailsDialog(project) { details = false }
+    }
+}
+
+@Composable
+private fun CardTrailing(project: ProjectEntity, selected: Boolean, onResume: () -> Unit, onPause: () -> Unit, onDetails: () -> Unit, onDelete: () -> Unit) {
+    Column(Modifier.width(48.dp).then(if (selected) Modifier.height(48.dp) else Modifier), Arrangement.Center, Alignment.CenterHorizontally) {
+        if (!selected) {
+            if (hasStateAction(project)) StateAction(project, onResume, onPause)
+            ProjectMoreAction(onDetails, onDelete)
         }
     }
 }
@@ -136,17 +143,14 @@ private fun livePulse(live: Boolean): State<Float>? {
 }
 
 @Composable
-private fun ProjectInfo(project: ProjectEntity, specs: VideoSpecs?, failure: MediaFailure?, percent: Int?, modifier: Modifier) {
+private fun ProjectInfo(project: ProjectEntity, failure: MediaFailure?, percent: Int?, modifier: Modifier) {
     val colors = FrameTheme.colors
-    Column(modifier, verticalArrangement = Arrangement.spacedBy(3.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            FrameText(project.name, style = FrameTheme.typography.titleSmall, modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
-            FrameText(formatDate(project.createdAt), style = FrameTheme.typography.monoSmall.copy(fontSize = 10.sp), color = colors.onSurfaceVariant, maxLines = 1)
-        }
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(5.dp)) {
+        FrameText(project.name, style = FrameTheme.typography.titleSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
         if (failure != null) {
             FrameText(FailureStrings.of(failure), style = FrameTheme.typography.bodySmall, color = colors.error, maxLines = 1, overflow = TextOverflow.Ellipsis)
         } else {
-            specsText(specs)?.let { FrameText(it, style = FrameTheme.typography.monoSmall.copy(fontSize = 10.sp), color = colors.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis) }
+            DateLine(project.createdAt)
         }
         Row(Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             FrameCountChip("${project.extractedCount}", null, com.frameout.core.util.FrameStrings.frameCount(project.extractedCount))
@@ -176,10 +180,16 @@ private fun rememberCardProgress(project: ProjectEntity): CardProgress {
     }
 }
 
-private fun specsText(specs: VideoSpecs?): String? {
-    if (specs == null) return null
-    val parts = listOfNotNull(specsHeadline(specs), specs.codec, specs.fps?.let(::fpsLabel))
-    return parts.takeIf { it.isNotEmpty() }?.joinToString(com.frameout.core.util.FrameStrings.sep())
+@Composable
+private fun DateLine(ms: Long) {
+    val colors = FrameTheme.colors
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        androidx.compose.foundation.Image(
+            androidx.compose.ui.res.painterResource(com.frameout.designsystem.icons.FrameIconsExtra.Calendar),
+            null,
+            Modifier.size(13.dp),
+            colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(colors.onSurfaceVariant)
+        )
+        FrameText(formatStamp(ms), style = FrameTheme.typography.monoSmall.copy(fontSize = 11.sp), color = colors.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+    }
 }
-
-private fun formatDate(ms: Long) = SimpleDateFormat("dd MMM", Locale.getDefault()).format(Date(ms))

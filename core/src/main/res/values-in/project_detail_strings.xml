@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Detail</string>
+    <string name="detail_date">Tanggal ditambahkan</string>
+    <string name="detail_duration">Durasi</string>
+    <string name="detail_quality">Kualitas</string>
+    <string name="detail_codec">Kodek</string>
+    <string name="detail_fps">Kecepatan frame</string>
+    <string name="detail_status">Status</string>
+</resources>

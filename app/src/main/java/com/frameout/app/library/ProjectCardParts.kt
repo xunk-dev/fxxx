@@ -148,11 +148,6 @@ internal fun FrameCountChip(count: String, percent: Int?, description: String) {
     }
 }
 
-@Composable
-internal fun DeleteAction(onDelete: () -> Unit, modifier: Modifier = Modifier) {
-    CardAction(FrameIcons.Trash, FrameStrings.delete(), FrameTheme.colors.onSurfaceVariant, false, onDelete, modifier)
-}
-
 internal fun hasStateAction(project: ProjectEntity): Boolean =
     isLive(project.status) || project.status == "Paused" || project.status == "Failed"
 
@@ -166,7 +161,7 @@ internal fun StateAction(project: ProjectEntity, onResume: () -> Unit, onPause: 
 }
 
 @Composable
-private fun CardAction(icon: Int, label: String, tint: Color, tonal: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+internal fun CardAction(icon: Int, label: String, tint: Color, tonal: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Box(
         modifier
             .size(48.dp)

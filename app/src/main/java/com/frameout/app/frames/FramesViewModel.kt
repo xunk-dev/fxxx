@@ -218,6 +218,7 @@ class FramesViewModel(app: Application) : AndroidViewModel(app) {
     private val unsaved = FramesUnsaved(viewModelScope, getApplication<Application>(), container, exporter, _state, { projectId }, { lockGate })
     fun refreshUnsaved() = unsaved.refresh()
     fun saveUnsavedThen(then: () -> Unit) = unsaved.saveThen(then)
+    fun leaveUnsavedThen(then: () -> Unit) = unsaved.leaveThen(then)
     fun cancelGallerySave() = gallery.cancel()
     internal val lockGate = com.frameout.app.billing.LockGate { report -> _state.update { it.copy(lockPrompt = report) } }
     private fun gateFrames(ids: Collection<Long>, run: (String?) -> Unit) {
