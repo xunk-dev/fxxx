@@ -85,7 +85,7 @@ android {
         applicationId = "com.frameout.app"
         minSdk = 24
         targetSdk = 37
-        versionCode = 52
+        versionCode = 70
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("boolean", "PLAY_BILLING", storeBuild.toString())
