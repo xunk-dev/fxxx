@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">وردەکاری</string>
+    <string name="detail_date">بەرواری زیادکردن</string>
+    <string name="detail_duration">ماوە</string>
+    <string name="detail_quality">کوالیتی</string>
+    <string name="detail_codec">کۆدیک</string>
+    <string name="detail_fps">ڕێژەی فرەیم</string>
+    <string name="detail_status">دۆخ</string>
+</resources>

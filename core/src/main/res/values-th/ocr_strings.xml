@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">ข้อความภาษาอาหรับ</string>
+    <string name="ocr_ara_downloading">กำลังดาวน์โหลดโมเดลข้อความภาษาอาหรับ… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">กำลังรอ Wi-Fi เพื่อดาวน์โหลดโมเดลข้อความภาษาอาหรับ</string>
+    <string name="ocr_ara_confirm">Google Play ต้องได้รับการอนุมัติจากคุณเพื่อดาวน์โหลดโมเดลข้อความภาษาอาหรับ</string>
+    <string name="ocr_ara_failed">ดาวน์โหลดโมเดลข้อความภาษาอาหรับไม่สำเร็จ</string>
+    <string name="ocr_ara_unavailable">ต้องใช้ Google Play เพื่อดาวน์โหลดโมเดลข้อความภาษาอาหรับ หากไม่มีจะอ่านข้อความภาษาอาหรับไม่ได้</string>
+    <string name="ocr_text_title">ข้อความอักษรละติน</string>
+    <string name="ocr_text_pending">โมเดลข้อความยังไม่พร้อม ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง</string>
+    <string name="ocr_text_no_play">ไม่มีบริการ Google Play หรือปิดอยู่ จึงอ่านข้อความอักษรละตินและโค้ดไม่ได้</string>
+    <string name="ocr_text_outdated">อัปเดตบริการ Google Play เพื่ออ่านข้อความอักษรละตินและโค้ด</string>
+</resources>

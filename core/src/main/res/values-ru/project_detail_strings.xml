@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Сведения</string>
+    <string name="detail_date">Дата добавления</string>
+    <string name="detail_duration">Длительность</string>
+    <string name="detail_quality">Качество</string>
+    <string name="detail_codec">Кодек</string>
+    <string name="detail_fps">Частота кадров</string>
+    <string name="detail_status">Статус</string>
+</resources>

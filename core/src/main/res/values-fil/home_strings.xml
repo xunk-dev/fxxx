@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Home</string>
+    <string name="home_extract_title">I-extract ang frame</string>
+    <string name="home_extract_desc">Pumili ng video at kunin ang pinakamagagandang frame.</string>
+    <string name="home_mode_quick">Mabilis</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Pumili ng clip at simulan agad ang pag-extract</string>
+    <string name="home_mode_quick_action">Simulan</string>
+    <string name="home_mode_pro_desc">Buong kontrol sa kalidad</string>
+    <string name="home_mode_pro_action">Advanced</string>
+    <string name="home_mode_pro_open">Buksan ang Pro</string>
+    <string name="home_edit_title">Edit ng larawan</string>
+    <string name="home_edit_desc">I-crop, mga filter, drawing</string>
+    <string name="home_collage_title">Collage</string>
+    <string name="home_collage_desc">Pagsamahin ang mga larawan</string>
+    <string name="home_export_title">I-export</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF at iba pa.</string>
+    <string name="home_quick_title">Mabilis na extract</string>
+    <string name="home_quick_start">Simulan na</string>
+    <string name="home_quick_length">Haba</string>
+    <string name="home_quick_hint">I-drag ang mga handle sa timeline para pumili ng saklaw. Iwanan para gamitin ang buong clip.</string>
+    <string name="home_quick_started">Nagsimula ang pag-extract</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Mga larawan</string>
+    <string name="home_export_action">I-export</string>
+    <string name="home_export_action_count">I-export (%1$d)</string>
+    <string name="home_export_saving">Sine-save… %1$d%%</string>
+    <string name="home_export_clip_title">I-export bilang %1$s</string>
+    <string name="home_export_clip_hint">I-drag ang mga handle sa timeline para piliin ang bahaging ie-export.</string>
+    <string name="home_export_source_title">Pumili ng mga larawan</string>
+    <string name="home_export_source_empty">Wala pang naka-save na larawan. Mag-save muna ng mga frame mula sa video.</string>
+    <string name="home_export_select_all">Piliin lahat</string>
+    <string name="home_export_clear">I-clear</string>
+    <string name="home_compare_title">Ihambing</string>
+    <string name="home_compare_desc">I-slide at ihambing ang dalawa</string>
+    <string name="home_compare_pick_two">Pumili ng dalawang larawan na ihahambing.</string>
+    <string name="home_export_m_video">I-export ang video bilang MP4, Live&#160;Photo, GIF o WebP.</string>
+    <string name="home_export_m_sheet">I-export ang mga larawan bilang contact sheet.</string>
+    <string name="home_export_m_images">I-export ang mga larawan bilang ZIP, PDF o folder.</string>
+    <string name="home_video_title">Export ng video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Export ng frame</string>
+    <string name="home_images_desc">ZIP, PDF o contact sheet</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">अनुमति नहीं मिली</string>
+    <string name="perm_toast_forever">अनुमति अस्वीकृत। सेटिंग्स खोलें</string>
+    <string name="perm_toast_granted">एक्सेस मिल गया। आपकी लाइब्रेरी लोड हो रही है…</string>
+</resources>

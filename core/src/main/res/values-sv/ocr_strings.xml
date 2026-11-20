@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Arabisk text</string>
+    <string name="ocr_ara_downloading">Laddar ned modellen för arabisk text… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Väntar på Wi-Fi för att ladda ned modellen för arabisk text</string>
+    <string name="ocr_ara_confirm">Google Play behöver ditt godkännande för att ladda ned modellen för arabisk text</string>
+    <string name="ocr_ara_failed">Det gick inte att ladda ned modellen för arabisk text</string>
+    <string name="ocr_ara_unavailable">Google Play behövs för att ladda ned modellen för arabisk text. Utan det går det inte att läsa arabisk text.</string>
+    <string name="ocr_text_title">Latinsk text</string>
+    <string name="ocr_text_pending">Textmodellen är inte klar än. Kontrollera anslutningen och försök igen.</string>
+    <string name="ocr_text_no_play">Google Play-tjänster saknas eller är avstängda, så latinsk text och koder kan inte läsas.</string>
+    <string name="ocr_text_outdated">Uppdatera Google Play-tjänster för att läsa latinsk text och koder.</string>
+</resources>

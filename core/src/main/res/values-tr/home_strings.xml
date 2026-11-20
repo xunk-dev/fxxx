@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Ana sayfa</string>
+    <string name="home_extract_title">Kareleri çıkar</string>
+    <string name="home_extract_desc">Bir video seç ve en iyi karelerini çıkar.</string>
+    <string name="home_mode_quick">Hızlı</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Bir klip seç ve hemen çıkarmaya başla</string>
+    <string name="home_mode_quick_action">Başlat</string>
+    <string name="home_mode_pro_desc">Kalitede tam kontrol</string>
+    <string name="home_mode_pro_action">Gelişmiş</string>
+    <string name="home_mode_pro_open">Pro modunu aç</string>
+    <string name="home_edit_title">Fotoğraf düzenle</string>
+    <string name="home_edit_desc">Kırp, filtrele, çiz</string>
+    <string name="home_collage_title">Kolaj</string>
+    <string name="home_collage_desc">Fotoğrafları birleştir</string>
+    <string name="home_export_title">Dışa aktar</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF ve fazlası.</string>
+    <string name="home_quick_title">Hızlı çıkarma</string>
+    <string name="home_quick_start">Şimdi başlat</string>
+    <string name="home_quick_length">Uzunluk</string>
+    <string name="home_quick_hint">Aralık seçmek için zaman çizelgesindeki tutamaçları sürükle. Tüm klip için olduğu gibi bırak.</string>
+    <string name="home_quick_started">Çıkarma başladı</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Görseller</string>
+    <string name="home_export_action">Dışa aktar</string>
+    <string name="home_export_action_count">Dışa aktar (%1$d)</string>
+    <string name="home_export_saving">Kaydediliyor… %%%1$d</string>
+    <string name="home_export_clip_title">%1$s olarak dışa aktar</string>
+    <string name="home_export_clip_hint">Dışa aktarılacak bölümü seçmek için zaman çizelgesindeki tutamaçları sürükle.</string>
+    <string name="home_export_source_title">Görsel seç</string>
+    <string name="home_export_source_empty">Henüz kayıtlı görsel yok. Önce bir videodan kareleri kaydet.</string>
+    <string name="home_export_select_all">Tümünü seç</string>
+    <string name="home_export_clear">Temizle</string>
+    <string name="home_compare_title">Karşılaştır</string>
+    <string name="home_compare_desc">Kaydırarak karşılaştır</string>
+    <string name="home_compare_pick_two">Karşılaştırmak için iki fotoğraf seç.</string>
+    <string name="home_export_m_video">Videoyu MP4, Live&#160;Photo, GIF veya WebP olarak dışa aktar.</string>
+    <string name="home_export_m_sheet">Görselleri iletişim sayfası olarak dışa aktar.</string>
+    <string name="home_export_m_images">Görselleri ZIP, PDF veya klasör olarak dışa aktar.</string>
+    <string name="home_video_title">Video dışa aktar</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Kare dışa aktar</string>
+    <string name="home_images_desc">ZIP, PDF veya iletişim sayfası</string>
+</resources>

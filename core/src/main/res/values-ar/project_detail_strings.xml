@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">التفاصيل</string>
+    <string name="detail_date">تاريخ الإضافة</string>
+    <string name="detail_duration">المدة</string>
+    <string name="detail_quality">الجودة</string>
+    <string name="detail_codec">الترميز</string>
+    <string name="detail_fps">معدل الإطارات</string>
+    <string name="detail_status">الحالة</string>
+</resources>

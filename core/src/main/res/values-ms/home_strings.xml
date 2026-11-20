@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_tab">Utama</string>
+    <string name="home_extract_title">Ekstrak bingkai</string>
+    <string name="home_extract_desc">Pilih video dan ambil bingkai terbaiknya.</string>
+    <string name="home_mode_quick">Pantas</string>
+    <string name="home_mode_pro">Pro</string>
+    <string name="home_mode_quick_desc">Pilih klip dan mula mengekstrak serta-merta</string>
+    <string name="home_mode_quick_action">Mula</string>
+    <string name="home_mode_pro_desc">Kawalan penuh ke atas kualiti</string>
+    <string name="home_mode_pro_action">Lanjutan</string>
+    <string name="home_mode_pro_open">Buka mod Pro</string>
+    <string name="home_edit_title">Edit imej</string>
+    <string name="home_edit_desc">Pangkas, penapis, lukis</string>
+    <string name="home_collage_title">Kolaj</string>
+    <string name="home_collage_desc">Gabungkan imej menjadi satu</string>
+    <string name="home_export_title">Eksport</string>
+    <string name="home_export_desc">Video, GIF, ZIP, PDF dan lagi.</string>
+    <string name="home_quick_title">Ekstrak pantas</string>
+    <string name="home_quick_start">Mula sekarang</string>
+    <string name="home_quick_length">Tempoh</string>
+    <string name="home_quick_hint">Seret pemegang pada garis masa untuk memilih julat. Biarkan sahaja untuk menggunakan keseluruhan klip.</string>
+    <string name="home_quick_started">Pengekstrakan bermula</string>
+    <string name="home_export_tab_video">Video</string>
+    <string name="home_export_tab_images">Imej</string>
+    <string name="home_export_action">Eksport</string>
+    <string name="home_export_action_count">Eksport (%1$d)</string>
+    <string name="home_export_saving">Menyimpan… %1$d%%</string>
+    <string name="home_export_clip_title">Eksport sebagai %1$s</string>
+    <string name="home_export_clip_hint">Seret pemegang pada garis masa untuk memilih bahagian yang hendak dieksport.</string>
+    <string name="home_export_source_title">Pilih imej</string>
+    <string name="home_export_source_empty">Belum ada imej disimpan. Simpan bingkai daripada video dahulu.</string>
+    <string name="home_export_select_all">Pilih semua</string>
+    <string name="home_export_clear">Kosongkan</string>
+    <string name="home_compare_title">Banding</string>
+    <string name="home_compare_desc">Leret untuk banding dua imej</string>
+    <string name="home_compare_pick_two">Pilih dua imej untuk dibandingkan.</string>
+    <string name="home_export_m_video">Eksport video sebagai MP4, Live&#160;Photo, GIF atau WebP.</string>
+    <string name="home_export_m_sheet">Eksport imej sebagai helaian kenalan.</string>
+    <string name="home_export_m_images">Eksport imej sebagai ZIP, PDF atau folder.</string>
+    <string name="home_video_title">Eksport video</string>
+    <string name="home_video_desc">MP4, GIF, Live&#160;Photo</string>
+    <string name="home_images_title">Eksport bingkai</string>
+    <string name="home_images_desc">ZIP, PDF atau helaian kenalan</string>
+</resources>

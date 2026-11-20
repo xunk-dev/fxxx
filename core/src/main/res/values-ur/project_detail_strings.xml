@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">تفصیلات</string>
+    <string name="detail_date">شامل کرنے کی تاریخ</string>
+    <string name="detail_duration">دورانیہ</string>
+    <string name="detail_quality">معیار</string>
+    <string name="detail_codec">کوڈیک</string>
+    <string name="detail_fps">فریم ریٹ</string>
+    <string name="detail_status">حالت</string>
+</resources>

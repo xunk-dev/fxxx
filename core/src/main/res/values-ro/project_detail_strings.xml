@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Detalii</string>
+    <string name="detail_date">Data adăugării</string>
+    <string name="detail_duration">Durată</string>
+    <string name="detail_quality">Calitate</string>
+    <string name="detail_codec">Codec</string>
+    <string name="detail_fps">Rată de cadre</string>
+    <string name="detail_status">Stare</string>
+</resources>

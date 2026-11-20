@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">세부정보</string>
+    <string name="detail_date">추가한 날짜</string>
+    <string name="detail_duration">길이</string>
+    <string name="detail_quality">화질</string>
+    <string name="detail_codec">코덱</string>
+    <string name="detail_fps">프레임 속도</string>
+    <string name="detail_status">상태</string>
+</resources>

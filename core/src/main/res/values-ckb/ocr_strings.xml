@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">نووسینی عەرەبی</string>
+    <string name="ocr_ara_downloading">مۆدێلی نووسینی عەرەبی دادەبەزێت… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">چاوەڕێی Wi-Fi دەکرێت بۆ داگرتنی مۆدێلی نووسینی عەرەبی</string>
+    <string name="ocr_ara_confirm">Google Play پێویستی بە ڕەزامەندی تۆیە بۆ داگرتنی مۆدێلی نووسینی عەرەبی</string>
+    <string name="ocr_ara_failed">مۆدێلی نووسینی عەرەبی دانەبەزی</string>
+    <string name="ocr_ara_unavailable">بۆ داگرتنی مۆدێلی نووسینی عەرەبی Google Play پێویستە. بەبێ ئەو نووسینی عەرەبی ناخوێندرێتەوە.</string>
+    <string name="ocr_text_title">نووسینی لاتینی</string>
+    <string name="ocr_text_pending">مۆدێلی نووسین هێشتا ئامادە نییە. پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەرەوە.</string>
+    <string name="ocr_text_no_play">خزمەتگوزارییەکانی Google Play بوونیان نییە یان ناچالاکن، بۆیە نووسینی لاتینی و کۆدەکان ناخوێندرێنەوە.</string>
+    <string name="ocr_text_outdated">بۆ خوێندنەوەی نووسینی لاتینی و کۆدەکان خزمەتگوزارییەکانی Google Play نوێ بکەرەوە.</string>
+</resources>

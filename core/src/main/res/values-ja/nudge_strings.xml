@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">新しい動画のお知らせ</string>
+    <string name="nudge_channel_new_video_desc">新しい動画が端末に追加されたとき、カバー画像付きで知らせ、ワンタップで抽出できます。</string>
+    <string name="nudge_channel_reminders">ヒントとリマインダー</string>
+    <string name="nudge_channel_reminders_desc">ときどき届く控えめなリマインダーです。1日に1回まで、無視し続けると自動で止まります。</string>
+    <string name="nudge_action_extract">フレームを抽出</string>
+    <string name="nudge_action_open">開く</string>
+    <string name="nudge_action_stop_reminders">リマインダーを停止</string>
+    <string name="nudge_review_title">この動画をチェックしてみませんか</string>
+    <string name="nudge_review_text">長い動画なので、先に抽出する範囲を選んでください。タップして開きます。</string>
+    <string name="nudge_failed_title">抽出を開始できませんでした</string>
+    <string name="nudge_failed_text">タップして動画を開き、もう一度お試しください。</string>
+    <string name="nudge_waiting_title">新しい動画がまだ待っています</string>
+    <string name="nudge_waiting_text">%1$s の準備ができました。ワンタップでベストなフレームを取り出せます。</string>
+    <string name="nudge_comeback_title_0">動画の一瞬を写真に</string>
+    <string name="nudge_comeback_text_0">好きな動画を選ぶと、Frame Out が最もくっきりしたフレームを抽出します。</string>
+    <string name="nudge_comeback_title_1">ベストショットは動画の中に隠れています</string>
+    <string name="nudge_comeback_text_1">ぴったりのフレームまで移動して、高画質で保存できます。</string>
+    <string name="nudge_comeback_title_2">お気に入りのフレームでコラージュを作ろう</string>
+    <string name="nudge_comeback_text_2">フレームをいくつか抽出して、1枚の画像にまとめましょう。</string>
+    <string name="nudge_setting_new_video_title">新しい動画の通知</string>
+    <string name="nudge_setting_new_video_hint">新しい動画が見つかったらカバー画像付きでお知らせ</string>
+    <string name="nudge_setting_new_video_partial">新しい動画を検出するには、動画へのフルアクセスが必要です</string>
+    <string name="nudge_setting_reminders_title">ヒントとリマインダー</string>
+    <string name="nudge_setting_reminders_hint">ときどき控えめにお知らせします。夜間は通知しません</string>
+    <string name="nudge_setting_system_off">Frame Out の通知はシステム設定でオフになっています</string>
+    <string name="nudge_new_video_title">新しい動画の準備完了</string>
+    <string name="nudge_stalled_title">途中のプロジェクトを仕上げましょう</string>
+    <string name="nudge_stalled_text">「%1$s」は一時停止中です。続きから再開しましょう。</string>
+    <string name="nudge_recap_title">今週のフレーム</string>
+    <string name="nudge_recap_text">今週抽出したフレーム数: %1$d</string>
+</resources>

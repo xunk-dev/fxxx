@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Chi tiết</string>
+    <string name="detail_date">Ngày thêm</string>
+    <string name="detail_duration">Thời lượng</string>
+    <string name="detail_quality">Chất lượng</string>
+    <string name="detail_codec">Codec</string>
+    <string name="detail_fps">Tốc độ khung hình</string>
+    <string name="detail_status">Trạng thái</string>
+</resources>

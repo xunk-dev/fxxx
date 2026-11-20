@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">Tangkap frame</string>
+    <string name="shortcut_capture_long">Tangkap frame dari video terakhir</string>
+    <string name="tile_capture_label">Tangkap frame</string>
+    <string name="incoming_copy_failed">Video yang dibagikan tak bisa dibuka</string>
+    <string name="incoming_unsupported">Jenis file tidak didukung</string>
+    <string name="incoming_photo_failed">Foto yang dibagikan tak bisa dibuka</string>
+    <string name="incoming_photos_skipped">Foto dilewati. Bagikan terpisah</string>
+    <string name="share_photos_title">Apa yang ingin Anda lakukan dengan foto ini?</string>
+    <string name="share_videos_title">Apa yang ingin Anda lakukan dengan video ini?</string>
+    <string name="incoming_videos_later">Video akan terbuka setelah Anda selesai dengan foto.</string>
+    <string name="compare_stack">Bertumpuk</string>
+    <string name="compare_side">Berdampingan</string>
+    <string name="compare_slider">Penggeser</string>
+    <string name="compare_swap">Tukar</string>
+    <string name="compare_fit">Pas layar</string>
+    <string name="compare_zoom_in">Perbesar</string>
+    <string name="compare_zoom_out">Perkecil</string>
+    <string name="compare_reset_zoom">Atur ulang zoom</string>
+    <string name="compare_hint">Cubit untuk zoom · ketuk dua kali</string>
+    <string name="compare_load_failed">Tidak dapat memuat gambar</string>
+    <string name="compare_divider">Pembagi perbandingan</string>
+    <string name="compare_diff">Perbedaan</string>
+    <string name="compare_diff_busy">Menghitung perbedaan…</string>
+    <string name="compare_link">Tautkan zoom</string>
+    <string name="compare_unlink">Zoom independen</string>
+    <string name="compare_actual_size">Piksel asli</string>
+    <string name="compare_diff_percent">Berubah: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss atau h:mm:ss</string>
+</resources>

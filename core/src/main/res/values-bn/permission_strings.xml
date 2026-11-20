@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">অনুমতি দেওয়া হয়নি</string>
+    <string name="perm_toast_forever">অনুমতি পাওয়া যায়নি। সেটিংস খুলুন</string>
+    <string name="perm_toast_granted">অ্যাক্সেস মিলেছে। লোড হচ্ছে…</string>
+</resources>
