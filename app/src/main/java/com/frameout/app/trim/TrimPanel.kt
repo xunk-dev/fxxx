@@ -54,6 +54,8 @@ import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameCardEdge
 import com.frameout.designsystem.theme.frameControl
 import com.frameout.engine.player.PlaybackSpeeds
+import com.frameout.engine.player.frameTimesUs
+import com.frameout.engine.player.snapMs
 
 private val SheetShape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
 private val INFO_MIN_HEIGHT = 64.dp
@@ -136,6 +138,7 @@ private fun PanelHeader(env: TrimEnv) {
             }
             SpeedKey(env.player.speed, env.controller::cycleSpeed)
         }
+        if (!ui.animated) FrameReadout(env.controller)
         SnapshotButton(env)
     }
 }
@@ -190,10 +193,14 @@ private fun SpeedKey(speed: Float, onClick: () -> Unit) {
 @Composable
 private fun LiveTimeline(env: TrimEnv) {
     val position by env.controller.position.collectAsState()
+    val suggested = rememberSuggestedMoments(env.thumbs, env.player.durationMs)
     TimelineBar(
         env.player.durationMs, position, env.clamped, true, env.controller::seekTo, env.onRange, env.thumbs,
+        markers = suggested,
         modifier = Modifier.fillMaxWidth(), onScrub = env.controller::scrub, slideWindow = env.output.limited,
-        onDragSeek = env.controller::scrubTo
+        onDragSeek = env.controller::scrubTo,
+        snap = { env.controller.snapMs(it) },
+        frames = { env.controller.frameTimesUs() }
     )
 }
 

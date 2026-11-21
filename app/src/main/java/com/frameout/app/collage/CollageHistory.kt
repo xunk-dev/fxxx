@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import com.frameout.core.collage.CellCrop
 import com.frameout.core.collage.CollageAspect
+import com.frameout.core.collage.CollageBlend
 import com.frameout.core.collage.CollageTemplate
 import com.frameout.core.collage.HistoryStack
 import com.frameout.core.db.FrameEntity
@@ -25,6 +26,7 @@ internal class CollageSnap(
     val frames: List<FrameEntity>,
     val paths: List<String?>,
     val previews: List<Bitmap?>,
+    val previewSide: Int,
     val order: List<Int>,
     val crops: List<CellCrop>,
     val galleryIds: Set<Long>,
@@ -32,6 +34,8 @@ internal class CollageSnap(
     val bgColor: Int,
     val rounded: Boolean,
     val stamps: Boolean,
+    val blend: CollageBlend,
+    val blendStrength: Int,
     val signature: List<Any?>
 )
 
@@ -99,14 +103,15 @@ internal class CollageHistory(private val s: CollageState) {
     }
 
     private fun snapshot() = CollageSnap(
-        s.template, s.userPicked, s.aspect, s.aspectAuto, s.resolution, s.frames, s.paths, s.previews, s.order,
-        s.crops, s.galleryIds, s.gap, s.bgColor, s.rounded, s.stamps, s.signature()
+        s.template, s.userPicked, s.aspect, s.aspectAuto, s.resolution, s.frames, s.paths, s.previews, s.previewSide, s.order,
+        s.crops, s.galleryIds, s.gap, s.bgColor, s.rounded, s.stamps, s.blend, s.blendStrength, s.signature()
     )
 
     private fun restore(t: CollageSnap) {
         s.frames = t.frames
         s.paths = t.paths
         s.previews = t.previews
+        s.previewSide = t.previewSide
         s.order = t.order
         s.crops = t.crops
         s.galleryIds = t.galleryIds
@@ -119,6 +124,8 @@ internal class CollageHistory(private val s: CollageState) {
         s.bgColor = t.bgColor
         s.rounded = t.rounded
         s.stamps = t.stamps
+        s.blend = t.blend
+        s.blendStrength = t.blendStrength
         s.selectedCell = null
         committed = t
     }

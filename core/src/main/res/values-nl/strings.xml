@@ -1016,6 +1016,9 @@
     <string name="accent_mocha">Mokka</string>
     <string name="collage_aspect_auto">Auto</string>
     <string name="collage_tab_canvas">Canvas</string>
+    <string name="collage_tab_merge">Mengen</string>
+    <string name="collage_merge_strength">Mengsterkte</string>
+    <string name="collage_merge_style_n">Meng-stijl %1$d</string>
     <string name="collage_tab_frames">Kaders</string>
     <string name="collage_tab_style">Stijl</string>
     <string name="edit_adjust">Aanpassen</string>

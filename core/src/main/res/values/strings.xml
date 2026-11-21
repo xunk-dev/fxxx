@@ -1032,6 +1032,9 @@
     <string name="collage_tab_frames">Frames</string>
     <string name="collage_tab_style">Style</string>
     <string name="collage_tab_canvas">Canvas</string>
+    <string name="collage_tab_merge">Merge</string>
+    <string name="collage_merge_strength">Merge strength</string>
+    <string name="collage_merge_style_n">Merge style %1$d</string>
     <string name="legal_note">By continuing, you agree to the</string>
     <string name="landscape_view">Landscape view</string>
     <string name="edit_lock_title">Locked items in this image</string>

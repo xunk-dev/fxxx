@@ -60,6 +60,9 @@ import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.fieldFill
 import com.frameout.designsystem.theme.frameHairline
 import com.frameout.engine.player.PlayerController
+import com.frameout.engine.player.frameTimesUs
+import com.frameout.engine.player.shiftFrames
+import com.frameout.engine.player.snapMs
 import com.frameout.engine.timeline.TrimRange
 import com.frameout.engine.timeline.formatTimestamp
 import kotlinx.coroutines.Dispatchers
@@ -137,10 +140,12 @@ internal fun QuickSheet(
                 TimelineBar(
                     duration, position, bounded, true, controller::seekTo, onRange, thumbs,
                     modifier = Modifier.fillMaxWidth(), onScrub = controller::scrub, slideWindow = maxMs > 0L,
-                    onDragSeek = controller::scrubTo
+                    onDragSeek = controller::scrubTo,
+                    snap = { controller.snapMs(it) },
+                    frames = { controller.frameTimesUs() }
                 )
                 if (!compact) {
-                    RangeEditor(RangeEditorSpec(duration, bounded, maxMs, onRange, controller::seekTo, controller::positionNow))
+                    RangeEditor(RangeEditorSpec(duration, bounded, maxMs, onRange, controller::seekTo, controller::positionNow, shift = { ms, n -> controller.shiftFrames(ms, n, com.frameout.app.trim.RangeEdit.NUDGE_MS) }))
                     Ltr { Stat(HomeStrings.quickLength(), formatTimestamp(bounded.spanMs()), Modifier.fillMaxWidth()) }
                     FrameText(hint, style = FrameTheme.typography.bodySmall, color = FrameTheme.colors.onSurfaceVariant)
                 }

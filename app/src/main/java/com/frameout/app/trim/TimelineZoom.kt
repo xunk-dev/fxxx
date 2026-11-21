@@ -8,8 +8,8 @@ data class TimelineZoom(val scale: Float = 1f, val start: Float = 0f) {
     fun startMs(durationMs: Long): Float = start * durationMs
     fun spanMs(durationMs: Long): Float = span * durationMs
 
-    fun transform(anchor: Float, pan: Float, zoom: Float, durationMs: Long): TimelineZoom {
-        val next = (scale * zoom).coerceIn(MIN_SCALE, maxScaleFor(durationMs))
+    fun transform(anchor: Float, pan: Float, zoom: Float, durationMs: Long, maxScale: Float = maxScaleFor(durationMs)): TimelineZoom {
+        val next = (scale * zoom).coerceIn(MIN_SCALE, maxScale.coerceAtLeast(MIN_SCALE))
         if (next <= MIN_SCALE) return TimelineZoom()
         val a = anchor.coerceIn(0f, 1f)
         val under = start + a * span
@@ -35,8 +35,18 @@ data class TimelineZoom(val scale: Float = 1f, val start: Float = 0f) {
 
         const val MIN_VISIBLE_MS = 1_000L
 
+        const val MIN_FRAME_DP = 12f
+        const val MAX_FRAME_SCALE = 50_000f
+
         fun maxScaleFor(durationMs: Long): Float =
             (durationMs.toFloat() / MIN_VISIBLE_MS).coerceIn(MIN_SCALE, MAX_SCALE)
+
+        fun maxScaleFor(durationMs: Long, frames: Int, trackDp: Float): Float {
+            val byTime = maxScaleFor(durationMs)
+            if (frames <= 0 || trackDp <= 0f) return byTime
+            val visibleFrames = (trackDp / MIN_FRAME_DP).coerceAtLeast(2f)
+            return maxOf(byTime, (frames / visibleFrames).coerceIn(MIN_SCALE, MAX_FRAME_SCALE))
+        }
 
         private fun clampStart(start: Float, span: Float): Float =
             start.coerceIn(0f, (1f - span).coerceAtLeast(0f))

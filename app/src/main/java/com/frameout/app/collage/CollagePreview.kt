@@ -57,10 +57,15 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Shape
+import com.frameout.core.collage.BlendLayout
+import com.frameout.core.collage.CellBlend
 import com.frameout.core.collage.CellCrop
+import com.frameout.core.collage.CollageBlend
 import com.frameout.core.collage.CollageTemplate
 import com.frameout.core.collage.CropGeometry
 import com.frameout.core.collage.collageUnit
+import com.frameout.core.collage.snapped
 import com.frameout.core.collage.toPx
 import com.frameout.core.util.CollageStrings
 import com.frameout.designsystem.components.FrameText
@@ -73,7 +78,14 @@ import kotlin.math.roundToInt
 
 class PreviewSlot(val bitmap: Bitmap?, val stamp: String?, val number: Int, val crop: CellCrop = CellCrop())
 
-class PreviewStyle(val gapRef: Int, val cornerRef: Float, val background: Color, val showStamps: Boolean)
+class PreviewStyle(
+    val gapRef: Int,
+    val cornerRef: Float,
+    val background: Color,
+    val showStamps: Boolean,
+    val blend: CollageBlend = CollageBlend.None,
+    val blendStrength: Int = 0
+)
 
 @Composable
 fun CollagePreview(
@@ -112,16 +124,22 @@ private fun PreviewCanvas(
     val density = LocalDensity.current
     val colors = FrameTheme.colors
     val bg by animateColorAsState(style.background, label = "collageBg")
-    val unit = collageUnit(width)
+    val canvasW = width.roundToInt().coerceAtLeast(1)
+    val canvasH = height.roundToInt().coerceAtLeast(1)
+    val unit = collageUnit(canvasW.toFloat())
     val frame = RoundedCornerShape(6.dp)
-    val rects = template.cells.map { it.toPx(width, height, style.gapRef * unit) }
+    val gapPx = if (style.gapRef <= 0) 0f else (style.gapRef * unit).roundToInt().coerceAtLeast(1).toFloat()
+    val rects = template.cells.map { it.toPx(canvasW.toFloat(), canvasH.toFloat(), gapPx).snapped() }
+    val looks = remember(template, style.blend, style.blendStrength, canvasW, canvasH, gapPx) {
+        if (style.blend == CollageBlend.None) null else BlendLayout.compute(template, style.blend, style.blendStrength, canvasW.toFloat(), canvasH.toFloat(), gapPx)
+    }
     var dragFrom by remember { mutableStateOf<Int?>(null) }
     var dragPos by remember { mutableStateOf(Offset.Zero) }
     var dragStart by remember { mutableStateOf(Offset.Zero) }
     val target = dragFrom?.let { from -> rects.indexOfFirst { dragPos.x in it.left..it.right && dragPos.y in it.top..it.bottom }.takeIf { it >= 0 && it != from && slots.getOrNull(it) != null } }
     Box(
         Modifier
-            .size(with(density) { width.toDp() }, with(density) { height.toDp() })
+            .size(with(density) { canvasW.toDp() }, with(density) { canvasH.toDp() })
             .frameGlow(colors.primary, { if (colors.isDark) 0.10f else 0f }, 22.dp, { 0.04f })
             .clip(frame)
             .background(bg)
@@ -129,13 +147,16 @@ private fun PreviewCanvas(
     ) {
         template.cells.indices.forEach { i ->
             val r = rects[i]
+            val look = looks?.getOrNull(i)
+            val box = look?.bounds ?: r
             CollageCell(
                 slot = slots.getOrNull(i),
+                look = look,
                 number = i + 1,
                 radiusPx = style.cornerRef * unit,
                 unit = unit,
-                cellWidth = r.width,
-                cellHeight = r.height,
+                cellWidth = box.width,
+                cellHeight = box.height,
                 showStamp = style.showStamps,
                 selected = selectedCell == i,
                 dragging = dragFrom == i,
@@ -146,8 +167,8 @@ private fun PreviewCanvas(
                 onDragEnd = { val to = target; val from = dragFrom; dragFrom = null; if (from != null && to != null) onSwap(from, to) },
                 onDragCancel = { dragFrom = null },
                 modifier = Modifier
-                    .absoluteOffset { IntOffset(r.left.roundToInt(), r.top.roundToInt()) }
-                    .size(with(density) { r.width.toDp() }, with(density) { r.height.toDp() }),
+                    .absoluteOffset { IntOffset(box.left.roundToInt(), box.top.roundToInt()) }
+                    .size(with(density) { box.width.toDp() }, with(density) { box.height.toDp() }),
                 onClick = { onCellClick(i) },
                 onCrop = { if (dragFrom == null) onCropChange(i, it) }
             )
@@ -158,6 +179,7 @@ private fun PreviewCanvas(
 @Composable
 private fun CollageCell(
     slot: PreviewSlot?,
+    look: CellBlend?,
     number: Int,
     radiusPx: Float,
     unit: Float,
@@ -182,7 +204,8 @@ private fun CollageCell(
     val dragCancelNow by rememberUpdatedState(onDragCancel)
     val dragHaptics = rememberFrameHaptics()
     val colors = FrameTheme.colors
-    val shape = RoundedCornerShape(with(LocalDensity.current) { radiusPx.toDp() })
+    val corner = with(LocalDensity.current) { (if (look == null) radiusPx else 0f).toDp() }
+    val shape: Shape = polygonShape(look) ?: RoundedCornerShape(corner)
     val haptics = rememberFrameHaptics()
     val desc = if (slot != null) CollageStrings.frameN(number) else CollageStrings.emptySlot()
     Box(
@@ -196,6 +219,7 @@ private fun CollageCell(
                 scaleY = k
                 alpha = if (dragging) 0.85f else 1f
             }
+            .then(if (look != null && look.ramps.any) Modifier.rampMask(look.ramps) else Modifier)
             .clip(shape)
             .background(colors.container)
             .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, role = Role.Button) {
@@ -215,7 +239,7 @@ private fun CollageCell(
             )
             .semantics { contentDescription = desc; this.selected = selected }
     ) {
-        if (slot == null) EmptySlot() else FilledSlot(slot, number, showStamp, unit, cellWidth, cellHeight)
+        if (slot == null) EmptySlot() else FilledSlot(slot, number, showStamp, unit, cellWidth, look)
         if (dropTarget) {
             Box(Modifier.fillMaxSize().background(colors.primary.copy(alpha = 0.28f)).border(3.dp, colors.primary, shape))
         }
@@ -226,14 +250,14 @@ private fun CollageCell(
 }
 
 @Composable
-private fun BoxScope.FilledSlot(slot: PreviewSlot, number: Int, showStamp: Boolean, unit: Float, cellWidth: Float, cellHeight: Float) {
+private fun BoxScope.FilledSlot(slot: PreviewSlot, number: Int, showStamp: Boolean, unit: Float, cellWidth: Float, look: CellBlend?) {
     val image = remember(slot.bitmap) { slot.bitmap?.asImageBitmap() }
     if (image != null) {
         Canvas(Modifier.fillMaxSize()) { drawCropped(image, slot.crop) }
     } else {
         Box(Modifier.fillMaxSize().background(FrameTheme.colors.containerHigh))
     }
-    if (showStamp && !slot.stamp.isNullOrBlank()) StampPill(slot.stamp, unit, cellWidth)
+    if (showStamp && !slot.stamp.isNullOrBlank()) StampPill(slot.stamp, unit, cellWidth, look?.padX ?: 0f, look?.padY ?: 0f)
     NumberBadge(number)
 }
 
@@ -245,46 +269,5 @@ private fun DrawScope.drawCropped(image: ImageBitmap, crop: CellCrop) {
             translate(-window.left * k, -window.top * k)
             scale(k, k, Offset.Zero)
         }) { drawImage(image, filterQuality = FilterQuality.Medium) }
-    }
-}
-
-@Composable
-private fun EmptySlot() {
-    val tint = FrameTheme.colors.onSurfaceVariant
-    Canvas(Modifier.fillMaxSize()) {
-        val inset = 6.dp.toPx()
-        val dashed = PathEffect.dashPathEffect(floatArrayOf(10f, 10f))
-        drawRoundRect(
-            tint.copy(alpha = 0.28f), Offset(inset, inset), Size(size.width - inset * 2, size.height - inset * 2),
-            CornerRadius(8.dp.toPx()), style = Stroke(1.2.dp.toPx(), pathEffect = dashed)
-        )
-        val c = Offset(size.width / 2f, size.height / 2f)
-        val arm = minOf(size.width, size.height) * 0.1f
-        val w = 1.6.dp.toPx()
-        drawLine(tint.copy(alpha = 0.4f), Offset(c.x - arm, c.y), Offset(c.x + arm, c.y), w, StrokeCap.Round)
-        drawLine(tint.copy(alpha = 0.4f), Offset(c.x, c.y - arm), Offset(c.x, c.y + arm), w, StrokeCap.Round)
-    }
-}
-
-@Composable
-private fun NumberBadge(n: Int) {
-    Box(Modifier.padding(6.dp).defaultMinSize(minWidth = 20.dp, minHeight = 20.dp).background(Color.Black.copy(alpha = 0.55f), CircleShape).padding(horizontal = 4.dp), contentAlignment = Alignment.Center) {
-        FrameText("$n", style = FrameTheme.typography.label.copy(fontSize = 10.sp, fontWeight = FontWeight.SemiBold), color = Color.White)
-    }
-}
-
-@Composable
-private fun BoxScope.StampPill(text: String, unit: Float, cellWidth: Float) {
-    val density = LocalDensity.current
-    val fontPx = (cellWidth * 0.07f).coerceIn(22f * unit, 44f * unit)
-    Box(
-        Modifier
-            .align(Alignment.BottomStart)
-            .padding(with(density) { (fontPx * 0.6f).toDp() })
-            .background(Color.Black.copy(alpha = 0.6f), CircleShape)
-            .padding(horizontal = with(density) { (fontPx * 0.55f).toDp() }, vertical = with(density) { (fontPx * 0.32f).toDp() })
-    ) {
-        val font = FrameTheme.typography.label.copy(fontSize = with(density) { fontPx.toSp() }, fontWeight = FontWeight.SemiBold, lineHeight = with(density) { (fontPx * 1.1f).toSp() })
-        FrameText(text, style = font, color = Color.White, maxLines = 1)
     }
 }

@@ -123,7 +123,7 @@ class FrameDecoder(private val context: Context) {
             return
         }
         val base = converter.peekParams(image, outFormat, inputFormat)
-        if (base.hdr && (converter.hdrGainmap || converter.captureSignal)) { calibrationPending = false; return }
+        if (base.hdr && image.format == 54 && (converter.hdrGainmap || converter.captureSignal)) { calibrationPending = false; return }
         val outcome = runCatching {
             ColorCalibrator.calibrate(context, uri, ptsUs) { id ->
                 converter.variantId = id

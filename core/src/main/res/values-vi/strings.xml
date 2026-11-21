@@ -1013,6 +1013,9 @@
     <string name="accent_mocha">Mocha</string>
     <string name="collage_aspect_auto">Tự động</string>
     <string name="collage_tab_canvas">Canvas</string>
+    <string name="collage_tab_merge">Hòa trộn</string>
+    <string name="collage_merge_strength">Độ mạnh hòa trộn</string>
+    <string name="collage_merge_style_n">Kiểu hòa trộn %1$d</string>
     <string name="collage_tab_frames">Khung</string>
     <string name="collage_tab_style">Kiểu</string>
     <string name="edit_adjust">Điều chỉnh</string>

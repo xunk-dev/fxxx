@@ -1032,6 +1032,9 @@
     <string name="collage_tab_frames">فرەیمەکان</string>
     <string name="collage_tab_style">ستایل</string>
     <string name="collage_tab_canvas">تابلۆ</string>
+    <string name="collage_tab_merge">تێکەڵکردن</string>
+    <string name="collage_merge_strength">هێزی تێکەڵکردن</string>
+    <string name="collage_merge_style_n">شێوازی تێکەڵکردن %1$d</string>
     <string name="legal_note">بە بەردەوامبوون، ڕازی دەبیت بە</string>
     <string name="landscape_view">پیشاندانی ئاسۆیی</string>
     <string name="edit_lock_title">ئێلمێنتە داخراوەکان لەم وێنەیەدا</string>

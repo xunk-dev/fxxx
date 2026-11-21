@@ -5,7 +5,7 @@ import kotlin.math.roundToLong
 internal class TrackGeometry(width: Float, val inset: Float, private val durationMs: Long, zoom: TimelineZoom = TimelineZoom()) {
     val trackWidth: Float = (width - inset * 2).coerceAtLeast(1f)
     val trackEnd: Float = inset + trackWidth
-    private val viewStart: Float = zoom.startMs(durationMs)
+    val viewStart: Float = zoom.startMs(durationMs)
     val viewSpan: Float = zoom.spanMs(durationMs).coerceAtLeast(1f)
 
     fun xOf(ms: Long): Float = inset + (ms.coerceIn(0L, durationMs) - viewStart) / viewSpan * trackWidth

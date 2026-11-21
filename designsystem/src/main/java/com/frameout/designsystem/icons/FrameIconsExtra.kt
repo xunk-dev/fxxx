@@ -5,6 +5,7 @@ import com.frameout.designsystem.R
 
 object FrameIconsExtra {
     @DrawableRes val Resume: Int = R.drawable.ic_resume
+    @DrawableRes val CollageMerge: Int = R.drawable.ic_collage_merge
     @DrawableRes val GoToFrame: Int = R.drawable.ic_goto_frame
     @DrawableRes val SavedImage: Int = R.drawable.ic_saved_image
     @DrawableRes val SavedVideo: Int = R.drawable.ic_saved_video

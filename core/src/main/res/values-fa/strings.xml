@@ -1016,6 +1016,9 @@
     <string name="accent_mocha">موکا</string>
     <string name="collage_aspect_auto">خودکار</string>
     <string name="collage_tab_canvas">بوم</string>
+    <string name="collage_tab_merge">ترکیب</string>
+    <string name="collage_merge_strength">شدت ترکیب</string>
+    <string name="collage_merge_style_n">سبک ترکیب %1$d</string>
     <string name="collage_tab_frames">قاب‌ها</string>
     <string name="collage_tab_style">سبک</string>
     <string name="edit_adjust">تنظیم</string>

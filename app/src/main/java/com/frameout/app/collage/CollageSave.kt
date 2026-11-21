@@ -55,13 +55,15 @@ private fun decodeFitted(path: String, longSide: Int, target: Int): Bitmap? {
 }
 
 private fun CollageState.config() = CollageConfig(
-    template = canvasTemplate,
+    template = previewTemplate,
     spacingPx = gap,
     backgroundColor = background.toArgb().toLong() and 0xFFFFFFFFL,
     outputWidth = resolution,
     cornerRadiusPx = if (rounded) COLLAGE_CORNER_REFERENCE else 0f,
     timestamps = if (stamps) stampsInOrder() else emptyList(),
-    crops = cropsInOrder()
+    crops = cropsInOrder(),
+    blend = blend,
+    blendStrength = blendStrength
 )
 
 suspend fun CollageState.save(app: FrameOutApp): SavedCapture? {

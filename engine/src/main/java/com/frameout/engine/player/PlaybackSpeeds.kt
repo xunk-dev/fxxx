@@ -1,7 +1,7 @@
 package com.frameout.engine.player
 
 object PlaybackSpeeds {
-    val values: List<Float> = listOf(0.25f, 0.5f, 1f, 1.5f, 2f)
+    val values: List<Float> = listOf(0.1f, 0.25f, 0.5f, 1f, 1.5f, 2f)
     const val NORMAL = 1f
 
     fun next(current: Float): Float = values.firstOrNull { it > current + EPSILON } ?: values.first()

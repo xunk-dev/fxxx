@@ -1013,6 +1013,9 @@
     <string name="accent_mocha">モカ</string>
     <string name="collage_aspect_auto">自動</string>
     <string name="collage_tab_canvas">キャンバス</string>
+    <string name="collage_tab_merge">ブレンド</string>
+    <string name="collage_merge_strength">ブレンドの強さ</string>
+    <string name="collage_merge_style_n">ブレンドスタイル %1$d</string>
     <string name="collage_tab_frames">フレーム</string>
     <string name="collage_tab_style">スタイル</string>
     <string name="edit_adjust">調整</string>

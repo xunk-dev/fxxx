@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,6 +42,10 @@ import com.frameout.designsystem.haptics.rememberFrameHaptics
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameCardEdge
+import com.frameout.designsystem.theme.frameControl
+import com.frameout.designsystem.components.FrameText
+import kotlin.math.abs
+import kotlin.math.roundToLong
 import com.frameout.engine.timeline.TrimRange
 
 internal const val MIN_GAP_MS = 100L
@@ -74,7 +79,9 @@ fun TimelineBar(
     queued: List<Long> = emptyList(),
     onScrub: (Boolean) -> Unit = {},
     slideWindow: Boolean = false,
-    onDragSeek: (Long) -> Unit = onSeek
+    onDragSeek: (Long) -> Unit = onSeek,
+    snap: (Long) -> Long = { it },
+    frames: () -> LongArray? = { null }
 ) {
     val colors = FrameTheme.colors
     val paint = TimelinePaint(colors.primary, colors.onPrimary, colors.success, colors.error)
@@ -84,6 +91,7 @@ fun TimelineBar(
     var touching by remember { mutableStateOf(false) }
     var dragMs by remember { mutableLongStateOf(NO_DRAG) }
     var frozenMs by remember { mutableLongStateOf(NO_DRAG) }
+    var precision by remember { mutableFloatStateOf(ScrubPrecision.NORMAL) }
     val zoomScale by remember(dur) { derivedStateOf { zoom.scale } }
     val dragSeek: (Long) -> Unit = { ms -> dragMs = ms; onDragSeek(ms) }
     val haptics = rememberFrameHaptics()
@@ -105,11 +113,21 @@ fun TimelineBar(
                         { if (touching && dragMs != NO_DRAG) dragMs else positionMs },
                         onSeek, dragSeek, onRangeChange, onScrub, { active = it }, { haptics.perform(FrameHaptic.Tap) },
                         { touching = it; if (!it) dragMs = NO_DRAG },
-                        { frozenMs = it }
+                        { frozenMs = it },
+                        snap, { frames()?.size ?: 0 }, { precision = it }
                     )
             ) {
                 val shown = if (frozenMs != NO_DRAG) frozenMs else if (touching && dragMs != NO_DRAG) dragMs else positionMs
-                drawTimeline(dur, shown, range, selecting, active, markers, queued, paint, zoom)
+                drawTimeline(dur, shown, range, selecting, active, markers, queued, paint, zoom, frames())
+            }
+            if (precision < ScrubPrecision.NORMAL) {
+                FrameText(
+                    ScrubPrecision.barLabel(precision),
+                    style = FrameTheme.typography.label,
+                    color = colors.onSurface,
+                    maxLines = 1,
+                    modifier = Modifier.align(Alignment.TopCenter).padding(top = 6.dp).frameControl(FrameShapes.pill, selected = true, glowAlpha = 0.4f).padding(horizontal = 10.dp, vertical = 3.dp)
+                )
             }
             if (zoom.zoomed) {
                 TimelineZoomBadge(zoom.scale, { zoom = TimelineZoom() }, Modifier.align(Alignment.TopEnd).padding(top = 4.dp, end = HandleWidth + 4.dp))
@@ -134,7 +152,10 @@ private fun Modifier.timelineGestures(
     onActive: (Handle) -> Unit,
     onGrab: () -> Unit,
     onTouch: (Boolean) -> Unit,
-    onFreeze: (Long) -> Unit
+    onFreeze: (Long) -> Unit,
+    snapTo: (Long) -> Long,
+    frameCountOf: () -> Int,
+    onPrecision: (Float) -> Unit
 ): Modifier = composed {
     val dur by rememberUpdatedState(durationMs)
     val current by rememberUpdatedState(range)
@@ -151,6 +172,9 @@ private fun Modifier.timelineGestures(
     val grab by rememberUpdatedState(onGrab)
     val touch by rememberUpdatedState(onTouch)
     val freeze by rememberUpdatedState(onFreeze)
+    val snap by rememberUpdatedState(snapTo)
+    val frameCount by rememberUpdatedState(frameCountOf)
+    val setPrecision by rememberUpdatedState(onPrecision)
     pointerInput(Unit) {
         awaitEachGesture {
             val down = awaitFirstDown(requireUnconsumed = false)
@@ -163,14 +187,11 @@ private fun Modifier.timelineGestures(
             val slop = viewConfiguration.touchSlop
             val width = size.width.toFloat()
             fun geometry() = TrackGeometry(width, handleWidth, dur, view())
+            val trackDp = (width - handleWidth * 2f) / density
+            fun maxScale() = TimelineZoom.maxScaleFor(dur, frameCount(), trackDp)
             val start = geometry()
             val narrow = canSlide && narrowWindow(start, current, handleWidth)
             val handle = if (canSelect && !narrow) pickHandle(down.position.x, start, current, HitRadius.toPx(), handleWidth) else Handle.None
-            val anchor = when (handle) {
-                Handle.Start -> down.position.x - start.xOf(current.startMs)
-                Handle.End -> down.position.x - start.xOf(current.endMs)
-                Handle.None -> 0f
-            }
             val slide = canSelect && canSlide && handle == Handle.None
             val playheadGrab = if (handle == Handle.None && !slide) {
                 val off = down.position.x - start.xOf(playhead())
@@ -183,15 +204,32 @@ private fun Modifier.timelineGestures(
                 grab()
             }
             fun slideTo(x: Float) {
-                val first = slideStartMs(geometry(), x, slideAnchor, slideSpan, dur)
+                val first = snap(slideStartMs(geometry(), x, slideAnchor, slideSpan, dur)).coerceIn(0L, (dur - slideSpan).coerceAtLeast(0L))
                 change(current.copy(startMs = first, endMs = first + slideSpan, useFull = false))
                 dragSeek(first)
             }
-            fun moveTo(x: Float) {
+            var factor = ScrubPrecision.NORMAL
+            var raw = when (handle) {
+                Handle.Start -> current.startMs.toDouble()
+                Handle.End -> current.endMs.toDouble()
+                Handle.None -> start.msOf(down.position.x - playheadGrab).toDouble()
+            }
+            var prevX = down.position.x
+            val centreY = size.height / 2f
+            fun moveTo(x: Float, y: Float) {
                 val g = geometry()
-                var ms = g.msOf(x - anchor - playheadGrab)
-                if (handle != Handle.None) {
-                    val near = kotlin.math.abs(g.xOf(ms) - g.xOf(pinned)) <= snapPx
+                val next = ScrubPrecision.forBar(abs(y - centreY) / density)
+                if (next != factor) {
+                    factor = next
+                    setPrecision(next)
+                }
+                raw = (raw + (x - prevX) * g.viewSpan / g.trackWidth * factor).coerceIn(0.0, dur.toDouble())
+                prevX = x
+                if (handle == Handle.Start) raw = raw.coerceAtMost((current.endMs - MIN_GAP_MS).toDouble())
+                if (handle == Handle.End) raw = raw.coerceAtLeast((current.startMs + MIN_GAP_MS).toDouble())
+                var ms = snap(raw.roundToLong())
+                if (handle != Handle.None && factor == ScrubPrecision.NORMAL) {
+                    val near = abs(g.xOf(ms) - g.xOf(pinned)) <= snapPx
                     if (near) ms = pinned
                     if (near != snapped) {
                         snapped = near
@@ -200,8 +238,11 @@ private fun Modifier.timelineGestures(
                 }
                 applyDrag(handle, ms, current, dragSeek, change)
             }
-            val follow: (Float) -> Unit = if (slide) ::slideTo else ::moveTo
+            var lastX = down.position.x
+            var lastY = down.position.y
+            val follow: (Float, Float) -> Unit = { x, y -> if (slide) slideTo(x) else moveTo(x, y) }
             fun edgeScroll(x: Float) {
+                if (factor != ScrubPrecision.NORMAL) return
                 val g = geometry()
                 val intoStart = g.inset + edge - x
                 val intoEnd = x - (g.trackEnd - edge)
@@ -215,12 +256,12 @@ private fun Modifier.timelineGestures(
                 val after = before.scrolledBy(push * EDGE_SPEED)
                 if (after != before) {
                     setZoom(after)
-                    follow(x)
+                    raw = (raw + (after.startMs(dur) - before.startMs(dur))).coerceIn(0.0, dur.toDouble())
+                    follow(x, lastY)
                 }
             }
 
             var mode = Gesture.Pending
-            var lastX = down.position.x
             var scrubOn = false
             try {
                 loop@ while (true) {
@@ -247,27 +288,29 @@ private fun Modifier.timelineGestures(
                             val pan = event.calculatePan()
                             if (zoomChange != 1f || pan.x != 0f) {
                                 val at = g.fractionOf(event.calculateCentroid(useCurrent = false).x)
-                                setZoom(view().transform(at, pan.x / g.trackWidth, zoomChange, dur))
+                                setZoom(view().transform(at, pan.x / g.trackWidth, zoomChange, dur, maxScale()))
                             }
                             event.changes.forEach { if (it.positionChanged()) it.consume() }
                         }
                         Gesture.Pending -> {
                             val pointer = event.changes.firstOrNull { it.id == down.id } ?: break@loop
                             lastX = pointer.position.x
+                            lastY = pointer.position.y
                             if ((pointer.position - down.position).getDistance() > slop) {
                                 mode = Gesture.Drag
                                 scrubOn = true
                                 scrub(true)
                                 if (slide) grab()
                                 if (handle != Handle.None) freeze(pinned)
-                                follow(lastX)
+                                follow(lastX, lastY)
                                 pointer.consume()
                             }
                         }
                         Gesture.Drag -> {
                             val pointer = event.changes.firstOrNull { it.id == down.id } ?: break@loop
                             lastX = pointer.position.x
-                            follow(lastX)
+                            lastY = pointer.position.y
+                            follow(lastX, lastY)
                             pointer.consume()
                         }
                     }
@@ -275,9 +318,10 @@ private fun Modifier.timelineGestures(
                 if (mode == Gesture.Pending) when (handle) {
                     Handle.Start -> seek(current.startMs)
                     Handle.End -> seek(current.endMs)
-                    Handle.None -> seek(geometry().msOf(down.position.x))
+                    Handle.None -> seek(snap(geometry().msOf(down.position.x)))
                 }
             } finally {
+                setPrecision(ScrubPrecision.NORMAL)
                 if (scrubOn) scrub(false)
                 if (handle != Handle.None && mode == Gesture.Drag) {
                     freeze(NO_DRAG)

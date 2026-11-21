@@ -69,7 +69,7 @@ private fun Modifier.zoomedStrip(scale: () -> Float, start: () -> Float): Modifi
 
 @Composable
 internal fun TimelineZoomBadge(scale: Float, onReset: () -> Unit, modifier: Modifier) {
-    val label = String.format(Locale.US, "%.1f\u00d7", scale)
+    val label = String.format(Locale.US, if (scale >= 100f) "%.0f\u00d7" else "%.1f\u00d7", scale)
     val description = FrameStrings.zoomReset(label)
     val shape = FrameShapes.pill
     Row(

@@ -28,11 +28,16 @@ object CollageRenderer {
         val gap = config.spacingPx * k
         val radius = config.cornerRadiusPx * k
         val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
+        val looks = if (config.blend == CollageBlend.None) null else BlendLayout.compute(template, config.blend, config.blendStrength, outW.toFloat(), outH.toFloat(), gap)
         template.cells.forEachIndexed { i, cell ->
             if (i >= items.size) return@forEachIndexed
-            val r = cell.toPx(outW.toFloat(), outH.toFloat(), gap)
-            val dest = RectF(r.left, r.top, r.right, r.bottom)
-            drawCell(canvas, dest, load(items[i]), config, radius, k, paint, i)
+            val look = looks?.getOrNull(i)
+            if (look != null) {
+                BlendDraw.draw(canvas, look, load(items[i]), config, k, paint, i)
+            } else {
+                val r = cell.toPx(outW.toFloat(), outH.toFloat(), gap).snapped()
+                drawCell(canvas, RectF(r.left, r.top, r.right, r.bottom), load(items[i]), config, radius, k, paint, i)
+            }
         }
     }
 
@@ -51,27 +56,29 @@ object CollageRenderer {
             val geometry = CropGeometry(src.width.toFloat(), src.height.toFloat(), dest.width(), dest.height())
             val window = geometry.window(config.crops.getOrNull(index) ?: CellCrop())
             CollageScale.draw(canvas, src, window, dest, paint)
-            drawStamp(canvas, dest, config.timestamps.getOrNull(index), k, paint)
+            stamp(canvas, dest, config.timestamps.getOrNull(index), k, paint)
         } finally {
             canvas.restoreToCount(save)
             src.recycle()
         }
     }
 
-    private fun drawStamp(canvas: Canvas, dest: RectF, stamp: String?, k: Float, paint: Paint) {
-        if (stamp.isNullOrBlank()) return
+    internal fun stamp(canvas: Canvas, dest: RectF, text: String?, k: Float, paint: Paint, padX: Float = 0f, padY: Float = 0f) {
+        if (text.isNullOrBlank()) return
         val size = (dest.width() * 0.07f).coerceIn(22f * k, 44f * k)
         paint.textSize = size
         paint.isFakeBoldText = true
-        val padX = size * 0.55f
-        val padY = size * 0.32f
-        val textW = paint.measureText(stamp)
+        val padW = size * 0.55f
+        val padH = size * 0.32f
+        val textW = paint.measureText(text)
         val margin = size * 0.6f
-        val pill = RectF(dest.left + margin, dest.bottom - margin - size - padY * 2, dest.left + margin + textW + padX * 2, dest.bottom - margin)
+        val left = dest.left + padX + margin
+        val bottom = dest.bottom - padY - margin
+        val pill = RectF(left, bottom - size - padH * 2, left + textW + padW * 2, bottom)
         paint.color = 0x99000000.toInt()
         canvas.drawRoundRect(pill, pill.height() / 2f, pill.height() / 2f, paint)
         paint.color = 0xFFFFFFFF.toInt()
-        canvas.drawText(stamp, pill.left + padX, pill.bottom - padY - size * 0.18f, paint)
+        canvas.drawText(text, pill.left + padW, pill.bottom - padH - size * 0.18f, paint)
         paint.isFakeBoldText = false
     }
 

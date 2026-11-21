@@ -47,7 +47,7 @@ internal class ColorParams(
 
         fun from(primary: MediaFormat?, secondary: MediaFormat? = null): ColorParams {
             val declaredFirst = containerDeclared(secondary)
-            val transfer = resolveTransfer(primary, secondary, declaredFirst)
+            val transfer = HdrTrust.vet(resolveTransfer(primary, secondary, declaredFirst), evidence(primary, secondary))
             val hdrTransfer = transfer == MediaFormat.COLOR_TRANSFER_ST2084 || transfer == MediaFormat.COLOR_TRANSFER_HLG
             val matrix = firstInt(primary, secondary, ColorHints.KEY_MATRIX, 0)
             val standard = standardOf(primary, secondary, declaredFirst, hdrTransfer, matrix)
@@ -75,6 +75,15 @@ internal class ColorParams(
                     (standard == 0 && jpeg) || (standard != MediaFormat.COLOR_STANDARD_BT709 && isSd(primary, secondary)))
             )
         }
+
+        private fun evidence(primary: MediaFormat?, secondary: MediaFormat?): HdrTrust.Evidence = HdrTrust.Evidence(
+            hasInput = secondary != null,
+            inputTransfer = firstInt(secondary, null, MediaFormat.KEY_COLOR_TRANSFER, 0),
+            staticInfo = staticInfo(primary) != null || staticInfo(secondary) != null,
+            hdrProfile = hdrProfile(primary) || hdrProfile(secondary),
+            tenBit = firstInt(primary, null, MediaFormat.KEY_COLOR_FORMAT, 0) == COLOR_FORMAT_P010,
+            ictcp = firstInt(primary, secondary, ColorHints.KEY_MATRIX, 0) == MATRIX_ICTCP
+        )
 
         private fun standardOf(primary: MediaFormat?, secondary: MediaFormat?, declaredFirst: Boolean, hdrTransfer: Boolean, matrix: Int): Int {
             val raw = colorInt(primary, secondary, MediaFormat.KEY_COLOR_STANDARD, declaredFirst)

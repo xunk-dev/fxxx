@@ -1019,6 +1019,9 @@
     <string name="accent_mocha">Moka</string>
     <string name="collage_aspect_auto">Auto</string>
     <string name="collage_tab_canvas">Canevas</string>
+    <string name="collage_tab_merge">Fusion</string>
+    <string name="collage_merge_strength">Intensité de fusion</string>
+    <string name="collage_merge_style_n">Style de fusion %1$d</string>
     <string name="collage_tab_frames">Cadres</string>
     <string name="collage_tab_style">Style</string>
     <string name="edit_adjust">Ajuster</string>

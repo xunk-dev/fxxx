@@ -40,6 +40,7 @@ import com.frameout.core.util.CollageStrings
 import com.frameout.app.billing.rememberProGate
 import com.frameout.core.pro.ProCatalog
 import com.frameout.core.pro.ProFeature
+import com.frameout.core.pro.ProTier
 import com.frameout.designsystem.a11y.frameSelectable
 import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.theme.FrameShapes
@@ -62,13 +63,14 @@ fun TemplatePicker(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp)
     ) {
         items(CollageTemplates.all, key = { it.id }) { t ->
-            TemplateTile(t, t.id == selected.id, t.cells.size >= frameCount, gate.locked(ProCatalog.collageIsFree(t.id))) { onSelect(t) }
+            val tier = if (ProCatalog.collageIsFree(t.id)) ProTier.Free else ProTier.Ad
+            TemplateTile(t, t.id == selected.id, t.cells.size >= frameCount, tier, gate.locked(ProFeature.Collage, tier)) { onSelect(t) }
         }
     }
 }
 
 @Composable
-private fun TemplateTile(template: CollageTemplate, active: Boolean, fits: Boolean, locked: Boolean, onClick: () -> Unit) {
+private fun TemplateTile(template: CollageTemplate, active: Boolean, fits: Boolean, tier: ProTier, locked: Boolean, onClick: () -> Unit) {
     val colors = FrameTheme.colors
     val border by animateColorAsState(if (active) colors.primary else frameHairline(), label = "tplBorder")
     val fill by animateColorAsState(if (active) colors.primaryContainer else colors.container, label = "tplFill")
@@ -96,7 +98,7 @@ private fun TemplateTile(template: CollageTemplate, active: Boolean, fits: Boole
             modifier = Modifier.fillMaxWidth()
         )
     }
-    TierFold(com.frameout.core.pro.ProTier.Pro, locked, FrameShapes.sm, ring = !active)
+    TierFold(tier, locked, FrameShapes.sm, ring = !active)
     }
 }
 

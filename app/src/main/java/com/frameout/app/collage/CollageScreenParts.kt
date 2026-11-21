@@ -8,9 +8,6 @@ import androidx.compose.ui.Modifier
 import com.frameout.app.FrameOutApp
 import com.frameout.app.trim.CaptureStatus
 import com.frameout.app.trim.CaptureStatusState
-import com.frameout.core.pro.ProAccess
-import com.frameout.core.pro.ProCatalog
-import com.frameout.core.pro.ProFeature
 import com.frameout.core.util.FrameStrings
 import com.frameout.designsystem.components.ToastKind
 import com.frameout.designsystem.components.toastDurationMs
@@ -37,8 +34,5 @@ internal fun CollageSaveStatus(state: CollageState, modifier: Modifier) {
 }
 
 internal fun startCollageSave(state: CollageState, app: FrameOutApp, scope: CoroutineScope, context: Context, thenLeave: Boolean, onBack: () -> Unit) {
-    val free = ProCatalog.collageIsFree(state.template.id)
-    val allowed = free || !app.container.entitlements.enforced || ProAccess.permits(ProFeature.Collage)
-    if (allowed) saveCollage(state, app, scope, context) { if (thenLeave) onBack() }
-    else app.container.entitlements.showPaywall(ProFeature.Collage)
+    saveCollage(state, app, scope, context) { if (thenLeave) onBack() }
 }

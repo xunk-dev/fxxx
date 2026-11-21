@@ -46,14 +46,12 @@ fun CollageScreen(projectId: Long, frameIds: List<Long>, onBack: () -> Unit, onS
     androidx.activity.compose.BackHandler(enabled = state.saving, onBack = leave)
     androidx.activity.compose.BackHandler(enabled = state.dirty && !state.saving && !leavePrompt, onBack = leave)
     androidx.activity.compose.BackHandler(enabled = state.selectedCell != null && !state.saving) { state.selectedCell = null }
+    LaunchedEffect(state.ready, state.template.cells.size, state.paths, state.previewSide) { state.refinePreviews() }
     LaunchedEffect(state) { state.persistOptions(app.container.prefs) }
     LaunchedEffect(state) { state.history.track() }
     val gate = com.frameout.app.billing.rememberProGate()
-    com.frameout.app.billing.SecureWhile(gate.enforced && !com.frameout.core.pro.ProCatalog.collageIsFree(state.template.id) && !com.frameout.core.pro.ProAccess.permits(com.frameout.core.pro.ProFeature.Collage))
     val doSave: (Boolean) -> Unit = { thenLeave -> startCollageSave(state, app, scope, context, thenLeave, onBack) }
-    val saveGated: (Boolean) -> Unit = { thenLeave ->
-        gate.gated(com.frameout.core.pro.ProFeature.Collage, com.frameout.core.pro.ProCatalog.collageIsFree(state.template.id), state.template.id) { doSave(thenLeave) }
-    }
+    val saveGated: (Boolean) -> Unit = { thenLeave -> gatedSave(state, gate, thenLeave, doSave) }
     val onSave: () -> Unit = { saveGated(false) }
     PreferredFrameTheme {
         Box(Modifier.fillMaxSize().background(FrameTheme.colors.background).frameAmbientGlow()) {
@@ -72,6 +70,27 @@ fun CollageScreen(projectId: Long, frameIds: List<Long>, onBack: () -> Unit, onS
     }
 }
 
+private fun gatedSave(state: CollageState, gate: com.frameout.app.billing.ProGate, thenLeave: Boolean, doSave: (Boolean) -> Unit) {
+    val tier = state.tier
+    val feature = com.frameout.core.pro.ProFeature.Collage
+    if (tier == com.frameout.core.pro.ProTier.Pro) {
+        gate.use(feature, tier) { doSave(thenLeave) }
+        return
+    }
+    val hub = com.frameout.app.ads.AdsGateway.hub
+    val needsAd = tier == com.frameout.core.pro.ProTier.Ad && gate.enforced && !gate.isPro && !com.frameout.core.pro.ProAccess.permits(feature)
+    if (needsAd && hub != null && hub.rewardAvailable()) {
+        hub.showReward(feature) { earned ->
+            if (earned) {
+                state.rewardShown = true
+                doSave(thenLeave)
+            }
+        }
+    } else {
+        doSave(thenLeave)
+    }
+}
+
 internal fun saveCollage(state: CollageState, app: FrameOutApp, scope: kotlinx.coroutines.CoroutineScope, context: android.content.Context, onSaved: () -> Unit = {}) {
     state.saving = true
     state.message = null
@@ -85,6 +104,7 @@ internal fun saveCollage(state: CollageState, app: FrameOutApp, scope: kotlinx.c
         if (saved != null) {
             state.markClean()
             state.result = saved
+            if (state.rewardShown) state.rewardShown = false else com.frameout.app.ads.AdsGateway.exportDone()
             onSaved()
         } else {
             state.messageIsError = true

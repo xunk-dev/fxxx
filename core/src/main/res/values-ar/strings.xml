@@ -1044,6 +1044,9 @@
     <string name="collage_tab_frames">الإطارات</string>
     <string name="collage_tab_style">النمط</string>
     <string name="collage_tab_canvas">اللوحة</string>
+    <string name="collage_tab_merge">دمج</string>
+    <string name="collage_merge_strength">قوة الدمج</string>
+    <string name="collage_merge_style_n">نمط الدمج %1$d</string>
     <string name="legal_note">بمتابعتك فإنك توافق على</string>
     <string name="landscape_view">عرض أفقي</string>
     <string name="edit_lock_title">عناصر مقفلة في هذه الصورة</string>

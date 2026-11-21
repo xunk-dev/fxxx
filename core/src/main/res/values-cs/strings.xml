@@ -1022,6 +1022,9 @@
     <string name="accent_mocha">Mokka</string>
     <string name="collage_aspect_auto">Auto</string>
     <string name="collage_tab_canvas">Plátno</string>
+    <string name="collage_tab_merge">Prolnutí</string>
+    <string name="collage_merge_strength">Síla prolnutí</string>
+    <string name="collage_merge_style_n">Styl prolnutí %1$d</string>
     <string name="collage_tab_frames">Rámečky</string>
     <string name="collage_tab_style">Styl</string>
     <string name="edit_adjust">Upravit</string>

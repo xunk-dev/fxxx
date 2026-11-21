@@ -1013,6 +1013,9 @@
     <string name="accent_mocha">모카</string>
     <string name="collage_aspect_auto">자동</string>
     <string name="collage_tab_canvas">캔버스</string>
+    <string name="collage_tab_merge">블렌드</string>
+    <string name="collage_merge_strength">블렌드 강도</string>
+    <string name="collage_merge_style_n">블렌드 스타일 %1$d</string>
     <string name="collage_tab_frames">프레임</string>
     <string name="collage_tab_style">스타일</string>
     <string name="edit_adjust">조정</string>

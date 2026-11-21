@@ -200,7 +200,7 @@ class PlayerController(internal val context: Context) {
             return
         }
         val d = player.duration.coerceAtLeast(0)
-        val target = ms.coerceAtLeast(0L).coerceAtMost(if (d > 0) d else Long.MAX_VALUE)
+        val target = snapToFrame(ms.coerceAtLeast(0L).coerceAtMost(if (d > 0) d else Long.MAX_VALUE))
         if (scrubbing) scrubTargetMs = target
         player.seekTo(target)
         refresh()
@@ -210,7 +210,7 @@ class PlayerController(internal val context: Context) {
         if (!scrubbing || released) { seekTo(ms); return }
         if (animated != null) { seekTo(ms); return }
         val d = player.duration.coerceAtLeast(0)
-        val target = ms.coerceAtLeast(0L).coerceAtMost(if (d > 0) d else Long.MAX_VALUE)
+        val target = snapToFrame(ms.coerceAtLeast(0L).coerceAtMost(if (d > 0) d else Long.MAX_VALUE))
         scrubTargetMs = target
         _position.value = target
         if (showCachedAt(target)) return
@@ -247,6 +247,11 @@ class PlayerController(internal val context: Context) {
                 if (target < 0L || d <= 0L || target < d - RESUME_TAIL_MS) play()
             }
         }
+    }
+
+    internal fun snapToFrame(ms: Long): Long {
+        val index = ptsIndex ?: return ms
+        return FramePtsIndex.snapMs(index, ms)
     }
 
     fun positionNow(): Long = _position.value

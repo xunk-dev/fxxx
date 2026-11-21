@@ -1016,6 +1016,9 @@
     <string name="accent_mocha">Mokka</string>
     <string name="collage_aspect_auto">Otomatik</string>
     <string name="collage_tab_canvas">Tuval</string>
+    <string name="collage_tab_merge">Birleştir</string>
+    <string name="collage_merge_strength">Birleştirme gücü</string>
+    <string name="collage_merge_style_n">Birleştirme stili %1$d</string>
     <string name="collage_tab_frames">Çerçeveler</string>
     <string name="collage_tab_style">Stil</string>
     <string name="edit_adjust">Ayarla</string>

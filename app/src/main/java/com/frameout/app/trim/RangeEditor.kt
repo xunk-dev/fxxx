@@ -41,6 +41,7 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.fieldFill
 import com.frameout.designsystem.theme.frameHairline
+import com.frameout.engine.player.shiftFrames
 import com.frameout.engine.timeline.TrimRange
 
 private val NudgeSize = 28.dp
@@ -56,13 +57,17 @@ internal class RangeEditorSpec(
     val maxMs: Long,
     val onRange: (TrimRange) -> Unit,
     val seekTo: (Long) -> Unit,
-    val positionNow: () -> Long
+    val positionNow: () -> Long,
+    val shift: (Long, Int) -> Long = { ms, frames -> ms + frames * RangeEdit.NUDGE_MS }
 )
 
 @Composable
 internal fun RangeEditor(env: TrimEnv) {
     RangeEditor(
-        RangeEditorSpec(env.player.durationMs, env.clamped, env.output.maxMs, env.onRange, env.controller::seekTo, env.controller::positionNow)
+        RangeEditorSpec(
+            env.player.durationMs, env.clamped, env.output.maxMs, env.onRange, env.controller::seekTo, env.controller::positionNow,
+            shift = { ms, frames -> env.controller.shiftFrames(ms, frames, RangeEdit.NUDGE_MS) }
+        )
     )
 }
 
@@ -83,13 +88,13 @@ internal fun RangeEditor(spec: RangeEditorSpec, modifier: Modifier = Modifier) {
             Row(Modifier.fillMaxWidth()) {
                 EdgeColumn(
                     FrameStrings.from(), base.startMs, Modifier.weight(1f),
-                    onShift = { frames -> commitStart(spec, base, base.startMs + frames * RangeEdit.NUDGE_MS, seek = true) },
+                    onShift = { frames -> commitStart(spec, base, spec.shift(base.startMs, frames), seek = true) },
                     onType = { ms -> commitStart(spec, base, ms, seek = true) }
                 )
                 Box(Modifier.width(1.dp).height(EdgeHeight).background(frameHairline()))
                 EdgeColumn(
                     FrameStrings.to(), base.endMs, Modifier.weight(1f),
-                    onShift = { frames -> commitEnd(spec, base, base.endMs + frames * RangeEdit.NUDGE_MS, seek = true) },
+                    onShift = { frames -> commitEnd(spec, base, spec.shift(base.endMs, frames), seek = true) },
                     onType = { ms -> commitEnd(spec, base, ms, seek = true) }
                 )
             }

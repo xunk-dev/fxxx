@@ -1013,6 +1013,9 @@
     <string name="accent_mocha">มอคค่า</string>
     <string name="collage_aspect_auto">อัตโนมัติ</string>
     <string name="collage_tab_canvas">แคนวาส</string>
+    <string name="collage_tab_merge">ผสาน</string>
+    <string name="collage_merge_strength">ความแรงการผสาน</string>
+    <string name="collage_merge_style_n">สไตล์การผสาน %1$d</string>
     <string name="collage_tab_frames">กรอบ</string>
     <string name="collage_tab_style">สไตล์</string>
     <string name="edit_adjust">ปรับแต่ง</string>

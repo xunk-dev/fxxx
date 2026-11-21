@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import com.frameout.engine.player.FramePtsIndex
 import com.frameout.engine.timeline.TrimRange
 
 internal fun pickHandle(x: Float, geometry: TrackGeometry, range: TrimRange, hit: Float, handleWidth: Float): Handle {
@@ -50,7 +51,8 @@ internal fun DrawScope.drawTimeline(
     markers: List<Long>,
     queued: List<Long>,
     paint: TimelinePaint,
-    zoom: TimelineZoom
+    zoom: TimelineZoom,
+    frames: LongArray? = null
 ) {
     val geometry = TrackGeometry(size.width, HandleWidth.toPx(), dur, zoom)
     val h = size.height
@@ -71,8 +73,32 @@ internal fun DrawScope.drawTimeline(
         if (startX >= geometry.inset - 0.5f && startX <= geometry.trackEnd + hw) drawHandle(startX - hw, h, active == Handle.Start, paint)
         if (endX >= geometry.inset - hw && endX <= geometry.trackEnd + 0.5f) drawHandle(endX, h, active == Handle.End, paint)
     }
+    if (frames != null) drawFrameTicks(geometry, frames, h)
     drawPlayhead(geometry.xOf(positionMs), h)
 }
+
+private fun DrawScope.drawFrameTicks(g: TrackGeometry, frames: LongArray, h: Float) {
+    val fromUs = (g.viewStart * 1000f).toLong()
+    val toUs = ((g.viewStart + g.viewSpan) * 1000f).toLong()
+    var i = FramePtsIndex.lowerBound(frames, fromUs)
+    val visible = FramePtsIndex.upperBound(frames, toUs) - i
+    if (visible <= 0) return
+    val perFrame = g.trackWidth / visible
+    if (perFrame < MIN_TICK_PX.dp.toPx()) return
+    val len = (if (perFrame >= TALL_TICK_PX.dp.toPx()) 12.dp else 7.dp).toPx()
+    val color = Color.White.copy(alpha = 0.7f)
+    val shadow = Color.Black.copy(alpha = 0.45f)
+    val stroke = 1.dp.toPx()
+    while (i < frames.size && frames[i] <= toUs) {
+        val x = g.inset + (frames[i] / 1000f - g.viewStart) / g.viewSpan * g.trackWidth
+        drawLine(shadow, Offset(x + stroke, h - len), Offset(x + stroke, h), strokeWidth = stroke)
+        drawLine(color, Offset(x, h - len), Offset(x, h), strokeWidth = stroke)
+        i++
+    }
+}
+
+private const val MIN_TICK_PX = 5
+private const val TALL_TICK_PX = 12
 
 private fun DrawScope.drawDot(x: Float, y: Float, color: Color) {
     drawCircle(Color.Black.copy(alpha = 0.55f), 4.5.dp.toPx(), Offset(x, y))

@@ -144,12 +144,14 @@ private fun TrimBody(env: TrimEnv, onBack: () -> Unit, landscape: Boolean, maxHe
                 Column(Modifier.weight(1f).fillMaxHeight()) {
                     PlayerArea(env.controller, env.player.videoAspect, Modifier.weight(1f).fillMaxWidth(), env.fx)
                     ShotStrip(env)
+                    NeighborStrip(env)
                 }
                 TrimPanel(env, maxHeight, Modifier.weight(1f).fillMaxHeight().padding(end = 12.dp, bottom = 12.dp), landscape = true)
             }
         } else {
             TrimStage(env, Modifier.weight(1f).fillMaxWidth())
             ShotStrip(env)
+            NeighborStrip(env)
             TrimPanel(env, panelCap(env, maxHeight), Modifier.fillMaxWidth())
         }
     }

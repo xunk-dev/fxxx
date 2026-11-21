@@ -1016,6 +1016,9 @@
     <string name="accent_mocha">মোকা</string>
     <string name="collage_aspect_auto">অটো</string>
     <string name="collage_tab_canvas">ক্যানভাস</string>
+    <string name="collage_tab_merge">মার্জ</string>
+    <string name="collage_merge_strength">মার্জের শক্তি</string>
+    <string name="collage_merge_style_n">মার্জ স্টাইল %1$d</string>
     <string name="collage_tab_frames">ফ্রেম</string>
     <string name="collage_tab_style">স্টাইল</string>
     <string name="edit_adjust">সমন্বয়</string>

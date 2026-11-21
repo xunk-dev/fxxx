@@ -1022,6 +1022,9 @@
     <string name="accent_mocha">Мокко</string>
     <string name="collage_aspect_auto">Авто</string>
     <string name="collage_tab_canvas">Полотно</string>
+    <string name="collage_tab_merge">Злиття</string>
+    <string name="collage_merge_strength">Сила злиття</string>
+    <string name="collage_merge_style_n">Стиль злиття %1$d</string>
     <string name="collage_tab_frames">Рамки</string>
     <string name="collage_tab_style">Стиль</string>
     <string name="edit_adjust">Коригування</string>

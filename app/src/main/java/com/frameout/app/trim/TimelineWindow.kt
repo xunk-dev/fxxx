@@ -21,10 +21,10 @@ internal fun windowAnchor(geometry: TrackGeometry, downX: Float, range: TrimRang
 internal fun slideStartMs(geometry: TrackGeometry, x: Float, anchor: Float, spanMs: Long, durationMs: Long): Long =
     geometry.msOf(x - anchor).coerceIn(0L, (durationMs - spanMs).coerceAtLeast(0L))
 
-internal fun TimelineZoom.focusing(startMs: Long, endMs: Long, durationMs: Long, fill: Float): TimelineZoom {
+internal fun TimelineZoom.focusing(startMs: Long, endMs: Long, durationMs: Long, fill: Float, maxScale: Float = TimelineZoom.maxScaleFor(durationMs)): TimelineZoom {
     if (durationMs <= 0L) return this
     val fraction = ((endMs - startMs).toFloat() / durationMs).coerceAtLeast(MIN_FRACTION)
-    val scale = (fill / fraction).coerceIn(TimelineZoom.MIN_SCALE, TimelineZoom.maxScaleFor(durationMs))
+    val scale = (fill / fraction).coerceIn(TimelineZoom.MIN_SCALE, maxScale.coerceAtLeast(TimelineZoom.MIN_SCALE))
     if (scale <= TimelineZoom.MIN_SCALE) return TimelineZoom()
     val span = 1f / scale
     val centre = (startMs + endMs) / 2f / durationMs

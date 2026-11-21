@@ -19,10 +19,14 @@ import com.frameout.core.collage.COLLAGE_MAX_WIDTH
 import com.frameout.core.collage.CollageAutoAspect
 import com.frameout.core.collage.CellCrop
 import com.frameout.core.collage.CollageAspect
+import com.frameout.core.collage.CollageBlend
 import com.frameout.core.collage.CollageTemplate
 import com.frameout.core.collage.CollageTemplates
+import com.frameout.core.collage.compacted
 import com.frameout.core.db.FrameEntity
 import com.frameout.core.prefs.AppPrefs
+import com.frameout.core.pro.ProCatalog
+import com.frameout.core.pro.ProTier
 import com.frameout.core.util.Fanout
 import com.frameout.core.util.ThumbCache
 import com.frameout.engine.timeline.formatTimestamp
@@ -45,6 +49,8 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
     var pickerOpen by mutableStateOf(false)
     var rounded by mutableStateOf(prefs.collageRounded.value)
     var stamps by mutableStateOf(prefs.collageStamps.value)
+    var blend by mutableStateOf(CollageBlend.None)
+    var blendStrength by mutableIntStateOf(0)
     var selectedCell by mutableStateOf<Int?>(null)
     var pickerSlot by mutableStateOf<Int?>(null)
     var galleryIds by mutableStateOf<Set<Long>>(emptySet())
@@ -54,6 +60,8 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
     var result by mutableStateOf<SavedCapture?>(null)
     internal var userPicked = false
     internal val history = CollageHistory(this)
+    internal var rewardShown = false
+    internal var previewSide by mutableIntStateOf(0)
     var saveJob: kotlinx.coroutines.Job? = null
     private var leaveArmed = false
 
@@ -71,7 +79,7 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
 
     private var baseline: List<Any?>? = null
 
-    internal fun signature(): List<Any?> = listOf(template.id, aspect, aspectAuto, resolution, order, crops, gap, bgColor, rounded, stamps)
+    internal fun signature(): List<Any?> = listOf(template.id, aspect, aspectAuto, resolution, order, crops, gap, bgColor, rounded, stamps, blend, blendStrength)
 
     val dirty: Boolean get() = ready && baseline?.let { it != signature() } == true
 
@@ -88,11 +96,21 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
     var aspectAuto by mutableStateOf(true)
 
     val effectiveAspect: CollageAspect
-        get() = if (aspectAuto) CollageAutoAspect.choose(template, previews.map { p -> p?.let { it.width.toFloat() / it.height } ?: 0f }) else aspect
+        get() = if (aspectAuto) CollageAutoAspect.choose(template.compacted(order.size), order.map { i -> previews.getOrNull(i)?.let { it.width.toFloat() / it.height } ?: 0f }) else aspect
 
     val canvasTemplate: CollageTemplate get() = template.withAspect(effectiveAspect)
+
+    val previewTemplate: CollageTemplate get() = canvasTemplate.compacted(order.size)
     val background: Color get() = Color(bgColor)
-    val style: PreviewStyle get() = PreviewStyle(gap, if (rounded) COLLAGE_CORNER_REFERENCE else 0f, background, stamps)
+    val style: PreviewStyle get() = PreviewStyle(gap, if (rounded) COLLAGE_CORNER_REFERENCE else 0f, background, stamps, blend, blendStrength)
+
+    val tier: ProTier get() = ProCatalog.collageTier(template.id, blend.id)
+
+    fun pickBlend(b: CollageBlend) {
+        blend = b
+        blendStrength = b.defaultStrength
+        selectedCell = null
+    }
 
     fun pickTemplate(t: CollageTemplate) {
         template = t
@@ -157,7 +175,7 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
             if (frames.any { it.id == frame.id } || order.size >= template.cells.size) return false
             val path = CollageMaterializer(context, app.container.projects, app.container.frameEdits).materialize(listOf(frame)).firstOrNull() ?: return false
             val thumb = ThumbCache.load(frame.thumbnailPath ?: frame.fullPath, 512)
-            val preview = loadPreview(path, previewSideFor(maxOf(template.cells.size, frames.size + 1))) ?: thumb
+            val preview = loadPreview(path, previewSide.takeIf { it > 0 } ?: previewSideFor(template.cells.size)) ?: thumb
             val index = frames.size
             frames = frames + frame
             paths = paths + path
@@ -168,6 +186,23 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
         } finally {
             history.release()
         }
+    }
+
+    suspend fun refinePreviews() {
+        if (!ready || paths.isEmpty()) return
+        val target = previewSideFor(template.cells.size)
+        if (target == previewSide) return
+        val source = paths
+        val ids = order.take(template.cells.size).filter { it in source.indices }.distinct()
+        val refined = Fanout.map(ids) { i -> loadPreview(source[i], target) }
+        if (source !== paths || target != previewSideFor(template.cells.size)) return
+        val next = previews.toMutableList()
+        ids.forEachIndexed { k, i ->
+            val bitmap = refined[k]
+            if (bitmap != null && i in next.indices) next[i] = bitmap
+        }
+        previews = next
+        previewSide = target
     }
 
     fun cropsInOrder(): List<CellCrop> = order.map { cropOf(it) }
@@ -215,11 +250,15 @@ class CollageState(frameCount: Int, prefs: AppPrefs) {
             if (!userPicked) template = CollageTemplates.suggest(frames.size)
         }
         paths = usable.map { materialized[it] }
+        val side = previewSideFor(template.cells.size)
+        previewSide = side
         ready = true
         markClean()
         val fallback = previews
-        val side = previewSideFor(maxOf(template.cells.size, paths.size))
-        previews = Fanout.map(paths.indices.toList()) { i -> loadPreview(paths[i], side) ?: fallback.getOrNull(i) }
+        val shown = order.take(template.cells.size).toSet()
+        previews = Fanout.map(paths.indices.toList()) { i ->
+            if (i in shown) loadPreview(paths[i], side) ?: fallback.getOrNull(i) else fallback.getOrNull(i)
+        }
         history.start()
         if (requested.size > ids.size) {
             messageIsError = true

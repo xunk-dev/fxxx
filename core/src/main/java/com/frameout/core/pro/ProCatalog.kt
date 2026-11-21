@@ -17,7 +17,9 @@ object ProCatalog {
         ShapeKind.Highlighter, ShapeKind.DoubleArrow, ShapeKind.Diamond, ShapeKind.Check, ShapeKind.Cross, ShapeKind.Bracket
     )
 
-    val freeCollages: Set<String> = setOf("2x1", "1x2", "2x2")
+    val freeCollages: Set<String> = setOf("2x1", "1x2", "2x2", "1+2", "2+1", "3x1", "1x3")
+    val adBlends: Set<String> = setOf("wave", "zigzag", "slant", "arc", "steps", "ripple", "circle", "squircle", "diamond", "hexagon", "octagon", "ticket")
+    val proBlends: Set<String> = setOf("feather", "mist", "flow", "scallop", "torn", "heart", "arch", "leaf", "blob")
     const val DYNAMIC_ACCENT = "dynamic"
     val accentKeys: Set<String> = setOf("indigo", "ocean", "black", "emerald", "sunset", "crimson", "lime", "rose", "gold", "violet", "mocha")
     val freeAccents: Set<String> = setOf("black")
@@ -51,6 +53,18 @@ object ProCatalog {
 
     fun filterIsFree(id: String): Boolean = filterTier(id) == ProTier.Free
     fun collageIsFree(id: String): Boolean = id in freeCollages
+
+    fun blendTier(id: String): ProTier = when {
+        id == "none" -> ProTier.Free
+        id in adBlends -> ProTier.Ad
+        else -> ProTier.Pro
+    }
+
+    fun collageTier(templateId: String, blendId: String): ProTier {
+        val layout = if (collageIsFree(templateId)) ProTier.Free else ProTier.Ad
+        val blend = blendTier(blendId)
+        return if (blend.ordinal > layout.ordinal) blend else layout
+    }
     fun accentIsFree(key: String, granted: String? = null): Boolean = key in freeAccents || (granted != null && key == granted)
     fun welcomePickable(key: String): Boolean = key in accentKeys
     fun accentIsProOnly(key: String): Boolean = key in proOnlyAccents

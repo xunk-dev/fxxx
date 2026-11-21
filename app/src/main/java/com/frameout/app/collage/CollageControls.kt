@@ -85,7 +85,7 @@ internal fun CanvasTab(state: CollageState) {
 }
 
 @Composable
-private fun GroupIcon(icon: Int) {
+internal fun GroupIcon(icon: Int) {
     Image(painterResource(icon), null, Modifier.size(20.dp), colorFilter = ColorFilter.tint(FrameTheme.colors.onSurfaceVariant))
 }
 

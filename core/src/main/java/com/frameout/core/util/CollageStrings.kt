@@ -11,7 +11,14 @@ object CollageStrings {
         "hero" -> s(R.string.collage_tpl_hero)
         "mosaic" -> s(R.string.collage_tpl_mosaic)
         "contact_sheet" -> s(R.string.collage_tpl_contact_sheet)
-        else -> "\u202A" + id.replace('x', '\u00D7') + "\u202C"
+        else -> "\u202A" + layoutLabel(id) + "\u202C"
+    }
+
+    private val layoutId = Regex("^p(\\d+)([a-z])$")
+
+    private fun layoutLabel(id: String): String {
+        val match = layoutId.matchEntire(id) ?: return id.replace('x', '\u00D7')
+        return match.groupValues[1] + match.groupValues[2].uppercase()
     }
 
     fun spacing() = s(R.string.collage_spacing)
@@ -34,6 +41,9 @@ object CollageStrings {
     fun tabFrames() = s(R.string.collage_tab_frames)
     fun tabStyle() = s(R.string.collage_tab_style)
     fun tabCanvas() = s(R.string.collage_tab_canvas)
+    fun tabMerge() = s(R.string.collage_tab_merge)
+    fun mergeStrength() = s(R.string.collage_merge_strength)
+    fun mergeStyle(n: Int) = s(R.string.collage_merge_style_n, n)
 
     fun aspectAuto(): String = s(R.string.collage_aspect_auto)
 

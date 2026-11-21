@@ -60,14 +60,18 @@ import com.frameout.engine.timeline.formatTimestamp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.abs
-
-private val FRAME_STEP = 12.dp
+import kotlin.math.roundToInt
+import com.frameout.engine.player.frameCount
+import com.frameout.engine.player.frameIndexNow
+import com.frameout.engine.player.frameNumberAt
+import com.frameout.engine.player.scrubToFrame
 
 @Stable
 internal class FrameScrubState {
     var active by mutableStateOf(false)
     var frames by mutableIntStateOf(0)
     var hintVisible by mutableStateOf(false)
+    var precision by mutableStateOf("")
     var onFirstUse: (() -> Unit)? = null
     private var used = false
 
@@ -98,40 +102,49 @@ private suspend fun AwaitPointerEventScope.scrubGesture(
 ) {
     val down = awaitFirstDown(requireUnconsumed = false)
     if (zoomed()) return
-    var total = 0f
+    var overSlopX = 0f
     awaitHorizontalTouchSlopOrCancellation(down.id) { change, overSlop ->
         change.consume()
-        total = overSlop
+        overSlopX = overSlop
     } ?: return
-    val stepPx = FRAME_STEP.toPx()
-    var applied = 0
-    fun follow() {
-        val target = (total / stepPx).toInt()
-        val delta = target - applied
-        if (delta == 0) return
-        applied = target
-        state.frames = target
-        haptics.perform(FrameHaptic.Tick)
-        scope.launch { controller.stepFrame(delta > 0, abs(delta)) }
-    }
     state.frames = 0
+    state.precision = ""
     state.active = true
     state.markUsed()
     controller.pause()
     controller.scrub(true)
     haptics.perform(FrameHaptic.DragStart)
+    val total = controller.frameCount()
+    val startFrame = controller.frameIndexNow()
+    val indexed = total > 0 && startFrame >= 0
+    var travel = 0.0
+    var applied = 0
+    fun follow(dx: Float, dy: Float) {
+        val dpPerFrame = ScrubPrecision.dpPerFrame(dy / density)
+        state.precision = ScrubPrecision.surfaceLabel(dpPerFrame)
+        travel += dx / (dpPerFrame * density)
+        if (indexed) travel = travel.coerceIn(-startFrame.toDouble(), (total - 1 - startFrame).toDouble())
+        val target = travel.roundToInt()
+        val delta = target - applied
+        if (delta == 0) return
+        applied = target
+        state.frames = target
+        haptics.perform(FrameHaptic.Tick)
+        if (indexed) controller.scrubToFrame(startFrame + target)
+        else scope.launch { controller.stepFrame(delta > 0, abs(delta)) }
+    }
     try {
-        follow()
+        follow(overSlopX, 0f)
         while (true) {
             val event = awaitPointerEvent()
             val change = event.changes.firstOrNull { it.id == down.id } ?: break
             if (!change.pressed || event.changes.count { it.pressed } > 1) break
-            total += change.positionChange().x
+            follow(change.positionChange().x, change.position.y - down.position.y)
             change.consume()
-            follow()
         }
     } finally {
         state.active = false
+        state.precision = ""
         controller.scrub(false)
         haptics.perform(FrameHaptic.DragEnd)
     }
@@ -147,6 +160,7 @@ internal fun BoxScope.FrameScrubBadge(state: FrameScrubState, controller: Player
         exit = fadeOut()
     ) {
         val frames = state.frames
+        val number = controller.frameNumberAt(position)
         val signed = when {
             frames > 0 -> "+$frames"
             frames < 0 -> "\u2212${-frames}"
@@ -154,7 +168,7 @@ internal fun BoxScope.FrameScrubBadge(state: FrameScrubState, controller: Player
         }
         CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
             FrameText(
-                "$signed  \u00B7  ${formatTimestamp(position)}",
+                listOfNotNull(signed, number.takeIf { it > 0 }?.let { "#$it" }, formatTimestamp(position), state.precision.takeIf { it.isNotEmpty() }).joinToString("  \u00B7  "),
                 style = FrameTheme.typography.label,
                 color = FrameTheme.colors.onSurface,
                 maxLines = 1,

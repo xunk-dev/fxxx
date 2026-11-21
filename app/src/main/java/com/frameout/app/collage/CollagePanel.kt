@@ -49,9 +49,11 @@ import com.frameout.designsystem.theme.FrameTheme
 private val BODY_HEIGHT = 48.dp
 private const val INTRO_MS = 2600L
 private val PICKER_HEIGHT = 196.dp
+private val MERGE_HEIGHT = 112.dp
 
 internal enum class CollageTab(val icon: Int, val label: () -> String) {
     Frames(FrameIcons.GridSize, CollageStrings::tabFrames),
+    Merge(FrameIconsExtra.CollageMerge, CollageStrings::tabMerge),
     Style(FrameIconsExtra.Palette, CollageStrings::tabStyle),
     Canvas(FrameIconsExtra.Fit, CollageStrings::tabCanvas)
 }
@@ -118,9 +120,10 @@ private fun PanelBody(tab: CollageTab, state: CollageState) {
         return
     }
     key(tab) {
-        Box(Modifier.fillMaxWidth().height(BODY_HEIGHT).padding(horizontal = 12.dp), Alignment.Center) {
+        Box(Modifier.fillMaxWidth().height(if (tab == CollageTab.Merge) MERGE_HEIGHT else BODY_HEIGHT).padding(horizontal = 12.dp), Alignment.Center) {
             when (tab) {
                 CollageTab.Frames -> FramesTab(state)
+                CollageTab.Merge -> MergeTab(state)
                 CollageTab.Style -> StyleTab(state)
                 CollageTab.Canvas -> CanvasTab(state)
             }

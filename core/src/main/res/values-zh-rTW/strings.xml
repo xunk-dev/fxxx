@@ -1013,6 +1013,9 @@
     <string name="accent_mocha">摩卡</string>
     <string name="collage_aspect_auto">自動</string>
     <string name="collage_tab_canvas">畫布</string>
+    <string name="collage_tab_merge">融合</string>
+    <string name="collage_merge_strength">融合強度</string>
+    <string name="collage_merge_style_n">融合樣式 %1$d</string>
     <string name="collage_tab_frames">相框</string>
     <string name="collage_tab_style">樣式</string>
     <string name="edit_adjust">調整</string>

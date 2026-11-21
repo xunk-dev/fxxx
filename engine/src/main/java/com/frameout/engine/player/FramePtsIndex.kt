@@ -80,4 +80,34 @@ object FramePtsIndex {
         val shown = (upperBound(index, ExactPts.limitUs(positionMs)) - 1).coerceAtLeast(0)
         return index[maxOf(0, shown - back)] to index[minOf(index.size - 1, shown + fwd)]
     }
+
+    fun indexAt(index: LongArray, positionMs: Long): Int {
+        if (index.isEmpty()) return -1
+        return (upperBound(index, ExactPts.limitUs(positionMs)) - 1).coerceAtLeast(0)
+    }
+
+    fun nearestIndex(index: LongArray, positionMs: Long): Int {
+        if (index.isEmpty()) return -1
+        val us = positionMs.coerceAtLeast(0L) * 1000L + HALF_MS_US
+        val after = lowerBound(index, us).coerceAtMost(index.size - 1)
+        val before = (after - 1).coerceAtLeast(0)
+        return if (kotlin.math.abs(index[after] - us) < kotlin.math.abs(us - index[before])) after else before
+    }
+
+    fun frameMs(index: LongArray, frame: Int): Long = index[frame.coerceIn(0, index.size - 1)] / 1000L
+
+    fun snapMs(index: LongArray, positionMs: Long): Long {
+        if (index.isEmpty()) return positionMs
+        return frameMs(index, nearestIndex(index, positionMs))
+    }
+
+    fun shiftMs(index: LongArray, positionMs: Long, frames: Int): Long {
+        if (index.isEmpty()) return positionMs
+        return frameMs(index, indexAt(index, positionMs).toLong().plus(frames).coerceIn(0L, (index.size - 1).toLong()).toInt())
+    }
+
+    fun averageFrameUs(index: LongArray): Long =
+        if (index.size < 2) 0L else (index[index.size - 1] - index[0]) / (index.size - 1)
+
+    private const val HALF_MS_US = 500L
 }

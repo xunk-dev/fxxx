@@ -1016,6 +1016,9 @@
     <string name="accent_mocha">Mokka</string>
     <string name="collage_aspect_auto">Auto</string>
     <string name="collage_tab_canvas">Lerret</string>
+    <string name="collage_tab_merge">Blanding</string>
+    <string name="collage_merge_strength">Blandingsstyrke</string>
+    <string name="collage_merge_style_n">Blandingsstil %1$d</string>
     <string name="collage_tab_frames">Rammer</string>
     <string name="collage_tab_style">Stil</string>
     <string name="edit_adjust">Juster</string>

@@ -68,4 +68,22 @@ class TimelineZoomTest {
         assertTrue(5_000f / duration in moved.start..moved.end)
         assertFalse(TimelineZoom().revealing(5_000L, duration).zoomed)
     }
+
+    @Test
+    fun frameLimitLetsLongClipsZoomToSingleFrames() {
+        val hour = 3_600_000L
+        val frames = 108_000
+        val limit = TimelineZoom.maxScaleFor(hour, frames, 340f)
+        assertTrue(limit > TimelineZoom.MAX_SCALE * 10)
+        val zoom = TimelineZoom().transform(0.5f, 0f, 100_000f, hour, limit)
+        val visibleFrames = frames * zoom.span
+        assertTrue(340f / visibleFrames >= TimelineZoom.MIN_FRAME_DP - 0.01f)
+    }
+
+    @Test
+    fun frameLimitNeverBelowTheTimeLimit() {
+        assertEquals(TimelineZoom.maxScaleFor(3_000L), TimelineZoom.maxScaleFor(3_000L, 60, 340f), 0f)
+        assertEquals(TimelineZoom.maxScaleFor(60_000L), TimelineZoom.maxScaleFor(60_000L, 0, 340f), 0f)
+        assertEquals(TimelineZoom.maxScaleFor(60_000L), TimelineZoom.maxScaleFor(60_000L, 1800, 0f), 0f)
+    }
 }
