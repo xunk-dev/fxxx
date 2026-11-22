@@ -2,6 +2,7 @@ package com.frameout.core.edit
 
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 data class Transform(val scale: Float, val x: Float, val y: Float) {
     companion object {
@@ -16,12 +17,12 @@ data class ViewGeometry(val imageW: Int, val imageH: Int, val viewW: Float, val 
     fun pixelSize(t: Transform): Float = fit * t.scale
 
     fun clamp(t: Transform): Transform {
-        val s = t.scale.coerceIn(1f, maxScale)
+        val s = t.scale.safeCoerceIn(1f, maxScale)
         return Transform(s, clampAxis(t.x, imageW * fit * s, viewW), clampAxis(t.y, imageH * fit * s, viewH))
     }
 
     fun zoomed(t: Transform, factor: Float, focalX: Float, focalY: Float): Transform {
-        val s = (t.scale * factor).coerceIn(1f, maxScale)
+        val s = (t.scale * factor).safeCoerceIn(1f, maxScale)
         val k = s / t.scale
         return clamp(Transform(s, focalX - (focalX - t.x) * k, focalY - (focalY - t.y) * k))
     }
@@ -43,11 +44,11 @@ data class ViewGeometry(val imageW: Int, val imageH: Int, val viewW: Float, val 
 
     fun toImageY(screenY: Float, t: Transform): Float = (screenY - t.y) / (fit * t.scale) + imageH / 2f
 
-    fun actualPixels(): Float = (1f / fit).coerceIn(1f, maxScale)
+    fun actualPixels(): Float = (1f / fit).safeCoerceIn(1f, maxScale)
 
     private fun clampAxis(offset: Float, shown: Float, view: Float): Float {
         val limit = max(0f, (shown - view) / 2f)
-        return offset.coerceIn(-limit, limit)
+        return offset.safeCoerceIn(-limit, limit)
     }
 
     companion object {

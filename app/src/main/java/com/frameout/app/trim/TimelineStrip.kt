@@ -38,6 +38,7 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import java.util.Locale
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun ThumbStrip(thumbs: List<Bitmap?>, scale: () -> Float, start: () -> Float, modifier: Modifier) {
@@ -62,7 +63,7 @@ private fun Modifier.zoomedStrip(scale: () -> Float, start: () -> Float): Modifi
     val full = (constraints.maxWidth * scale()).roundToInt().coerceAtMost(MAX_STRIP_PX).coerceAtLeast(constraints.maxWidth)
     val placeable = measurable.measure(Constraints.fixed(full, constraints.maxHeight))
     layout(constraints.maxWidth, constraints.maxHeight) {
-        val shift = (start() * full).roundToInt().coerceIn(0, (full - constraints.maxWidth).coerceAtLeast(0))
+        val shift = (start() * full).roundToInt().safeCoerceIn(0, (full - constraints.maxWidth).coerceAtLeast(0))
         placeable.placeRelative(-shift, 0)
     }
 }

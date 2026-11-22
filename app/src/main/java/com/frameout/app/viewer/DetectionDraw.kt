@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.frameout.core.util.safeCoerceIn
 
 private const val IDLE_ALPHA = 0.55f
 private const val SELECTED_FILL = 0.14f
@@ -49,7 +50,7 @@ internal fun DrawScope.drawDetectionLabel(
     val chipH = text.size.height + padY * 2
     val chipTop = if (rect.top - chipH >= 0f) rect.top - chipH else rect.top
     val chipSize = Size(text.size.width + padX * 2, chipH)
-    val chipLeft = rect.left.coerceIn(0f, (areaWidth - chipSize.width).coerceAtLeast(0f))
+    val chipLeft = rect.left.safeCoerceIn(0f, (areaWidth - chipSize.width).coerceAtLeast(0f))
     drawRoundRect(color.copy(alpha = if (selected) 1f else 0.9f), Offset(chipLeft, chipTop), chipSize, CornerRadius(5.dp.toPx()))
     drawText(text, topLeft = Offset(chipLeft + padX, chipTop + padY))
 }

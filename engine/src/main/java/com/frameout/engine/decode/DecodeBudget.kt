@@ -1,6 +1,7 @@
 package com.frameout.engine.decode
 
 import com.frameout.codecpack.FrameBudget
+import com.frameout.core.util.safeCoerceIn
 
 internal object DecodeBudget {
     private const val MAX_TAPS = 4
@@ -14,10 +15,10 @@ internal object DecodeBudget {
 
     fun scaled(size: Int, step: Int): Int = ((size + step - 1) / step).coerceAtLeast(1)
 
-    fun taps(step: Int): Int = step.coerceIn(1, MAX_TAPS)
+    fun taps(step: Int): Int = step.safeCoerceIn(1, MAX_TAPS)
 
     fun sourceIndex(index: Int, step: Int, tap: Int, taps: Int, limit: Int): Int =
-        (index * step + ((2 * tap + 1) * step) / (2 * taps)).coerceIn(0, (limit - 1).coerceAtLeast(0))
+        (index * step + ((2 * tap + 1) * step) / (2 * taps)).safeCoerceIn(0, (limit - 1).coerceAtLeast(0))
 
     private fun exceeds(w: Long, h: Long): Boolean = w * h > FrameBudget.MAX_PIXELS || maxOf(w, h) > FrameBudget.MAX_SIDE
 }

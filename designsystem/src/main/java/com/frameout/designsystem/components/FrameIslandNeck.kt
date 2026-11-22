@@ -11,6 +11,7 @@ import kotlin.math.hypot
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
+import com.frameout.designsystem.util.safeCoerceIn
 
 internal class NeckGeo(
     val ax: Float,
@@ -27,7 +28,7 @@ private const val NECK_REACH = 4f
 
 internal fun neckPath(g: NeckGeo): Path? {
     val inset = min(g.corner, g.width / 2f)
-    val px = g.ax.coerceIn(g.left + inset, g.left + g.width - inset)
+    val px = g.ax.safeCoerceIn(g.left + inset, g.left + g.width - inset)
     val rc = inset
     val sink = rc * 0.5f
     val py = g.top + sink

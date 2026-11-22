@@ -32,6 +32,7 @@ import com.frameout.app.thumb.PrefetchAhead
 import com.frameout.core.util.ThumbCache
 import com.frameout.designsystem.motion.fxAppear
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 private const val PENDING_ROWS = 6
 
@@ -60,7 +61,7 @@ fun FramesGrid(
     val selectedPositions = remember(selected) { selected.withIndex().associate { it.value to it.index } }
     val adaptive = rememberFrameAdaptive()
     val pinch = Modifier.pinchColumns(columns, onColumns)
-    val pending = (pendingTotal - pages.itemCount).coerceIn(0, adaptive.columns(columns) * PENDING_ROWS)
+    val pending = (pendingTotal - pages.itemCount).safeCoerceIn(0, adaptive.columns(columns) * PENDING_ROWS)
     val seen = remember(projectId) { HashSet<Any>() }
     Box(Modifier.fillMaxSize()) {
         LazyVerticalGrid(state = gridState, columns = GridCells.Fixed(adaptive.columns(columns)), contentPadding = PaddingValues(4.dp, 4.dp, 4.dp + adaptive.railInset, clearance), modifier = Modifier.fillMaxSize().then(pinch)) {
@@ -97,7 +98,7 @@ internal fun Modifier.pinchColumns(columns: Int, onColumns: (Int) -> Unit, range
                 if (event.changes.count { it.pressed } >= 2) {
                     if (!pinching) { pinching = true; scale = 1f; start = current }
                     scale *= event.calculateZoom()
-                    val next = (start / scale).roundToInt().coerceIn(range.first, range.last)
+                    val next = (start / scale).roundToInt().safeCoerceIn(range.first, range.last)
                     if (next != current) {
                         haptics.perform(com.frameout.designsystem.haptics.FrameHaptic.Select)
                         apply(next)

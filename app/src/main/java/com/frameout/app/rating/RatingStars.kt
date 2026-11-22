@@ -47,6 +47,7 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 import kotlinx.coroutines.delay
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun StarPicker(rating: Int, reduce: Boolean, onChange: (Int) -> Unit, modifier: Modifier = Modifier) {
@@ -88,7 +89,7 @@ private fun Modifier.starTouch(rtl: Boolean, onPick: (Int) -> Unit): Modifier = 
 private fun Modifier.starSemantics(rating: Int, description: String, onPick: (Int) -> Unit): Modifier = semantics {
     contentDescription = description
     progressBarRangeInfo = ProgressBarRangeInfo(rating.toFloat(), 1f..RATING_STARS.toFloat(), RATING_STARS - 2)
-    setProgress { value -> onPick(value.roundToInt().coerceIn(1, RATING_STARS)); true }
+    setProgress { value -> onPick(value.roundToInt().safeCoerceIn(1, RATING_STARS)); true }
 }
 
 @Composable
@@ -104,7 +105,7 @@ private fun StarRow(rating: Int, reduce: Boolean, rtl: Boolean) {
 
 private fun starAt(x: Float, width: Int, rtl: Boolean): Int {
     if (width <= 0) return 1
-    val position = ((x / width) * RATING_STARS).toInt().coerceIn(0, RATING_STARS - 1)
+    val position = ((x / width) * RATING_STARS).toInt().safeCoerceIn(0, RATING_STARS - 1)
     return if (rtl) RATING_STARS - position else position + 1
 }
 

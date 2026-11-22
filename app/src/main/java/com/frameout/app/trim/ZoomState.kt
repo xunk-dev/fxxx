@@ -2,6 +2,7 @@ package com.frameout.app.trim
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import com.frameout.core.util.safeCoerceIn
 
 data class ZoomState(val scale: Float = 1f, val offset: Offset = Offset.Zero) {
     val zoomed: Boolean get() = scale > MIN_SCALE
@@ -28,7 +29,7 @@ data class ZoomState(val scale: Float = 1f, val offset: Offset = Offset.Zero) {
         fun clamp(offset: Offset, scale: Float, size: Size): Offset {
             val limitX = size.width * (scale - 1f) / 2f
             val limitY = size.height * (scale - 1f) / 2f
-            return Offset(offset.x.coerceIn(-limitX, limitX), offset.y.coerceIn(-limitY, limitY))
+            return Offset(offset.x.safeCoerceIn(-limitX, limitX), offset.y.safeCoerceIn(-limitY, limitY))
         }
     }
 }

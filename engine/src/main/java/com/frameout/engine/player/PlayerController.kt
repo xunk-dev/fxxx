@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
+import com.frameout.core.util.safeCoerceIn
 
 class PlayerController(internal val context: Context) {
     internal val player: ExoPlayer = ExoPlayer.Builder(context.applicationContext, DefaultRenderersFactory(context.applicationContext).setEnableDecoderFallback(true))
@@ -196,7 +197,7 @@ class PlayerController(internal val context: Context) {
     fun seekTo(ms: Long) {
         animated?.let {
             it.seekTo(ms)
-            _position.value = ms.coerceIn(0L, it.durationMs)
+            _position.value = ms.safeCoerceIn(0L, it.durationMs)
             return
         }
         val d = player.duration.coerceAtLeast(0)

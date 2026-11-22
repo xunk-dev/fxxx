@@ -1,6 +1,7 @@
 package com.frameout.app.trim
 
 import com.frameout.engine.timeline.TrimRange
+import com.frameout.core.util.safeCoerceIn
 
 internal const val FOCUS_FILL = 0.4f
 private const val NARROW_FACTOR = 2.5f
@@ -19,16 +20,16 @@ internal fun windowAnchor(geometry: TrackGeometry, downX: Float, range: TrimRang
 }
 
 internal fun slideStartMs(geometry: TrackGeometry, x: Float, anchor: Float, spanMs: Long, durationMs: Long): Long =
-    geometry.msOf(x - anchor).coerceIn(0L, (durationMs - spanMs).coerceAtLeast(0L))
+    geometry.msOf(x - anchor).safeCoerceIn(0L, (durationMs - spanMs).coerceAtLeast(0L))
 
 internal fun TimelineZoom.focusing(startMs: Long, endMs: Long, durationMs: Long, fill: Float, maxScale: Float = TimelineZoom.maxScaleFor(durationMs)): TimelineZoom {
     if (durationMs <= 0L) return this
     val fraction = ((endMs - startMs).toFloat() / durationMs).coerceAtLeast(MIN_FRACTION)
-    val scale = (fill / fraction).coerceIn(TimelineZoom.MIN_SCALE, maxScale.coerceAtLeast(TimelineZoom.MIN_SCALE))
+    val scale = (fill / fraction).safeCoerceIn(TimelineZoom.MIN_SCALE, maxScale.coerceAtLeast(TimelineZoom.MIN_SCALE))
     if (scale <= TimelineZoom.MIN_SCALE) return TimelineZoom()
     val span = 1f / scale
     val centre = (startMs + endMs) / 2f / durationMs
-    return TimelineZoom(scale, (centre - span / 2f).coerceIn(0f, (1f - span).coerceAtLeast(0f)))
+    return TimelineZoom(scale, (centre - span / 2f).safeCoerceIn(0f, (1f - span).coerceAtLeast(0f)))
 }
 
 private const val MIN_FRACTION = 0.000001f

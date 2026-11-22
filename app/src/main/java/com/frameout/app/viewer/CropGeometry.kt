@@ -5,6 +5,7 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import kotlin.math.abs
 import kotlin.math.hypot
+import com.frameout.core.util.safeCoerceIn
 
 internal enum class CropHandle { None, TopLeft, TopRight, BottomLeft, BottomRight, Top, Bottom, Left, Right, Move }
 
@@ -26,6 +27,12 @@ internal fun CropBox.toRect(img: Rect) = Rect(
 
 internal fun hitCrop(pos: Offset, img: Rect, box: CropBox, cornerPx: Float, edgePx: Float): CropHandle {
     val c = box.toRect(img)
+    // Inside a small crop the grab zones shrink so the middle stays "move"; outside they stay full
+    // size so even a tiny crop can always be enlarged again.
+    val minSide = minOf(c.width, c.height)
+    val inside = c.contains(pos)
+    val cornerPx = if (inside) minOf(cornerPx, minSide * 0.4f) else cornerPx
+    val edgePx = if (inside) minOf(edgePx, minSide * 0.28f) else edgePx
     val corners = listOf(
         CropHandle.TopLeft to c.topLeft, CropHandle.TopRight to c.topRight,
         CropHandle.BottomLeft to c.bottomLeft, CropHandle.BottomRight to c.bottomRight
@@ -45,8 +52,8 @@ internal fun hitCrop(pos: Offset, img: Rect, box: CropBox, cornerPx: Float, edge
 
 internal fun dragCrop(handle: CropHandle, s: CropBox, dx: Float, dy: Float): CropBox {
     if (handle == CropHandle.Move) {
-        val l = (s.l + dx).coerceIn(0f, 1f - (s.r - s.l))
-        val t = (s.t + dy).coerceIn(0f, 1f - (s.b - s.t))
+        val l = (s.l + dx).safeCoerceIn(0f, 1f - (s.r - s.l))
+        val t = (s.t + dy).safeCoerceIn(0f, 1f - (s.b - s.t))
         return CropBox(l, t, l + (s.r - s.l), t + (s.b - s.t))
     }
     val left = handle == CropHandle.TopLeft || handle == CropHandle.BottomLeft || handle == CropHandle.Left
@@ -54,9 +61,9 @@ internal fun dragCrop(handle: CropHandle, s: CropBox, dx: Float, dy: Float): Cro
     val top = handle == CropHandle.TopLeft || handle == CropHandle.TopRight || handle == CropHandle.Top
     val bottom = handle == CropHandle.BottomLeft || handle == CropHandle.BottomRight || handle == CropHandle.Bottom
     return CropBox(
-        if (left) (s.l + dx).coerceIn(0f, s.r - CROP_MIN_SIDE) else s.l,
-        if (top) (s.t + dy).coerceIn(0f, s.b - CROP_MIN_SIDE) else s.t,
-        if (right) (s.r + dx).coerceIn(s.l + CROP_MIN_SIDE, 1f) else s.r,
-        if (bottom) (s.b + dy).coerceIn(s.t + CROP_MIN_SIDE, 1f) else s.b
+        if (left) (s.l + dx).safeCoerceIn(0f, s.r - CROP_MIN_SIDE) else s.l,
+        if (top) (s.t + dy).safeCoerceIn(0f, s.b - CROP_MIN_SIDE) else s.t,
+        if (right) (s.r + dx).safeCoerceIn(s.l + CROP_MIN_SIDE, 1f) else s.r,
+        if (bottom) (s.b + dy).safeCoerceIn(s.t + CROP_MIN_SIDE, 1f) else s.b
     )
 }

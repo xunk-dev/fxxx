@@ -65,6 +65,7 @@ import com.frameout.engine.player.frameCount
 import com.frameout.engine.player.frameIndexNow
 import com.frameout.engine.player.frameNumberAt
 import com.frameout.engine.player.scrubToFrame
+import com.frameout.core.util.safeCoerceIn
 
 @Stable
 internal class FrameScrubState {
@@ -123,7 +124,7 @@ private suspend fun AwaitPointerEventScope.scrubGesture(
         val dpPerFrame = ScrubPrecision.dpPerFrame(dy / density)
         state.precision = ScrubPrecision.surfaceLabel(dpPerFrame)
         travel += dx / (dpPerFrame * density)
-        if (indexed) travel = travel.coerceIn(-startFrame.toDouble(), (total - 1 - startFrame).toDouble())
+        if (indexed) travel = travel.safeCoerceIn(-startFrame.toDouble(), (total - 1 - startFrame).toDouble())
         val target = travel.roundToInt()
         val delta = target - applied
         if (delta == 0) return

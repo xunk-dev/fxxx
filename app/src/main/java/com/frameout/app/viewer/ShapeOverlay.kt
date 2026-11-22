@@ -32,6 +32,7 @@ import kotlin.math.abs
 import kotlin.math.hypot
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 internal const val HANDLE_RADIUS_DP = 9f
 internal const val DELETE_RADIUS_DP = 13f
@@ -81,6 +82,13 @@ private suspend fun AwaitPointerEventScope.shapeGesture(latest: State<ShapeOverl
     val grab = pickGrab(latest.value, start, density)
     if (grab is Grab.Move) latest.value.tools.shapes.select(grab.index)
     if (grab is Grab.Handle) latest.value.tools.shapes.select(grab.index)
+    // Keep the distance between finger and handle so the handle never jumps under the finger.
+    val handleOffset = (grab as? Grab.Handle)?.let { g ->
+        val input = latest.value
+        val mark = input.draft.marks.getOrNull(g.index) as? ShapeMark
+        val point = mark?.let { shapeHandlePoints(it).getOrNull(g.end) }
+        point?.let { shapeScreen(it.x, it.y, input.geo, input.transformNow()) - start }
+    } ?: Offset.Zero
     var multi = false
     var moved = false
     var last = start
@@ -105,7 +113,7 @@ private suspend fun AwaitPointerEventScope.shapeGesture(latest: State<ShapeOverl
                     Grab.Create -> live.value = buildShape(start, p, latest.value)
                     Grab.Delete, Grab.Duplicate -> Unit
                     is Grab.Move -> shiftShape(grab.index, p - last, latest.value)
-                    is Grab.Handle -> dragHandle(grab, p, latest.value)
+                    is Grab.Handle -> dragHandle(grab, p + handleOffset, latest.value)
                 }
                 last = p
             }
@@ -149,6 +157,7 @@ private fun pinchShape(event: PointerEvent, input: ShapeOverlayInput, index: Int
     val pan = event.calculatePan()
     val unitX = geo.imageW * geo.pixelSize(t)
     val unitY = geo.imageH * geo.pixelSize(t)
+    if (!(unitX > 0f) || !(unitY > 0f)) return
     val cx = (m.x1 + m.x2) / 2f
     val cy = (m.y1 + m.y2) / 2f
     val w = abs(m.x2 - m.x1)
@@ -157,7 +166,7 @@ private fun pinchShape(event: PointerEvent, input: ShapeOverlayInput, index: Int
     val diag = hypot(w * geo.imageW, h * geo.imageH)
     val low = (MIN_EXTENT * 2f * minSide) / diag.coerceAtLeast(1f)
     val high = 1f / max(max(w, h), 1e-4f)
-    val zoom = event.calculateZoom().coerceIn(low.coerceAtMost(1f), high.coerceAtLeast(1f))
+    val zoom = event.calculateZoom().safeCoerceIn(low.coerceAtMost(1f), high.coerceAtLeast(1f))
     val nx1 = cx + (m.x1 - cx) * zoom
     val ny1 = cy + (m.y1 - cy) * zoom
     val nx2 = cx + (m.x2 - cx) * zoom
@@ -168,8 +177,8 @@ private fun pinchShape(event: PointerEvent, input: ShapeOverlayInput, index: Int
     val highY = max(ny1, ny2)
     val shiftX = if (lowX < 0f) -lowX else if (highX > 1f) 1f - highX else 0f
     val shiftY = if (lowY < 0f) -lowY else if (highY > 1f) 1f - highY else 0f
-    val dx = (pan.x / unitX).coerceIn(-(lowX + shiftX), 1f - (highX + shiftX))
-    val dy = (pan.y / unitY).coerceIn(-(lowY + shiftY), 1f - (highY + shiftY))
+    val dx = (pan.x / unitX).safeCoerceIn(-(lowX + shiftX), 1f - (highX + shiftX))
+    val dy = (pan.y / unitY).safeCoerceIn(-(lowY + shiftY), 1f - (highY + shiftY))
     input.tools.shapes.replace(index, m.copy(x1 = nx1 + shiftX + dx, y1 = ny1 + shiftY + dy, x2 = nx2 + shiftX + dx, y2 = ny2 + shiftY + dy))
 }
 

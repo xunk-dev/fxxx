@@ -18,6 +18,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 class FaceDetectionFailed : Exception("face detector failed")
 
@@ -231,9 +232,9 @@ object FaceScanner {
     }
 
     private fun clamp(rect: PxRect, width: Int, height: Int): PxRect {
-        val x = rect.x.coerceIn(0, width - 1)
-        val y = rect.y.coerceIn(0, height - 1)
-        return PxRect(x, y, rect.w.coerceIn(1, width - x), rect.h.coerceIn(1, height - y))
+        val x = rect.x.safeCoerceIn(0, width - 1)
+        val y = rect.y.safeCoerceIn(0, height - 1)
+        return PxRect(x, y, rect.w.safeCoerceIn(1, width - x), rect.h.safeCoerceIn(1, height - y))
     }
 
     private fun rectOf(box: Rect, width: Int, height: Int): PxRect? {

@@ -1,6 +1,7 @@
 package com.frameout.app.viewer
 
 import androidx.compose.ui.geometry.Offset
+import com.frameout.core.util.safeCoerceIn
 
 private const val PEEK_SCALE = 3f
 private const val PEEK_RESET_FROM = 1.05f
@@ -14,7 +15,7 @@ internal fun ViewerViewModel.peekZoom(scale: Float, press: Offset, center: Offse
     val limitY = area.y * (PEEK_SCALE - 1f) / 2f
     setTransform(
         PEEK_SCALE,
-        ((center.x - press.x) * (PEEK_SCALE - 1f)).coerceIn(-limitX, limitX),
-        ((center.y - press.y) * (PEEK_SCALE - 1f)).coerceIn(-limitY, limitY)
+        ((center.x - press.x) * (PEEK_SCALE - 1f)).safeCoerceIn(-limitX, limitX),
+        ((center.y - press.y) * (PEEK_SCALE - 1f)).safeCoerceIn(-limitY, limitY)
     )
 }

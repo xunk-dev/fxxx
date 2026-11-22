@@ -51,6 +51,7 @@ import com.frameout.app.library.rememberVideoSuggestion
 import com.frameout.app.picker.rememberQuickVideoPick
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameRailPadding
+import com.frameout.core.util.safeCoerceIn
 
 class HomeActions(
     val onQuickStart: (Uri, com.frameout.engine.timeline.TrimRange, () -> Unit) -> Unit,
@@ -80,7 +81,7 @@ private fun rememberHomePickers(actions: HomeActions, onVideo: (String) -> Unit)
         onVideo(uri.toString())
     }
     val photoPicker = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> uri?.let(actions.onEditPhoto) }
-    val collageMax = com.frameout.core.collage.CollageTemplates.maxCells.coerceIn(2, com.frameout.app.collage.pickMax(context))
+    val collageMax = com.frameout.core.collage.CollageTemplates.maxCells.safeCoerceIn(2, com.frameout.app.collage.pickMax(context))
     val collagePicker = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(collageMax)) { uris ->
         if (uris.isNotEmpty()) actions.onCollage(uris.take(com.frameout.core.collage.CollageTemplates.maxCells))
     }

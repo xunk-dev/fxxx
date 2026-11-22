@@ -83,7 +83,7 @@ internal fun brushDiameterOnScreen(fraction: Float, geo: ViewGeometry, t: Transf
 
 private fun linePath(pts: List<Offset>): Path {
     val path = Path()
-    val first = pts.first()
+    val first = pts.firstOrNull() ?: return path
     path.moveTo(first.x, first.y)
     if (pts.size == 1) path.lineTo(first.x + 0.01f, first.y)
     pts.drop(1).forEach { path.lineTo(it.x, it.y) }
@@ -91,8 +91,8 @@ private fun linePath(pts: List<Offset>): Path {
 }
 
 private fun smoothPath(pts: List<Offset>): Path {
-    val first = pts.first()
     val path = Path()
+    val first = pts.firstOrNull() ?: return path
     path.moveTo(first.x, first.y)
     if (pts.size == 1) {
         path.lineTo(first.x + 0.01f, first.y)

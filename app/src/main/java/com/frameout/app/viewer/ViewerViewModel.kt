@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.withContext
+import com.frameout.core.util.safeCoerceIn
 
 class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     internal val c = (app as FrameOutApp).container
@@ -67,7 +68,7 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
     internal var loadGeneration = 0L
     private var retired: Bitmap? = null
     internal val cache = WindowCache<Bitmap>(
-        budgetBytes = (Runtime.getRuntime().maxMemory() / 5L).coerceIn(64L * 1024L * 1024L, 160L * 1024L * 1024L),
+        budgetBytes = (Runtime.getRuntime().maxMemory() / 5L).safeCoerceIn(64L * 1024L * 1024L, 160L * 1024L * 1024L),
         maxEntryBytes = MAX_PREFETCH_BYTES.toLong(),
         sizeOf = { it.allocationByteCount.toLong() },
         drop = { it.takeUnless { b -> b.isRecycled }?.recycle() }

@@ -60,6 +60,7 @@ import com.frameout.designsystem.theme.FrameColors
 import com.frameout.designsystem.theme.FrameTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.frameout.core.util.safeCoerceIn
 
 private const val MAX_ZOOM = 6f
 private const val DOUBLE_TAP_ZOOM = 3f
@@ -157,7 +158,7 @@ private class ZoomState {
     private fun clamp(o: Offset, s: Float): Offset {
         val maxX = viewSize.width * (s - 1f) / 2f
         val maxY = viewSize.height * (s - 1f) / 2f
-        return Offset(o.x.coerceIn(-maxX, maxX), o.y.coerceIn(-maxY, maxY))
+        return Offset(o.x.safeCoerceIn(-maxX, maxX), o.y.safeCoerceIn(-maxY, maxY))
     }
 
     fun doubleTap(tap: Offset, size: IntSize) {
@@ -171,7 +172,7 @@ private class ZoomState {
     }
 
     fun transform(centroid: Offset, pan: Offset, zoom: Float, size: IntSize) {
-        val next = (scale * zoom).coerceIn(1f, MAX_ZOOM)
+        val next = (scale * zoom).safeCoerceIn(1f, MAX_ZOOM)
         val center = Offset(size.width / 2f, size.height / 2f)
         val anchored = (offset + pan) + (centroid - center - offset) * (1f - next / scale)
         scale = next

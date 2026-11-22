@@ -47,6 +47,7 @@ import com.frameout.designsystem.components.FrameText
 import kotlin.math.abs
 import kotlin.math.roundToLong
 import com.frameout.engine.timeline.TrimRange
+import com.frameout.core.util.safeCoerceIn
 
 internal const val MIN_GAP_MS = 100L
 internal const val MAX_STRIP_PX = 60_000
@@ -204,7 +205,7 @@ private fun Modifier.timelineGestures(
                 grab()
             }
             fun slideTo(x: Float) {
-                val first = snap(slideStartMs(geometry(), x, slideAnchor, slideSpan, dur)).coerceIn(0L, (dur - slideSpan).coerceAtLeast(0L))
+                val first = snap(slideStartMs(geometry(), x, slideAnchor, slideSpan, dur)).safeCoerceIn(0L, (dur - slideSpan).coerceAtLeast(0L))
                 change(current.copy(startMs = first, endMs = first + slideSpan, useFull = false))
                 dragSeek(first)
             }
@@ -223,7 +224,7 @@ private fun Modifier.timelineGestures(
                     factor = next
                     setPrecision(next)
                 }
-                raw = (raw + (x - prevX) * g.viewSpan / g.trackWidth * factor).coerceIn(0.0, dur.toDouble())
+                raw = (raw + (x - prevX) * g.viewSpan / g.trackWidth * factor).safeCoerceIn(0.0, dur.toDouble())
                 prevX = x
                 if (handle == Handle.Start) raw = raw.coerceAtMost((current.endMs - MIN_GAP_MS).toDouble())
                 if (handle == Handle.End) raw = raw.coerceAtLeast((current.startMs + MIN_GAP_MS).toDouble())
@@ -256,7 +257,7 @@ private fun Modifier.timelineGestures(
                 val after = before.scrolledBy(push * EDGE_SPEED)
                 if (after != before) {
                     setZoom(after)
-                    raw = (raw + (after.startMs(dur) - before.startMs(dur))).coerceIn(0.0, dur.toDouble())
+                    raw = (raw + (after.startMs(dur) - before.startMs(dur))).safeCoerceIn(0.0, dur.toDouble())
                     follow(x, lastY)
                 }
             }

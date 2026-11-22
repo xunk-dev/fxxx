@@ -1,5 +1,7 @@
 package com.frameout.designsystem.components
 
+import com.frameout.designsystem.util.safeCoerceIn
+
 internal object FitMath {
     const val STEP = 0.93f
     const val EPSILON = 0.002f
@@ -22,7 +24,7 @@ internal object FitMath {
         val stepped = current * STEP
         val bounded = maxWidth > 0 && maxWidth != Int.MAX_VALUE
         val target = if (singleLine && bounded && naturalWidth > 0f) current * (maxWidth / naturalWidth) * WIDTH_SLACK else stepped
-        return minOf(stepped, target).coerceIn(floor, current)
+        return minOf(stepped, target).safeCoerceIn(floor, current)
     }
 
     fun roomGrew(solvedWidth: Int, width: Int): Boolean =

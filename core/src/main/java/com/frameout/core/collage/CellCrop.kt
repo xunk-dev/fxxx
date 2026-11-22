@@ -2,6 +2,7 @@ package com.frameout.core.collage
 
 import kotlin.math.max
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 const val COLLAGE_MAX_ZOOM = 5f
 
@@ -21,10 +22,10 @@ class CropGeometry(srcWidth: Float, srcHeight: Float, cellWidth: Float, cellHeig
     private val base = max(cw / sw, ch / sh)
 
     fun clamp(crop: CellCrop): CellCrop {
-        val scale = crop.scale.coerceIn(1f, COLLAGE_MAX_ZOOM)
+        val scale = crop.scale.safeCoerceIn(1f, COLLAGE_MAX_ZOOM)
         val maxX = max(0f, (sw * base * scale / cw - 1f) / 2f)
         val maxY = max(0f, (sh * base * scale / ch - 1f) / 2f)
-        return CellCrop(scale, crop.offsetX.coerceIn(-maxX, maxX), crop.offsetY.coerceIn(-maxY, maxY))
+        return CellCrop(scale, crop.offsetX.safeCoerceIn(-maxX, maxX), crop.offsetY.safeCoerceIn(-maxY, maxY))
     }
 
     fun window(crop: CellCrop): SourceWindow {
@@ -39,14 +40,14 @@ class CropGeometry(srcWidth: Float, srcHeight: Float, cellWidth: Float, cellHeig
         val w = window(crop)
         val maxW = sw.toInt().coerceAtLeast(1)
         val maxH = sh.toInt().coerceAtLeast(1)
-        val left = w.left.roundToInt().coerceIn(0, maxW - 1)
-        val top = w.top.roundToInt().coerceIn(0, maxH - 1)
-        return PixelWindow(left, top, w.right.roundToInt().coerceIn(left + 1, maxW), w.bottom.roundToInt().coerceIn(top + 1, maxH))
+        val left = w.left.roundToInt().safeCoerceIn(0, maxW - 1)
+        val top = w.top.roundToInt().safeCoerceIn(0, maxH - 1)
+        return PixelWindow(left, top, w.right.roundToInt().safeCoerceIn(left + 1, maxW), w.bottom.roundToInt().safeCoerceIn(top + 1, maxH))
     }
 
     fun transform(crop: CellCrop, panX: Float, panY: Float, zoom: Float, focusX: Float, focusY: Float): CellCrop {
         val from = clamp(crop)
-        val factor = (from.scale * zoom).coerceIn(1f, COLLAGE_MAX_ZOOM) / from.scale
+        val factor = (from.scale * zoom).safeCoerceIn(1f, COLLAGE_MAX_ZOOM) / from.scale
         val tx = factor * from.offsetX * cw + (1f - factor) * (focusX - cw / 2f) + panX
         val ty = factor * from.offsetY * ch + (1f - factor) * (focusY - ch / 2f) + panY
         return clamp(CellCrop(from.scale * factor, tx / cw, ty / ch))

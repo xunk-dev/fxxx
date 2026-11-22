@@ -232,8 +232,8 @@ private fun PrepRow(item: PrepItem, stored: String, onEdit: () -> Unit, onRemove
         Thumb(item)
         Column(Modifier.weight(1f), Arrangement.spacedBy(8.dp)) {
             FrameText(item.name, style = FrameTheme.typography.titleSmall.copy(textDirection = TextDirection.Content), maxLines = 2, overflow = TextOverflow.Ellipsis)
-            if (item.edited) {
-                val r = item.range!!
+            val r = item.range
+            if (item.edited && r != null) {
                 Chip(formatTimestamp(r.startMs) + " – " + formatTimestamp(r.endMs), accent = true, icon = FrameIconsExtra.TrimRange)
             } else {
                 Chip(TrimStrings.wholeVideo())

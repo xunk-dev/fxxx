@@ -2,6 +2,7 @@ package com.frameout.core.collage
 
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
+import com.frameout.core.util.safeCoerceIn
 
 val COLLAGE_RESOLUTIONS: List<Int> = listOf(1080, 1536, 2048)
 
@@ -26,7 +27,7 @@ enum class CollageAspect(val key: String, val ratio: Float?) {
 
 fun collageUnit(width: Float): Float = width / COLLAGE_REFERENCE_WIDTH
 
-fun sanitizeCollageGap(value: Int): Int = value.coerceIn(0, COLLAGE_GAP_MAX)
+fun sanitizeCollageGap(value: Int): Int = value.safeCoerceIn(0, COLLAGE_GAP_MAX)
 
 fun collageMemoryPixels(maxMemoryBytes: Long): Long = (maxMemoryBytes / 8L).coerceIn(COLLAGE_MIN_PIXELS, COLLAGE_MAX_PIXELS)
 

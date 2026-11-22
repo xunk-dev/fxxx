@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import java.io.OutputStream
+import com.frameout.core.util.safeCoerceIn
 
 object ContactSheetImage {
     private const val BACKGROUND = 0xFF121212.toInt()
@@ -34,7 +35,7 @@ object ContactSheetImage {
         canvas.drawColor(BACKGROUND)
         val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
         drawHeader(canvas, plan, sheet, title, paint)
-        val ahead = Fanout.ioWidth().coerceIn(1, MAX_AHEAD)
+        val ahead = Fanout.ioWidth().safeCoerceIn(1, MAX_AHEAD)
         coroutineScope {
             val pending = ArrayDeque<Deferred<Bitmap?>>()
             var next = 0

@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import com.frameout.designsystem.theme.FrameColorScheme
 import com.frameout.designsystem.theme.FrameColors
 import kotlin.math.min
+import com.frameout.designsystem.util.safeCoerceIn
 
 internal data class CameraSpot(val cx: Float, val cy: Float, val d: Float, val onTop: Boolean = true)
 
@@ -44,7 +45,7 @@ internal fun readCameraSpot(view: View, minD: Float, maxD: Float): CameraSpot? {
             }
         }
     }
-    val d = min(r.width(), r.height()).toFloat().coerceIn(minD, maxD)
+    val d = min(r.width(), r.height()).toFloat().safeCoerceIn(minD, maxD)
     return CameraSpot(r.exactCenterX(), r.exactCenterY(), d, onTop = top.isNotEmpty())
 }
 

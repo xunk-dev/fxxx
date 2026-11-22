@@ -22,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.File
+import com.frameout.core.util.safeCoerceIn
 
 internal class MotionClipSaver(private val context: Context) {
     private val app = context.applicationContext as FrameOutApp
@@ -59,7 +60,7 @@ internal class MotionClipSaver(private val context: Context) {
         return try {
             val result = SaveSpace.watchFile(video, expected, onProgress) { withContext(Dispatchers.IO) { ClipTranscoder(context).trim(uri.toString(), clip.startMs, clip.endMs, video) } }
             if (result !is ReassembleResult.Success) return failure()
-            val stillAt = positionMs.coerceIn(clip.startMs, clip.endMs)
+            val stillAt = positionMs.safeCoerceIn(clip.startMs, clip.endMs)
             val still = stillJpeg(uri, stillAt) ?: return failure()
             if (!hasRoom(video.length() + still.size)) return SaveResult.fail(FrameStrings.noSpace())
             val saved = saver.save(liveName(), "image/jpeg", app.container.prefs.saveFolder.value, treeUri()) { out ->

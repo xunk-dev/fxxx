@@ -1,5 +1,7 @@
 package com.frameout.core.export
 
+import com.frameout.core.util.safeCoerceIn
+
 internal class GifPalette private constructor(val table: ByteArray, private val size: Int) {
     private val cache = ShortArray(BINS) { -1 }
 
@@ -95,7 +97,7 @@ internal class GifPalette private constructor(val table: ByteArray, private val 
             for (i in sorted.indices) {
                 running += counts[sorted[i]]
                 if (running >= half) {
-                    cut = (i + 1).coerceIn(1, sorted.size - 1)
+                    cut = (i + 1).safeCoerceIn(1, sorted.size - 1)
                     break
                 }
             }

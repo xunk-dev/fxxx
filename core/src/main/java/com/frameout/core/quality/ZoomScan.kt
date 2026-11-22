@@ -7,6 +7,7 @@ import android.graphics.Rect
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 internal class ZoomCrop(val bitmap: Bitmap, val scale: Float, private val owned: Boolean = true) {
     fun release() {
@@ -30,8 +31,8 @@ internal class ZoomTile(val rect: PxRect, val crop: ZoomCrop) {
 internal object ZoomScan {
     fun crop(source: Bitmap, rect: PxRect, target: Int, maxScale: Float): ZoomCrop? {
         if (source.isRecycled) return null
-        val x = rect.x.coerceIn(0, source.width - 1)
-        val y = rect.y.coerceIn(0, source.height - 1)
+        val x = rect.x.safeCoerceIn(0, source.width - 1)
+        val y = rect.y.safeCoerceIn(0, source.height - 1)
         val w = rect.w.coerceAtMost(source.width - x)
         val h = rect.h.coerceAtMost(source.height - y)
         if (w < 8 || h < 8) return null
@@ -133,10 +134,10 @@ internal class FullResRegions private constructor(private val path: String, priv
     }
 
     private fun regionOf(rect: PxRect, frameWidth: Int, frameHeight: Int, dw: Int, dh: Int): Rect {
-        val left = (rect.x.toFloat() / frameWidth * dw).roundToInt().coerceIn(0, dw - 1)
-        val top = (rect.y.toFloat() / frameHeight * dh).roundToInt().coerceIn(0, dh - 1)
-        val right = (rect.r.toFloat() / frameWidth * dw).roundToInt().coerceIn(left + 1, dw)
-        val bottom = (rect.b.toFloat() / frameHeight * dh).roundToInt().coerceIn(top + 1, dh)
+        val left = (rect.x.toFloat() / frameWidth * dw).roundToInt().safeCoerceIn(0, dw - 1)
+        val top = (rect.y.toFloat() / frameHeight * dh).roundToInt().safeCoerceIn(0, dh - 1)
+        val right = (rect.r.toFloat() / frameWidth * dw).roundToInt().safeCoerceIn(left + 1, dw)
+        val bottom = (rect.b.toFloat() / frameHeight * dh).roundToInt().safeCoerceIn(top + 1, dh)
         return Rect(left, top, right, bottom)
     }
 

@@ -42,6 +42,7 @@ import com.frameout.designsystem.theme.frameHairline
 import com.frameout.engine.extract.ExtractMode
 import java.text.NumberFormat
 import kotlin.math.ln
+import com.frameout.core.util.safeCoerceIn
 
 private const val METER_MAX_MB = 2048f
 private const val METER_WARM_MB = 600f
@@ -109,7 +110,7 @@ private fun stepFor(n: Int): Int = when {
 
 internal fun pickPattern(mode: ExtractMode, cells: Int): BooleanArray {
     val out = BooleanArray(cells)
-    fun mark(fraction: Float) { out[(fraction * (cells - 1)).toInt().coerceIn(0, cells - 1)] = true }
+    fun mark(fraction: Float) { out[(fraction * (cells - 1)).toInt().safeCoerceIn(0, cells - 1)] = true }
     when (mode) {
         ExtractMode.EveryFrame -> out.fill(true)
         is ExtractMode.EveryNFrames -> { var i = 0; val s = stepFor(mode.n); while (i < cells) { out[i] = true; i += s } }
@@ -117,7 +118,7 @@ internal fun pickPattern(mode: ExtractMode, cells: Int): BooleanArray {
         is ExtractMode.FixedCount -> { val k = mode.count.coerceIn(2, 6); for (j in 0 until k) mark((j + 0.5f) / k) }
         ExtractMode.KeyframesOnly -> listOf(0.04f, 0.2f, 0.46f, 0.61f, 0.86f).forEach { mark(it) }
         ExtractMode.SceneChange -> listOf(0.2f, 0.47f, 0.74f).forEach { mark(it) }
-        ExtractMode.Slides -> for (j in 0 until 3) out[(j * cells / 3).coerceIn(0, cells - 1)] = true
+        ExtractMode.Slides -> for (j in 0 until 3) out[(j * cells / 3).safeCoerceIn(0, cells - 1)] = true
         is ExtractMode.Content -> listOf(0.12f, 0.41f, 0.58f, 0.9f).forEach { mark(it) }
     }
     return out

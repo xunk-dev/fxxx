@@ -10,6 +10,7 @@ import kotlin.math.abs
 import kotlin.math.hypot
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 private fun toNorm(p: Offset, geo: ViewGeometry, t: Transform) = MarkPoint(
     geo.toNormX(p.x - geo.viewW / 2f, t).coerceIn(0f, 1f),
@@ -55,14 +56,26 @@ internal fun shiftShape(index: Int, delta: Offset, input: ShapeOverlayInput) {
     val m = input.draft.marks.getOrNull(index) as? ShapeMark ?: return
     val unitX = geo.imageW * geo.pixelSize(t)
     val unitY = geo.imageH * geo.pixelSize(t)
-    val dx = (delta.x / unitX).coerceIn(-min(m.x1, m.x2), 1f - max(m.x1, m.x2))
-    val dy = (delta.y / unitY).coerceIn(-min(m.y1, m.y2), 1f - max(m.y1, m.y2))
+    if (!(unitX > 0f) || !(unitY > 0f)) return
+    val dx = (delta.x / unitX).safeCoerceIn(-min(m.x1, m.x2), 1f - max(m.x1, m.x2))
+    val dy = (delta.y / unitY).safeCoerceIn(-min(m.y1, m.y2), 1f - max(m.y1, m.y2))
     input.tools.shapes.replace(index, m.copy(x1 = m.x1 + dx, y1 = m.y1 + dy, x2 = m.x2 + dx, y2 = m.y2 + dy))
 }
 
 internal fun dragHandle(grab: Grab.Handle, p: Offset, input: ShapeOverlayInput) {
     val m = input.draft.marks.getOrNull(grab.index) as? ShapeMark ?: return
-    val n = toNorm(p, input.geo, input.transformNow())
+    val raw = toNorm(p, input.geo, input.transformNow())
+    // Box shapes keep a minimum extent on each axis while a handle is dragged across the opposite side.
+    val fixed = when (grab.end) {
+        0 -> MarkPoint(m.x2, m.y2)
+        1 -> MarkPoint(m.x1, m.y1)
+        2 -> MarkPoint(m.x2, m.y1)
+        else -> MarkPoint(m.x1, m.y2)
+    }
+    val n = if (m.kind.pointBased) raw else MarkPoint(
+        if (abs(raw.x - fixed.x) < MIN_EXTENT) (if (raw.x >= fixed.x) fixed.x + MIN_EXTENT else fixed.x - MIN_EXTENT).safeCoerceIn(0f, 1f) else raw.x,
+        if (abs(raw.y - fixed.y) < MIN_EXTENT) (if (raw.y >= fixed.y) fixed.y + MIN_EXTENT else fixed.y - MIN_EXTENT).safeCoerceIn(0f, 1f) else raw.y
+    )
     val updated = when (grab.end) {
         0 -> m.copy(x1 = n.x, y1 = n.y)
         1 -> m.copy(x2 = n.x, y2 = n.y)
@@ -87,10 +100,14 @@ internal fun pickGrab(input: ShapeOverlayInput, at: Offset, density: Float): Gra
         val reachAction = DELETE_RADIUS_DP * density * 1.4f
         if ((at - deleteAnchor(a, b, geo, density)).getDistance() <= reachAction) return Grab.Delete
         if ((at - duplicateAnchor(a, b, geo, density)).getDistance() <= reachAction) return Grab.Duplicate
-        val reach = HANDLE_REACH_DP * density
+        val minSide = shapeMinSide(sel.kind.pointBased, a, b)
+        val maxReach = HANDLE_REACH_DP * density
+        val reach = HandleFit.reach(minSide, maxReach, density)
+        val roomy = HandleFit.roomy(minSide, maxReach)
+        val centre = Offset((a.x + b.x) / 2f, (a.y + b.y) / 2f)
         val handles = shapeHandlePoints(sel).map { shapeScreen(it.x, it.y, geo, t) }
         val nearest = handles.indices.minByOrNull { (at - handles[it]).getDistance() }
-        if (nearest != null && (at - handles[nearest]).getDistance() <= reach) return Grab.Handle(d.selectedShape, nearest)
+        if (nearest != null && HandleFit.grabs(at, handles[nearest], centre, reach, roomy)) return Grab.Handle(d.selectedShape, nearest)
     }
     val tol = HIT_TOLERANCE_DP * density
     for (i in d.marks.indices.reversed()) {
@@ -136,12 +153,18 @@ private fun hits(m: ShapeMark, p: Offset, geo: ViewGeometry, t: Transform, tol: 
     return !core
 }
 
+internal fun shapeMinSide(pointBased: Boolean, a: Offset, b: Offset): Float =
+    if (pointBased) hypot(b.x - a.x, b.y - a.y) else min(abs(b.x - a.x), abs(b.y - a.y))
+
 private fun actionCenter(a: Offset, b: Offset, geo: ViewGeometry, density: Float): Offset {
     val r = DELETE_RADIUS_DP * density
     val half = r + ACTION_GAP_DP * density / 2f
-    val x = ((a.x + b.x) / 2f).coerceIn(half + r, max(half + r, geo.viewW - half - r))
-    val y = (min(a.y, b.y) - DELETE_GAP_DP * density - r).coerceIn(r, max(r, geo.viewH - r))
-    return Offset(x, y)
+    val x = ((a.x + b.x) / 2f).safeCoerceIn(half + r, max(half + r, geo.viewW - half - r))
+    val above = min(a.y, b.y) - DELETE_GAP_DP * density - r
+    // Not enough room above (shape touches the top edge): flip the buttons below instead of
+    // letting them sit on top of the shape's own handles.
+    val y = if (above >= r) above else (max(a.y, b.y) + DELETE_GAP_DP * density + r).takeIf { it <= geo.viewH - r } ?: above
+    return Offset(x, y.safeCoerceIn(r, max(r, geo.viewH - r)))
 }
 
 internal fun deleteAnchor(a: Offset, b: Offset, geo: ViewGeometry, density: Float): Offset {

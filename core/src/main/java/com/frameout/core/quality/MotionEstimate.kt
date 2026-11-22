@@ -55,6 +55,7 @@ object MotionEstimate {
 
     private fun bestShift(a: FloatArray, b: FloatArray): Double? {
         val n = a.size
+        if (n == 0 || b.isEmpty()) return null
         val range = a.max() - a.min()
         if (range < 2f) return 0.0
         val reach = max(2, (n * MAX_SHIFT).toInt())

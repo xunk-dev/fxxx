@@ -37,6 +37,6 @@ class AdaptiveGate(private val max: Int, private val limit: () -> Int) {
     private val tiers = Array(max) { Semaphore(it + 1) }
 
     suspend fun <T> withPermit(block: suspend () -> T): T = permits.withPermit {
-        tiers[limit().coerceIn(1, max) - 1].withPermit { block() }
+        tiers[limit().safeCoerceIn(1, max) - 1].withPermit { block() }
     }
 }

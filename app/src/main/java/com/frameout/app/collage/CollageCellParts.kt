@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.GenericShape
@@ -32,6 +33,7 @@ import com.frameout.core.collage.CellBlend
 import com.frameout.core.collage.Ramps
 import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 internal fun polygonShape(look: CellBlend?): Shape? {
     val poly = look?.polygon ?: return null
@@ -79,7 +81,7 @@ internal fun NumberBadge(n: Int) {
 @Composable
 internal fun BoxScope.StampPill(text: String, unit: Float, cellWidth: Float, padX: Float = 0f, padY: Float = 0f) {
     val density = LocalDensity.current
-    val fontPx = (cellWidth * 0.07f).coerceIn(22f * unit, 44f * unit)
+    val fontPx = (cellWidth * 0.07f).safeCoerceIn(22f * unit, 44f * unit)
     Box(
         Modifier
             .align(Alignment.BottomStart)

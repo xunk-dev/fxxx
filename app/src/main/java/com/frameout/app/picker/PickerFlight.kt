@@ -47,6 +47,7 @@ import com.frameout.designsystem.theme.FrameTheme
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 @Stable
 internal class PickerFlight {

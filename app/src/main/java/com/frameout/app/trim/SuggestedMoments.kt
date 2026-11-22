@@ -8,6 +8,7 @@ import com.frameout.core.quality.Sharpness
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import com.frameout.core.util.safeCoerceIn
 
 internal object SuggestedMoments {
     private const val READY_SHARE = 0.9f
@@ -30,7 +31,7 @@ internal object SuggestedMoments {
     }
 
     fun timeOf(slot: Int, slots: Int, durationMs: Long): Long =
-        ((slot + 0.5) / slots.coerceAtLeast(1) * durationMs).toLong().coerceIn(0L, durationMs)
+        ((slot + 0.5) / slots.coerceAtLeast(1) * durationMs).toLong().safeCoerceIn(0L, durationMs)
 }
 
 @Composable

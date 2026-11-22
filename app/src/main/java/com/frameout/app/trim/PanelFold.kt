@@ -48,6 +48,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 private val GRAB_AREA = 30.dp
 private val FOLD_GAP = 12.dp
@@ -70,7 +71,7 @@ internal class PanelFold(private val scope: CoroutineScope, private val onSettle
     fun drag(deltaY: Float) {
         job?.cancel()
         bounce?.cancel()
-        raw = (raw - deltaY / natural.coerceAtLeast(1)).coerceIn(-OVERSHOOT_LIMIT, 1f + OVERSHOOT_LIMIT)
+        raw = (raw - deltaY / natural.coerceAtLeast(1)).safeCoerceIn(-OVERSHOOT_LIMIT, 1f + OVERSHOOT_LIMIT)
         fraction = raw.coerceIn(0f, 1f)
         overshoot = (raw - fraction) * OVERSHOOT_DAMPING
     }

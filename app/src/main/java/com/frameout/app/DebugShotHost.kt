@@ -39,6 +39,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 private const val HIDE_DELAY_MS = 160L
 
@@ -87,8 +88,8 @@ private fun ShotLayer(onTap: ((Boolean) -> Unit) -> Unit) {
     }) {
         if (!capturing && !x.floatValue.isNaN()) {
             ShotButton(x.floatValue, y.floatValue, onDrag = { dx, dy ->
-                x.floatValue = (x.floatValue + dx).coerceIn(0f, (area.width - sizePx).coerceAtLeast(0f))
-                y.floatValue = (y.floatValue + dy).coerceIn(0f, (area.height - sizePx).coerceAtLeast(0f))
+                x.floatValue = (x.floatValue + dx).safeCoerceIn(0f, (area.width - sizePx).coerceAtLeast(0f))
+                y.floatValue = (y.floatValue + dy).safeCoerceIn(0f, (area.height - sizePx).coerceAtLeast(0f))
             }) { onTap { capturing = it } }
         }
     }

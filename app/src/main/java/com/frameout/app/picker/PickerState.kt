@@ -4,6 +4,7 @@ import com.frameout.core.media.MediaAlbum
 import com.frameout.core.media.MediaFilterCount
 import com.frameout.core.media.MediaItem
 import com.frameout.core.media.MediaKind
+import com.frameout.core.util.safeCoerceIn
 
 data class PickerState(
     val albums: List<MediaAlbum> = emptyList(),
@@ -35,7 +36,7 @@ fun PickerState.restoreSelect(items: List<MediaItem>): PickerState = copy(select
 fun PickerState.restoreAt(item: MediaItem, index: Int): PickerState {
     if (selected.containsKey(item.uri)) return this
     val entries = selected.values.toMutableList()
-    entries.add(index.coerceIn(0, entries.size), item)
+    entries.add(index.safeCoerceIn(0, entries.size), item)
     return copy(selected = entries.toSelectionMap())
 }
 

@@ -3,6 +3,7 @@ package com.frameout.engine.extract
 import com.frameout.engine.decode.AnimatedFrameSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.frameout.core.util.safeCoerceIn
 
 object AnimatedSelection {
     fun count(decoder: AnimatedFrameSource, mode: ExtractMode, startMs: Long, endMs: Long, checkpoint: Long, checkpointIndex: Int = -1): Int = sequence(decoder, mode, startMs, endMs, checkpoint, checkpointIndex).count()
@@ -44,7 +45,7 @@ object AnimatedSelection {
     private fun fixedFromStart(decoder: AnimatedFrameSource, total: Int, startUs: Long, endUs: Long, requested: Int, checkpointIndex: Int): Sequence<Int> {
         val first = (0 until total).firstOrNull { decoder.ptsUs(it) >= startUs } ?: return emptySequence()
         val last = (first until total).firstOrNull { decoder.ptsUs(it) >= endUs } ?: total
-        val count = requested.coerceIn(0, (last - first).coerceAtLeast(0))
+        val count = requested.safeCoerceIn(0, (last - first).coerceAtLeast(0))
         return sequence {
             val picks = FixedSelection.positions(last - first, count) { decoder.ptsUs(first + it) }
             for (offset in picks) {

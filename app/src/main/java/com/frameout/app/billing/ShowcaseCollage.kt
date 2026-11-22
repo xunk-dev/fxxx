@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.frameout.designsystem.a11y.LocalSystemA11y
 import com.frameout.designsystem.theme.FrameTheme
 import kotlin.math.sin
+import com.frameout.core.util.safeCoerceIn
 
 private class CollageCell(val l: Float, val t: Float, val r: Float, val b: Float)
 
@@ -87,8 +88,8 @@ private fun DrawScope.drawCell(s: ShowcaseScene, index: Int, r: Rect, radius: Fl
         cropH = cropW / aspect
     }
     val center = Centers[index]
-    val left = (center.x * sw - cropW / 2f).coerceIn(0f, sw - cropW)
-    val top = (center.y * sh - cropH / 2f).coerceIn(0f, sh - cropH)
+    val left = (center.x * sw - cropW / 2f).safeCoerceIn(0f, sw - cropW)
+    val top = (center.y * sh - cropH / 2f).safeCoerceIn(0f, sh - cropH)
     val shape = Path().apply { addRoundRect(RoundRect(r, CornerRadius(radius))) }
     clipPath(shape) {
         drawImage(

@@ -98,14 +98,17 @@ internal fun pickCoverGrab(input: OverlayInput, at: Offset, density: Float): Cov
         if ((at - deleteAnchor(box.topLeft, box.bottomRight, geo, density)).getDistance() <= reachAction) return CoverGrab.Delete
         if ((at - duplicateAnchor(box.topLeft, box.bottomRight, geo, density)).getDistance() <= reachAction) return CoverGrab.Duplicate
         if (sel is CoverMark) {
-            val reach = HANDLE_REACH_DP * density
+            val maxReach = HANDLE_REACH_DP * density
+            val minSide = min(box.width, box.height)
+            val reach = HandleFit.reach(minSide, maxReach, density)
+            val roomy = HandleFit.roomy(minSide, maxReach)
             val corners = listOf(box.topLeft, box.topRight, box.bottomRight, box.bottomLeft)
             val anchors = listOf(
                 MarkPoint(sel.right, sel.bottom), MarkPoint(sel.left, sel.bottom),
                 MarkPoint(sel.left, sel.top), MarkPoint(sel.right, sel.top)
             )
             val nearest = corners.indices.minByOrNull { (at - corners[it]).getDistance() }
-            if (nearest != null && (at - corners[nearest]).getDistance() <= reach) return CoverGrab.Corner(d.selectedCover, anchors[nearest])
+            if (nearest != null && HandleFit.grabs(at, corners[nearest], box.center, reach, roomy)) return CoverGrab.Corner(d.selectedCover, anchors[nearest])
         }
         if (coverHit(sel, at, geo, t, density)) return CoverGrab.Move(d.selectedCover)
     }
@@ -128,6 +131,15 @@ internal suspend fun AwaitPointerEventScope.coverEditGesture(
     var multi = false
     var live = false
     var last = start
+    val cornerOffset = (grab as? CoverGrab.Corner)?.let { g ->
+        val input = latest.value
+        val mark = input.display.marks.getOrNull(g.index) as? CoverMark
+        mark?.let {
+            val x = if (g.anchor.x == it.left) it.right else it.left
+            val y = if (g.anchor.y == it.top) it.bottom else it.top
+            shapeScreen(x, y, input.geo, input.transformNow()) - start
+        }
+    } ?: Offset.Zero
     if (grab is CoverGrab.Move && latest.value.display.selectedCover != grab.index) latest.value.tools.covers.select(grab.index)
     do {
         val event = awaitPointerEvent()
@@ -167,7 +179,7 @@ internal suspend fun AwaitPointerEventScope.coverEditGesture(
                         val unitY = geo.imageH * geo.pixelSize(t)
                         input.tools.covers.moveBy(grab.index, (p.x - last.x) / unitX, (p.y - last.y) / unitY)
                     }
-                    is CoverGrab.Corner -> input.tools.covers.resize(grab.index, grab.anchor, coverNorm(p, input.geo, input.transformNow()))
+                    is CoverGrab.Corner -> input.tools.covers.resize(grab.index, grab.anchor, coverNorm(p + cornerOffset, input.geo, input.transformNow()))
                     else -> Unit
                 }
                 last = p
@@ -196,9 +208,10 @@ internal fun DrawScope.drawCoverSelection(input: OverlayInput, t: Transform, acc
     drawRect(Color.Black.copy(alpha = 0.45f), box.topLeft, size, style = Stroke(2.6f * density, pathEffect = dash))
     drawRect(Color.White.copy(alpha = 0.95f), box.topLeft, size, style = Stroke(1.4f * density, pathEffect = dash))
     if (sel is CoverMark) {
+        val handleR = HandleFit.radius(min(box.width, box.height), HANDLE_RADIUS_DP * density, density)
         listOf(box.topLeft, box.topRight, box.bottomRight, box.bottomLeft).forEach { p ->
-            drawCircle(Color.White, HANDLE_RADIUS_DP * density, p)
-            drawCircle(accent, HANDLE_RADIUS_DP * density, p, style = Stroke(2.5f * density))
+            drawCircle(Color.White, handleR, p)
+            drawCircle(accent, handleR, p, style = Stroke((handleR / HANDLE_RADIUS_DP * 2.5f).coerceIn(1.5f * density, 2.5f * density)))
         }
     }
     drawDeleteHandle(deleteAnchor(box.topLeft, box.bottomRight, geo, density), density)

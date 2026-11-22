@@ -30,6 +30,7 @@ import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import kotlinx.coroutines.delay
+import com.frameout.designsystem.util.safeCoerceIn
 
 private const val TOOLTIP_MS = 1600L
 
@@ -38,10 +39,10 @@ private class AnchoredAbove(private val gapPx: Int, private val sideways: Boolea
         val maxX = (windowSize.width - popupContentSize.width).coerceAtLeast(0)
         val maxY = (windowSize.height - popupContentSize.height).coerceAtLeast(0)
         if (sideways && anchorBounds.center.x > windowSize.width * 3 / 4) {
-            return IntOffset((anchorBounds.left - popupContentSize.width - gapPx).coerceIn(0, maxX), anchorBounds.top.coerceIn(0, maxY))
+            return IntOffset((anchorBounds.left - popupContentSize.width - gapPx).safeCoerceIn(0, maxX), anchorBounds.top.safeCoerceIn(0, maxY))
         }
-        val x = (anchorBounds.center.x - popupContentSize.width / 2).coerceIn(0, maxX)
-        val y = (anchorBounds.top - popupContentSize.height - gapPx).coerceIn(0, maxY)
+        val x = (anchorBounds.center.x - popupContentSize.width / 2).safeCoerceIn(0, maxX)
+        val y = (anchorBounds.top - popupContentSize.height - gapPx).safeCoerceIn(0, maxY)
         return IntOffset(x, y)
     }
 }

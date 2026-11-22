@@ -11,6 +11,7 @@ import kotlin.math.roundToInt
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
+import com.frameout.core.util.safeCoerceIn
 
 object FaceOutline {
     private const val CROP_PAD = 0.35f
@@ -35,10 +36,10 @@ object FaceOutline {
     suspend fun find(source: Bitmap, box: NormBox): List<MarkPoint>? = gate.withPermit {
         if (source.isRecycled) return@withPermit null
         val area = box.padded(CROP_PAD)
-        val left = (area.l * source.width).roundToInt().coerceIn(0, source.width - 1)
-        val top = (area.t * source.height).roundToInt().coerceIn(0, source.height - 1)
-        val right = (area.r * source.width).roundToInt().coerceIn(left + 1, source.width)
-        val bottom = (area.b * source.height).roundToInt().coerceIn(top + 1, source.height)
+        val left = (area.l * source.width).roundToInt().safeCoerceIn(0, source.width - 1)
+        val top = (area.t * source.height).roundToInt().safeCoerceIn(0, source.height - 1)
+        val right = (area.r * source.width).roundToInt().safeCoerceIn(left + 1, source.width)
+        val bottom = (area.b * source.height).roundToInt().safeCoerceIn(top + 1, source.height)
         val crop = try {
             Bitmap.createBitmap(source, left, top, right - left, bottom - top)
         } catch (e: IllegalArgumentException) {

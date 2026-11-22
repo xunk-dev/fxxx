@@ -38,6 +38,7 @@ import com.frameout.app.PreferredFrameTheme
 import com.frameout.designsystem.a11y.LocalSystemA11y
 import com.frameout.designsystem.components.FrameWordmark
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 private const val TOTAL_MS = 2400f
 private const val EXIT_START_MS = 1800f
@@ -83,7 +84,7 @@ private suspend fun runSplashClock(clock: MutableFloatState, speed: Float, skipR
     var last = withFrameNanos { it }
     while (clock.floatValue < TOTAL_MS) {
         val now = withFrameNanos { it }
-        val step = ((now - last) / 1_000_000f).coerceIn(0f, MAX_STEP_MS) * speed
+        val step = ((now - last) / 1_000_000f).safeCoerceIn(0f, MAX_STEP_MS) * speed
         last = now
         val next = clock.floatValue + step
         clock.floatValue = if (skipRequested() && next < EXIT_START_MS) EXIT_START_MS else next

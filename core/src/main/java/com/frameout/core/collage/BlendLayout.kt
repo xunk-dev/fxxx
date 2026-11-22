@@ -7,6 +7,7 @@ import kotlin.math.floor
 import kotlin.math.hypot
 import kotlin.math.sin
 import kotlin.math.tanh
+import com.frameout.core.util.safeCoerceIn
 
 private const val TAU = (2.0 * PI).toFloat()
 private const val SKEW = 0.8f
@@ -26,7 +27,7 @@ object BlendLayout {
     fun compute(template: CollageTemplate, blend: CollageBlend, strength: Int, w: Float, h: Float, gap: Float): List<CellBlend> {
         val g = gapFor(blend, gap)
         val rects = template.cells.map { it.toPx(w, h, g).snapped() }
-        val t = strength.coerceIn(0, BLEND_STRENGTH_MAX) / BLEND_STRENGTH_MAX.toFloat()
+        val t = strength.safeCoerceIn(0, BLEND_STRENGTH_MAX) / BLEND_STRENGTH_MAX.toFloat()
         return when (blend.family) {
             BlendFamily.None -> rects.map { CellBlend(it, null) }
             BlendFamily.Cell -> rects.map { cellShape(it, blend, t) }
@@ -75,7 +76,7 @@ object BlendLayout {
             val ay = corners[2 * e + 1]
             val bx = corners[2 * ((e + 1) % 4)]
             val by = corners[2 * ((e + 1) % 4) + 1]
-            val n = ceil(hypot(bx - ax, by - ay) / spacing).toInt().coerceIn(1, MAX_STEPS)
+            val n = ceil(hypot(bx - ax, by - ay) / spacing).toInt().safeCoerceIn(1, MAX_STEPS)
             for (i in 0 until n) {
                 val f = i.toFloat() / n
                 pts.add(ax + (bx - ax) * f)
@@ -98,8 +99,8 @@ object BlendLayout {
                 x += (x - cx) / d * f.bleed
                 y += (y - cy) / d * f.bleed
             }
-            out[i] = x.coerceIn(0f, f.w)
-            out[i + 1] = y.coerceIn(0f, f.h)
+            out[i] = x.safeCoerceIn(0f, f.w)
+            out[i + 1] = y.safeCoerceIn(0f, f.h)
         }
         return out
     }

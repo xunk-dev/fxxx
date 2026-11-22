@@ -13,7 +13,7 @@ data class PrepItem(
     val probe: com.frameout.app.trim.SourceProbe? = null
 ) {
     val edited: Boolean get() = range?.useFull == false
-    val spanMs: Long get() = if (edited) range!!.spanMs() else durationMs
+    val spanMs: Long get() = range?.takeIf { edited }?.spanMs() ?: durationMs
 }
 
 data class BatchItem(

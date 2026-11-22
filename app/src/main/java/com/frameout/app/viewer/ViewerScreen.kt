@@ -149,7 +149,7 @@ fun ViewerScreen(
                     landscape = landscape,
                     onSave = { vm.save() },
                     onDelete = { vm.softDelete() },
-                    onShare = { vm.shareIntent { context.startActivity(it.asChooserWithoutSelf(context, FrameStrings.share())) } },
+                    onShare = { vm.shareIntent { runCatching { context.startActivity(it.asChooserWithoutSelf(context, FrameStrings.share())) } } },
                     onSearch = { vm.search(context) },
                     onPlay = { vm.togglePlay() },
                     onSetFps = { vm.setPlayFps(it) },

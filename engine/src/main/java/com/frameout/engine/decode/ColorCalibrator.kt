@@ -6,6 +6,7 @@ import android.media.MediaMetadataRetriever
 import android.net.Uri
 import com.frameout.core.util.DiagLog
 import java.util.concurrent.ConcurrentHashMap
+import com.frameout.core.util.safeCoerceIn
 
 internal object ColorCalibrator {
     @Volatile var enabled = true
@@ -96,8 +97,8 @@ internal object ColorCalibrator {
             var g = 0f
             var b = 0f
             for (sy in 0 until SAMPLES) for (sx in 0 until SAMPLES) {
-                val x = (((gx * SAMPLES + sx) + 0.5f) * w / total).toInt().coerceIn(0, w - 1)
-                val y = (((gy * SAMPLES + sy) + 0.5f) * h / total).toInt().coerceIn(0, h - 1)
+                val x = (((gx * SAMPLES + sx) + 0.5f) * w / total).toInt().safeCoerceIn(0, w - 1)
+                val y = (((gy * SAMPLES + sy) + 0.5f) * h / total).toInt().safeCoerceIn(0, h - 1)
                 val p = bitmap.getPixel(x, y)
                 r += (p shr 16) and 0xFF
                 g += (p shr 8) and 0xFF

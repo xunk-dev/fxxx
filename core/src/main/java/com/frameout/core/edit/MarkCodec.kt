@@ -3,6 +3,7 @@ package com.frameout.core.edit
 import java.net.URLDecoder
 import java.net.URLEncoder
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 object MarkCodec {
     fun encode(marks: List<EditMark>): String = marks.joinToString("\n") { encodeOne(it) }
@@ -42,7 +43,7 @@ object MarkCodec {
             MarkPoint(xy[0].toFloat(), xy[1].toFloat())
         }
         if (points.isEmpty()) return null
-        val opacity = parts.getOrNull(4)?.toFloatOrNull()?.coerceIn(StrokeMark.MIN_OPACITY, 1f) ?: 1f
+        val opacity = parts.getOrNull(4)?.toFloatOrNull()?.safeCoerceIn(StrokeMark.MIN_OPACITY, 1f) ?: 1f
         return StrokeMark(parts[1].toInt(), parts[2].toFloat(), points, opacity)
     }
 

@@ -68,6 +68,7 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.fieldFill
 import com.frameout.designsystem.theme.frameHairline
+import com.frameout.core.util.safeCoerceIn
 
 private val TopBarHeight = 72.dp
 
@@ -240,8 +241,8 @@ private class BelowAnchor(private val gap: Int) : PopupPositionProvider {
     override fun calculatePosition(anchorBounds: IntRect, windowSize: IntSize, layoutDirection: LayoutDirection, popupContentSize: IntSize): IntOffset {
         val maxX = (windowSize.width - popupContentSize.width).coerceAtLeast(0)
         val maxY = (windowSize.height - popupContentSize.height).coerceAtLeast(0)
-        val x = (if (layoutDirection == LayoutDirection.Rtl) anchorBounds.left else anchorBounds.right - popupContentSize.width).coerceIn(0, maxX)
-        val y = (anchorBounds.bottom + gap).coerceIn(0, maxY)
+        val x = (if (layoutDirection == LayoutDirection.Rtl) anchorBounds.left else anchorBounds.right - popupContentSize.width).safeCoerceIn(0, maxX)
+        val y = (anchorBounds.bottom + gap).safeCoerceIn(0, maxY)
         return IntOffset(x, y)
     }
 }

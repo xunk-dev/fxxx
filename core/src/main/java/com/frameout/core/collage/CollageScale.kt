@@ -8,6 +8,7 @@ import android.graphics.RectF
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.max
+import com.frameout.core.util.safeCoerceIn
 
 object CollageScale {
     fun draw(canvas: Canvas, src: Bitmap, window: SourceWindow, dest: RectF, paint: Paint) {
@@ -34,10 +35,10 @@ object CollageScale {
     }
 
     private fun halve(bmp: Bitmap, win: SourceWindow): Pair<Bitmap, SourceWindow>? {
-        val l = floor(win.left).toInt().coerceIn(0, bmp.width - 1)
-        val t = floor(win.top).toInt().coerceIn(0, bmp.height - 1)
-        val r = ceil(win.right).toInt().coerceIn(l + 1, bmp.width)
-        val b = ceil(win.bottom).toInt().coerceIn(t + 1, bmp.height)
+        val l = floor(win.left).toInt().safeCoerceIn(0, bmp.width - 1)
+        val t = floor(win.top).toInt().safeCoerceIn(0, bmp.height - 1)
+        val r = ceil(win.right).toInt().safeCoerceIn(l + 1, bmp.width)
+        val b = ceil(win.bottom).toInt().safeCoerceIn(t + 1, bmp.height)
         val w = max(1, (r - l) / 2)
         val h = max(1, (b - t) / 2)
         if (w >= r - l || h >= b - t) return null

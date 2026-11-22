@@ -7,6 +7,7 @@ import com.frameout.codecpack.FormatKind
 import com.frameout.codecpack.FormatProbe
 import com.frameout.codecpack.VideoTrackSelector
 import com.frameout.core.util.logged
+import com.frameout.core.util.safeCoerceIn
 
 object FramePtsIndex {
     private const val CHECK_EVERY = 2048
@@ -94,7 +95,7 @@ object FramePtsIndex {
         return if (kotlin.math.abs(index[after] - us) < kotlin.math.abs(us - index[before])) after else before
     }
 
-    fun frameMs(index: LongArray, frame: Int): Long = index[frame.coerceIn(0, index.size - 1)] / 1000L
+    fun frameMs(index: LongArray, frame: Int): Long = index[frame.safeCoerceIn(0, index.size - 1)] / 1000L
 
     fun snapMs(index: LongArray, positionMs: Long): Long {
         if (index.isEmpty()) return positionMs
@@ -103,7 +104,7 @@ object FramePtsIndex {
 
     fun shiftMs(index: LongArray, positionMs: Long, frames: Int): Long {
         if (index.isEmpty()) return positionMs
-        return frameMs(index, indexAt(index, positionMs).toLong().plus(frames).coerceIn(0L, (index.size - 1).toLong()).toInt())
+        return frameMs(index, indexAt(index, positionMs).toLong().plus(frames).safeCoerceIn(0L, (index.size - 1).toLong()).toInt())
     }
 
     fun averageFrameUs(index: LongArray): Long =

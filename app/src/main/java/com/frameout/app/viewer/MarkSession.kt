@@ -18,6 +18,7 @@ import kotlin.math.min
 
 private const val MIN_SPACING_PX = 2f
 private const val MIN_COVER = 0.001f
+private const val MIN_COVER_SCREEN_PX = 10f
 
 internal class HeldMark(val bitmap: Bitmap, val mark: EditMark)
 
@@ -62,7 +63,12 @@ internal fun buildMark(points: List<Offset>, geo: ViewGeometry, t: Transform, to
     return when {
         tool == EditTool.Draw -> StrokeMark(draft.color, draft.size, norm, draft.brushOpacity)
         draft.shape == CoverShape.Pen -> BrushCoverMark(draft.style, draft.strength, draft.coverSize, norm)
-        else -> rectangleMark(norm.first(), norm.last(), draft)
+        else -> {
+            val unit = geo.pixelSize(t)
+            val minX = if (unit > 0f) MIN_COVER_SCREEN_PX / (geo.imageW * unit) else MIN_COVER
+            val minY = if (unit > 0f) MIN_COVER_SCREEN_PX / (geo.imageH * unit) else MIN_COVER
+            rectangleMark(norm.first(), norm.last(), draft, maxOf(minX, MIN_COVER), maxOf(minY, MIN_COVER))
+        }
     }
 }
 
@@ -71,9 +77,9 @@ private fun toNorm(p: Offset, geo: ViewGeometry, t: Transform) = MarkPoint(
     geo.toNormY(p.y - geo.viewH / 2f, t).coerceIn(0f, 1f)
 )
 
-private fun rectangleMark(a: MarkPoint, b: MarkPoint, draft: EditDraft): EditMark? {
+private fun rectangleMark(a: MarkPoint, b: MarkPoint, draft: EditDraft, minX: Float, minY: Float): EditMark? {
     val cover = CoverMark(min(a.x, b.x), min(a.y, b.y), max(a.x, b.x), max(a.y, b.y), draft.style, draft.strength)
-    val wide = cover.right - cover.left >= MIN_COVER
-    val tall = cover.bottom - cover.top >= MIN_COVER
+    val wide = cover.right - cover.left >= minX
+    val tall = cover.bottom - cover.top >= minY
     return cover.takeIf { wide && tall }
 }

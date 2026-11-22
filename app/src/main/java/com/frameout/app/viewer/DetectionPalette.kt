@@ -11,7 +11,10 @@ import com.frameout.designsystem.theme.FrameTheme
 private const val ACCENT_LIFT = 0.3f
 
 internal class DetectionPalette(private val colors: Map<TagGroup, Color>, val ink: Color, val neutral: Color) {
-    fun colorOf(detection: Detection): Color = colors.getValue(TagNames.group(detection.tags.first()))
+    fun colorOf(detection: Detection): Color {
+        val tag = detection.tags.firstOrNull() ?: return neutral
+        return colors[TagNames.group(tag)] ?: neutral
+    }
 }
 
 @Composable

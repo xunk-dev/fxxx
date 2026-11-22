@@ -24,6 +24,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import com.frameout.core.util.safeCoerceIn
 
 class ExtractRunner(
     internal val context: Context, internal val projectDao: ProjectDao, private val frameDao: FrameDao,
@@ -209,7 +210,7 @@ class ExtractRunner(
             var ordinal = 0L
             selected.collect { sample ->
                 ensureRunning()
-                val active = DeviceLimits.extractDecoders().coerceIn(1, count)
+                val active = DeviceLimits.extractDecoders().safeCoerceIn(1, count)
                 val target = (ordinal++ % active).toInt()
                 order.send(target)
                 inputs[target].send(sample)

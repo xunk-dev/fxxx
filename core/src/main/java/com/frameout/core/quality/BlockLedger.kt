@@ -1,6 +1,7 @@
 package com.frameout.core.quality
 
 import java.io.File
+import com.frameout.core.util.safeCoerceIn
 
 object BlockLedger {
     const val FOLDER = "quality"
@@ -18,7 +19,7 @@ object BlockLedger {
     }
 
     fun record(projectDir: File, index: Int, factor: Double) {
-        val permille = (factor * SCALE).toInt().coerceIn(0, SCALE)
+        val permille = (factor * SCALE).toInt().safeCoerceIn(0, SCALE)
         if (permille >= SCALE) return
         val file = fileIn(projectDir)
         synchronized(lock) {
@@ -40,7 +41,7 @@ object BlockLedger {
         if (parts.size != 2) return null
         val index = parts[0].toIntOrNull() ?: return null
         val permille = parts[1].toIntOrNull() ?: return null
-        return index to permille.coerceIn(0, SCALE) / SCALE.toDouble()
+        return index to permille.safeCoerceIn(0, SCALE) / SCALE.toDouble()
     }
 
     class Lookup {

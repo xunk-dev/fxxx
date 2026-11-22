@@ -7,6 +7,7 @@ import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import com.frameout.core.util.FrameStrings
 import com.frameout.engine.R
+import com.frameout.core.util.safeCoerceIn
 
 internal object ExtractProgressNotification {
     private const val SMALL_STRIP_PX = 12
@@ -55,7 +56,7 @@ internal object ExtractProgressNotification {
             .setShowWhen(false)
             .setPriority(NotificationCompat.PRIORITY_LOW)
         if (snap.known) {
-            builder.setProgress(PROGRESS_STEPS, (snap.fraction * PROGRESS_STEPS).toInt().coerceIn(0, PROGRESS_STEPS), false)
+            builder.setProgress(PROGRESS_STEPS, (snap.fraction * PROGRESS_STEPS).toInt().safeCoerceIn(0, PROGRESS_STEPS), false)
             builder.setSubText(snap.percent)
         } else {
             builder.setProgress(0, 0, true)

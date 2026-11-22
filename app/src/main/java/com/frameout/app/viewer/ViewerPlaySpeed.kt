@@ -55,6 +55,7 @@ import com.frameout.designsystem.haptics.FrameHaptic
 import com.frameout.designsystem.haptics.rememberFrameHaptics
 import com.frameout.designsystem.theme.FrameGradients
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 private val ItemH = 36.dp
 private val PopPadV = 6.dp
@@ -114,13 +115,13 @@ internal fun RowScopePlayButton(
                             val change = event.changes.firstOrNull { it.id == id } ?: break
                             val y = change.position.y
                             val idx = if (y > zone) start else {
-                                ((zone - y) / itemPx).toInt().coerceIn(0, speeds.size - 1)
+                                ((zone - y) / itemPx).toInt().safeCoerceIn(0, speeds.size - 1)
                             }
                             if (idx != hover) { hover = idx; haptics.perform(FrameHaptic.Tick) }
                             change.consume()
                             if (change.changedToUpIgnoreConsumed() || !change.pressed) break
                         }
-                        val chosen = speeds[hover.coerceIn(0, speeds.size - 1)]
+                        val chosen = speeds[hover.safeCoerceIn(0, speeds.size - 1)]
                         open = false
                         if (chosen != currentFps) { haptics.perform(FrameHaptic.Confirm); setFps(chosen) } else haptics.perform(FrameHaptic.DragEnd)
                         hover = -1

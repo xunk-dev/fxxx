@@ -12,6 +12,7 @@ import android.net.Uri
 import com.frameout.codecpack.ApngFrame
 import com.frameout.codecpack.ApngIndex
 import com.frameout.codecpack.ApngParser
+import com.frameout.core.util.safeCoerceIn
 
 class ApngFrameDecoder(private val context: Context) : AnimatedFrameSource {
     private var index: ApngIndex? = null
@@ -44,11 +45,11 @@ class ApngFrameDecoder(private val context: Context) : AnimatedFrameSource {
     override fun videoWidth(): Int = index?.width ?: 0
     override fun videoHeight(): Int = index?.height ?: 0
     override fun durationUs(): Long = total
-    override fun ptsUs(index: Int): Long = if (starts.isEmpty()) 0L else starts[index.coerceIn(0, starts.lastIndex)]
+    override fun ptsUs(index: Int): Long = if (starts.isEmpty()) 0L else starts[index.safeCoerceIn(0, starts.lastIndex)]
 
     override fun decodeFrame(index: Int): Pair<Long, Bitmap>? {
         val parsed = this.index ?: return null
-        val safe = index.coerceIn(0, parsed.frames.lastIndex)
+        val safe = index.safeCoerceIn(0, parsed.frames.lastIndex)
         ensureCanvas(parsed)
         val start = ResetPoints.lastAtOrBefore(resetPoints, safe)
         if (safe < rendered || start > rendered) reset(start)

@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream
 import java.io.OutputStream
 import java.util.Locale
 import kotlin.math.ln
+import com.frameout.core.util.safeCoerceIn
 
 internal object UltraHdrWriter {
     private const val GAIN_QUALITY = 95
@@ -43,7 +44,7 @@ internal object UltraHdrWriter {
     }
 
     private fun encodePrimary(bitmap: Bitmap): ByteArray? {
-        val buffer = ByteArrayOutputStream(bitmap.byteCount.coerceIn(1 shl 16, 1 shl 26) / 4)
+        val buffer = ByteArrayOutputStream(bitmap.byteCount.safeCoerceIn(1 shl 16, 1 shl 26) / 4)
         val ok = if (Jpeg444.supports(bitmap)) Jpeg444.encode(bitmap, 100, buffer) else bitmap.compress(Bitmap.CompressFormat.JPEG, 100, buffer)
         return if (ok) buffer.toByteArray() else null
     }

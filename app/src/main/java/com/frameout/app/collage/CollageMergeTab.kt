@@ -42,6 +42,7 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameHairline
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun MergeTab(state: CollageState) {
@@ -67,13 +68,13 @@ private fun StrengthRow(state: CollageState) {
     val label = CollageStrings.mergeStrength()
     Row(Modifier.fillMaxWidth().alpha(if (on) 1f else 0.4f), verticalAlignment = Alignment.CenterVertically) {
         GroupIcon(FrameIconsExtra.CollageMerge)
-        StepButton(FrameIconsExtra.Minus, EditStrings.decrease()) { if (on) state.blendStrength = (state.blendStrength - 1).coerceIn(0, max) }
+        StepButton(FrameIconsExtra.Minus, EditStrings.decrease()) { if (on) state.blendStrength = (state.blendStrength - 1).safeCoerceIn(0, max) }
         FrameSlider(
             state.blendStrength / max.toFloat(),
-            { if (on) state.blendStrength = (it * max).roundToInt().coerceIn(0, max) },
+            { if (on) state.blendStrength = (it * max).roundToInt().safeCoerceIn(0, max) },
             0f, 1f, label, Modifier.weight(1f).height(28.dp)
         )
-        StepButton(FrameIconsExtra.Plus, EditStrings.increase()) { if (on) state.blendStrength = (state.blendStrength + 1).coerceIn(0, max) }
+        StepButton(FrameIconsExtra.Plus, EditStrings.increase()) { if (on) state.blendStrength = (state.blendStrength + 1).safeCoerceIn(0, max) }
         ValueChip("${state.blendStrength}")
     }
 }

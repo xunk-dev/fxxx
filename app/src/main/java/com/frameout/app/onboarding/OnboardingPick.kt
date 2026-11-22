@@ -57,6 +57,7 @@ import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.glass.frameGlow
 import com.frameout.designsystem.theme.FrameTheme
 import kotlin.math.max
+import com.frameout.core.util.safeCoerceIn
 
 internal const val PickHeightFactor = 1.16f
 internal val PickExtraHeight = 0.dp
@@ -72,11 +73,11 @@ private const val SmDupTile = 1
 private const val SmPeopleTile = 4
 private const val SmBestTile = 5
 
-private fun sceneOf(p: Float) = (p * SceneCount).toInt().coerceIn(0, SceneCount - 1)
+private fun sceneOf(p: Float) = (p * SceneCount).toInt().safeCoerceIn(0, SceneCount - 1)
 
 private fun strengthOf(p: Float): Float {
     val s = p * SceneCount
-    val q = s - s.toInt().coerceIn(0, SceneCount - 1)
+    val q = s - s.toInt().safeCoerceIn(0, SceneCount - 1)
     return ease(seg(q, 0.18f, 0.4f)) * (1f - ease(seg(q, 0.88f, 1f)))
 }
 

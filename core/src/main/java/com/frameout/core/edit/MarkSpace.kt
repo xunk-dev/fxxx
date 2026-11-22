@@ -2,6 +2,7 @@ package com.frameout.core.edit
 
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 data class PixelRect(val left: Int, val top: Int, val right: Int, val bottom: Int) {
     val width: Int get() = right - left
@@ -9,10 +10,10 @@ data class PixelRect(val left: Int, val top: Int, val right: Int, val bottom: In
 }
 
 fun cropPixels(width: Int, height: Int, l: Float, t: Float, r: Float, b: Float): PixelRect {
-    val left = (width * l).toInt().coerceIn(0, width - 1)
-    val top = (height * t).toInt().coerceIn(0, height - 1)
-    val right = (width * r).toInt().coerceIn(left + 1, width)
-    val bottom = (height * b).toInt().coerceIn(top + 1, height)
+    val left = (width * l).toInt().safeCoerceIn(0, width - 1)
+    val top = (height * t).toInt().safeCoerceIn(0, height - 1)
+    val right = (width * r).toInt().safeCoerceIn(left + 1, width)
+    val bottom = (height * b).toInt().safeCoerceIn(top + 1, height)
     return PixelRect(left, top, right, bottom)
 }
 

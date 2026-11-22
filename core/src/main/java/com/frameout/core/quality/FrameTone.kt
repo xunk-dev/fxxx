@@ -3,6 +3,7 @@ package com.frameout.core.quality
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
+import com.frameout.core.util.safeCoerceIn
 object FrameTone {
     const val MIN = 0.05f
 
@@ -47,6 +48,6 @@ object FrameTone {
         val t = ((clipped - CLIP_FREE) / (CLIP_FULL - CLIP_FREE)).coerceIn(0.0, 1.0)
         val exposure = 1.0 - t * t * (3.0 - 2.0 * t)
         val contrast = FLAT_FLOOR + (1.0 - FLAT_FLOOR) * min(1.0, std / FLAT_STD)
-        return (exposure * contrast).coerceIn(MIN.toDouble(), 1.0).toFloat()
+        return (exposure * contrast).safeCoerceIn(MIN.toDouble(), 1.0).toFloat()
     }
 }

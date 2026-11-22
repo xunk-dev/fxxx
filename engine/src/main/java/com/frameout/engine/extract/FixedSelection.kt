@@ -4,18 +4,19 @@ import com.frameout.core.db.VideoIndexDao
 import com.frameout.core.db.VideoIndexEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.frameout.core.util.safeCoerceIn
 
 internal object FixedSelection {
     private const val PAGE_SIZE = 500
 
     suspend fun count(dao: VideoIndexDao, projectId: Long, startUs: Long, endUs: Long, requested: Int): Int =
-        requested.coerceIn(0, dao.countRange(projectId, startUs, endUs))
+        requested.safeCoerceIn(0, dao.countRange(projectId, startUs, endUs))
 
     fun offset(i: Int, rangeCount: Int, count: Int): Long =
         if (count <= 1) 0L else i.toLong() * (rangeCount - 1) / (count - 1)
 
     fun positions(rangeCount: Int, requested: Int, ptsAt: (Int) -> Long): IntArray {
-        val count = requested.coerceIn(0, rangeCount)
+        val count = requested.safeCoerceIn(0, rangeCount)
         if (count == 0) return IntArray(0)
         if (count == 1) return IntArray(1)
         val first = ptsAt(0)
@@ -27,7 +28,7 @@ internal object FixedSelection {
         for (i in 0 until count) {
             val target = first + span * i / (count - 1)
             while (cursor + 1 < rangeCount && ptsAt(cursor + 1) <= target) cursor++
-            val pick = cursor.coerceIn(previous + 1, rangeCount - (count - i))
+            val pick = cursor.safeCoerceIn(previous + 1, rangeCount - (count - i))
             out[i] = pick
             previous = pick
         }
@@ -36,7 +37,7 @@ internal object FixedSelection {
 
     fun flow(dao: VideoIndexDao, projectId: Long, startUs: Long, endUs: Long, requested: Int): Flow<VideoIndexEntity> = flow {
         val rangeCount = dao.countRange(projectId, startUs, endUs)
-        if (requested.coerceIn(0, rangeCount) == 0) return@flow
+        if (requested.safeCoerceIn(0, rangeCount) == 0) return@flow
         val points = collectPts(dao, projectId, startUs, endUs, rangeCount)
         val picks = positions(points.size, requested) { points[it] }
         var next = 0

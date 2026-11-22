@@ -4,6 +4,7 @@ import com.frameout.core.db.FrameEntity
 import com.frameout.core.export.ExportBitmaps
 import com.frameout.core.export.GifEncoder
 import java.io.OutputStream
+import com.frameout.core.util.safeCoerceIn
 
 internal object GifSupport {
     const val SIDE = 720
@@ -13,7 +14,7 @@ internal object GifSupport {
     fun delayMs(frames: List<FrameEntity>): Int {
         val gaps = frames.zipWithNext { a, b -> (b.ptsUs - a.ptsUs) / 1000L }.filter { it > 0 }.sorted()
         val median = gaps.getOrNull(gaps.size / 2) ?: 300L
-        return median.coerceIn(80L, 1000L).toInt()
+        return median.safeCoerceIn(80L, 1000L).toInt()
     }
 
     fun dimensions(paths: List<String?>, maxSide: Int = SIDE): Pair<Int, Int> {

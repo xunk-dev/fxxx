@@ -82,10 +82,10 @@ class RemoteStore(ctx: Context) {
         get() = p.getLong("seq", 0)
         set(v) { p.edit().putLong("seq", v).apply() }
     var mirrors: List<String>
-        get() = p.getString("mirrors", "")!!.split("\n").filter { it.isNotBlank() }
+        get() = (p.getString("mirrors", "") ?: "").split("\n").filter { it.isNotBlank() }
         set(v) { p.edit().putString("mirrors", v.joinToString("\n")).apply() }
-    fun shown(id: String) = p.getStringSet("shown", emptySet())!!.contains(id)
-    fun markShown(id: String) { p.edit().putStringSet("shown", p.getStringSet("shown", emptySet())!! + id).apply() }
+    fun shown(id: String) = (p.getStringSet("shown", emptySet()) ?: emptySet()).contains(id)
+    fun markShown(id: String) { p.edit().putStringSet("shown", (p.getStringSet("shown", emptySet()) ?: emptySet()) + id).apply() }
     fun current(): Manifest? = envelope?.let { ManifestVerifier.verify(it) }
 }
 

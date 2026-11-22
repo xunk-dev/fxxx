@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.frameout.core.util.SavedStrings
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import com.frameout.core.util.safeCoerceIn
 
 internal fun ViewerViewModel.deleteSaved() {
     stopPlay()
@@ -68,7 +69,7 @@ private fun ViewerViewModel.undoSavedDelete() {
             _state.update { it.copy(message = SavedStrings.restoreFailed(), busyMessage = null, messageSaved = null) }
             return@launch
         }
-        val at = restored.index.coerceIn(0, savedIds.size)
+        val at = restored.index.safeCoerceIn(0, savedIds.size)
         savedIds = savedIds.toMutableList().apply { add(at, restored.id) }
         SavedPlaylist.ids = savedIds
         val frame = c.savedImages.getById(restored.id)?.sourceFrameId?.let { c.frames.getActiveById(it) }

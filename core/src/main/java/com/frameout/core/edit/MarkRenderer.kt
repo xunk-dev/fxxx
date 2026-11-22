@@ -46,7 +46,7 @@ object MarkRenderer {
     }
 
     private fun smoothPath(points: List<MarkPoint>, w: Float, h: Float): Path {
-        val first = points.first()
+        val first = points.firstOrNull() ?: return Path()
         val path = Path().apply { moveTo(first.x * w, first.y * h) }
         if (points.size == 1) {
             path.lineTo(first.x * w + 0.01f, first.y * h)

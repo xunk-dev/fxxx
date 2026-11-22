@@ -25,7 +25,7 @@ object ThumbCache {
 
     val pool = BitmapPool(maxBytes = DeviceLimits::poolBytes)
 
-    private val shared = object : LruCache<String, Bitmap>((Runtime.getRuntime().maxMemory() / 5L).coerceIn(32L * 1024L * 1024L, 160L * 1024L * 1024L).toInt()) {
+    private val shared = object : LruCache<String, Bitmap>((Runtime.getRuntime().maxMemory() / 5L).safeCoerceIn(32L * 1024L * 1024L, 160L * 1024L * 1024L).toInt()) {
         override fun sizeOf(key: String, value: Bitmap): Int = value.byteCount
     }
 

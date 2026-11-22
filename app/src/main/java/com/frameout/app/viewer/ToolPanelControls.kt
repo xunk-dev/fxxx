@@ -85,7 +85,7 @@ internal fun PrecisionRow(
 
 @Composable
 internal fun StepButton(icon: Int, label: String, onStep: () -> Unit) {
-    Box(Modifier.size(40.dp).frameHoldRepeat(onStep).semantics { contentDescription = label }, Alignment.Center) {
+    Box(Modifier.size(48.dp).frameHoldRepeat(onStep).semantics { contentDescription = label }, Alignment.Center) {
         Image(painterResource(icon), null, Modifier.size(18.dp), colorFilter = ColorFilter.tint(FrameTheme.colors.primary))
     }
 }

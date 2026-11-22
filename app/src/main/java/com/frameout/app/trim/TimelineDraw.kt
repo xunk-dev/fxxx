@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.frameout.engine.player.FramePtsIndex
 import com.frameout.engine.timeline.TrimRange
+import com.frameout.core.util.safeCoerceIn
 
 internal fun pickHandle(x: Float, geometry: TrackGeometry, range: TrimRange, hit: Float, handleWidth: Float): Handle {
     val startX = geometry.xOf(range.startMs)
@@ -62,8 +63,8 @@ internal fun DrawScope.drawTimeline(
     if (selecting) {
         val startX = geometry.xOf(range.startMs)
         val endX = geometry.xOf(range.endMs).coerceAtLeast(startX)
-        val from = startX.coerceIn(geometry.inset, geometry.trackEnd)
-        val to = endX.coerceIn(geometry.inset, geometry.trackEnd)
+        val from = startX.safeCoerceIn(geometry.inset, geometry.trackEnd)
+        val to = endX.safeCoerceIn(geometry.inset, geometry.trackEnd)
         val dim = Color.Black.copy(alpha = 0.58f)
         drawRect(dim, Offset(geometry.inset, 0f), Size((from - geometry.inset).coerceAtLeast(0f), h))
         drawRect(dim, Offset(to, 0f), Size((geometry.trackEnd - to).coerceAtLeast(0f), h))

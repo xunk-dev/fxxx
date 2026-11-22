@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 private const val DUPLICATE_OFFSET = 0.04f
 private const val MIN_SIDE = 0.01f
@@ -38,8 +39,8 @@ internal fun coverBounds(mark: EditMark): FloatArray? = when (mark) {
 
 internal fun shiftedCover(mark: EditMark, dx: Float, dy: Float): EditMark {
     val b = coverBounds(mark) ?: return mark
-    val sx = dx.coerceIn(-b[0], 1f - b[2])
-    val sy = dy.coerceIn(-b[1], 1f - b[3])
+    val sx = dx.safeCoerceIn(-b[0], 1f - b[2])
+    val sy = dy.safeCoerceIn(-b[1], 1f - b[3])
     return when (mark) {
         is CoverMark -> mark.copy(left = mark.left + sx, top = mark.top + sy, right = mark.right + sx, bottom = mark.bottom + sy)
         is BrushCoverMark -> mark.copy(points = mark.points.map { MarkPoint(it.x + sx, it.y + sy) })

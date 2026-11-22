@@ -74,6 +74,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.designsystem.util.safeCoerceIn
 
 internal val IslandBarHeight = 54.dp
 internal val IslandFabLift = FrameFabSize / 2 + FabRaise
@@ -107,7 +108,7 @@ internal fun FrameIsland(
 
     val n = items.size
     val gapTarget = if (hasFab) FabGap else 0.dp
-    val slotTarget = ((maxWidth - SidePad * 2 - gapTarget) / max(n, 1)).coerceIn(MinSlot, MaxSlot)
+    val slotTarget = ((maxWidth - SidePad * 2 - gapTarget) / max(n, 1)).safeCoerceIn(MinSlot, MaxSlot)
     val left = if (hasFab) (n + 1) / 2 else n
     val visual = if (rtl) items.asReversed() else items
 

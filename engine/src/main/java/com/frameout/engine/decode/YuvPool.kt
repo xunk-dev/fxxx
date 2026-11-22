@@ -5,12 +5,13 @@ import java.util.concurrent.ExecutionException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicInteger
+import com.frameout.core.util.safeCoerceIn
 
 internal object YuvPool {
     private const val PARALLEL_MIN_PIXELS = 400_000L
     private const val MIN_BAND_ROWS = 64
     private const val MAX_WORKERS = 4
-    private val workers = Runtime.getRuntime().availableProcessors().coerceIn(1, MAX_WORKERS)
+    private val workers = Runtime.getRuntime().availableProcessors().safeCoerceIn(1, MAX_WORKERS)
     private val pool: ExecutorService by lazy {
         val counter = AtomicInteger()
         Executors.newFixedThreadPool(workers) { task ->

@@ -1,6 +1,7 @@
 package com.frameout.app.trim
 
 import com.frameout.engine.timeline.TrimRange
+import com.frameout.core.util.safeCoerceIn
 
 internal object RangeEdit {
     const val NUDGE_MS = 100L
@@ -12,8 +13,8 @@ internal object RangeEdit {
     fun withLength(range: TrimRange, durationMs: Long, maxMs: Long, lengthMs: Long): TrimRange {
         val limit = ceiling(durationMs, maxMs)
         if (limit <= 0L) return range
-        val length = lengthMs.coerceIn(minOf(MIN_SPAN_MS, limit), limit)
-        val start = range.startMs.coerceIn(0L, (durationMs - length).coerceAtLeast(0L))
+        val length = lengthMs.safeCoerceIn(minOf(MIN_SPAN_MS, limit), limit)
+        val start = range.startMs.safeCoerceIn(0L, (durationMs - length).coerceAtLeast(0L))
         return TrimRange(start, start + length, useFull = false)
     }
 

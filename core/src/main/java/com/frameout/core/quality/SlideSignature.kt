@@ -2,6 +2,7 @@ package com.frameout.core.quality
 
 import android.graphics.Bitmap
 import kotlin.math.abs
+import com.frameout.core.util.safeCoerceIn
 
 object SlideSignature {
     const val COLS = 32
@@ -23,9 +24,9 @@ object SlideSignature {
             for (col in 0 until COLS) {
                 var sum = 0
                 for (sy in 0 until SUB) {
-                    val y = (((row * SUB + sy) * 2 + 1) * h / (ROWS * SUB * 2)).coerceIn(0, h - 1)
+                    val y = (((row * SUB + sy) * 2 + 1) * h / (ROWS * SUB * 2)).safeCoerceIn(0, h - 1)
                     for (sx in 0 until SUB) {
-                        val x = (((col * SUB + sx) * 2 + 1) * w / (COLS * SUB * 2)).coerceIn(0, w - 1)
+                        val x = (((col * SUB + sx) * 2 + 1) * w / (COLS * SUB * 2)).safeCoerceIn(0, w - 1)
                         sum += luma.at(x, y)
                     }
                 }

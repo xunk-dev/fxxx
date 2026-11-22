@@ -51,6 +51,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import kotlin.math.roundToInt
 import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 private fun tileTitleStyle() = FrameTheme.typography.titleSmall.copy(fontWeight = FontWeight.SemiBold)
@@ -74,7 +75,7 @@ private fun rememberAurora(spec: ToolRowSpec, look: HomeLook): Aurora {
     return remember(spec.tone, look, flow, angle) {
         val dark = look.dark
         val o = spec.tone.toOklch()
-        val chroma = if (look.neutral) o.c else o.c.coerceIn(0.03f, if (dark) 0.075f else 0.12f)
+        val chroma = if (look.neutral) o.c else o.c.safeCoerceIn(0.03f, if (dark) 0.075f else 0.12f)
         val lightness = if (dark) floatArrayOf(0.19f, 0.22f, 0.24f, 0.205f) else floatArrayOf(0.92f, 0.88f, 0.90f, 0.86f)
         val hueShift = floatArrayOf(-6f, 0f, 5f, 10f)
         val k = if (dark) 1f else 0.6f

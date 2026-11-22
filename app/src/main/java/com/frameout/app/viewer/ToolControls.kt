@@ -37,6 +37,7 @@ import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameTheme
 import kotlin.math.abs
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 internal data class ImageDims(val w: Int, val h: Int)
 
@@ -68,7 +69,7 @@ internal fun adjustSections(draft: EditDraft, tools: ViewerToolEditor): List<Pan
                 valueText = signed(((value - param.neutral) * 100f).roundToInt()),
                 fraction = (value - param.lo) / (param.hi - param.lo),
                 onFraction = { param.set(tools, param.lo + it * (param.hi - param.lo)) },
-                onStep = { dir -> param.set(tools, (((value * 100f).roundToInt() + dir) / 100f).coerceIn(param.lo, param.hi)) },
+                onStep = { dir -> param.set(tools, (((value * 100f).roundToInt() + dir) / 100f).safeCoerceIn(param.lo, param.hi)) },
                 dense = true,
                 neutralFraction = (param.neutral - param.lo) / (param.hi - param.lo),
                 leading = { RowIcon(param.icon) }

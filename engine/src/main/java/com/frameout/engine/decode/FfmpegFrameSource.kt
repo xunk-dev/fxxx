@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import com.frameout.codecpack.FfmpegBridge
+import com.frameout.core.util.safeCoerceIn
 
 class FfmpegFrameSource(context: Context) : AnimatedFrameSource {
     private val router = DecodeRouter(context).also { it.forceFfmpeg = true; it.previewMaxSide = PREVIEW_SIDE }
@@ -30,7 +31,7 @@ class FfmpegFrameSource(context: Context) : AnimatedFrameSource {
     override fun frameCount(): Int = count
     override fun videoWidth(): Int = router.ffmpegWidth()
     override fun videoHeight(): Int = router.ffmpegHeight()
-    override fun ptsUs(index: Int): Long = if (count == 0) 0L else table[index.coerceIn(0, count - 1) * STRIDE]
+    override fun ptsUs(index: Int): Long = if (count == 0) 0L else table[index.safeCoerceIn(0, count - 1) * STRIDE]
 
     override fun durationUs(): Long {
         if (count == 0) return 0L
@@ -42,7 +43,7 @@ class FfmpegFrameSource(context: Context) : AnimatedFrameSource {
 
     override fun decodeFrame(index: Int): Pair<Long, Bitmap>? {
         if (count == 0) return null
-        val safe = index.coerceIn(0, count - 1)
+        val safe = index.safeCoerceIn(0, count - 1)
         val frame = if (router.wantsKeyframeHint(safe)) {
             router.decodeFfmpegFrame(safe, table[safe * STRIDE + 2].toInt(), table[safe * STRIDE + 3])
         } else {

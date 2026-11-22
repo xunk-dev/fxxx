@@ -33,6 +33,7 @@ import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun ColumnsCard(columns: Int, onChange: (Int) -> Unit) {
@@ -44,7 +45,7 @@ internal fun ColumnsCard(columns: Int, onChange: (Int) -> Unit) {
                 FrameText(label, style = rowTitleStyle(), modifier = Modifier.weight(1f))
                 FrameText(columns.toString(), style = FrameTheme.typography.display, color = colors.primary)
             }
-            FrameSlider(columns.toFloat(), { onChange(it.roundToInt().coerceIn(ContactSheetLayout.MIN_COLUMNS, ContactSheetLayout.MAX_COLUMNS)) }, ContactSheetLayout.MIN_COLUMNS.toFloat(), ContactSheetLayout.MAX_COLUMNS.toFloat(), label)
+            FrameSlider(columns.toFloat(), { onChange(it.roundToInt().safeCoerceIn(ContactSheetLayout.MIN_COLUMNS, ContactSheetLayout.MAX_COLUMNS)) }, ContactSheetLayout.MIN_COLUMNS.toFloat(), ContactSheetLayout.MAX_COLUMNS.toFloat(), label)
             ColumnTicks(columns)
         }
     }

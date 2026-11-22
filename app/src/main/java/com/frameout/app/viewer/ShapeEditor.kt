@@ -6,6 +6,7 @@ import com.frameout.core.edit.ShapeKind
 import com.frameout.core.edit.ShapeMark
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import com.frameout.core.util.safeCoerceIn
 
 private const val DUPLICATE_OFFSET = 0.04f
 
@@ -34,12 +35,12 @@ internal class ShapeEditor(
     fun setDash(dash: Boolean) = update { restyle(it.copy(shapeDash = dash)) { m -> m.copy(dash = dash) } }
 
     fun setOpacity(value: Float) {
-        val v = value.coerceIn(ShapeMark.MIN_OPACITY, 1f)
+        val v = value.safeCoerceIn(ShapeMark.MIN_OPACITY, 1f)
         update { restyle(it.copy(shapeOpacity = v)) { m -> m.copy(opacity = v) } }
     }
 
     fun setWidth(value: Float) {
-        val v = value.coerceIn(ShapeMark.MIN_WIDTH, ShapeMark.MAX_WIDTH)
+        val v = value.safeCoerceIn(ShapeMark.MIN_WIDTH, ShapeMark.MAX_WIDTH)
         update { restyle(it.copy(shapeWidth = v)) { m -> m.copy(width = v) } }
     }
 

@@ -46,7 +46,7 @@ internal fun SavedCapture.showInFolder(context: Context) {
 internal fun tryLaunch(context: Context, intent: Intent): Boolean = try {
     context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     true
-} catch (_: ActivityNotFoundException) {
+} catch (_: Exception) {
     false
 } catch (_: SecurityException) {
     false

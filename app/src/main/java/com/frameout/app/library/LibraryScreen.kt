@@ -103,7 +103,7 @@ fun LibraryScreen(
                 inProjects = inProjects,
                 exporting = exporting,
                 onProjectsExport = { exportSheet = true },
-                onShare = { vm.shareSelectedSaved { context.startActivity(it.asChooserWithoutSelf(context, FrameStrings.share())) } },
+                onShare = { vm.shareSelectedSaved { runCatching { context.startActivity(it.asChooserWithoutSelf(context, FrameStrings.share())) } } },
                 onSaveToGallery = vm::saveSelectedToGallery,
                 onSavedExport = { exportSheet = true },
                 onBusy = vm::notifyExportBusy,

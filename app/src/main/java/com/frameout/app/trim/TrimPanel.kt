@@ -56,6 +56,7 @@ import com.frameout.designsystem.theme.frameControl
 import com.frameout.engine.player.PlaybackSpeeds
 import com.frameout.engine.player.frameTimesUs
 import com.frameout.engine.player.snapMs
+import com.frameout.core.util.safeCoerceIn
 
 private val SheetShape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
 private val INFO_MIN_HEIGHT = 64.dp
@@ -106,7 +107,7 @@ private fun SheetPanel(env: TrimEnv, maxHeight: Dp, modifier: Modifier) {
     Column(
         modifier
             .heightIn(max = maxHeight)
-            .graphicsLayer { translationY = (-fold.overshoot * fold.natural * 0.6f).coerceIn(-14.dp.toPx(), 28.dp.toPx()) }
+            .graphicsLayer { translationY = (-fold.overshoot * fold.natural * 0.6f).safeCoerceIn(-14.dp.toPx(), 28.dp.toPx()) }
             .panelSurface(SheetShape)
             .navigationBarsPadding()
     ) {

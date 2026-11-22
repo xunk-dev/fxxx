@@ -2,12 +2,13 @@ package com.frameout.core.quality
 
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 object TopShot {
     const val SWAP_GAIN = 1.15
     const val MAX_RADIUS = 6
 
-    fun radius(count: Int, picks: Int): Int = (count / max(1, picks) / 3).coerceIn(1, MAX_RADIUS)
+    fun radius(count: Int, picks: Int): Int = (count / max(1, picks) / 3).safeCoerceIn(1, MAX_RADIUS)
 
     fun candidates(frames: List<ScoredFrame>, picks: List<Long>): Set<Long> {
         val sorted = frames.sortedBy { it.index }

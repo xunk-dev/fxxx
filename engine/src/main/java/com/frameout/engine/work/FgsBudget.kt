@@ -2,6 +2,7 @@ package com.frameout.engine.work
 
 import android.content.Context
 import java.util.UUID
+import com.frameout.core.util.safeCoerceIn
 
 class FgsBudget private constructor(private val projectId: Long, private val startedAt: Long) {
     fun release(context: Context) {
@@ -131,7 +132,7 @@ class FgsBudget private constructor(private val projectId: Long, private val sta
         }
 
         private fun used(context: Context): Long =
-            prefs(context).getLong(USED, 0L).coerceIn(0L, LIMIT)
+            prefs(context).getLong(USED, 0L).safeCoerceIn(0L, LIMIT)
 
         private fun persistSessions(context: Context) {
             val raw = sessions.entries.joinToString(",") { "${it.key}:${it.value}:$processToken" }

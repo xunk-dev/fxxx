@@ -9,6 +9,7 @@ import com.frameout.core.edit.TextMark
 import com.frameout.core.edit.ViewGeometry
 import com.frameout.core.util.EditStrings
 import kotlinx.coroutines.flow.update
+import com.frameout.core.util.safeCoerceIn
 
 internal fun ViewerToolEditor.setStrength(value: Float) {
     val selected = state.value.draft.coverSelection != null
@@ -33,7 +34,7 @@ internal fun ViewerToolEditor.setFilterStrength(value: Float) = update { it.copy
 internal fun ViewerToolEditor.resetFilter() = update { it.copy(filter = FilterPresets.NONE, filterStrength = FilterPresets.DEFAULT_STRENGTH) }
 internal fun ViewerToolEditor.setColor(value: Int) = update { shapes.restyle(it.copy(color = value)) { m -> m.copy(color = value) } }
 internal fun ViewerToolEditor.setSize(value: Float) = update { it.copy(size = value) }
-internal fun ViewerToolEditor.setBrushOpacity(value: Float) = update { it.copy(brushOpacity = value.coerceIn(StrokeMark.MIN_OPACITY, 1f)) }
+internal fun ViewerToolEditor.setBrushOpacity(value: Float) = update { it.copy(brushOpacity = value.safeCoerceIn(StrokeMark.MIN_OPACITY, 1f)) }
 internal fun ViewerToolEditor.setStyle(value: CoverStyle) {
     val selected = state.value.draft.coverSelection != null
     update { covers.restyle(it.copy(style = value)) { m -> m.withStyle(value) } }
@@ -99,11 +100,11 @@ internal fun ViewerToolEditor.editText(op: (TextMark) -> TextMark) = update { d 
 internal fun ViewerToolEditor.moveText(dx: Float, dy: Float) = updateSelected { it.copy(x = (it.x + dx).coerceIn(0f, 1f), y = (it.y + dy).coerceIn(0f, 1f)) }
 
 internal fun ViewerToolEditor.setTextGeometry(size: Float, rotation: Float) = updateSelected {
-    it.copy(size = size.coerceIn(TextMark.MIN_SIZE, TextMark.MAX_SIZE), rotation = normalizeAngle(rotation))
+    it.copy(size = size.safeCoerceIn(TextMark.MIN_SIZE, TextMark.MAX_SIZE), rotation = normalizeAngle(rotation))
 }
 
 internal fun ViewerToolEditor.scaleRotateText(factor: Float, degrees: Float) = updateSelected {
-    it.copy(size = (it.size * factor).coerceIn(TextMark.MIN_SIZE, TextMark.MAX_SIZE), rotation = normalizeAngle(it.rotation + degrees))
+    it.copy(size = (it.size * factor).safeCoerceIn(TextMark.MIN_SIZE, TextMark.MAX_SIZE), rotation = normalizeAngle(it.rotation + degrees))
 }
 
 internal fun ViewerToolEditor.updateSelected(op: (TextMark) -> TextMark) = update { d ->

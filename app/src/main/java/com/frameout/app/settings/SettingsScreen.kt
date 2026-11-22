@@ -254,9 +254,11 @@ private fun ExtractionSettings(prefs: AppPrefs, extract: String, onMode: () -> U
 @Composable
 private fun DiagnosticsSettings(context: Context) {
     NavRow(FrameIcons.Share, FrameStrings.exportLog(), hint = FrameStrings.diagHint(), hintLines = 1) {
-        val file = DiagLog.export(context)
-        val uri = androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
-        val send = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_STREAM, uri); addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) }
-        context.startActivity(Intent.createChooser(send, FrameStrings.exportLog()))
+        runCatching {
+            val file = DiagLog.export(context)
+            val uri = androidx.core.content.FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+            val send = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_STREAM, uri); addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) }
+            context.startActivity(Intent.createChooser(send, FrameStrings.exportLog()))
+        }
     }
 }

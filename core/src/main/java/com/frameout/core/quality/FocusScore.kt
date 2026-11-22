@@ -4,6 +4,7 @@ import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
+import com.frameout.core.util.safeCoerceIn
 
 object FocusScore {
     const val MIN_SIDE = 12
@@ -37,7 +38,7 @@ object FocusScore {
 
     fun detail(luma: IntArray, width: Int, height: Int, blocks: BlockGrid.Grid): Detail {
         if (width < MIN_SIDE || height < MIN_SIDE || luma.size < width * height) return EMPTY
-        val grid = Grid((width / CELL).coerceIn(1, MAX_GRID), (height / CELL).coerceIn(1, MAX_GRID))
+        val grid = Grid((width / CELL).safeCoerceIn(1, MAX_GRID), (height / CELL).safeCoerceIn(1, MAX_GRID))
         val stats = lumaStats(luma, width * height)
         val skip = Skip(blocks, width, height)
         for (y in 1 until height - 1) if (!skip.rows[y]) accumulateRow(grid, luma, width, height, y, skip.cols)

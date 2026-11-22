@@ -43,6 +43,7 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameControl
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun FramesTab(state: CollageState) {
@@ -50,9 +51,9 @@ internal fun FramesTab(state: CollageState) {
     val spacing = CollageStrings.spacing()
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         GroupIcon(FrameIcons.GridSize)
-        StepButton(FrameIconsExtra.Minus, EditStrings.decrease()) { state.gap = (state.gap - 1).coerceIn(0, max) }
-        FrameSlider(state.gap / max.toFloat(), { state.gap = (it * max).roundToInt().coerceIn(0, max) }, 0f, 1f, spacing, Modifier.weight(1f).height(28.dp))
-        StepButton(FrameIconsExtra.Plus, EditStrings.increase()) { state.gap = (state.gap + 1).coerceIn(0, max) }
+        StepButton(FrameIconsExtra.Minus, EditStrings.decrease()) { state.gap = (state.gap - 1).safeCoerceIn(0, max) }
+        FrameSlider(state.gap / max.toFloat(), { state.gap = (it * max).roundToInt().safeCoerceIn(0, max) }, 0f, 1f, spacing, Modifier.weight(1f).height(28.dp))
+        StepButton(FrameIconsExtra.Plus, EditStrings.increase()) { state.gap = (state.gap + 1).safeCoerceIn(0, max) }
         ValueChip("${state.gap}")
         Spacer(Modifier.width(6.dp))
         IconToggle(FrameIconsExtra.RectSelect, CollageStrings.corners(), state.rounded) { state.rounded = !state.rounded }

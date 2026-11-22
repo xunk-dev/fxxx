@@ -27,6 +27,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
+import com.frameout.core.util.safeCoerceIn
 
 internal const val THUMB_SLOTS = 10
 
@@ -75,7 +76,7 @@ private object TimelineThumbDisk {
             val folder = dir(context)
             Fanout.forEach(thumbs.indices.toList()) { slot ->
                 val temp = java.io.File(folder, name(key, slot) + ".tmp")
-                temp.outputStream().use { thumbs[slot]!!.compress(Bitmap.CompressFormat.JPEG, 80, it) }
+                temp.outputStream().use { out -> thumbs[slot]?.compress(Bitmap.CompressFormat.JPEG, 80, out) }
                 if (!temp.renameTo(java.io.File(folder, name(key, slot)))) temp.delete()
             }
             trim(folder)
@@ -210,7 +211,7 @@ private suspend fun loadRetrieverThumbs(context: Context, uri: Uri, durationMs: 
 }
 
 private fun slotIndex(slot: Int, count: Int, slots: Int): Int =
-    ((slot * 2L + 1L) * count / (slots * 2L)).toInt().coerceIn(0, count - 1)
+    ((slot * 2L + 1L) * count / (slots * 2L)).toInt().safeCoerceIn(0, count - 1)
 
 private suspend fun loadAnimatedThumbs(context: Context, uri: Uri, kind: FormatKind, slots: Int, emit: (Int, Bitmap) -> Unit) =
     loadAnimatedThumbs(if (kind == FormatKind.Gif) GifFrameDecoder(context) else ApngFrameDecoder(context), uri, slots, emit)

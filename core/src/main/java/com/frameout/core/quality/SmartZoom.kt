@@ -4,6 +4,7 @@ import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 data class PxRect(val x: Int, val y: Int, val w: Int, val h: Int) {
     val r: Int get() = x + w
@@ -45,7 +46,7 @@ object SmartZoom {
     fun scaleFor(width: Int, height: Int, target: Int = TILE_TARGET, maxScale: Float = MAX_UPSCALE): Float {
         val long = max(width, height)
         if (long <= 0 || long >= target) return 1f
-        return (target.toFloat() / long).coerceIn(1f, maxScale)
+        return (target.toFloat() / long).safeCoerceIn(1f, maxScale)
     }
 
     fun zoomRect(box: PxRect, width: Int, height: Int, pad: Float = FACE_PAD): PxRect? {
@@ -54,8 +55,8 @@ object SmartZoom {
         if (side < 16) return null
         val cx = (box.x + box.r) / 2
         val cy = (box.y + box.b) / 2
-        val x = (cx - side / 2).coerceIn(0, width - side)
-        val y = (cy - side / 2).coerceIn(0, height - side)
+        val x = (cx - side / 2).safeCoerceIn(0, width - side)
+        val y = (cy - side / 2).safeCoerceIn(0, height - side)
         return PxRect(x, y, side, side)
     }
 

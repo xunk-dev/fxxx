@@ -4,6 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
+import com.frameout.core.util.safeCoerceIn
 
 @Immutable
 internal class IconRamp(
@@ -31,7 +32,7 @@ private const val SHADOW_HUE_PULL = 0.4f
 private const val SHADOW_HUE_MAX = 10f
 
 private fun shadowHue(hue: Float, accentB: Color): Float =
-    hue + (hueDelta(hue, accentB.toOklch().h) * SHADOW_HUE_PULL).coerceIn(-SHADOW_HUE_MAX, SHADOW_HUE_MAX)
+    hue + (hueDelta(hue, accentB.toOklch().h) * SHADOW_HUE_PULL).safeCoerceIn(-SHADOW_HUE_MAX, SHADOW_HUE_MAX)
 
 internal fun buildIconRamp(hue: Float, chroma: Float, shadowHue: Float, spec: RampSpec): IconRamp = IconRamp(
     shadow = oklch(spec.lightness[0], chroma * spec.chroma[0], shadowHue),

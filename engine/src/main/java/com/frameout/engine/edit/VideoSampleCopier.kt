@@ -11,6 +11,7 @@ import android.net.Uri
 import com.frameout.core.media.MotionPhotoExtractor
 import java.io.File
 import java.nio.ByteBuffer
+import com.frameout.core.util.safeCoerceIn
 
 internal class VideoSampleCopier(private val context: Context) {
     private companion object {
@@ -58,7 +59,7 @@ internal class VideoSampleCopier(private val context: Context) {
         }
         if (map.isEmpty() || video < 0) return null
         val degrees = normalizeRotation(if (rotation >= 0) rotation else retrieverRotation(source))
-        return Tracks(map, video, ByteBuffer.allocate(maxBytes.coerceIn(4 * 1024 * 1024, 64 * 1024 * 1024)), degrees)
+        return Tracks(map, video, ByteBuffer.allocate(maxBytes.safeCoerceIn(4 * 1024 * 1024, 64 * 1024 * 1024)), degrees)
     }
 
     private fun retrieverRotation(source: Uri): Int {

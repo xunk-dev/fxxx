@@ -29,6 +29,7 @@ import com.frameout.designsystem.haptics.rememberFrameHaptics
 import com.frameout.designsystem.theme.FrameTheme
 import kotlin.math.abs
 import kotlin.math.roundToInt
+import com.frameout.designsystem.util.safeCoerceIn
 
 private const val PAD_DP = 12
 private const val HAPTIC_STEPS = 20
@@ -46,23 +47,27 @@ fun FrameSlider(
 ) {
     val latestChange by rememberUpdatedState(onChange)
     val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-    val fraction = ((value - min) / (max - min)).coerceIn(0f, 1f)
+    // Normalise the range once: NaN/infinite/inverted/zero-width ranges must never crash a gesture.
+    val lo = if (min.isFinite()) min else 0f
+    val hi = if (max.isFinite() && max >= lo) max else lo
+    val span = hi - lo
+    val fraction = if (span > 0f && value.isFinite()) ((value - lo) / span).safeCoerceIn(0f, 1f) else 0f
     val colors = FrameTheme.colors
     val haptics = rememberFrameHaptics()
-    val anchor = neutral?.let { ((it - min) / (max - min)).coerceIn(0f, 1f) }
+    val anchor = neutral?.takeIf { span > 0f && it.isFinite() }?.let { ((it - lo) / span).safeCoerceIn(0f, 1f) }
     val feel = remember(haptics, anchor) { SliderFeel(haptics, anchor) }
-    val onFraction: (Float) -> Unit = { latestChange(min + feel.move(it) * (max - min)) }
-    val onReset: (() -> Unit)? = neutral?.let { target -> { feel.reset(); latestChange(target.coerceIn(min, max)) } }
+    val onFraction: (Float) -> Unit = { latestChange((lo + feel.move(it.safeCoerceIn(0f, 1f)) * span).safeCoerceIn(lo, hi)) }
+    val onReset: (() -> Unit)? = neutral?.takeIf { it.isFinite() }?.let { target -> { feel.reset(); latestChange(target.safeCoerceIn(lo, hi)) } }
     Canvas(
         modifier
             .fillMaxWidth()
             .height(48.dp)
             .semantics {
                 contentDescription = label
-                progressBarRangeInfo = ProgressBarRangeInfo(value.coerceIn(min, max), min..max)
-                setProgress { target -> latestChange(target.coerceIn(min, max)); true }
+                progressBarRangeInfo = ProgressBarRangeInfo(value.safeCoerceIn(lo, hi), lo..hi)
+                setProgress { target -> latestChange(target.safeCoerceIn(lo, hi)); true }
             }
-            .sliderInput(listOf(min, max, rtl, neutral), rtl, onFraction, onReset)
+            .sliderInput(listOf(lo, hi, rtl, neutral), rtl, onFraction, onReset)
     ) { drawSlider(fraction, rtl, colors.outline, colors.primary) }
 }
 
@@ -92,7 +97,9 @@ private class SliderFeel(private val haptics: FrameHaptics, private val anchor: 
 }
 
 private fun toFraction(x: Float, width: Int, pad: Float, rtl: Boolean): Float {
-    val raw = ((x - pad) / (width - pad * 2f)).coerceIn(0f, 1f)
+    val usable = width - pad * 2f
+    if (usable <= 0f || !x.isFinite()) return 0f
+    val raw = ((x - pad) / usable).coerceIn(0f, 1f)
     return if (rtl) 1f - raw else raw
 }
 

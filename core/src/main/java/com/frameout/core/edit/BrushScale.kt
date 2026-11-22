@@ -5,6 +5,7 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 object BrushScale {
     const val DRAW_MIN = 0.0002f
@@ -24,6 +25,6 @@ object BrushScale {
     fun stepPixels(size: Float, direction: Int, width: Int, height: Int, lo: Float, hi: Float): Float {
         val shorter = min(width, height).coerceAtLeast(1)
         val target = max(1, pixels(size, width, height) + direction)
-        return (target.toFloat() / shorter).coerceIn(lo, hi)
+        return (target.toFloat() / shorter).safeCoerceIn(lo, hi)
     }
 }

@@ -1,6 +1,7 @@
 package com.frameout.app.trim
 
 import com.frameout.engine.timeline.TrimRange
+import com.frameout.core.util.safeCoerceIn
 
 internal enum class TrimOutput(val maxMs: Long) {
     Frames(0L),
@@ -37,7 +38,7 @@ internal object TrimLimits {
 
     fun fitAt(range: TrimRange, maxMs: Long, positionMs: Long): TrimRange {
         if (maxMs <= 0L || range.spanMs() <= maxMs) return range
-        val start = positionMs.coerceIn(range.startMs, range.endMs - maxMs)
+        val start = positionMs.safeCoerceIn(range.startMs, range.endMs - maxMs)
         return range.copy(startMs = start, endMs = start + maxMs, useFull = false)
     }
 
@@ -47,14 +48,14 @@ internal object TrimLimits {
     }
 
     fun moveStart(range: TrimRange, ms: Long, durationMs: Long, maxMs: Long): TrimRange {
-        val start = ms.coerceIn(0L, (durationMs - MIN_SPAN_MS).coerceAtLeast(0L))
+        val start = ms.safeCoerceIn(0L, (durationMs - MIN_SPAN_MS).coerceAtLeast(0L))
         val reach = if (maxMs > 0L) maxMs else durationMs
         val end = if (start >= range.endMs - MIN_SPAN_MS) minOf(durationMs, start + reach) else range.endMs
         return enforce(range, TrimRange(start, end, useFull = false), maxMs)
     }
 
     fun moveEnd(range: TrimRange, ms: Long, durationMs: Long, maxMs: Long): TrimRange {
-        val end = ms.coerceIn(MIN_SPAN_MS, durationMs.coerceAtLeast(MIN_SPAN_MS))
+        val end = ms.safeCoerceIn(MIN_SPAN_MS, durationMs.coerceAtLeast(MIN_SPAN_MS))
         val reach = if (maxMs > 0L) maxMs else durationMs
         val start = if (end <= range.startMs + MIN_SPAN_MS) (end - reach).coerceAtLeast(0L) else range.startMs
         return enforce(range, TrimRange(start, end, useFull = false), maxMs)

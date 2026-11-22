@@ -8,6 +8,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.io.File
+import com.frameout.core.util.safeCoerceIn
 
 internal object SaveSpace {
     const val WEBP_FRAME_BYTES = 100_000L
@@ -41,7 +42,7 @@ internal object SaveSpace {
         val watcher = if (expectedBytes > 0L) launch {
             while (isActive) {
                 delay(WATCH_MS)
-                onProgress((file.length() * MAX_PERCENT / expectedBytes).toInt().coerceIn(0, MAX_PERCENT))
+                onProgress((file.length() * MAX_PERCENT / expectedBytes).toInt().safeCoerceIn(0, MAX_PERCENT))
             }
         } else null
         try {
@@ -51,5 +52,5 @@ internal object SaveSpace {
         }
     }
 
-    fun percentOf(done: Int, total: Int): Int = if (total <= 0) 0 else (done * MAX_PERCENT / total).coerceIn(0, MAX_PERCENT)
+    fun percentOf(done: Int, total: Int): Int = if (total <= 0) 0 else (done * MAX_PERCENT / total).safeCoerceIn(0, MAX_PERCENT)
 }

@@ -4,6 +4,7 @@ import kotlin.math.abs
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 enum class FaceLevel { None, Good, Fair, Poor }
 
@@ -78,10 +79,10 @@ object FaceQuality {
     }
 
     fun faceSharpness(luma: IntArray, width: Int, height: Int, mark: FaceMark): Float {
-        val x0 = mark.left.coerceIn(0, width - 1)
-        val x1 = mark.right.coerceIn(x0 + 1, width)
-        val y0 = mark.top.coerceIn(0, height - 1)
-        val y1 = mark.bottom.coerceIn(y0 + 1, height)
+        val x0 = mark.left.safeCoerceIn(0, width - 1)
+        val x1 = mark.right.safeCoerceIn(x0 + 1, width)
+        val y0 = mark.top.safeCoerceIn(0, height - 1)
+        val y1 = mark.bottom.safeCoerceIn(y0 + 1, height)
         val cw = x1 - x0
         val ch = y1 - y0
         if (cw < 3 || ch < 3) return 0f

@@ -1,5 +1,7 @@
 package com.frameout.core.edit
 
+import com.frameout.core.util.safeCoerceIn
+
 data class CropRect(val l: Float, val t: Float, val r: Float, val b: Float)
 
 enum class CropPreset(val label: String, val w: Int, val h: Int) {
@@ -12,10 +14,10 @@ enum class CropPreset(val label: String, val w: Int, val h: Int) {
 
 object CropRatio {
     fun clamp(l: Float, t: Float, r: Float, b: Float, minSide: Float = 0.05f): CropRect {
-        val left = l.coerceIn(0f, 1f - minSide)
-        val top = t.coerceIn(0f, 1f - minSide)
-        val right = r.coerceIn(left + minSide, 1f)
-        val bottom = b.coerceIn(top + minSide, 1f)
+        val left = l.safeCoerceIn(0f, 1f - minSide)
+        val top = t.safeCoerceIn(0f, 1f - minSide)
+        val right = r.safeCoerceIn(left + minSide, 1f)
+        val bottom = b.safeCoerceIn(top + minSide, 1f)
         return CropRect(left, top, right, bottom)
     }
 

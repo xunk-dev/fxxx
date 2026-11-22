@@ -44,7 +44,7 @@ object VideoRepair {
 
     suspend fun salvage(context: Context, uri: Uri, drops: DropRanges): RepairOutcome = withContext(Dispatchers.IO) {
         val app = context.applicationContext
-        val target = if (isRepairedFile(app, uri)) File(uri.path!!) else cacheFile(app, uri)
+        val target = uri.path?.takeIf { isRepairedFile(app, uri) }?.let { File(it) } ?: cacheFile(app, uri)
         val needed = sizeOf(app, uri)
         if (needed > 0L && directory(app).usableSpace < needed + RESERVE_BYTES) {
             return@withContext RepairOutcome.Unrecoverable(RepairOutcome.Reason.NoSpace)

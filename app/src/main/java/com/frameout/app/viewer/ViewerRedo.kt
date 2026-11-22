@@ -45,7 +45,7 @@ internal fun ViewerToolEditor.recordingRedo(op: () -> Unit) {
 internal fun ViewerToolEditor.redo() {
     val s = state.value
     if (!s.canRedo) return
-    val entry = s.draft.redo.last()
+    val entry = s.draft.redo.lastOrNull() ?: return
     state.update { it.restored(entry.before, it.draft.redo.dropLast(1)) }
     rerender()
 }

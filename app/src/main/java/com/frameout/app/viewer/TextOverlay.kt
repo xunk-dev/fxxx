@@ -53,9 +53,26 @@ internal class TextOverlayInput(
     val tools: ViewerToolEditor
 )
 
-private class ScreenBox(val center: Offset, val corners: List<Offset>) {
+private class ScreenBox(val center: Offset, val corners: List<Offset>, val minSide: Float) {
     val topLeft get() = corners[0]
     val bottomRight get() = corners[2]
+}
+
+private class TextHandle(val at: Offset, val radius: Float)
+
+/**
+ * Handle placement that adapts to the text box: on a small box the handle shrinks and slides
+ * outward along the diagonal, so it never sits on top of the text it controls.
+ */
+private fun textHandle(box: ScreenBox, corner: Offset, density: Float): TextHandle {
+    val maxR = TEXT_HANDLE_RADIUS_DP * density
+    val r = (box.minSide * 0.3f).coerceIn(minOf(9f * density, maxR), maxR)
+    val need = r * 3f
+    val push = if (box.minSide >= need) 0f else ((need - box.minSide) / 2f).coerceAtMost(r * 0.9f)
+    val away = corner - box.center
+    val len = away.getDistance()
+    val at = if (push <= 0f || len < 1e-3f) corner else corner + Offset(away.x / len * push, away.y / len * push)
+    return TextHandle(at, r)
 }
 
 private fun screenBox(mark: TextMark, geo: ViewGeometry, t: Transform): ScreenBox {
@@ -68,7 +85,7 @@ private fun screenBox(mark: TextMark, geo: ViewGeometry, t: Transform): ScreenBo
     val c = cos(rad).toFloat()
     val s = sin(rad).toFloat()
     fun at(x: Float, y: Float) = Offset(center.x + x * c - y * s, center.y + x * s + y * c)
-    return ScreenBox(center, listOf(at(-hw, -hh), at(hw, -hh), at(hw, hh), at(-hw, hh)))
+    return ScreenBox(center, listOf(at(-hw, -hh), at(hw, -hh), at(hw, hh), at(-hw, hh)), minOf(hw, hh) * 2f)
 }
 
 private fun hitBody(box: ScreenBox, mark: TextMark, p: Offset, slop: Float, geo: ViewGeometry, t: Transform): Boolean {
@@ -106,16 +123,21 @@ private suspend fun AwaitPointerEventScope.textGesture(latest: State<TextOverlay
     val start = latest.value
     val geo = start.geo
     val t0 = start.transformNow()
-    val handleHit = HANDLE_HIT_DP.dp.toPx()
+    val density = 1.dp.toPx()
+    val maxHit = HANDLE_HIT_DP * density
     val slop = BODY_SLOP_DP.dp.toPx()
     val tapSlop = TAP_SLOP_DP.dp.toPx()
     val selected = start.draft.selectedText
     val selectedBox = selected?.let { screenBox(it, geo, t0) }
     var mode = Mode.Background
     if (selected != null && selectedBox != null) {
+        val hit = HandleFit.reach(selectedBox.minSide, maxHit, density)
+        val roomy = HandleFit.roomy(selectedBox.minSide, maxHit)
+        val del = textHandle(selectedBox, selectedBox.topLeft, density).at
+        val res = textHandle(selectedBox, selectedBox.bottomRight, density).at
         mode = when {
-            (down.position - selectedBox.topLeft).getDistance() <= handleHit -> Mode.Delete
-            (down.position - selectedBox.bottomRight).getDistance() <= handleHit -> Mode.Resize
+            HandleFit.grabs(down.position, del, selectedBox.center, hit, roomy) -> Mode.Delete
+            HandleFit.grabs(down.position, res, selectedBox.center, hit, roomy) -> Mode.Resize
             hitBody(selectedBox, selected, down.position, slop, geo, t0) -> Mode.Drag
             else -> Mode.Background
         }
@@ -229,9 +251,11 @@ private fun DrawScope.drawSelection(input: TextOverlayInput, t: Transform) {
     }
     drawPath(path, Color.Black.copy(alpha = 0.45f), style = Stroke(width = 3.5.dp.toPx()))
     drawPath(path, Color.White, style = Stroke(width = 1.5.dp.toPx()))
-    val r = TEXT_HANDLE_RADIUS_DP.dp.toPx()
-    drawHandle(box.topLeft, r, Color(0xFFFF3B30)) { drawCross(it, r * 0.42f) }
-    drawHandle(box.bottomRight, r, Color(0xFF0A84FF)) { drawResizeArrow(it, r * 0.45f) }
+    val density = 1.dp.toPx()
+    val del = textHandle(box, box.topLeft, density)
+    val res = textHandle(box, box.bottomRight, density)
+    drawHandle(del.at, del.radius, Color(0xFFFF3B30)) { drawCross(it, del.radius * 0.42f) }
+    drawHandle(res.at, res.radius, Color(0xFF0A84FF)) { drawResizeArrow(it, res.radius * 0.45f) }
 }
 
 internal fun DrawScope.drawHandle(at: Offset, radius: Float, fill: Color, glyph: DrawScope.(Offset) -> Unit) {

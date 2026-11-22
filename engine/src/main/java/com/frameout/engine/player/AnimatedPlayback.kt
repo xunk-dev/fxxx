@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import com.frameout.core.util.safeCoerceIn
 
 internal class AnimatedPlayback private constructor(
     private val source: AnimatedFrameSource,
@@ -87,7 +88,7 @@ internal class AnimatedPlayback private constructor(
                 positionUs = pos
                 show(indexAt(pos))
                 val next = if (shown + 1 < frameCount) source.ptsUs(shown + 1) else durationUs
-                val wait = (((next - pos) / 1000f) / speed).toLong().coerceIn(1L, 100L)
+                val wait = (((next - pos) / 1000f) / speed).toLong().safeCoerceIn(1L, 100L)
                 delay(wait)
             }
         }
@@ -107,7 +108,7 @@ internal class AnimatedPlayback private constructor(
     }
 
     fun seekTo(ms: Long) {
-        positionUs = (ms * 1000L).coerceIn(0L, durationUs - 1L)
+        positionUs = (ms * 1000L).safeCoerceIn(0L, durationUs - 1L)
         if (playing) {
             pause()
             play()
@@ -120,13 +121,13 @@ internal class AnimatedPlayback private constructor(
 
     suspend fun step(delta: Int): Long {
         pause()
-        val target = (indexAt(positionUs) + delta).coerceIn(0, frameCount - 1)
+        val target = (indexAt(positionUs) + delta).safeCoerceIn(0, frameCount - 1)
         positionUs = source.ptsUs(target)
         show(target)
         return positionUs / 1000L
     }
 
-    suspend fun captureAt(ms: Long): Bitmap? = decode(indexAt((ms * 1000L).coerceIn(0L, durationUs - 1L)))
+    suspend fun captureAt(ms: Long): Bitmap? = decode(indexAt((ms * 1000L).safeCoerceIn(0L, durationUs - 1L)))
 
     fun close() {
         pause()

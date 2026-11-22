@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 import com.frameout.designsystem.theme.FrameAccent
 import kotlin.math.max
 import kotlin.math.min
+import com.frameout.core.util.safeCoerceIn
 
 internal class LogoPalette(accent: FrameAccent, private val onLight: Boolean = false) {
     private val ramp: Array<FloatArray>
@@ -45,7 +46,7 @@ internal class LogoPalette(accent: FrameAccent, private val onLight: Boolean = f
         val oi: FloatArray
         val ni: FloatArray
         if (h >= RAMP_MIN_H && h <= RAMP_MAX_H) {
-            val hh = h.coerceIn(O_RAMP_H[0], O_RAMP_H[3])
+            val hh = h.safeCoerceIn(O_RAMP_H[0], O_RAMP_H[3])
             var i = 0
             while (i < 2 && hh > O_RAMP_H[i + 1]) i++
             val u = (hh - O_RAMP_H[i]) / (O_RAMP_H[i + 1] - O_RAMP_H[i])

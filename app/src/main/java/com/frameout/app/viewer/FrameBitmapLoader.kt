@@ -16,6 +16,7 @@ import com.frameout.core.util.logFailure
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import com.frameout.core.util.safeCoerceIn
 
 class FrameBitmapLoader(private val context: Context) {
     private val sourceLoader = FrameSourceBitmapLoader(context)
@@ -78,7 +79,7 @@ class FrameBitmapLoader(private val context: Context) {
     private fun largeImageSample(width: Int, height: Int): Int {
         var sample = 1
         val maxMemory = Runtime.getRuntime().maxMemory()
-        val maxPixels = (maxMemory / 4L / 4L).coerceIn(12_000_000L, 48_000_000L)
+        val maxPixels = (maxMemory / 4L / 4L).safeCoerceIn(12_000_000L, 48_000_000L)
         while (width / sample > 6144 || height / sample > 6144 || width.toLong() * height.toLong() / (sample.toLong() * sample.toLong()) > maxPixels) sample *= 2
         return sample
     }

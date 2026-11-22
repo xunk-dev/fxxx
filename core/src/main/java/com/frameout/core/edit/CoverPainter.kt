@@ -11,6 +11,7 @@ import android.graphics.Shader
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 internal object CoverPainter {
     private const val BLUR_CELLS_SOFT = 28f
@@ -41,6 +42,7 @@ internal object CoverPainter {
             strokeJoin = Paint.Join.ROUND
             strokeWidth = (mark.width * min(w, h)).coerceAtLeast(2f)
         }
+        if (mark.points.isEmpty()) return
         var effect: Bitmap? = null
         if (mark.style == CoverStyle.Solid) {
             paint.color = Color.BLACK
@@ -49,7 +51,7 @@ internal object CoverPainter {
             paint.shader = BitmapShader(effect, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
         }
         val path = Path()
-        val first = mark.points.first()
+        val first = mark.points.firstOrNull() ?: return
         path.moveTo(first.x * w, first.y * h)
         if (mark.points.size == 1) path.lineTo(first.x * w + 0.01f, first.y * h)
         mark.points.drop(1).forEach { path.lineTo(it.x * w, it.y * h) }
@@ -75,10 +77,10 @@ internal object CoverPainter {
         val r = (max(mark.left, mark.right) * bitmap.width).roundToInt()
         val b = (max(mark.top, mark.bottom) * bitmap.height).roundToInt()
         if (r <= 0 || l >= bitmap.width || b <= 0 || t >= bitmap.height) return null
-        val left = l.coerceIn(0, bitmap.width - 1)
-        val top = t.coerceIn(0, bitmap.height - 1)
-        val right = r.coerceIn(left + 1, bitmap.width)
-        val bottom = b.coerceIn(top + 1, bitmap.height)
+        val left = l.safeCoerceIn(0, bitmap.width - 1)
+        val top = t.safeCoerceIn(0, bitmap.height - 1)
+        val right = r.safeCoerceIn(left + 1, bitmap.width)
+        val bottom = b.safeCoerceIn(top + 1, bitmap.height)
         return Rect(left, top, right, bottom).takeIf { !it.isEmpty }
     }
 

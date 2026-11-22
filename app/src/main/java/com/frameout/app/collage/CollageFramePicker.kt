@@ -61,6 +61,7 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.engine.timeline.formatTimestamp
 import kotlinx.coroutines.launch
+import com.frameout.core.util.safeCoerceIn
 
 private const val PAGE = 60
 
@@ -156,7 +157,7 @@ private fun GalleryAddButton(state: CollageState, app: FrameOutApp, busy: Boolea
         }
     }
     val single = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { onPicked(listOfNotNull(it)) }
-    val multi = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(room.coerceIn(2, pickMax(context)))) { onPicked(it) }
+    val multi = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(room.safeCoerceIn(2, pickMax(context)))) { onPicked(it) }
     val request = PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
     val colors = FrameTheme.colors
     Row(

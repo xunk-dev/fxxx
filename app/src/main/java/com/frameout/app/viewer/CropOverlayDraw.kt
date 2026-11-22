@@ -33,8 +33,10 @@ internal fun DrawScope.drawCropFrame(c: Rect, gridAlpha: Float) {
 }
 
 internal fun DrawScope.drawCropHandles(c: Rect, accent: Color, active: CropHandle, scale: Float) {
-    val arm = 22.dp.toPx() * scale
-    val w = 4.dp.toPx()
+    // Everything scales with the crop: on a small crop the brackets must not swallow the picture.
+    val minSide = minOf(c.width, c.height)
+    val arm = minOf(22.dp.toPx() * scale, minSide * 0.3f).coerceAtLeast(3.dp.toPx())
+    val w = (minSide * 0.07f).coerceIn(2.dp.toPx(), 4.dp.toPx())
     val shadow = Color.Black.copy(alpha = 0.35f)
     fun bracket(corner: Offset, sx: Float, sy: Float, on: Boolean) {
         val color = if (on) accent else Color.White
@@ -48,10 +50,19 @@ internal fun DrawScope.drawCropHandles(c: Rect, accent: Color, active: CropHandl
     bracket(c.topRight, -1f, 1f, active == CropHandle.TopRight)
     bracket(c.bottomLeft, 1f, -1f, active == CropHandle.BottomLeft)
     bracket(c.bottomRight, -1f, -1f, active == CropHandle.BottomRight)
-    val half = 14.dp.toPx() * scale
+    // Edge bars live between the corner brackets; they vanish when there is no clear room for them.
+    val halfX = minOf(14.dp.toPx() * scale, (c.width / 2f - arm) * 0.85f)
+    val halfY = minOf(14.dp.toPx() * scale, (c.height / 2f - arm) * 0.85f)
+    val minBar = 3.dp.toPx()
     fun bar(a: Offset, b: Offset, on: Boolean) = drawLine(if (on) accent else Color.White, a, b, w, StrokeCap.Round)
-    bar(Offset(c.center.x - half, c.top), Offset(c.center.x + half, c.top), active == CropHandle.Top)
-    bar(Offset(c.center.x - half, c.bottom), Offset(c.center.x + half, c.bottom), active == CropHandle.Bottom)
-    bar(Offset(c.left, c.center.y - half), Offset(c.left, c.center.y + half), active == CropHandle.Left)
-    bar(Offset(c.right, c.center.y - half), Offset(c.right, c.center.y + half), active == CropHandle.Right)
+    if (halfX >= minBar || active == CropHandle.Top || active == CropHandle.Bottom) {
+        val hx = halfX.coerceAtLeast(minBar)
+        bar(Offset(c.center.x - hx, c.top), Offset(c.center.x + hx, c.top), active == CropHandle.Top)
+        bar(Offset(c.center.x - hx, c.bottom), Offset(c.center.x + hx, c.bottom), active == CropHandle.Bottom)
+    }
+    if (halfY >= minBar || active == CropHandle.Left || active == CropHandle.Right) {
+        val hy = halfY.coerceAtLeast(minBar)
+        bar(Offset(c.left, c.center.y - hy), Offset(c.left, c.center.y + hy), active == CropHandle.Left)
+        bar(Offset(c.right, c.center.y - hy), Offset(c.right, c.center.y + hy), active == CropHandle.Right)
+    }
 }

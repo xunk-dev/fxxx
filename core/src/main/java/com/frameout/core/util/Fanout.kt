@@ -12,9 +12,9 @@ object Fanout {
     private const val MAX_IO = 6
     private const val MAX_VIDEO = 4
 
-    fun ioWidth(): Int = DeviceLimits.thumbDecodes().coerceIn(2, MAX_IO)
+    fun ioWidth(): Int = DeviceLimits.thumbDecodes().safeCoerceIn(2, MAX_IO)
 
-    fun videoWidth(): Int = (DeviceLimits.decodes() + 1).coerceIn(2, MAX_VIDEO)
+    fun videoWidth(): Int = (DeviceLimits.decodes() + 1).safeCoerceIn(2, MAX_VIDEO)
 
     suspend fun <T, R> map(
         items: List<T>,

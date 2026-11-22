@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.luminance
 import com.frameout.designsystem.theme.ContrastGuard
 import com.frameout.designsystem.theme.FrameColorScheme
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 @Immutable
 internal class HomeLook(
@@ -186,8 +187,8 @@ private fun homeTones(c: FrameColorScheme): HomeTones {
     val lightness = if (c.isDark) TONE_L_DARK else TONE_L_LIGHT
     val base = listOf(c.accentA, c.accentB, c.accentC).map { it.toOklch() }
     val reach = base.minOf { toneReach(lightness, it.h) }
-    val chroma = minOf(reach, base[0].c.coerceIn(minOf(base[0].c, TONE_CHROMA_FLOOR), TONE_CHROMA_CEIL))
-    fun tone(x: Color) = oklch(lightness, chroma, base[0].h + hueDelta(base[0].h, x.toOklch().h).coerceIn(-TONE_HUE_SPREAD, TONE_HUE_SPREAD))
+    val chroma = minOf(reach, base[0].c.safeCoerceIn(minOf(base[0].c, TONE_CHROMA_FLOOR), TONE_CHROMA_CEIL))
+    fun tone(x: Color) = oklch(lightness, chroma, base[0].h + hueDelta(base[0].h, x.toOklch().h).safeCoerceIn(-TONE_HUE_SPREAD, TONE_HUE_SPREAD))
     val a = tone(c.accentA)
     val b = tone(c.accentB)
     val d = tone(c.accentC)

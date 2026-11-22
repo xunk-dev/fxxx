@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import java.io.File
 import kotlin.math.ceil
+import com.frameout.core.util.safeCoerceIn
 
 object GainmapOps {
     fun has(bitmap: Bitmap): Boolean =
@@ -65,10 +66,10 @@ object GainmapOps {
             val contents = gainmap.gainmapContents
             val sx = contents.width / from.width.toFloat()
             val sy = contents.height / from.height.toFloat()
-            val gl = (left * sx).toInt().coerceIn(0, contents.width - 1)
-            val gt = (top * sy).toInt().coerceIn(0, contents.height - 1)
-            val gr = ceil(right * sx).toInt().coerceIn(gl + 1, contents.width)
-            val gb = ceil(bottom * sy).toInt().coerceIn(gt + 1, contents.height)
+            val gl = (left * sx).toInt().safeCoerceIn(0, contents.width - 1)
+            val gt = (top * sy).toInt().safeCoerceIn(0, contents.height - 1)
+            val gr = ceil(right * sx).toInt().safeCoerceIn(gl + 1, contents.width)
+            val gb = ceil(bottom * sy).toInt().safeCoerceIn(gt + 1, contents.height)
             to.setGainmap(Gainmap(gainmap, Bitmap.createBitmap(contents, gl, gt, gr - gl, gb - gt)))
         }
 

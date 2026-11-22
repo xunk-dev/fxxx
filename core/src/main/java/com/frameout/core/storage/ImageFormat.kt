@@ -27,7 +27,7 @@ enum class ImageFormat(val key: String, val ext: String, val mime: String, val l
     fun compress(bitmap: Bitmap, quality: Int, out: OutputStream, exif: ByteArray? = null): Boolean = when {
         this == PngHdr16 -> HdrSignalRegistry.peek(bitmap)?.let { Png16Writer.write(it, exif, out); HdrSignalRegistry.drop(bitmap); true } ?: false
         this == JpgHdr && Build.VERSION.SDK_INT < 34 && com.frameout.core.hdr.LegacyGainRegistry.has(bitmap) ->
-            UltraHdrWriter.write(bitmap, com.frameout.core.hdr.LegacyGainRegistry.peek(bitmap)!!, out)
+            com.frameout.core.hdr.LegacyGainRegistry.peek(bitmap)?.let { UltraHdrWriter.write(bitmap, it, out) } ?: false
         modern -> ModernEncoder.encode(this, bitmap, effectiveQuality(quality), exif, out)
         this == Png && exif != null -> {
             val buffer = ExposedBuffer(bitmap.byteCount.coerceAtMost(64 * 1024 * 1024))

@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
+import com.frameout.designsystem.util.safeCoerceIn
 
 val FrameRailCompactWidth: Dp = 72.dp
 val FrameRailExpandedWidth: Dp = 220.dp
@@ -54,7 +55,7 @@ class FrameAdaptive(val width: Dp, val height: Dp, val isTv: Boolean) {
 
     fun columns(base: Int): Int {
         val factor = usableWidth.value / REFERENCE_WIDTH.value
-        return (base * factor).roundToInt().coerceIn(base, MAX_COLUMNS.coerceAtLeast(base))
+        return (base * factor).roundToInt().safeCoerceIn(base, MAX_COLUMNS.coerceAtLeast(base))
     }
 
     fun listColumns(): Int = when {

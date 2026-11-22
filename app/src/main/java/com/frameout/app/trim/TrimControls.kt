@@ -42,18 +42,19 @@ import com.frameout.designsystem.theme.fieldFill
 import com.frameout.engine.timeline.TrimRange
 import com.frameout.engine.timeline.formatTimestamp
 import com.frameout.engine.timeline.parseTimestamp
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 fun TimeFields(range: TrimRange, durationMs: Long, onRangeChange: (TrimRange) -> Unit) {
     Row(Modifier.fillMaxWidth(), Arrangement.spacedBy(10.dp)) {
         TimeField(FrameStrings.from(), formatTimestamp(range.startMs), Modifier.weight(1f)) { text ->
             val ms = parseTimestamp(text) ?: return@TimeField false
-            onRangeChange(range.copy(startMs = ms.coerceIn(0, range.endMs), useFull = false).clamped(durationMs))
+            onRangeChange(range.copy(startMs = ms.safeCoerceIn(0, range.endMs), useFull = false).clamped(durationMs))
             true
         }
         TimeField(FrameStrings.to(), formatTimestamp(range.endMs), Modifier.weight(1f)) { text ->
             val ms = parseTimestamp(text) ?: return@TimeField false
-            onRangeChange(range.copy(endMs = ms.coerceIn(range.startMs, durationMs), useFull = false).clamped(durationMs))
+            onRangeChange(range.copy(endMs = ms.safeCoerceIn(range.startMs, durationMs), useFull = false).clamped(durationMs))
             true
         }
     }

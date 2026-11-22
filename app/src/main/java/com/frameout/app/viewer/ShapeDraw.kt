@@ -42,9 +42,10 @@ internal fun DrawScope.drawShapes(input: ShapeOverlayInput, t: Transform, live: 
         drawRect(Color.White.copy(alpha = 0.95f), topLeft, size, style = Stroke(1.4f * density, pathEffect = dash))
     }
     if (live != null) return
+    val handleR = HandleFit.radius(shapeMinSide(sel.kind.pointBased, a, b), HANDLE_RADIUS_DP * density, density)
     shapeHandlePoints(sel).map { shapeScreen(it.x, it.y, geo, t) }.forEach { p ->
-        drawCircle(Color.White, HANDLE_RADIUS_DP * density, p)
-        drawCircle(accent, HANDLE_RADIUS_DP * density, p, style = Stroke(2.5f * density))
+        drawCircle(Color.White, handleR, p)
+        drawCircle(accent, handleR, p, style = Stroke((handleR / HANDLE_RADIUS_DP * 2.5f).coerceIn(1.5f * density, 2.5f * density)))
     }
     drawDeleteHandle(deleteAnchor(a, b, input.geo, density), density)
     drawDuplicateHandle(duplicateAnchor(a, b, input.geo, density), density, accent)

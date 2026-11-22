@@ -1,5 +1,7 @@
 package com.frameout.engine.decode
 
+import com.frameout.core.util.safeCoerceIn
+
 internal class ChromaSampler(private val width: Int, private val height: Int) {
     var y0 = 0
         private set
@@ -16,8 +18,8 @@ internal class ChromaSampler(private val width: Int, private val height: Int) {
 
     fun row(luma: Int) {
         val k = (luma - 1) shr 1
-        y0 = k.coerceIn(0, height - 1)
-        y1 = (k + 1).coerceIn(0, height - 1)
+        y0 = k.safeCoerceIn(0, height - 1)
+        y1 = (k + 1).safeCoerceIn(0, height - 1)
         fy = if (luma and 1 == 1) 0.25f else 0.75f
     }
 

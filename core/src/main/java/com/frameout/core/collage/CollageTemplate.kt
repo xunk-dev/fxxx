@@ -1,6 +1,7 @@
 package com.frameout.core.collage
 
 import kotlin.math.abs
+import com.frameout.core.util.safeCoerceIn
 
 data class CellRect(
     val x: Float,
@@ -65,7 +66,7 @@ private fun FillSlot.absorbInto(slots: MutableList<FillSlot>): Boolean {
 }
 
 fun CollageTemplate.compacted(filled: Int): CollageTemplate {
-    val n = filled.coerceIn(0, cells.size)
+    val n = filled.safeCoerceIn(0, cells.size)
     if (n == 0 || n >= cells.size) return this
     val slots = cells.mapIndexed { i, c -> FillSlot(c, i >= n) }.toMutableList()
     var progress = true

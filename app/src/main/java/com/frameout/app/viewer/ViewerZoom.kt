@@ -31,6 +31,7 @@ import com.frameout.designsystem.theme.FrameTheme
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 private const val ZOOM_STEP = 2f
 
@@ -40,10 +41,10 @@ internal fun PixelGrid(geo: ViewGeometry, t: Transform) {
     Canvas(Modifier.fillMaxSize()) {
         val cx = size.width / 2f
         val cy = size.height / 2f
-        val left = (geo.toScreenX(0f, t) + cx).coerceIn(0f, size.width)
-        val right = (geo.toScreenX(1f, t) + cx).coerceIn(0f, size.width)
-        val top = (geo.toScreenY(0f, t) + cy).coerceIn(0f, size.height)
-        val bottom = (geo.toScreenY(1f, t) + cy).coerceIn(0f, size.height)
+        val left = (geo.toScreenX(0f, t) + cx).safeCoerceIn(0f, size.width)
+        val right = (geo.toScreenX(1f, t) + cx).safeCoerceIn(0f, size.width)
+        val top = (geo.toScreenY(0f, t) + cy).safeCoerceIn(0f, size.height)
+        val bottom = (geo.toScreenY(1f, t) + cy).safeCoerceIn(0f, size.height)
         val firstX = floor(geo.toImageX(left - cx, t)).toInt().coerceAtLeast(0)
         val lastX = ceil(geo.toImageX(right - cx, t)).toInt().coerceAtMost(geo.imageW)
         val firstY = floor(geo.toImageY(top - cy, t)).toInt().coerceAtLeast(0)

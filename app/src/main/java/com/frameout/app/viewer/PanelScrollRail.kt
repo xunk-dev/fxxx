@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.frameout.designsystem.a11y.LocalSystemA11y
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 private val RAIL_HEIGHT = 7.dp
 private val RAIL_LINE = 1.dp
@@ -43,7 +44,7 @@ internal fun GlowScrollRail(scroll: ScrollState, viewportPx: Int, modifier: Modi
         if (shown <= 0.01f || scroll.maxValue <= 0) return@Canvas
         val max = scroll.maxValue.toFloat()
         val ratio = viewportPx / (viewportPx + max)
-        val thumb = (size.width * ratio).coerceIn(MIN_THUMB.toPx().coerceAtMost(size.width), size.width)
+        val thumb = (size.width * ratio).safeCoerceIn(MIN_THUMB.toPx().coerceAtMost(size.width), size.width)
         val travel = size.width - thumb
         val progress = (scroll.value / max).coerceIn(0f, 1f)
         val x = if (layoutDirection == LayoutDirection.Rtl) travel * (1f - progress) else travel * progress

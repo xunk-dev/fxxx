@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import com.frameout.designsystem.util.safeCoerceIn
 
 private const val EDGE_FADE_DP = 8
 private const val MAX_FADE = 0.5f
@@ -47,7 +48,7 @@ internal fun Modifier.edgeFade(): Modifier {
         .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
         .drawWithContent {
             drawContent()
-            val f = (fadePx / size.width).coerceIn(0f, MAX_FADE)
+            val f = (fadePx / size.width).safeCoerceIn(0f, MAX_FADE)
             drawRect(
                 Brush.horizontalGradient(
                     0f to Color.Transparent,

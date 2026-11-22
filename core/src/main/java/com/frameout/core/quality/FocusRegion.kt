@@ -3,6 +3,7 @@ package com.frameout.core.quality
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
+import com.frameout.core.util.safeCoerceIn
 
 data class PixelRegion(val x: Int, val y: Int, val w: Int, val h: Int)
 
@@ -34,10 +35,10 @@ object FocusRegion {
         }
         val cx = (padded.l + padded.r) / 2f * iw
         val cy = (padded.t + padded.b) / 2f * ih
-        val x = (cx - w / 2f).coerceIn(0f, iw - w)
-        val y = (cy - h / 2f).coerceIn(0f, ih - h)
-        val rw = w.roundToInt().coerceIn(1, imageWidth)
-        val rh = h.roundToInt().coerceIn(1, imageHeight)
-        return PixelRegion(x.toInt().coerceIn(0, imageWidth - rw), y.toInt().coerceIn(0, imageHeight - rh), rw, rh)
+        val x = (cx - w / 2f).safeCoerceIn(0f, iw - w)
+        val y = (cy - h / 2f).safeCoerceIn(0f, ih - h)
+        val rw = w.roundToInt().safeCoerceIn(1, imageWidth)
+        val rh = h.roundToInt().safeCoerceIn(1, imageHeight)
+        return PixelRegion(x.toInt().safeCoerceIn(0, imageWidth - rw), y.toInt().safeCoerceIn(0, imageHeight - rh), rw, rh)
     }
 }

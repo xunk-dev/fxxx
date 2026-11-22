@@ -12,19 +12,20 @@ import androidx.compose.ui.semantics.stateDescription
 import com.frameout.core.util.FrameA11y
 import com.frameout.engine.timeline.TrimRange
 import com.frameout.engine.timeline.formatTimestamp
+import com.frameout.core.util.safeCoerceIn
 
 private const val STEP_MS = 1000L
 
 fun Modifier.timelineSemantics(durationMs: Long, positionMs: Long, range: TrimRange, onSeek: (Long) -> Unit, onRangeChange: (TrimRange) -> Unit): Modifier {
     val dur = durationMs.coerceAtLeast(1)
     fun moveStart(delta: Long): Boolean {
-        val start = (range.startMs + delta).coerceIn(0L, range.endMs - MIN_GAP_MS)
+        val start = (range.startMs + delta).safeCoerceIn(0L, range.endMs - MIN_GAP_MS)
         onRangeChange(range.copy(startMs = start, useFull = false))
         onSeek(start)
         return true
     }
     fun moveEnd(delta: Long): Boolean {
-        val end = (range.endMs + delta).coerceIn(range.startMs + MIN_GAP_MS, dur)
+        val end = (range.endMs + delta).safeCoerceIn(range.startMs + MIN_GAP_MS, dur)
         onRangeChange(range.copy(endMs = end, useFull = false))
         onSeek(end)
         return true
@@ -32,8 +33,8 @@ fun Modifier.timelineSemantics(durationMs: Long, positionMs: Long, range: TrimRa
     return semantics {
         contentDescription = FrameA11y.timeline()
         stateDescription = FrameA11y.timelineState(formatTimestamp(positionMs), formatTimestamp(range.startMs), formatTimestamp(range.endMs))
-        progressBarRangeInfo = ProgressBarRangeInfo(positionMs.toFloat().coerceIn(0f, dur.toFloat()), 0f..dur.toFloat())
-        setProgress { value -> onSeek(value.toLong().coerceIn(0L, dur)); true }
+        progressBarRangeInfo = ProgressBarRangeInfo(positionMs.toFloat().safeCoerceIn(0f, dur.toFloat()), 0f..dur.toFloat())
+        setProgress { value -> onSeek(value.toLong().safeCoerceIn(0L, dur)); true }
         customActions = listOf(
             CustomAccessibilityAction(FrameA11y.startEarlier()) { moveStart(-STEP_MS) },
             CustomAccessibilityAction(FrameA11y.startLater()) { moveStart(STEP_MS) },

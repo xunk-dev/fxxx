@@ -6,6 +6,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.zip.CRC32
 import kotlin.math.abs
+import com.frameout.core.util.safeCoerceIn
 
 object PngMetadata {
     private val signature = byteArrayOf(0x89.toByte(), 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
@@ -43,7 +44,7 @@ object PngMetadata {
 
     fun splice(png: ByteArray, length: Int, chunks: ByteArray, out: OutputStream) {
         if (length < ihdrEnd || length > png.size || !hasValidIhdr(png, length)) {
-            out.write(png, 0, length.coerceIn(0, png.size))
+            out.write(png, 0, length.safeCoerceIn(0, png.size))
             return
         }
         out.write(png, 0, ihdrEnd)

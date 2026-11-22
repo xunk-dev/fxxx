@@ -38,6 +38,7 @@ import com.frameout.designsystem.theme.FrameGradients
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameHairline
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 fun SettingsNumberField(label: String, initial: Long, max: Long, step: Long = 1L, onCommit: (Long) -> Unit) {
@@ -52,7 +53,7 @@ fun SettingsNumberField(label: String, initial: Long, max: Long, step: Long = 1L
     }
     val nudge = { direction: Int ->
         val current = draft.toLongOrNull() ?: 0L
-        apply((current + direction * step).coerceIn(1L, max).toString())
+        apply((current + direction * step).safeCoerceIn(1L, max).toString())
     }
     val edge = if (error != null) colors.error.copy(alpha = 0.6f) else frameHairline()
     Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {

@@ -1,5 +1,7 @@
 package com.frameout.engine.decode
 
+import com.frameout.core.util.safeCoerceIn
+
 internal fun interlacedRows(height: Int): IntArray {
     val rows = IntArray(height)
     var count = 0
@@ -21,7 +23,7 @@ internal class GifCompositor(private val index: GifIndex, private val read: (Lon
     private var base = 0
 
     fun render(frame: Int): IntArray {
-        val target = frame.coerceIn(0, index.frames.lastIndex)
+        val target = frame.safeCoerceIn(0, index.frames.lastIndex)
         val start = ResetPoints.lastAtOrBefore(resetPoints, target)
         if (target < rendered || start > rendered) reset(start)
         while (rendered < target) advance()

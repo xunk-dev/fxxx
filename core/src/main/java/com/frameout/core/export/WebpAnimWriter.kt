@@ -3,6 +3,7 @@ package com.frameout.core.export
 import java.io.Closeable
 import java.io.File
 import java.io.RandomAccessFile
+import com.frameout.core.util.safeCoerceIn
 
 class WebpAnimWriter(file: File, private val width: Int, private val height: Int) : Closeable {
     init {
@@ -39,7 +40,7 @@ class WebpAnimWriter(file: File, private val width: Int, private val height: Int
         raf.write(le(0L, 3))
         raf.write(le(width - 1L, 3))
         raf.write(le(height - 1L, 3))
-        raf.write(le(durationMs.coerceIn(1, MAX_DURATION).toLong(), 3))
+        raf.write(le(durationMs.safeCoerceIn(1, MAX_DURATION).toLong(), 3))
         raf.write(NO_BLEND_KEEP)
         raf.write(data)
         frames++

@@ -79,6 +79,6 @@ internal fun SavedCapture.share(context: Context) {
 private fun launch(context: Context, intent: Intent) {
     try {
         context.startActivity(intent)
-    } catch (_: ActivityNotFoundException) {
+    } catch (_: Exception) {
     }
 }

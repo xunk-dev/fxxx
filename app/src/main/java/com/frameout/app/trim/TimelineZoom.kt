@@ -1,5 +1,7 @@
 package com.frameout.app.trim
 
+import com.frameout.core.util.safeCoerceIn
+
 data class TimelineZoom(val scale: Float = 1f, val start: Float = 0f) {
     val zoomed: Boolean get() = scale > MIN_SCALE
     val span: Float get() = 1f / scale
@@ -9,7 +11,7 @@ data class TimelineZoom(val scale: Float = 1f, val start: Float = 0f) {
     fun spanMs(durationMs: Long): Float = span * durationMs
 
     fun transform(anchor: Float, pan: Float, zoom: Float, durationMs: Long, maxScale: Float = maxScaleFor(durationMs)): TimelineZoom {
-        val next = (scale * zoom).coerceIn(MIN_SCALE, maxScale.coerceAtLeast(MIN_SCALE))
+        val next = (scale * zoom).safeCoerceIn(MIN_SCALE, maxScale.coerceAtLeast(MIN_SCALE))
         if (next <= MIN_SCALE) return TimelineZoom()
         val a = anchor.coerceIn(0f, 1f)
         val under = start + a * span
@@ -24,7 +26,7 @@ data class TimelineZoom(val scale: Float = 1f, val start: Float = 0f) {
 
     fun revealing(ms: Long, durationMs: Long): TimelineZoom {
         if (!zoomed || durationMs <= 0L) return this
-        val at = ms.coerceIn(0L, durationMs).toFloat() / durationMs
+        val at = ms.safeCoerceIn(0L, durationMs).toFloat() / durationMs
         if (at >= start && at <= end) return this
         return copy(start = clampStart(at - span / 2f, span))
     }
@@ -49,6 +51,6 @@ data class TimelineZoom(val scale: Float = 1f, val start: Float = 0f) {
         }
 
         private fun clampStart(start: Float, span: Float): Float =
-            start.coerceIn(0f, (1f - span).coerceAtLeast(0f))
+            start.safeCoerceIn(0f, (1f - span).coerceAtLeast(0f))
     }
 }

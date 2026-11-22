@@ -32,6 +32,7 @@ import com.frameout.designsystem.haptics.rememberFrameHaptics
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.engine.player.PlayerController
 import com.frameout.engine.timeline.formatTimestamp
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun SeekBar(controller: PlayerController, durationMs: Long, modifier: Modifier = Modifier) {
@@ -49,7 +50,7 @@ internal fun SeekBar(controller: PlayerController, durationMs: Long, modifier: M
                 .height(40.dp)
                 .semantics {
                     stateDescription = formatTimestamp(position)
-                    progressBarRangeInfo = ProgressBarRangeInfo(position.toFloat().coerceIn(0f, dur.toFloat()), 0f..dur.toFloat())
+                    progressBarRangeInfo = ProgressBarRangeInfo(position.toFloat().safeCoerceIn(0f, dur.toFloat()), 0f..dur.toFloat())
                 }
                 .seekInput(dur, controller, haptics) { dragging = it }
         ) { drawSeek(fraction, track, fill) }

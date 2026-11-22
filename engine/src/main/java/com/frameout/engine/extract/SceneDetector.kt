@@ -6,6 +6,7 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
+import com.frameout.core.util.safeCoerceIn
 
 internal object SceneDetector {
     const val GRID = 16
@@ -48,9 +49,9 @@ internal object SceneDetector {
             for (col in 0 until GRID) {
                 var sum = 0
                 for (sy in 0 until SUB) {
-                    val y = (((row * SUB + sy) * 2 + 1) * h / span).coerceIn(0, h - 1)
+                    val y = (((row * SUB + sy) * 2 + 1) * h / span).safeCoerceIn(0, h - 1)
                     for (sx in 0 until SUB) {
-                        val x = (((col * SUB + sx) * 2 + 1) * w / span).coerceIn(0, w - 1)
+                        val x = (((col * SUB + sx) * 2 + 1) * w / span).safeCoerceIn(0, w - 1)
                         sum += luma.at(x, y).coerceIn(0, 255)
                     }
                 }
@@ -81,7 +82,7 @@ internal object SceneDetector {
         var pend = if (tracked) state[I_PEND].toInt() else 0
         var age = if (tracked) state[I_AGE].toInt() else 0
         var lastDrift = if (tracked) state[I_DRIFT] else 0f
-        val recentN = if (tracked) state[I_RECENT_N].toInt().coerceIn(0, RECENT) else 0
+        val recentN = if (tracked) state[I_RECENT_N].toInt().safeCoerceIn(0, RECENT) else 0
         val inst = score(state, prevOffset, cur)
         val drift = if (tracked) score(state, 0, cur) else inst
         val avg = recentAverage(state, recentN)

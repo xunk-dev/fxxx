@@ -1,5 +1,7 @@
 package com.frameout.core.media
 
+import com.frameout.core.util.safeCoerceIn
+
 internal object LiveContentId {
     private const val QT_KEY = "com.apple.quicktime.content.identifier"
     private const val MAKER_TAG = 0x0011
@@ -7,7 +9,7 @@ internal object LiveContentId {
     private val uuid = Regex("[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}")
 
     fun parse(bytes: ByteArray, length: Int = bytes.size): String? {
-        val n = length.coerceIn(0, bytes.size)
+        val n = length.safeCoerceIn(0, bytes.size)
         return fromQuickTime(bytes, n) ?: fromMakerNote(bytes, n)
     }
 

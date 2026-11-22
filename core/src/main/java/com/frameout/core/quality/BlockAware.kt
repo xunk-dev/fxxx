@@ -1,6 +1,7 @@
 package com.frameout.core.quality
 
 import kotlin.math.pow
+import com.frameout.core.util.safeCoerceIn
 
 object BlockAware {
     const val GATE_LOW = 0.04
@@ -20,6 +21,6 @@ object BlockAware {
         val plain = FocusScore.detail(luma, width, height).score
         if (plain <= 0.0) return Result(1.0, grid)
         val aware = FocusScore.detail(luma, width, height, grid).score
-        return Result((aware / plain).coerceIn(MIN_FACTOR, 1.0).pow(weight), grid)
+        return Result((aware / plain).safeCoerceIn(MIN_FACTOR, 1.0).pow(weight), grid)
     }
 }

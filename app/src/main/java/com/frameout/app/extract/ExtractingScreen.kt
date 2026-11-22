@@ -111,10 +111,12 @@ fun ExtractingScreen(
                     onConfirm = {
                         notifReminder = false
                         prefs.exhaustNotificationReminders()
-                        context.startActivity(
-                            com.frameout.app.NotificationSettings.intent(context)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        )
+                        runCatching {
+                            context.startActivity(
+                                com.frameout.app.NotificationSettings.intent(context)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            )
+                        }
                     },
                     onDismiss = { notifReminder = false },
                     icon = com.frameout.designsystem.icons.FrameIcons.Info

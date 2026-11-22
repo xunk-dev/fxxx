@@ -1,5 +1,7 @@
 package com.frameout.engine.timeline
 
+import com.frameout.core.util.safeCoerceIn
+
 data class TrimRange(
     val startMs: Long = 0,
     val endMs: Long = 0,
@@ -7,8 +9,8 @@ data class TrimRange(
 ) {
     fun clamped(durationMs: Long): TrimRange {
         if (durationMs <= 0) return copy(startMs = 0, endMs = 0)
-        val s = startMs.coerceIn(0, durationMs)
-        val e = endMs.coerceIn(s, durationMs).let { if (it <= s) durationMs else it }
+        val s = startMs.safeCoerceIn(0, durationMs)
+        val e = endMs.safeCoerceIn(s, durationMs).let { if (it <= s) durationMs else it }
         return copy(startMs = s, endMs = e)
     }
 

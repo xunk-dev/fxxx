@@ -42,6 +42,7 @@ import com.frameout.designsystem.icons.FrameIcons
 import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun ProjectMoreAction(onDetails: () -> Unit, onDelete: () -> Unit) {
@@ -86,10 +87,10 @@ private class BelowOrAbove(private val gap: Int) : PopupPositionProvider {
     override fun calculatePosition(anchorBounds: IntRect, windowSize: IntSize, layoutDirection: LayoutDirection, popupContentSize: IntSize): IntOffset {
         val maxX = (windowSize.width - popupContentSize.width).coerceAtLeast(0)
         val maxY = (windowSize.height - popupContentSize.height).coerceAtLeast(0)
-        val x = (if (layoutDirection == LayoutDirection.Rtl) anchorBounds.left else anchorBounds.right - popupContentSize.width).coerceIn(0, maxX)
+        val x = (if (layoutDirection == LayoutDirection.Rtl) anchorBounds.left else anchorBounds.right - popupContentSize.width).safeCoerceIn(0, maxX)
         val below = anchorBounds.bottom + gap
         val fits = below + popupContentSize.height <= windowSize.height
-        val y = (if (fits) below else anchorBounds.top - gap - popupContentSize.height).coerceIn(0, maxY)
+        val y = (if (fits) below else anchorBounds.top - gap - popupContentSize.height).safeCoerceIn(0, maxY)
         return IntOffset(x, y)
     }
 }

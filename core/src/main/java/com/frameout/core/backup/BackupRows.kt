@@ -1,6 +1,7 @@
 package com.frameout.core.backup
 
 import com.frameout.core.backup.BackupText.TAB
+import com.frameout.core.util.safeCoerceIn
 
 internal object BackupRows {
     fun format(f: BackupFrame): String {
@@ -14,7 +15,7 @@ internal object BackupRows {
         fun cell(name: String): String = columns[name]?.let { cells.getOrNull(it) }.orEmpty()
         fun on(name: String): Boolean = cell(name) == "1"
         fun number(name: String, fallback: Float, min: Float = -MAX_ABS, max: Float = MAX_ABS): Float =
-            cell(name).toFloatOrNull()?.takeIf { it.isFinite() }?.coerceIn(min, max) ?: fallback
+            cell(name).toFloatOrNull()?.takeIf { it.isFinite() }?.safeCoerceIn(min, max) ?: fallback
         fun crop(l: Float, t: Float, r: Float, b: Float): FloatArray =
             if (r - l >= MIN_CROP && b - t >= MIN_CROP) floatArrayOf(l, t, r, b) else floatArrayOf(0f, 0f, 1f, 1f)
         val edit = if (on("has_edit")) {

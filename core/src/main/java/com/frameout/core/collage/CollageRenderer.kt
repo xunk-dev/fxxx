@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Path
 import java.io.File
+import com.frameout.core.util.safeCoerceIn
 
 object CollageRenderer {
     fun render(paths: List<String?>, config: CollageConfig): Bitmap {
@@ -65,7 +66,7 @@ object CollageRenderer {
 
     internal fun stamp(canvas: Canvas, dest: RectF, text: String?, k: Float, paint: Paint, padX: Float = 0f, padY: Float = 0f) {
         if (text.isNullOrBlank()) return
-        val size = (dest.width() * 0.07f).coerceIn(22f * k, 44f * k)
+        val size = (dest.width() * 0.07f).safeCoerceIn(22f * k, 44f * k)
         paint.textSize = size
         paint.isFakeBoldText = true
         val padW = size * 0.55f

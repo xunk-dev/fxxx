@@ -1,5 +1,7 @@
 package com.frameout.core.export
 
+import com.frameout.core.util.safeCoerceIn
+
 object GifQuantizer {
     private const val RED = 6
     private const val GREEN = 7
@@ -32,6 +34,6 @@ object GifQuantizer {
 
     private fun snap(value: Int, levels: Int, shift: Float): Int {
         val scaled = value / (255f / (levels - 1)) + shift
-        return (scaled + 0.5f).toInt().coerceIn(0, levels - 1)
+        return (scaled + 0.5f).toInt().safeCoerceIn(0, levels - 1)
     }
 }

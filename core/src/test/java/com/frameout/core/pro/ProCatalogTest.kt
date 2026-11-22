@@ -51,8 +51,8 @@ class ProCatalogTest {
     }
 
     @Test
-    fun freeCollagesAreTheThreeSimpleGrids() {
-        assertEquals(setOf("2x1", "1x2", "2x2"), ProCatalog.freeCollages)
+    fun freeCollagesAreTheSimpleGridsAndThreeCellLayouts() {
+        assertEquals(setOf("2x1", "1x2", "2x2", "1+2", "2+1", "3x1", "1x3"), ProCatalog.freeCollages)
         assertFalse(ProCatalog.collageIsFree("3x3"))
     }
 

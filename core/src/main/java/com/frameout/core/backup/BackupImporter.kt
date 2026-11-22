@@ -18,6 +18,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.File
+import com.frameout.core.util.safeCoerceIn
 
 class BackupImporter(private val context: Context, private val container: AppContainer) {
     suspend fun import(uri: Uri): BackupResult {
@@ -120,7 +121,7 @@ class BackupImporter(private val context: Context, private val container: AppCon
             name = cleanText(p.name).ifBlank { "Backup" }, sourceUri = safeSourceUri(p.sourceUri), sourceName = cleanText(p.sourceName), durationMs = p.durationMs.coerceAtLeast(0L),
             frameCount = data.frames.size, extractedCount = data.frames.size,
             lastPtsUs = data.frames.lastOrNull()?.ptsUs ?: 0L, status = ProjectStatus.Completed.name,
-            createdAt = p.createdAt.coerceIn(0L, now), updatedAt = now, extractMode = safeMode(p.extractMode), autoSave = false,
+            createdAt = p.createdAt.safeCoerceIn(0L, now), updatedAt = now, extractMode = safeMode(p.extractMode), autoSave = false,
             saveFormat = safeFormat(p.saveFormat), jpegQuality = p.jpegQuality.coerceIn(1, 100), startMs = p.startMs.coerceAtLeast(0L), endMs = p.endMs.coerceAtLeast(0L),
             saveSubfolder = safeFolder(p.saveSubfolder)
         )

@@ -45,6 +45,7 @@ import com.frameout.designsystem.components.FrameText
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.frameControl
+import com.frameout.core.util.safeCoerceIn
 
 internal class PanelSection(
     val icon: Int,
@@ -59,7 +60,7 @@ private val CHIP_HEIGHT = 30.dp
 @Composable
 internal fun SectionedBody(sections: List<PanelSection>, stateKey: Any, modifier: Modifier = Modifier, fill: Boolean = true) {
     var selected by rememberSaveable(stateKey) { mutableIntStateOf(0) }
-    val index = selected.coerceIn(0, (sections.size - 1).coerceAtLeast(0))
+    val index = selected.safeCoerceIn(0, (sections.size - 1).coerceAtLeast(0))
     Column(if (fill) modifier.fillMaxSize() else modifier.fillMaxWidth()) {
         if (sections.size > 1) {
             Row(

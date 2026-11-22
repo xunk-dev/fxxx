@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.frameout.core.util.safeCoerceIn
 
 @Stable
 internal class SnapshotFxState {
@@ -119,7 +120,7 @@ private fun DrawScope.drawFocusBrackets(progress: Float) {
     val eased = FastOutSlowInEasing.transform(progress)
     val alpha = (if (progress < 0.18f) progress / 0.18f else 1f - (progress - 0.18f) / 0.82f).coerceIn(0f, 1f)
     val inset = lerp(6.dp.toPx(), 24.dp.toPx(), eased)
-    val arm = (minOf(size.width, size.height) * 0.14f).coerceIn(18.dp.toPx(), 44.dp.toPx())
+    val arm = (minOf(size.width, size.height) * 0.14f).safeCoerceIn(18.dp.toPx(), 44.dp.toPx())
     val left = inset
     val top = inset
     val right = size.width - inset

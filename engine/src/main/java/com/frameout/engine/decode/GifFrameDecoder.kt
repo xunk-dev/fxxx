@@ -3,6 +3,7 @@ package com.frameout.engine.decode
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
+import com.frameout.core.util.safeCoerceIn
 
 class GifFrameDecoder(private val context: Context) : AnimatedFrameSource {
     private var compositor: GifCompositor? = null
@@ -36,11 +37,11 @@ class GifFrameDecoder(private val context: Context) : AnimatedFrameSource {
     override fun videoWidth(): Int = width
     override fun videoHeight(): Int = height
     override fun durationUs(): Long = durationUs
-    override fun ptsUs(index: Int): Long = if (timeline.isEmpty()) 0L else timeline[index.coerceIn(0, timeline.lastIndex)]
+    override fun ptsUs(index: Int): Long = if (timeline.isEmpty()) 0L else timeline[index.safeCoerceIn(0, timeline.lastIndex)]
 
     override fun decodeFrame(index: Int): Pair<Long, Bitmap>? {
         val source = compositor ?: return null
-        val safe = index.coerceIn(0, timeline.lastIndex)
+        val safe = index.safeCoerceIn(0, timeline.lastIndex)
         val pixels = source.render(safe).copyOf()
         AlphaFlatten.pixels(pixels)
         return timeline[safe] to Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888)

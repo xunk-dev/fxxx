@@ -29,6 +29,7 @@ import kotlin.math.PI
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.sin
+import com.frameout.core.util.safeCoerceIn
 
 @Composable
 internal fun FmtMp4Art(bmp: ImageBitmap, t: State<Float>, fill: Modifier) {
@@ -149,7 +150,7 @@ internal fun FmtLiveArt(bmp: ImageBitmap, t: State<Float>, fill: Modifier) {
 internal fun FmtHevcArt(bmp: ImageBitmap, t: State<Float>, fill: Modifier) {
     val levels = intArrayOf(24, 36, 52, 76, 110, 160, 240)
     val p = t.value
-    val idx = if (p >= 0.7f) -1 else ((1f - (1f - p / 0.7f).pow(2)) * levels.size).toInt().coerceIn(0, levels.size - 1)
+    val idx = if (p >= 0.7f) -1 else ((1f - (1f - p / 0.7f).pow(2)) * levels.size).toInt().safeCoerceIn(0, levels.size - 1)
     if (idx < 0) {
         Image(bmp, null, fill, contentScale = ContentScale.Crop)
     } else {
