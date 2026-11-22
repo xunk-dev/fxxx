@@ -85,7 +85,6 @@ fun CollageTemplate.compacted(filled: Int): CollageTemplate {
     return copy(cells = slots.map { it.rect })
 }
 
-/** Fallback for layouts (e.g. pinwheels) whose empty cells cannot be merged into a neighbour: n equal rows-of-cells that tile the canvas. */
 private fun evenCells(n: Int): List<CellRect> {
     val perRow = ceil(sqrt(n.toDouble())).toInt().coerceAtLeast(1)
     val rowCount = (n + perRow - 1) / perRow
