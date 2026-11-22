@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">عربی متن</string>
+    <string name="ocr_ara_downloading">عربی متن کا ماڈل ڈاؤن لوڈ ہو رہا ہے… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">عربی متن کا ماڈل ڈاؤن لوڈ کرنے کے لیے Wi-Fi کا انتظار ہے</string>
+    <string name="ocr_ara_confirm">عربی متن کا ماڈل ڈاؤن لوڈ کرنے کے لیے Google Play کو آپ کی منظوری درکار ہے</string>
+    <string name="ocr_ara_failed">عربی متن کا ماڈل ڈاؤن لوڈ نہیں ہو سکا</string>
+    <string name="ocr_ara_unavailable">عربی متن کا ماڈل ڈاؤن لوڈ کرنے کے لیے Google Play درکار ہے۔ اس کے بغیر عربی متن نہیں پڑھا جا سکتا۔</string>
+    <string name="ocr_text_title">لاطینی متن</string>
+    <string name="ocr_text_pending">متن کا ماڈل ابھی تیار نہیں ہے۔ کنکشن چیک کریں اور دوبارہ کوشش کریں۔</string>
+    <string name="ocr_text_no_play">Google Play سروسز موجود نہیں یا بند ہیں، اس لیے لاطینی متن اور کوڈز نہیں پڑھے جا سکتے۔</string>
+    <string name="ocr_text_outdated">لاطینی متن اور کوڈز پڑھنے کے لیے Google Play سروسز اپ ڈیٹ کریں۔</string>
+</resources>

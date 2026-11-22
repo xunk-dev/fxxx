@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Tekstong Arabic</string>
+    <string name="ocr_ara_downloading">Dina-download ang modelo ng tekstong Arabic… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Naghihintay ng Wi-Fi para i-download ang modelo ng tekstong Arabic</string>
+    <string name="ocr_ara_confirm">Kailangan ng Google Play ang pag-apruba mo para i-download ang modelo ng tekstong Arabic</string>
+    <string name="ocr_ara_failed">Hindi na-download ang modelo ng tekstong Arabic</string>
+    <string name="ocr_ara_unavailable">Kailangan ang Google Play para i-download ang modelo ng tekstong Arabic. Hindi mababasa ang tekstong Arabic kung wala ito.</string>
+    <string name="ocr_text_title">Tekstong Latin</string>
+    <string name="ocr_text_pending">Hindi pa handa ang modelo ng teksto. Tingnan ang koneksyon mo at subukan ulit.</string>
+    <string name="ocr_text_no_play">Wala o naka-off ang mga serbisyo ng Google Play, kaya hindi mababasa ang tekstong Latin at mga code.</string>
+    <string name="ocr_text_outdated">I-update ang mga serbisyo ng Google Play para mabasa ang tekstong Latin at mga code.</string>
+</resources>

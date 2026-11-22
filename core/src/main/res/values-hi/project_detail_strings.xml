@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">विवरण</string>
+    <string name="detail_date">जोड़ने की तारीख</string>
+    <string name="detail_duration">अवधि</string>
+    <string name="detail_quality">गुणवत्ता</string>
+    <string name="detail_codec">कोडेक</string>
+    <string name="detail_fps">फ़्रेम दर</string>
+    <string name="detail_status">स्थिति</string>
+</resources>

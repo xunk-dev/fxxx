@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">アラビア語テキスト</string>
+    <string name="ocr_ara_downloading">アラビア語テキストモデルをダウンロード中… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">アラビア語テキストモデルをダウンロードするため Wi-Fi を待っています</string>
+    <string name="ocr_ara_confirm">アラビア語テキストモデルのダウンロードには Google Play の承認が必要です</string>
+    <string name="ocr_ara_failed">アラビア語テキストモデルをダウンロードできませんでした</string>
+    <string name="ocr_ara_unavailable">アラビア語テキストモデルのダウンロードには Google Play が必要です。ないとアラビア語テキストは読み取れません。</string>
+    <string name="ocr_text_title">ラテン文字テキスト</string>
+    <string name="ocr_text_pending">テキストモデルの準備がまだできていません。接続を確認して、もう一度お試しください。</string>
+    <string name="ocr_text_no_play">Google Play 開発者サービスがないか無効のため、ラテン文字テキストとコードを読み取れません。</string>
+    <string name="ocr_text_outdated">ラテン文字テキストとコードを読み取るには、Google Play 開発者サービスを更新してください。</string>
+</resources>

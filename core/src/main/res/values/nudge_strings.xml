@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">New video suggestions</string>
+    <string name="nudge_channel_new_video_desc">Tells you when a new video lands on your phone, with a cover and a one-tap extract.</string>
+    <string name="nudge_channel_reminders">Tips and reminders</string>
+    <string name="nudge_channel_reminders_desc">Occasional, gentle reminders. At most one a day, and they stop if you ignore them.</string>
+
+    <string name="nudge_new_video_title">New video ready</string>
+    <string name="nudge_action_extract">Extract frames</string>
+    <string name="nudge_action_open">Open</string>
+    <string name="nudge_action_stop_reminders">Stop reminders</string>
+    <string name="nudge_review_title">This video needs a quick look</string>
+    <string name="nudge_review_text">It is long, so choose what to extract first. Tap to open it.</string>
+    <string name="nudge_failed_title">Could not start the extraction</string>
+    <string name="nudge_failed_text">Tap to open the video and try again.</string>
+
+    <string name="nudge_waiting_title">Still waiting: your new video</string>
+    <string name="nudge_waiting_text">%1$s is ready. Pull the best frames out of it in one tap.</string>
+
+    <string name="nudge_comeback_title_0">Turn video moments into photos</string>
+    <string name="nudge_comeback_text_0">Pick any video and Frame Out extracts the sharpest frames for you.</string>
+    <string name="nudge_comeback_title_1">Your best shot is hiding in a video</string>
+    <string name="nudge_comeback_text_1">Scrub to the exact frame and save it in full quality.</string>
+    <string name="nudge_comeback_title_2">Make a collage from your favorite frames</string>
+    <string name="nudge_comeback_text_2">Extract a few frames and combine them into one image.</string>
+
+    <string name="nudge_stalled_title">Finish what you started</string>
+    <string name="nudge_stalled_text">“%1$s” is paused. Pick it up where you left off.</string>
+    <string name="nudge_recap_title">Your week in frames</string>
+    <string name="nudge_recap_text">Frames extracted this week: %1$d</string>
+
+    <string name="nudge_setting_new_video_title">New video alerts</string>
+    <string name="nudge_setting_new_video_hint">Notify me with a cover when a new video appears</string>
+    <string name="nudge_setting_new_video_partial">Full video access is needed to notice new videos</string>
+    <string name="nudge_setting_reminders_title">Tips and reminders</string>
+    <string name="nudge_setting_reminders_hint">A gentle reminder now and then, never at night</string>
+    <string name="nudge_setting_system_off">Notifications are off for Frame Out in system settings</string>
+</resources>

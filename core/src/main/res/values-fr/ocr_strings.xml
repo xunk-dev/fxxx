@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Texte arabe</string>
+    <string name="ocr_ara_downloading">Téléchargement du modèle de texte arabe… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">En attente du Wi-Fi pour télécharger le modèle de texte arabe</string>
+    <string name="ocr_ara_confirm">Google Play a besoin de votre accord pour télécharger le modèle de texte arabe</string>
+    <string name="ocr_ara_failed">Impossible de télécharger le modèle de texte arabe</string>
+    <string name="ocr_ara_unavailable">Google Play est nécessaire pour télécharger le modèle de texte arabe. Sans lui, le texte arabe ne peut pas être lu.</string>
+    <string name="ocr_text_title">Texte latin</string>
+    <string name="ocr_text_pending">Le modèle de texte n’est pas encore prêt. Vérifiez votre connexion et réessayez.</string>
+    <string name="ocr_text_no_play">Les services Google Play sont absents ou désactivés, le texte latin et les codes ne peuvent donc pas être lus.</string>
+    <string name="ocr_text_outdated">Mettez à jour les services Google Play pour lire le texte latin et les codes.</string>
+</resources>

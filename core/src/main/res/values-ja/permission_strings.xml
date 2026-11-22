@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">権限が許可されていません</string>
+    <string name="perm_toast_forever">権限が拒否されました。設定を開く</string>
+    <string name="perm_toast_granted">アクセスが許可されました。ライブラリを読み込み中…</string>
+</resources>

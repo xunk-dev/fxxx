@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Văn bản tiếng Ả Rập</string>
+    <string name="ocr_ara_downloading">Đang tải mô hình văn bản tiếng Ả Rập… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Đang chờ Wi-Fi để tải mô hình văn bản tiếng Ả Rập</string>
+    <string name="ocr_ara_confirm">Google Play cần bạn chấp thuận để tải mô hình văn bản tiếng Ả Rập</string>
+    <string name="ocr_ara_failed">Không tải được mô hình văn bản tiếng Ả Rập</string>
+    <string name="ocr_ara_unavailable">Cần có Google Play để tải mô hình văn bản tiếng Ả Rập. Nếu không có, không thể đọc văn bản tiếng Ả Rập.</string>
+    <string name="ocr_text_title">Văn bản chữ Latinh</string>
+    <string name="ocr_text_pending">Mô hình văn bản chưa sẵn sàng. Hãy kiểm tra kết nối rồi thử lại.</string>
+    <string name="ocr_text_no_play">Dịch vụ Google Play bị thiếu hoặc đã tắt, nên không thể đọc văn bản chữ Latinh và mã.</string>
+    <string name="ocr_text_outdated">Hãy cập nhật dịch vụ Google Play để đọc văn bản chữ Latinh và mã.</string>
+</resources>

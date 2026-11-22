@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">دسترسی داده نشد</string>
+    <string name="perm_toast_forever">دسترسی رد شد. تنظیمات را باز کنید</string>
+    <string name="perm_toast_granted">دسترسی داده شد. در حال بارگذاری کتابخانه…</string>
+</resources>

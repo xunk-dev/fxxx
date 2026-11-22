@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">متن عربی</string>
+    <string name="ocr_ara_downloading">در حال دانلود مدل متن عربی… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">در انتظار Wi-Fi برای دانلود مدل متن عربی</string>
+    <string name="ocr_ara_confirm">Google Play برای دانلود مدل متن عربی به تأیید شما نیاز دارد</string>
+    <string name="ocr_ara_failed">مدل متن عربی دانلود نشد</string>
+    <string name="ocr_ara_unavailable">برای دانلود مدل متن عربی به Google Play نیاز است. بدون آن متن عربی خوانده نمی‌شود.</string>
+    <string name="ocr_text_title">متن لاتین</string>
+    <string name="ocr_text_pending">مدل متن هنوز آماده نیست. اتصال را بررسی کنید و دوباره امتحان کنید.</string>
+    <string name="ocr_text_no_play">خدمات Google Play وجود ندارد یا غیرفعال است، بنابراین متن لاتین و کدها خوانده نمی‌شوند.</string>
+    <string name="ocr_text_outdated">برای خواندن متن لاتین و کدها، خدمات Google Play را به‌روز کنید.</string>
+</resources>

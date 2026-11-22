@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">Cadangan video baharu</string>
+    <string name="nudge_channel_new_video_desc">Memberitahu anda apabila video baharu masuk ke telefon, lengkap dengan muka depan dan pengekstrakan sekali sentuh.</string>
+    <string name="nudge_channel_reminders">Petua dan peringatan</string>
+    <string name="nudge_channel_reminders_desc">Peringatan lembut sekali-sekala. Paling banyak satu sehari, dan berhenti sendiri jika diabaikan.</string>
+    <string name="nudge_action_extract">Ekstrak bingkai</string>
+    <string name="nudge_action_open">Buka</string>
+    <string name="nudge_action_stop_reminders">Henti peringatan</string>
+    <string name="nudge_review_title">Video ini patut dilihat sekilas</string>
+    <string name="nudge_review_text">Video ini panjang, jadi pilih dahulu bahagian yang hendak diekstrak. Ketik untuk membukanya.</string>
+    <string name="nudge_failed_title">Tidak dapat memulakan pengekstrakan</string>
+    <string name="nudge_failed_text">Ketik untuk membuka video dan cuba lagi.</string>
+    <string name="nudge_waiting_title">Video baharu anda masih menunggu</string>
+    <string name="nudge_waiting_text">%1$s sudah sedia. Ambil bingkai terbaiknya dengan sekali sentuh.</string>
+    <string name="nudge_comeback_title_0">Tukar detik video menjadi foto</string>
+    <string name="nudge_comeback_text_0">Pilih mana-mana video dan Frame Out akan mengekstrak bingkai paling tajam untuk anda.</string>
+    <string name="nudge_comeback_title_1">Foto terbaik anda tersembunyi dalam video</string>
+    <string name="nudge_comeback_text_1">Leret ke bingkai yang tepat dan simpan dalam kualiti penuh.</string>
+    <string name="nudge_comeback_title_2">Buat kolaj daripada bingkai kegemaran anda</string>
+    <string name="nudge_comeback_text_2">Ekstrak beberapa bingkai dan gabungkan menjadi satu imej.</string>
+    <string name="nudge_setting_new_video_title">Makluman video baharu</string>
+    <string name="nudge_setting_new_video_hint">Beritahu saya bersama muka depan apabila ada video baharu</string>
+    <string name="nudge_setting_new_video_partial">Akses penuh kepada video diperlukan untuk mengesan video baharu</string>
+    <string name="nudge_setting_reminders_title">Petua dan peringatan</string>
+    <string name="nudge_setting_reminders_hint">Peringatan lembut sekali-sekala, tidak pernah pada waktu malam</string>
+    <string name="nudge_setting_system_off">Pemberitahuan Frame Out dimatikan dalam tetapan sistem</string>
+    <string name="nudge_new_video_title">Video baharu sedia</string>
+    <string name="nudge_stalled_title">Siapkan apa yang anda mulakan</string>
+    <string name="nudge_stalled_text">“%1$s” dijeda. Sambung semula dari tempat anda berhenti.</string>
+    <string name="nudge_recap_title">Minggu anda dalam bingkai</string>
+    <string name="nudge_recap_text">Bingkai diekstrak minggu ini: %1$d</string>
+</resources>

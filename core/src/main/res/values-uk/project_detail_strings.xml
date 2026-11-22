@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Відомості</string>
+    <string name="detail_date">Дата додавання</string>
+    <string name="detail_duration">Тривалість</string>
+    <string name="detail_quality">Якість</string>
+    <string name="detail_codec">Кодек</string>
+    <string name="detail_fps">Частота кадрів</string>
+    <string name="detail_status">Стан</string>
+</resources>

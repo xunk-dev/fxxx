@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Hindi ibinigay ang pahintulot</string>
+    <string name="perm_toast_forever">Tinanggihan ang pahintulot. Buksan ang Settings</string>
+    <string name="perm_toast_granted">Naibigay ang access. Nilo-load ang library mo…</string>
+</resources>

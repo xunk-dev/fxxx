@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frame out</string>
+    <string name="shortcut_capture_short">फ़्रेम कैप्चर करें</string>
+    <string name="shortcut_capture_long">आख़िरी वीडियो से फ़्रेम कैप्चर करें</string>
+    <string name="tile_capture_label">फ़्रेम कैप्चर करें</string>
+    <string name="incoming_copy_failed">साझा वीडियो नहीं खुल सका</string>
+    <string name="incoming_unsupported">फ़ाइल प्रकार समर्थित नहीं</string>
+    <string name="incoming_photo_failed">साझा फ़ोटो नहीं खुल सकी</string>
+    <string name="incoming_photos_skipped">फ़ोटो छोड़ी गईं। अलग से साझा करें</string>
+    <string name="share_photos_title">आप इन फ़ोटो के साथ क्या करना चाहते हैं?</string>
+    <string name="share_videos_title">आप इन वीडियो के साथ क्या करना चाहते हैं?</string>
+    <string name="incoming_videos_later">फ़ोटो का काम पूरा होने के बाद वीडियो खुलेंगे।</string>
+    <string name="compare_stack">ऊपर-नीचे</string>
+    <string name="compare_side">अगल-बगल</string>
+    <string name="compare_slider">स्लाइडर</string>
+    <string name="compare_swap">अदला-बदली</string>
+    <string name="compare_fit">फ़िट</string>
+    <string name="compare_zoom_in">ज़ूम इन</string>
+    <string name="compare_zoom_out">ज़ूम आउट</string>
+    <string name="compare_reset_zoom">ज़ूम रीसेट करें</string>
+    <string name="compare_hint">ज़ूम के लिए पिंच करें · दो बार टैप करें</string>
+    <string name="compare_load_failed">इमेज लोड नहीं हो सकी</string>
+    <string name="compare_divider">तुलना विभाजक</string>
+    <string name="compare_diff">अंतर</string>
+    <string name="compare_diff_busy">अंतर की गणना हो रही है…</string>
+    <string name="compare_link">ज़ूम जोड़ें</string>
+    <string name="compare_unlink">अलग ज़ूम</string>
+    <string name="compare_actual_size">वास्तविक पिक्सल</string>
+    <string name="compare_diff_percent">बदलाव: %1$s%%</string>
+    <string name="time_entry_hint">mm:ss या h:mm:ss</string>
+</resources>

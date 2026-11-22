@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Arabský text</string>
+    <string name="ocr_ara_downloading">Stahuje se model arabského textu… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Čeká se na Wi-Fi pro stažení modelu arabského textu</string>
+    <string name="ocr_ara_confirm">Google Play potřebuje váš souhlas se stažením modelu arabského textu</string>
+    <string name="ocr_ara_failed">Model arabského textu se nepodařilo stáhnout</string>
+    <string name="ocr_ara_unavailable">Ke stažení modelu arabského textu je potřeba Google Play. Bez něj nelze arabský text číst.</string>
+    <string name="ocr_text_title">Latinský text</string>
+    <string name="ocr_text_pending">Model textu ještě není připraven. Zkontrolujte připojení a zkuste to znovu.</string>
+    <string name="ocr_text_no_play">Služby Google Play chybí nebo jsou vypnuté, proto nelze číst latinský text a kódy.</string>
+    <string name="ocr_text_outdated">Aktualizujte služby Google Play, aby bylo možné číst latinský text a kódy.</string>
+</resources>

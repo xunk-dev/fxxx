@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Text arab</string>
+    <string name="ocr_ara_downloading">Se descarcă modelul de text arab… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Se așteaptă Wi-Fi pentru a descărca modelul de text arab</string>
+    <string name="ocr_ara_confirm">Google Play are nevoie de acordul tău pentru a descărca modelul de text arab</string>
+    <string name="ocr_ara_failed">Modelul de text arab nu a putut fi descărcat</string>
+    <string name="ocr_ara_unavailable">Google Play este necesar pentru a descărca modelul de text arab. Fără el, textul arab nu poate fi citit.</string>
+    <string name="ocr_text_title">Text latin</string>
+    <string name="ocr_text_pending">Modelul de text nu este încă gata. Verifică conexiunea și încearcă din nou.</string>
+    <string name="ocr_text_no_play">Serviciile Google Play lipsesc sau sunt dezactivate, deci textul latin și codurile nu pot fi citite.</string>
+    <string name="ocr_text_outdated">Actualizează serviciile Google Play pentru a citi textul latin și codurile.</string>
+</resources>

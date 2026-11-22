@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "116798261326",
+    "project_id": "frame-out",
+    "storage_bucket": "frame-out.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116798261326:android:5d7674ff3ee7da40ff1b1f",
+        "android_client_info": {
+          "package_name": "com.frameout.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeDB_NnipXr5pMonMywmWTsQgBAWS6-RE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

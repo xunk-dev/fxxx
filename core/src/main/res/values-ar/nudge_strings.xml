@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nudge_channel_new_video">اقتراحات الفيديو الجديد</string>
+    <string name="nudge_channel_new_video_desc">ينبّهك عند وصول فيديو جديد إلى هاتفك مع غلافه وزر استخراج سريع.</string>
+    <string name="nudge_channel_reminders">نصائح وتذكيرات</string>
+    <string name="nudge_channel_reminders_desc">تذكيرات هادئة وقليلة: حدّ أقصى واحد يومياً، وتتوقف تلقائياً إذا تجاهلتها.</string>
+
+    <string name="nudge_new_video_title">فيديو جديد جاهز</string>
+    <string name="nudge_action_extract">استخراج الإطارات</string>
+    <string name="nudge_action_open">فتح</string>
+    <string name="nudge_action_stop_reminders">إيقاف التذكيرات</string>
+    <string name="nudge_review_title">هذا الفيديو يحتاج نظرة سريعة</string>
+    <string name="nudge_review_text">الفيديو طويل، فاختر ما تريد استخراجه أولاً. اضغط لفتحه.</string>
+    <string name="nudge_failed_title">تعذّر بدء الاستخراج</string>
+    <string name="nudge_failed_text">اضغط لفتح الفيديو والمحاولة مرة أخرى.</string>
+
+    <string name="nudge_waiting_title">ما زال فيديوك الجديد بانتظارك</string>
+    <string name="nudge_waiting_text">%1$s جاهز. استخرج أفضل إطاراته بضغطة واحدة.</string>
+
+    <string name="nudge_comeback_title_0">حوّل لحظات الفيديو إلى صور</string>
+    <string name="nudge_comeback_text_0">اختر أي فيديو وسيستخرج Frame Out أوضح الإطارات لك.</string>
+    <string name="nudge_comeback_title_1">أجمل لقطاتك مخبّأة داخل فيديو</string>
+    <string name="nudge_comeback_text_1">تنقّل إلى الإطار المطلوب بدقة واحفظه بأعلى جودة.</string>
+    <string name="nudge_comeback_title_2">اصنع كولاج من إطاراتك المفضلة</string>
+    <string name="nudge_comeback_text_2">استخرج بضعة إطارات ودمجها في صورة واحدة.</string>
+
+    <string name="nudge_stalled_title">أكمل ما بدأته</string>
+    <string name="nudge_stalled_text">«%1$s» متوقف مؤقتاً. تابع من حيث توقفت.</string>
+    <string name="nudge_recap_title">أسبوعك في الإطارات</string>
+    <string name="nudge_recap_text">الإطارات المستخرجة هذا الأسبوع: %1$d</string>
+
+    <string name="nudge_setting_new_video_title">تنبيهات الفيديو الجديد</string>
+    <string name="nudge_setting_new_video_hint">نبّهني مع الغلاف عند ظهور فيديو جديد</string>
+    <string name="nudge_setting_new_video_partial">يلزم الوصول الكامل للفيديوهات لاكتشاف الجديد منها</string>
+    <string name="nudge_setting_reminders_title">نصائح وتذكيرات</string>
+    <string name="nudge_setting_reminders_hint">تذكير هادئ بين حين وآخر، وليس في الليل</string>
+    <string name="nudge_setting_system_off">الإشعارات متوقفة لتطبيق Frame Out من إعدادات النظام</string>
+</resources>

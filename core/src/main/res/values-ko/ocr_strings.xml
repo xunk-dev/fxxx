@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">아랍어 텍스트</string>
+    <string name="ocr_ara_downloading">아랍어 텍스트 모델 다운로드 중… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">아랍어 텍스트 모델을 다운로드하려고 Wi-Fi를 기다리는 중</string>
+    <string name="ocr_ara_confirm">아랍어 텍스트 모델을 다운로드하려면 Google Play의 승인이 필요해요</string>
+    <string name="ocr_ara_failed">아랍어 텍스트 모델을 다운로드하지 못했어요</string>
+    <string name="ocr_ara_unavailable">아랍어 텍스트 모델을 다운로드하려면 Google Play가 필요해요. 없으면 아랍어 텍스트를 읽을 수 없어요.</string>
+    <string name="ocr_text_title">라틴 문자 텍스트</string>
+    <string name="ocr_text_pending">텍스트 모델이 아직 준비되지 않았어요. 연결을 확인하고 다시 시도하세요.</string>
+    <string name="ocr_text_no_play">Google Play 서비스가 없거나 꺼져 있어서 라틴 문자 텍스트와 코드를 읽을 수 없어요.</string>
+    <string name="ocr_text_outdated">라틴 문자 텍스트와 코드를 읽으려면 Google Play 서비스를 업데이트하세요.</string>
+</resources>

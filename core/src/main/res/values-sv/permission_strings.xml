@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Behörighet inte beviljad</string>
+    <string name="perm_toast_forever">Behörighet nekad. Öppna Inställningar</string>
+    <string name="perm_toast_granted">Åtkomst beviljad. Läser in ditt bibliotek …</string>
+</resources>
