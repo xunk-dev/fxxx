@@ -1026,6 +1026,7 @@
     <string name="collage_merge_strength">Siła łączenia</string>
     <string name="collage_merge_style_n">Styl łączenia %1$d</string>
     <string name="collage_tab_frames">Ramki</string>
+    <string name="collage_tab_layout">Układy</string>
     <string name="collage_tab_style">Styl</string>
     <string name="edit_adjust">Dostosuj</string>
     <string name="edit_brightness">Jasność</string>

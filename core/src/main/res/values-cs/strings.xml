@@ -1026,6 +1026,7 @@
     <string name="collage_merge_strength">Síla prolnutí</string>
     <string name="collage_merge_style_n">Styl prolnutí %1$d</string>
     <string name="collage_tab_frames">Rámečky</string>
+    <string name="collage_tab_layout">Rozvržení</string>
     <string name="collage_tab_style">Styl</string>
     <string name="edit_adjust">Upravit</string>
     <string name="edit_brightness">Jas</string>

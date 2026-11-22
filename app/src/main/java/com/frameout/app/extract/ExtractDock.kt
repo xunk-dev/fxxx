@@ -24,7 +24,7 @@ private fun failed(state: ExtractCapsuleState) = state.status == "Failed" || sta
 
 private fun fabLook(state: ExtractCapsuleState): ExtractFabLook = when {
     state.finished && succeeded(state) -> ExtractFabLook(ChargeState.Success, FrameIcons.Check, FrameStrings.completed())
-    state.finished && failed(state) -> ExtractFabLook(ChargeState.Failed, FrameIconsExtra.Resume, FrameStrings.retry())
+    state.finished && failed(state) -> ExtractFabLook(ChargeState.Failed, FrameIconsExtra.Retry, FrameStrings.retry())
     state.finished -> ExtractFabLook(ChargeState.Failed, FrameIcons.Close, FrameStrings.close())
     state.paused -> ExtractFabLook(ChargeState.Paused, FrameIconsExtra.Resume, FrameStrings.resume())
     else -> ExtractFabLook(ChargeState.Running, FrameIcons.Pause, FrameStrings.pause())

@@ -1017,6 +1017,7 @@
     <string name="collage_merge_strength">融合强度</string>
     <string name="collage_merge_style_n">融合样式 %1$d</string>
     <string name="collage_tab_frames">相框</string>
+    <string name="collage_tab_layout">布局</string>
     <string name="collage_tab_style">样式</string>
     <string name="edit_adjust">调整</string>
     <string name="edit_brightness">亮度</string>

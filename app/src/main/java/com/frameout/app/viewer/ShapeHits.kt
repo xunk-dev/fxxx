@@ -65,7 +65,6 @@ internal fun shiftShape(index: Int, delta: Offset, input: ShapeOverlayInput) {
 internal fun dragHandle(grab: Grab.Handle, p: Offset, input: ShapeOverlayInput) {
     val m = input.draft.marks.getOrNull(grab.index) as? ShapeMark ?: return
     val raw = toNorm(p, input.geo, input.transformNow())
-    // Box shapes keep a minimum extent on each axis while a handle is dragged across the opposite side.
     val fixed = when (grab.end) {
         0 -> MarkPoint(m.x2, m.y2)
         1 -> MarkPoint(m.x1, m.y1)
@@ -161,8 +160,6 @@ private fun actionCenter(a: Offset, b: Offset, geo: ViewGeometry, density: Float
     val half = r + ACTION_GAP_DP * density / 2f
     val x = ((a.x + b.x) / 2f).safeCoerceIn(half + r, max(half + r, geo.viewW - half - r))
     val above = min(a.y, b.y) - DELETE_GAP_DP * density - r
-    // Not enough room above (shape touches the top edge): flip the buttons below instead of
-    // letting them sit on top of the shape's own handles.
     val y = if (above >= r) above else (max(a.y, b.y) + DELETE_GAP_DP * density + r).takeIf { it <= geo.viewH - r } ?: above
     return Offset(x, y.safeCoerceIn(r, max(r, geo.viewH - r)))
 }

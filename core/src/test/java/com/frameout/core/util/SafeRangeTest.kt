@@ -6,7 +6,6 @@ import org.junit.Test
 
 class SafeRangeTest {
     @Test fun invertedFloatRangeFromRoundingDoesNotThrow() {
-        // The exact values from the production crash: min 2.9802322E-8, max 0.0
         val v = 0.5f.safeCoerceIn(2.9802322E-8f, 0f)
         assertTrue(v in 0f..1e-7f)
     }

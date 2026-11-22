@@ -1023,6 +1023,7 @@
     <string name="collage_merge_strength">Intensidad de fusión</string>
     <string name="collage_merge_style_n">Estilo de fusión %1$d</string>
     <string name="collage_tab_frames">Marcos</string>
+    <string name="collage_tab_layout">Diseños</string>
     <string name="collage_tab_style">Estilo</string>
     <string name="edit_adjust">Ajustar</string>
     <string name="edit_brightness">Brillo</string>

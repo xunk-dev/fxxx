@@ -24,9 +24,9 @@ internal fun SavedExportSheet(visible: Boolean, count: Int, choices: SavedExport
     FramesSheet(visible, SavedStrings.exportTitle() + FrameStrings.sep() + FrameStrings.selectedCount(count), onClose) {
         SettingsSection(FrameStrings.groupExport(), caption = com.frameout.core.util.QualityStrings.exportProCaption(), badge = true) {
             SettingsCard {
-                NavRow(FrameIconsExtra.Storage, FrameStrings.exportZip(), hint = SavedStrings.exportZipHint(), onClick = { onClose(); choices.onZip() })
+                NavRow(FrameIconsExtra.Zip, FrameStrings.exportZip(), hint = SavedStrings.exportZipHint(), onClick = { onClose(); choices.onZip() })
                 SettingsDivider()
-                NavRow(FrameIconsExtra.SavedFile, FrameStrings.exportPdf(), hint = SavedStrings.exportPdfHint(), onClick = { onClose(); choices.onPdf() })
+                NavRow(FrameIconsExtra.Pdf, FrameStrings.exportPdf(), hint = SavedStrings.exportPdfHint(), onClick = { onClose(); choices.onPdf() })
                 SettingsDivider()
                 NavRow(FrameIconsExtra.ContactSheet, SavedStrings.exportContact(), hint = SavedStrings.exportContactHint(), onClick = { onClose(); choices.onContact() })
                 SettingsDivider()

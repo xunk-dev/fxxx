@@ -70,7 +70,7 @@ internal fun filterSections(state: ViewerState, tools: ViewerToolEditor): List<P
                 onFraction = tools::setFilterStrength,
                 onStep = { dir -> tools.setFilterStrength((((draft.filterStrength * 100f).roundToInt() + dir) / 100f).coerceIn(0f, 1f)) },
                 enabled = draft.filtered,
-                leading = { RowIcon(FrameIconsExtra.Contrast) }
+                leading = { RowIcon(FrameIconsExtra.Strength) }
             )
             LazyRow(
                 state = listState,

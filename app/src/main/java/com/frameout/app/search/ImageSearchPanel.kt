@@ -23,7 +23,7 @@ import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameTheme
 
 private fun engineIcon(engine: SearchEngine): Int = when (engine.id) {
-    ImageSearchEngines.LENS_ID -> FrameIconsExtra.Fit
+    ImageSearchEngines.LENS_ID -> FrameIconsExtra.Lens
     "yandex_images" -> FrameIcons.Search
     "bing_visual" -> FrameIconsExtra.Zoom
     ImageSearchEngines.CHOOSER_ID -> FrameIcons.Share

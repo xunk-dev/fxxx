@@ -2,6 +2,10 @@ package com.frameout.app.collage
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.runtime.LaunchedEffect
+import com.frameout.core.collage.CollageTemplates
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -37,7 +41,6 @@ import com.frameout.core.util.CollageStrings
 import com.frameout.core.util.EditStrings
 import com.frameout.designsystem.a11y.frameSelectable
 import com.frameout.designsystem.components.FrameSlider
-import com.frameout.designsystem.icons.FrameIcons
 import com.frameout.designsystem.icons.FrameIconsExtra
 import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
@@ -46,17 +49,25 @@ import kotlin.math.roundToInt
 import com.frameout.core.util.safeCoerceIn
 
 @Composable
+internal fun LayoutTab(state: CollageState, listState: LazyListState) {
+    LaunchedEffect(state.template.id) {
+        listState.animateScrollToItem(CollageTemplates.all.indexOfFirst { it.id == state.template.id }.coerceAtLeast(0))
+    }
+    TemplatePicker(state.template, state.frames.size, listState, state::pickTemplate, Modifier.fillMaxWidth(), PaddingValues(vertical = 4.dp))
+}
+
+@Composable
 internal fun FramesTab(state: CollageState) {
     val max = COLLAGE_GAP_MAX
     val spacing = CollageStrings.spacing()
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        GroupIcon(FrameIcons.GridSize)
+        GroupIcon(FrameIconsExtra.Spacing)
         StepButton(FrameIconsExtra.Minus, EditStrings.decrease()) { state.gap = (state.gap - 1).safeCoerceIn(0, max) }
         FrameSlider(state.gap / max.toFloat(), { state.gap = (it * max).roundToInt().safeCoerceIn(0, max) }, 0f, 1f, spacing, Modifier.weight(1f).height(28.dp))
         StepButton(FrameIconsExtra.Plus, EditStrings.increase()) { state.gap = (state.gap + 1).safeCoerceIn(0, max) }
         ValueChip("${state.gap}")
         Spacer(Modifier.width(6.dp))
-        IconToggle(FrameIconsExtra.RectSelect, CollageStrings.corners(), state.rounded) { state.rounded = !state.rounded }
+        IconToggle(FrameIconsExtra.CornerRadius, CollageStrings.corners(), state.rounded) { state.rounded = !state.rounded }
     }
 }
 
@@ -65,7 +76,7 @@ internal fun StyleTab(state: CollageState) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Box(Modifier.weight(1f)) { SwatchRow(state.bgColor, { state.bgColor = it }) { state.pickerOpen = true } }
         Spacer(Modifier.width(6.dp))
-        IconToggle(FrameIconsExtra.Timer, CollageStrings.time(), state.stamps) { state.stamps = !state.stamps }
+        IconToggle(FrameIconsExtra.Timestamp, CollageStrings.time(), state.stamps) { state.stamps = !state.stamps }
     }
 }
 
@@ -73,7 +84,7 @@ internal fun StyleTab(state: CollageState) {
 internal fun CanvasTab(state: CollageState) {
     val aspects = CollageAspect.entries
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        GroupIcon(FrameIcons.Crop)
+        GroupIcon(FrameIconsExtra.AspectRatio)
         ScrollChoiceRow(
             listOf(CollageStrings.aspectAuto()) + aspects.map { CollageStrings.aspectName(it.key) },
             if (state.aspectAuto) 0 else aspects.indexOf(state.aspect) + 1,

@@ -102,20 +102,25 @@ internal fun NeighborStrip(env: TrimEnv, modifier: Modifier = Modifier) {
         enter = expandVertically() + fadeIn(),
         exit = shrinkVertically() + fadeOut()
     ) {
-        val listState = rememberLazyListState()
-        val at = neighbors.indexOfFirst { it.frame == center }
-        LaunchedEffect(at, neighbors.size) { if (at >= 0) listState.animateScrollToItem((at - 2).coerceAtLeast(0)) }
-        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-            LazyRow(
-                modifier = Modifier.fillMaxWidth().height(THUMB_HEIGHT + 12.dp),
-                state = listState,
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                items(neighbors, key = { it.frame }) { n ->
-                    NeighborThumb(n, n.frame == center, best, THUMB_HEIGHT) { controller.seekTo(n.ms) }
-                }
+        NeighborRow(neighbors, center, best) { ms -> controller.seekTo(ms) }
+    }
+}
+
+@Composable
+private fun NeighborRow(neighbors: List<Neighbor>, center: Int, best: Double, onSeek: (Long) -> Unit) {
+    val listState = rememberLazyListState()
+    val at = neighbors.indexOfFirst { it.frame == center }
+    LaunchedEffect(at, neighbors.size) { if (at >= 0) listState.animateScrollToItem((at - 2).coerceAtLeast(0)) }
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        LazyRow(
+            modifier = Modifier.fillMaxWidth().height(THUMB_HEIGHT + 12.dp),
+            state = listState,
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            items(neighbors, key = { it.frame }) { n ->
+                NeighborThumb(n, n.frame == center, best, THUMB_HEIGHT) { onSeek(n.ms) }
             }
         }
     }

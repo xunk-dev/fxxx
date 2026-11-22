@@ -109,19 +109,19 @@ fun FramesToolsSheet(
                 SettingsDivider()
                 NavRow(FrameIconsExtra.Gif, FrameStrings.exportGif(), onClick = then(onGif))
                 SettingsDivider()
-                NavRow(FrameIconsExtra.ImageFormat, FrameStrings.exportPdf(), onClick = then(onPdf))
+                NavRow(FrameIconsExtra.Pdf, FrameStrings.exportPdf(), onClick = then(onPdf))
                 SettingsDivider()
                 onContactSheet?.let {
                     NavRow(FrameIconsExtra.ContactSheet, FrameStrings.exportContact(), hint = FrameStrings.contactHint(), onClick = then(it))
                     SettingsDivider()
                 }
-                NavRow(FrameIconsExtra.Storage, FrameStrings.exportZip(), onClick = then(onZip))
+                NavRow(FrameIconsExtra.Zip, FrameStrings.exportZip(), onClick = then(onZip))
                 SettingsDivider()
-                NavRow(FrameIconsExtra.Storage, FrameStrings.exportCsv(), onClick = then(onCsv))
+                NavRow(FrameIconsExtra.Csv, FrameStrings.exportCsv(), onClick = then(onCsv))
                 SettingsDivider()
                 NavRow(FrameIconsExtra.Warning, FrameStrings.exportEvidence(), onClick = then(onEvidence))
                 SettingsDivider()
-                NavRow(FrameIconsExtra.ImageFormat, QualityStrings.slidesPdf(), hint = QualityStrings.toolsSlidesHint(), onClick = then(onSlides))
+                NavRow(FrameIconsExtra.Pdf, QualityStrings.slidesPdf(), hint = QualityStrings.toolsSlidesHint(), onClick = then(onSlides))
                 onDataset?.let {
                     SettingsDivider()
                     NavRow(FrameIconsExtra.Detect, DatasetStrings.title(), hint = DatasetStrings.rowHint(), onClick = then(it))
@@ -151,7 +151,7 @@ fun FramesFilterSheet(
                 com.frameout.app.billing.ProGroup(locked = com.frameout.app.billing.rememberProLocked()) {
                     NavRow(FrameIcons.StarFilled, QualityStrings.important(), hint = QualityStrings.toolsImportantHint(), selected = state.smartFilter == SmartFilter.Important, pro = true, onClick = { onSmart(SmartFilter.Important) })
                     SettingsDivider()
-                    NavRow(FrameIconsExtra.Blur, QualityStrings.sharpest(), hint = QualityStrings.toolsSharpestHint(), selected = sharpest, pro = true, onClick = then(onSharpest))
+                    NavRow(FrameIconsExtra.Focus, QualityStrings.sharpest(), hint = QualityStrings.toolsSharpestHint(), selected = sharpest, pro = true, onClick = then(onSharpest))
                     SettingsDivider()
                     NavRow(FrameIconsExtra.Duplicate, QualityStrings.duplicates(), hint = QualityStrings.toolsDuplicatesHint(), selected = state.smartFilter == SmartFilter.Duplicates, pro = true, onClick = { onSmart(SmartFilter.Duplicates) })
                     SettingsDivider()

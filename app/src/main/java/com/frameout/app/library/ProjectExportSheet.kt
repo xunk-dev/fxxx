@@ -20,7 +20,7 @@ internal fun ProjectExportSheet(visible: Boolean, count: Int, choices: ProjectEx
             SettingsCard {
                 NavRow(FrameIconsExtra.Folder, FrameStrings.exportBackup(), hint = FrameStrings.exportBackupHint(), onClick = { onClose(); choices.onBackup() })
                 SettingsDivider()
-                NavRow(FrameIconsExtra.Storage, FrameStrings.exportZip(), hint = FrameStrings.exportZipHint(), onClick = { onClose(); choices.onZip() })
+                NavRow(FrameIconsExtra.Zip, FrameStrings.exportZip(), hint = FrameStrings.exportZipHint(), onClick = { onClose(); choices.onZip() })
                 SettingsDivider()
                 NavRow(FrameIconsExtra.Live, FrameStrings.exportVideo(), hint = FrameStrings.exportVideoHint(), onClick = { onClose(); choices.onVideo() })
             }

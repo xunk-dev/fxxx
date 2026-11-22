@@ -27,8 +27,6 @@ internal fun CropBox.toRect(img: Rect) = Rect(
 
 internal fun hitCrop(pos: Offset, img: Rect, box: CropBox, cornerPx: Float, edgePx: Float): CropHandle {
     val c = box.toRect(img)
-    // Inside a small crop the grab zones shrink so the middle stays "move"; outside they stay full
-    // size so even a tiny crop can always be enlarged again.
     val minSide = minOf(c.width, c.height)
     val inside = c.contains(pos)
     val cornerPx = if (inside) minOf(cornerPx, minSide * 0.4f) else cornerPx

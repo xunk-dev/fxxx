@@ -1020,6 +1020,7 @@
     <string name="collage_merge_strength">Blandningsstyrka</string>
     <string name="collage_merge_style_n">Blandningsstil %1$d</string>
     <string name="collage_tab_frames">Ramar</string>
+    <string name="collage_tab_layout">Layouter</string>
     <string name="collage_tab_style">Stil</string>
     <string name="edit_adjust">Justera</string>
     <string name="edit_brightness">Ljusstyrka</string>

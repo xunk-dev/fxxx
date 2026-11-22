@@ -79,34 +79,37 @@ internal fun ShotStrip(env: TrimEnv, modifier: Modifier = Modifier) {
         enter = expandVertically() + fadeIn(),
         exit = shrinkVertically() + fadeOut()
     ) {
-        val listState = rememberLazyListState()
-        LaunchedEffect(shots.size) { if (shots.isNotEmpty()) listState.animateScrollToItem(0) }
-        LazyRow(
-            modifier = Modifier.fillMaxWidth().height(thumbHeight + 10.dp),
-            state = listState,
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            if (shots.size >= 2) item(key = COMPARE_KEY) {
-                CompareToggle(comparing, thumbHeight) { comparing = !comparing; first = null }
+        ShotRow(shots, thumbHeight, comparing, first, { comparing = !comparing; first = null }) { shot ->
+            val picked = first
+            if (!comparing) {
+                env.controller.seekTo(shot.positionMs)
+            } else if (picked == null) {
+                first = shot
+            } else if (picked.id != shot.id) {
+                pair = picked to shot
+                comparing = false
+                first = null
+            } else {
+                first = null
             }
-            items(shots, key = { it.id }) { shot ->
-                ShotThumb(shot, thumbHeight, marked = comparing && first?.id == shot.id) {
-                    val picked = first
-                    if (!comparing) {
-                        env.controller.seekTo(shot.positionMs)
-                    } else if (picked == null) {
-                        first = shot
-                    } else if (picked.id != shot.id) {
-                        pair = picked to shot
-                        comparing = false
-                        first = null
-                    } else {
-                        first = null
-                    }
-                }
-            }
+        }
+    }
+}
+
+@Composable
+private fun ShotRow(shots: List<Shot>, thumbHeight: Dp, comparing: Boolean, first: Shot?, onToggle: () -> Unit, onShot: (Shot) -> Unit) {
+    val listState = rememberLazyListState()
+    LaunchedEffect(shots.size) { if (shots.isNotEmpty()) listState.animateScrollToItem(0) }
+    LazyRow(
+        modifier = Modifier.fillMaxWidth().height(thumbHeight + 10.dp),
+        state = listState,
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (shots.size >= 2) item(key = COMPARE_KEY) { CompareToggle(comparing, thumbHeight, onToggle) }
+        items(shots, key = { it.id }) { shot ->
+            ShotThumb(shot, thumbHeight, marked = comparing && first?.id == shot.id) { onShot(shot) }
         }
     }
 }

@@ -1026,6 +1026,7 @@
     <string name="collage_merge_strength">Сила слияния</string>
     <string name="collage_merge_style_n">Стиль слияния %1$d</string>
     <string name="collage_tab_frames">Рамки</string>
+    <string name="collage_tab_layout">Макеты</string>
     <string name="collage_tab_style">Стиль</string>
     <string name="edit_adjust">Коррекция</string>
     <string name="edit_brightness">Яркость</string>

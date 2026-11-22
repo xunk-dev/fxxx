@@ -106,7 +106,7 @@ fun FramesToolbar(
 
 private fun dockItems(count: Int, deleted: Boolean, selectAll: () -> Unit, share: () -> Unit, save: () -> Unit, collage: () -> Unit, clear: () -> Unit, restore: () -> Unit, more: () -> Unit): List<DockItem> {
     if (count == 0) return emptyList()
-    val second = if (deleted) DockItem("restore", FrameStrings.restore(), FrameIconsExtra.Resume, onClick = restore) else DockItem("save", FrameStrings.save(), FrameIcons.Save, onClick = save)
+    val second = if (deleted) DockItem("restore", FrameStrings.restore(), FrameIconsExtra.Restore, onClick = restore) else DockItem("save", FrameStrings.save(), FrameIcons.Save, onClick = save)
     val third = if (deleted) DockItem("close", FrameStrings.close(), FrameIcons.Close, onClick = clear) else DockItem("collage", FrameStrings.collage(), FrameIcons.Collage, onClick = collage)
     val first = if (deleted) DockItem("select", FrameStrings.selectAll(), FrameIcons.SelectAll, onClick = selectAll) else DockItem("share", FrameStrings.share(), FrameIcons.Share, onClick = share)
     return listOf(first, second, third, DockItem("more", FrameStrings.more(), FrameIconsExtra.More, onClick = more))

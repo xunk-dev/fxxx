@@ -47,7 +47,6 @@ fun FrameSlider(
 ) {
     val latestChange by rememberUpdatedState(onChange)
     val rtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-    // Normalise the range once: NaN/infinite/inverted/zero-width ranges must never crash a gesture.
     val lo = if (min.isFinite()) min else 0f
     val hi = if (max.isFinite() && max >= lo) max else lo
     val span = hi - lo

@@ -1030,6 +1030,7 @@
     <string name="edit_contrast">Contrast</string>
     <string name="edit_saturation">Saturation</string>
     <string name="collage_tab_frames">Frames</string>
+    <string name="collage_tab_layout">Layouts</string>
     <string name="collage_tab_style">Style</string>
     <string name="collage_tab_canvas">Canvas</string>
     <string name="collage_tab_merge">Merge</string>

@@ -32,7 +32,7 @@ internal fun QualitySettings(prefs: AppPrefs, formatKey: String) {
     val shown = quality.coerceIn(MIN_QUALITY, MAX_QUALITY)
     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) { SettingsRowHeader(FrameIconsExtra.Contrast, FrameStrings.qualityTitle()) }
+            Column(Modifier.weight(1f)) { SettingsRowHeader(FrameIconsExtra.Quality, FrameStrings.qualityTitle()) }
             FrameText("$shown%", style = FrameTheme.typography.mono, color = colors.primary)
         }
         FrameSlider(

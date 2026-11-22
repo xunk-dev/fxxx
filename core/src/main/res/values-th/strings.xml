@@ -1017,6 +1017,7 @@
     <string name="collage_merge_strength">ความแรงการผสาน</string>
     <string name="collage_merge_style_n">สไตล์การผสาน %1$d</string>
     <string name="collage_tab_frames">กรอบ</string>
+    <string name="collage_tab_layout">เลย์เอาต์</string>
     <string name="collage_tab_style">สไตล์</string>
     <string name="edit_adjust">ปรับแต่ง</string>
     <string name="edit_brightness">ความสว่าง</string>

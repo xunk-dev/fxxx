@@ -1020,6 +1020,7 @@
     <string name="collage_merge_strength">Lakas ng pagsasama</string>
     <string name="collage_merge_style_n">Estilo ng pagsasama %1$d</string>
     <string name="collage_tab_frames">Mga frame</string>
+    <string name="collage_tab_layout">Layout</string>
     <string name="collage_tab_style">Istilo</string>
     <string name="edit_adjust">Ayusin</string>
     <string name="edit_brightness">Liwanag</string>

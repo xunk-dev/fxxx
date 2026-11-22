@@ -56,7 +56,7 @@ private class AdjustParam(
 private val ADJUST_PARAMS = listOf(
     AdjustParam(FrameIconsExtra.Sun, EditStrings::brightness, AdjustMatrix.BRIGHTNESS_MIN, AdjustMatrix.BRIGHTNESS_MAX, 0f, { it.brightness }, { t, v -> t.setBrightness(v) }),
     AdjustParam(FrameIconsExtra.Contrast, EditStrings::contrast, AdjustMatrix.CONTRAST_MIN, AdjustMatrix.CONTRAST_MAX, 1f, { it.contrast }, { t, v -> t.setContrast(v) }),
-    AdjustParam(FrameIconsExtra.Blur, EditStrings::saturation, AdjustMatrix.SATURATION_MIN, AdjustMatrix.SATURATION_MAX, 1f, { it.saturation }, { t, v -> t.setSaturation(v) })
+    AdjustParam(FrameIconsExtra.Saturation, EditStrings::saturation, AdjustMatrix.SATURATION_MIN, AdjustMatrix.SATURATION_MAX, 1f, { it.saturation }, { t, v -> t.setSaturation(v) })
 )
 
 @Composable
@@ -103,7 +103,7 @@ internal fun drawSections(draft: EditDraft, dims: ImageDims, tools: ViewerToolEd
                 onFraction = { tools.setBrushOpacity(opacityLo + it * (1f - opacityLo)) },
                 onStep = { dir -> tools.setBrushOpacity(((draft.brushOpacity * 100f).roundToInt() + dir * 5) / 100f) },
                 dense = true,
-                leading = { RowIcon(FrameIconsExtra.Contrast) }
+                leading = { RowIcon(FrameIconsExtra.Opacity) }
             )
             SwatchRow(draft.color, tools::setColor, compact = true) { tools.setPickerOpen(true) }
         }
@@ -172,7 +172,7 @@ private fun CoverStrengthRow(draft: EditDraft, tools: ViewerToolEditor) {
         enabled = draft.style != CoverStyle.Solid,
         dense = true,
         showLabel = true,
-        leading = { RowIcon(FrameIconsExtra.Contrast) }
+        leading = { RowIcon(FrameIconsExtra.Strength) }
     )
 }
 

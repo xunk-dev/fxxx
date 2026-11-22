@@ -60,7 +60,7 @@ internal fun featureIcon(feature: ProFeature): Int = when (feature) {
     ProFeature.Collage -> FrameIcons.Collage
     ProFeature.Batch -> FrameIcons.VideoAdd
     ProFeature.Accents -> FrameIconsExtra.Palette
-    ProFeature.AppIcons -> FrameIconsExtra.Cover
+    ProFeature.AppIcons -> FrameIconsExtra.AppIcons
     ProFeature.Insights -> FrameIcons.FaceGood
     ProFeature.General -> FrameIcons.StarFilled
 }

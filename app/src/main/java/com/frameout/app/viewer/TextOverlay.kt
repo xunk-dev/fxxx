@@ -60,10 +60,6 @@ private class ScreenBox(val center: Offset, val corners: List<Offset>, val minSi
 
 private class TextHandle(val at: Offset, val radius: Float)
 
-/**
- * Handle placement that adapts to the text box: on a small box the handle shrinks and slides
- * outward along the diagonal, so it never sits on top of the text it controls.
- */
 private fun textHandle(box: ScreenBox, corner: Offset, density: Float): TextHandle {
     val maxR = TEXT_HANDLE_RADIUS_DP * density
     val r = (box.minSide * 0.3f).coerceIn(minOf(9f * density, maxR), maxR)

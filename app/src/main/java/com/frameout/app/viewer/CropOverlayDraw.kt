@@ -33,7 +33,6 @@ internal fun DrawScope.drawCropFrame(c: Rect, gridAlpha: Float) {
 }
 
 internal fun DrawScope.drawCropHandles(c: Rect, accent: Color, active: CropHandle, scale: Float) {
-    // Everything scales with the crop: on a small crop the brackets must not swallow the picture.
     val minSide = minOf(c.width, c.height)
     val arm = minOf(22.dp.toPx() * scale, minSide * 0.3f).coerceAtLeast(3.dp.toPx())
     val w = (minSide * 0.07f).coerceIn(2.dp.toPx(), 4.dp.toPx())
@@ -50,7 +49,6 @@ internal fun DrawScope.drawCropHandles(c: Rect, accent: Color, active: CropHandl
     bracket(c.topRight, -1f, 1f, active == CropHandle.TopRight)
     bracket(c.bottomLeft, 1f, -1f, active == CropHandle.BottomLeft)
     bracket(c.bottomRight, -1f, -1f, active == CropHandle.BottomRight)
-    // Edge bars live between the corner brackets; they vanish when there is no clear room for them.
     val halfX = minOf(14.dp.toPx() * scale, (c.width / 2f - arm) * 0.85f)
     val halfY = minOf(14.dp.toPx() * scale, (c.height / 2f - arm) * 0.85f)
     val minBar = 3.dp.toPx()

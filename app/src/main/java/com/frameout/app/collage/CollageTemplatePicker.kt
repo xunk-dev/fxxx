@@ -53,14 +53,15 @@ fun TemplatePicker(
     frameCount: Int,
     listState: LazyListState,
     onSelect: (CollageTemplate) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 4.dp)
 ) {
     val gate = rememberProGate()
     LazyRow(
         state = listState,
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp)
+        contentPadding = contentPadding
     ) {
         items(CollageTemplates.all, key = { it.id }) { t ->
             val tier = if (ProCatalog.collageIsFree(t.id)) ProTier.Free else ProTier.Ad

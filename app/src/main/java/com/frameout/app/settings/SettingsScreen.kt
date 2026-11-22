@@ -165,7 +165,7 @@ private fun ExportSettings(prefs: AppPrefs, folderText: String, exportFolderText
                 onClick = onFolder
             )
             SettingsDivider()
-            ToggleRow(FrameIcons.Save, FrameStrings.autoSave(), FrameStrings.autoSaveHint(), v.autoSave, hintLines = 1) { prefs.setAutoSave(it) }
+            ToggleRow(FrameIconsExtra.AutoSave, FrameStrings.autoSave(), FrameStrings.autoSaveHint(), v.autoSave, hintLines = 1) { prefs.setAutoSave(it) }
         }
     }
 }

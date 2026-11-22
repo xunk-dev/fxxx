@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -22,7 +21,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.frameout.app.FrameOutApp
 import com.frameout.app.PreferredFrameTheme
-import com.frameout.core.collage.CollageTemplates
 import com.frameout.core.storage.SaveFailure
 import com.frameout.core.util.CollageStrings
 import com.frameout.core.util.FrameStrings
@@ -115,10 +113,6 @@ internal fun saveCollage(state: CollageState, app: FrameOutApp, scope: kotlinx.c
 
 @Composable
 private fun CollageBody(state: CollageState, onBack: () -> Unit, onSave: () -> Unit) {
-    val listState = rememberLazyListState()
-    LaunchedEffect(state.template.id) {
-        listState.animateScrollToItem(CollageTemplates.all.indexOfFirst { it.id == state.template.id }.coerceAtLeast(0))
-    }
     Column(Modifier.fillMaxSize().navigationBarsPadding()) {
         val canSave = state.ready && state.frames.isNotEmpty() && !state.saving
         FrameTopBar(
@@ -127,7 +121,6 @@ private fun CollageBody(state: CollageState, onBack: () -> Unit, onSave: () -> U
             actionLabel = CollageStrings.saveCollage(),
             onAction = if (canSave) onSave else null
         )
-        TemplatePicker(state.template, state.frames.size, listState, state::pickTemplate)
         PreviewArea(state, Modifier.weight(1f).fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp))
         PreviewHint(state)
         CollagePanel(state, Modifier.padding(horizontal = 12.dp, vertical = 6.dp))

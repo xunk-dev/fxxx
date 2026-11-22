@@ -61,7 +61,7 @@ internal fun shapeSections(draft: EditDraft, dims: ImageDims, tools: ViewerToolE
             ShapePalette(draft, tools)
             SwatchRow(draft.color, tools::setColor, compact = true) { tools.setPickerOpen(true) }
         },
-        PanelSection(FrameIconsExtra.Fit, "${EditStrings.size()} · ${EditStrings.opacity()}") {
+        PanelSection(FrameIconsExtra.Size, "${EditStrings.size()} · ${EditStrings.opacity()}") {
             CompactSliderRow(
                 label = EditStrings.size(),
                 valueText = "${BrushScale.pixels(draft.shapeWidth, dims.w, dims.h)} px",
@@ -78,7 +78,7 @@ internal fun shapeSections(draft: EditDraft, dims: ImageDims, tools: ViewerToolE
                 onFraction = { shapes.setOpacity(opacityLo + it * (1f - opacityLo)) },
                 onStep = { dir -> shapes.setOpacity(((opacity * 100f).roundToInt() + dir * OPACITY_STEP) / 100f) },
                 dense = true,
-                leading = { RowIcon(FrameIconsExtra.Contrast) }
+                leading = { RowIcon(FrameIconsExtra.Opacity) }
             )
         }
     )
@@ -139,7 +139,7 @@ private fun FillToggle(draft: EditDraft, tools: ViewerToolEditor) {
     val fill = draft.shapeFill
     val (icon, label) = when (fill) {
         ShapeFill.None -> FrameIconsExtra.RectSelect to ShapeStrings.fillNone()
-        ShapeFill.Soft -> FrameIconsExtra.Contrast to ShapeStrings.fillSoft()
+        ShapeFill.Soft -> FrameIconsExtra.Opacity to ShapeStrings.fillSoft()
         ShapeFill.Solid -> FrameIconsExtra.Solid to EditStrings.solid()
     }
     val next = when (fill) {

@@ -1026,6 +1026,7 @@
     <string name="collage_merge_strength">Сила злиття</string>
     <string name="collage_merge_style_n">Стиль злиття %1$d</string>
     <string name="collage_tab_frames">Рамки</string>
+    <string name="collage_tab_layout">Макети</string>
     <string name="collage_tab_style">Стиль</string>
     <string name="edit_adjust">Коригування</string>
     <string name="edit_brightness">Яскравість</string>

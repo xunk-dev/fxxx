@@ -1020,6 +1020,7 @@
     <string name="collage_merge_strength">Blandingsstyrke</string>
     <string name="collage_merge_style_n">Blandingsstil %1$d</string>
     <string name="collage_tab_frames">Rammer</string>
+    <string name="collage_tab_layout">Oppsett</string>
     <string name="collage_tab_style">Stil</string>
     <string name="edit_adjust">Juster</string>
     <string name="edit_brightness">Lysstyrke</string>

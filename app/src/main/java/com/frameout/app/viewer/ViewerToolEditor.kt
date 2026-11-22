@@ -35,9 +35,9 @@ internal class ViewerToolEditor(
     private var raw: Bitmap? = null
     private var retired: Bitmap? = null
     private var generation = 0L
+    private var requested = 0L; private var shownSeq = 0L
     private var closeToken = 0L
-    internal var viewW = 0f
-    internal var viewH = 0f
+    internal var viewW = 0f; internal var viewH = 0f
 
     fun open(tool: EditTool = EditTool.Adjust, seeds: List<com.frameout.core.edit.EditMark> = emptyList()) {
         if (state.value.toolBusy) return
@@ -257,9 +257,7 @@ internal class ViewerToolEditor(
     }
 
     internal fun update(op: (EditDraft) -> EditDraft) = state.update { if (it.toolBusy) it else it.copy(draft = op(it.draft)) }
-
     private val renderLock = Mutex()
-
     private fun renderFailed(error: Throwable, token: Long, base: Bitmap) {
         logFailure("ViewerToolRender", error)
         if (token != generation || raw !== base) return
@@ -268,14 +266,14 @@ internal class ViewerToolEditor(
 
     internal fun rerender() {
         val base = raw ?: return
-        val token = ++generation
+        val token = generation; val seq = ++requested
         val edit = state.value.canvasEdit()
         val tinted = !state.value.tool.isColorTool
         val shapesBaked = !state.value.shapesLive()
         scope.launch {
             val shown = try {
                 renderLock.withLock {
-                    if (token != generation || raw !== base) return@launch
+                    if (token != generation || raw !== base || seq < requested) return@launch
                     withContext(Dispatchers.Default) { BitmapEditRenderer.renderCopy(base, edit) }
                 }
             } catch (e: CancellationException) {
@@ -287,10 +285,11 @@ internal class ViewerToolEditor(
                 renderFailed(e, token, base)
                 return@launch
             }
-            if (token != generation || raw !== base) {
+            if (token != generation || raw !== base || seq < shownSeq) {
                 shown.recycle()
                 return@launch
             }
+            shownSeq = seq
             val old = state.value.bitmap
             state.update { it.copy(bitmap = shown, bitmapTinted = tinted, bitmapShapesBaked = shapesBaked) }
             retired?.takeUnless { it.isRecycled }?.recycle()

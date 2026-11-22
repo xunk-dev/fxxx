@@ -3,6 +3,7 @@ package com.frameout.core.edit
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
@@ -43,12 +44,16 @@ internal object CoverPainter {
             strokeWidth = (mark.width * min(w, h)).coerceAtLeast(2f)
         }
         if (mark.points.isEmpty()) return
-        var effect: Bitmap? = null
+        var small: Bitmap? = null
         if (mark.style == CoverStyle.Solid) {
             paint.color = Color.BLACK
         } else {
-            effect = fullSizeEffect(bitmap, cells(mark.style, mark.strength), mark.style == CoverStyle.Blur, referenceMin)
-            paint.shader = BitmapShader(effect, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+            val smooth = mark.style == CoverStyle.Blur
+            small = reduced(bitmap, cells(mark.style, mark.strength), referenceMin)
+            val shader = BitmapShader(small, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+            shader.setLocalMatrix(Matrix().apply { setScale(w / small.width, h / small.height) })
+            paint.shader = shader
+            paint.isFilterBitmap = smooth
         }
         val path = Path()
         val first = mark.points.firstOrNull() ?: return
@@ -57,18 +62,15 @@ internal object CoverPainter {
         mark.points.drop(1).forEach { path.lineTo(it.x * w, it.y * h) }
         if (mark.filled) path.close()
         canvas.drawPath(path, paint)
-        effect?.recycle()
+        if (small != null && small !== bitmap) small.recycle()
     }
 
-    private fun fullSizeEffect(bitmap: Bitmap, cells: Float, smooth: Boolean, referenceMin: Float): Bitmap {
+    private fun reduced(bitmap: Bitmap, cells: Float, referenceMin: Float): Bitmap {
         val reference = if (referenceMin > 0f) referenceMin else min(bitmap.width, bitmap.height).toFloat()
         val factor = min(1f, cells / reference)
         val tw = (bitmap.width * factor).roundToInt().coerceAtLeast(1)
         val th = (bitmap.height * factor).roundToInt().coerceAtLeast(1)
-        val small = shrink(bitmap, tw, th)
-        val full = Bitmap.createScaledBitmap(small, bitmap.width, bitmap.height, smooth)
-        if (small !== bitmap && small !== full) small.recycle()
-        return full
+        return shrink(bitmap, tw, th)
     }
 
     private fun pixelRect(bitmap: Bitmap, mark: CoverMark): Rect? {

@@ -186,7 +186,7 @@ internal fun FrameIsland(
         }
         val initialIds = remember { visual.map { it.id }.toSet() }
         val ids = visual.map { it.id }
-        val positions = visual.mapIndexed { v, it -> Triple(it, slotX(v), slotTarget) }
+        val positions = visual.mapIndexed { v, item -> Triple(item, slotX(v), slotTarget) }
         val lastPositions = remember { arrayOfNulls<List<Triple<DockItem, Dp, Dp>>>(1) }
         val ghosts = remember(ids) { lastPositions[0].orEmpty().filter { it.first.id !in ids } }
         SideEffect { lastPositions[0] = positions }

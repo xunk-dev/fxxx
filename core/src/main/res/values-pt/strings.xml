@@ -1023,6 +1023,7 @@
     <string name="collage_merge_strength">Intensidade da mescla</string>
     <string name="collage_merge_style_n">Estilo de mescla %1$d</string>
     <string name="collage_tab_frames">Molduras</string>
+    <string name="collage_tab_layout">Layouts</string>
     <string name="collage_tab_style">Estilo</string>
     <string name="edit_adjust">Ajustar</string>
     <string name="edit_brightness">Brilho</string>

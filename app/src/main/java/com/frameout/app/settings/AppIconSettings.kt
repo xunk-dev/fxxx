@@ -35,7 +35,7 @@ internal fun AppIconSettings(prefs: AppPrefs, follows: Boolean, accent: String, 
     val preview = remember(key) { IconRaster.render(context, IconRaster.iconRes(context, key), 512)?.asImageBitmap() }
 
     ToggleRow(
-        FrameIconsExtra.Album,
+        FrameIconsExtra.AppIcons,
         FrameStrings.iconFollowsTheme(),
         FrameStrings.iconFollowsThemeHint(),
         follows,

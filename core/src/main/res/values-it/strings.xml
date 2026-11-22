@@ -1023,6 +1023,7 @@
     <string name="collage_merge_strength">Intensità fusione</string>
     <string name="collage_merge_style_n">Stile fusione %1$d</string>
     <string name="collage_tab_frames">Cornici</string>
+    <string name="collage_tab_layout">Layout</string>
     <string name="collage_tab_style">Stile</string>
     <string name="edit_adjust">Regola</string>
     <string name="edit_brightness">Luminosità</string>

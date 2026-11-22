@@ -1020,6 +1020,7 @@
     <string name="collage_merge_strength">मर्ज की ताकत</string>
     <string name="collage_merge_style_n">मर्ज स्टाइल %1$d</string>
     <string name="collage_tab_frames">फ़्रेम</string>
+    <string name="collage_tab_layout">लेआउट</string>
     <string name="collage_tab_style">शैली</string>
     <string name="edit_adjust">समायोजित करें</string>
     <string name="edit_brightness">चमक</string>

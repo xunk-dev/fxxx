@@ -1042,6 +1042,7 @@
     <string name="edit_contrast">التباين</string>
     <string name="edit_saturation">التشبع</string>
     <string name="collage_tab_frames">الإطارات</string>
+    <string name="collage_tab_layout">التخطيطات</string>
     <string name="collage_tab_style">النمط</string>
     <string name="collage_tab_canvas">اللوحة</string>
     <string name="collage_tab_merge">دمج</string>

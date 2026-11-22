@@ -87,7 +87,7 @@ internal fun textSections(draft: EditDraft, dims: ImageDims, tools: ViewerToolEd
             TextColorRow(mark, tools)
             TextBackgroundRow(mark, tools)
         },
-        PanelSection(FrameIconsExtra.Blur, "${EditStrings.shadow()} · ${EditStrings.outline()}", modified = mark.outline > 0f || mark.opacity < 1f) {
+        PanelSection(FrameIconsExtra.Shadow, "${EditStrings.shadow()} · ${EditStrings.outline()}", modified = mark.outline > 0f || mark.opacity < 1f) {
             TextEffectsGrid(mark, dims, tools)
         }
     )
@@ -99,23 +99,23 @@ private fun TextEffectsGrid(mark: TextMark, dims: ImageDims, tools: ViewerToolEd
     val sizeHi = TextMark.MAX_SIZE
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         SliderCell(
-            FrameIconsExtra.Blur, EditStrings.shadow(), "${(mark.shadow * 100f).roundToInt()}%", mark.shadow,
+            FrameIconsExtra.Shadow, EditStrings.shadow(), "${(mark.shadow * 100f).roundToInt()}%", mark.shadow,
             { f -> tools.editText { it.copy(shadow = f) } }, Modifier.weight(1f)
         )
         SliderCell(
-            FrameIconsExtra.Contrast, EditStrings.opacity(), "${(mark.opacity * 100f).roundToInt()}%",
+            FrameIconsExtra.Opacity, EditStrings.opacity(), "${(mark.opacity * 100f).roundToInt()}%",
             ((mark.opacity - MIN_OPACITY) / (1f - MIN_OPACITY)).coerceIn(0f, 1f),
             { f -> tools.editText { it.copy(opacity = MIN_OPACITY + f * (1f - MIN_OPACITY)) } }, Modifier.weight(1f)
         )
     }
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         SliderCell(
-            FrameIconsExtra.RectSelect, EditStrings.outline(), "${(mark.outline * 100f).roundToInt()}%", mark.outline,
+            FrameIconsExtra.Outline, EditStrings.outline(), "${(mark.outline * 100f).roundToInt()}%", mark.outline,
             { f -> tools.editText { it.copy(outline = f) } }, Modifier.weight(1f),
             leading = { ColorDot(mark.outlineColor, EditStrings.outline()) { tools.openPicker(ColorTarget.TextOutline) } }
         )
         SliderCell(
-            FrameIconsExtra.Fit, EditStrings.size(), "${BrushScale.pixels(mark.size, dims.w, dims.h)} px", BrushScale.toFraction(mark.size, sizeLo, sizeHi),
+            FrameIconsExtra.Size, EditStrings.size(), "${BrushScale.pixels(mark.size, dims.w, dims.h)} px", BrushScale.toFraction(mark.size, sizeLo, sizeHi),
             { f -> tools.editText { it.copy(size = BrushScale.fromFraction(f, sizeLo, sizeHi)) } }, Modifier.weight(1f)
         )
     }

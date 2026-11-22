@@ -1020,6 +1020,7 @@
     <string name="collage_merge_strength">Mischstärke</string>
     <string name="collage_merge_style_n">Mischstil %1$d</string>
     <string name="collage_tab_frames">Rahmen</string>
+    <string name="collage_tab_layout">Layouts</string>
     <string name="collage_tab_style">Stil</string>
     <string name="edit_adjust">Anpassen</string>
     <string name="edit_brightness">Helligkeit</string>

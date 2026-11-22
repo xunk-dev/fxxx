@@ -39,6 +39,7 @@ object CollageStrings {
     fun pickFrame() = s(R.string.collage_pick_frame)
     fun hintAdjust() = s(R.string.collage_hint_adjust)
     fun tabFrames() = s(R.string.collage_tab_frames)
+    fun tabLayout() = s(R.string.collage_tab_layout)
     fun tabStyle() = s(R.string.collage_tab_style)
     fun tabCanvas() = s(R.string.collage_tab_canvas)
     fun tabMerge() = s(R.string.collage_tab_merge)

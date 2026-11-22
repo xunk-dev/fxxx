@@ -42,8 +42,8 @@ internal enum class ExportStyle(val key: String, val icon: Int) {
     Live("live", FrameIconsExtra.Live),
     Gif("gif", FrameIconsExtra.Gif),
     Webp("webp", FrameIconsExtra.Webp),
-    Zip("zip", FrameIconsExtra.Storage),
-    Pdf("pdf", FrameIconsExtra.SavedFile),
+    Zip("zip", FrameIconsExtra.Zip),
+    Pdf("pdf", FrameIconsExtra.Pdf),
     Contact("contact", FrameIconsExtra.ContactSheet),
     Folder("folder", FrameIconsExtra.Folder);
 

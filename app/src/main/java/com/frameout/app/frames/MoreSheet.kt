@@ -60,7 +60,7 @@ internal fun moreActions(
     onEmptyTrash: (() -> Unit)? = null
 ): List<MoreAction> {
     if (deletedView) return buildList {
-        add(MoreAction(MoreGroup.Edit, FrameStrings.restore(), FrameIconsExtra.Resume, onRestore))
+        add(MoreAction(MoreGroup.Edit, FrameStrings.restore(), FrameIconsExtra.Restore, onRestore))
         add(MoreAction(MoreGroup.Danger, FrameStrings.deletePermanently(), FrameIcons.Trash, onDelete))
         onEmptyTrash?.let { add(MoreAction(MoreGroup.Danger, FrameStrings.emptyTrash(), FrameIcons.Trash, it)) }
     }
@@ -72,7 +72,7 @@ internal fun moreActions(
         add(MoreAction(MoreGroup.Edit, FrameStrings.undo(), FrameIconsExtra.Undo, onUndo))
         add(MoreAction(MoreGroup.Edit, FrameStrings.redo(), FrameIconsExtra.Redo, onRedo))
         add(MoreAction(MoreGroup.Edit, FrameStrings.favorite(), FrameIcons.Star, onFavorite))
-        add(MoreAction(MoreGroup.Edit, FrameStrings.compare(), FrameIconsExtra.Cover, onCompare))
+        add(MoreAction(MoreGroup.Edit, FrameStrings.compare(), FrameIconsExtra.Compare, onCompare))
         if (canSearch) add(MoreAction(MoreGroup.Share, SearchStrings.action(), FrameIcons.Search, onSearch))
         add(MoreAction(MoreGroup.Danger, FrameStrings.delete(), FrameIcons.Trash, onDelete))
     }

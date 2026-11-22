@@ -1,10 +1,7 @@
 package com.frameout.designsystem.util
 
-/**
- * coerceIn that never throws. Kotlin's coerceIn throws IllegalArgumentException when
- * max < min, which happens easily with float rounding (e.g. min = 2.98e-8, max = 0f).
- * When the range is inverted or NaN we collapse it to a single point instead of crashing.
- */
+import androidx.compose.ui.unit.Dp
+
 fun Float.safeCoerceIn(min: Float, max: Float): Float {
     if (this.isNaN()) return if (min.isNaN()) 0f else min
     if (min.isNaN() || max.isNaN()) return this
@@ -24,3 +21,6 @@ fun Int.safeCoerceIn(min: Int, max: Int): Int =
 
 fun Long.safeCoerceIn(min: Long, max: Long): Long =
     if (min > max) min else if (this < min) min else if (this > max) max else this
+
+fun Dp.safeCoerceIn(min: Dp, max: Dp): Dp =
+    Dp(value.safeCoerceIn(min.value, max.value))

@@ -32,7 +32,7 @@ internal fun CodecPackLicenseSection() {
         value = withContext(Dispatchers.IO) { CodecPackLicenses.read(context) }
     }
     val current = info ?: return
-    AboutCard(ModeStrings.aboutCodecTitle(), ModeStrings.aboutCodecBody(), com.frameout.designsystem.icons.FrameIconsExtra.Frames, FrameTheme.colors.accentA)
+    AboutCard(ModeStrings.aboutCodecTitle(), ModeStrings.aboutCodecBody(), com.frameout.designsystem.icons.FrameIconsExtra.Package, FrameTheme.colors.accentA)
     if (!com.frameout.codecpack.CodecPack.isBundled(context)) BuildLine(current)
     current.licenses.forEach { LicenseCard(it) }
 }

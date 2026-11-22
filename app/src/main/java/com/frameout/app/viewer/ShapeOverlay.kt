@@ -82,7 +82,6 @@ private suspend fun AwaitPointerEventScope.shapeGesture(latest: State<ShapeOverl
     val grab = pickGrab(latest.value, start, density)
     if (grab is Grab.Move) latest.value.tools.shapes.select(grab.index)
     if (grab is Grab.Handle) latest.value.tools.shapes.select(grab.index)
-    // Keep the distance between finger and handle so the handle never jumps under the finger.
     val handleOffset = (grab as? Grab.Handle)?.let { g ->
         val input = latest.value
         val mark = input.draft.marks.getOrNull(g.index) as? ShapeMark

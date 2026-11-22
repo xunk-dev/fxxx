@@ -27,14 +27,14 @@ internal fun TrimDock(
 ) {
     FrameDock(
         items = listOf(
-            DockItem("autosave", FrameStrings.autoSave(), if (autoSave) FrameIcons.Check else FrameIconsExtra.Keyframe, selected = autoSave, onClick = onToggleAutoSave),
+            DockItem("autosave", FrameStrings.autoSave(), FrameIconsExtra.AutoSave, selected = autoSave, onClick = onToggleAutoSave),
             DockItem("previous", FrameStrings.stepBack(), FrameIconsExtra.StepBack, repeat = true, onRepeat = { n -> scope.launch { controller.stepFrame(false, n) } }, onClick = { scope.launch { controller.stepFrame(false) } }),
             DockItem("next", FrameStrings.stepForward(), FrameIconsExtra.StepForward, repeat = true, onRepeat = { n -> scope.launch { controller.stepFrame(true, n) } }, onClick = { scope.launch { controller.stepFrame(true) } }),
             DockItem("clip", ClipStrings.saveClip(), FrameIconsExtra.Clip, onClick = onClip),
             DockItem("extract", FrameStrings.extract(), FrameIconsExtra.Live, onClick = { onExtract(uri, range, autoSave) })
         ),
         fab = {
-            com.frameout.designsystem.dock.FrameFab(FrameIcons.Save, FrameStrings.captureFrame(), {
+            com.frameout.designsystem.dock.FrameFab(FrameIconsExtra.Snapshot, FrameStrings.captureFrame(), {
                 scope.launch { onStatus(captureFrameToGallery(controller, saver, prefs, uri)) }
             })
         },
