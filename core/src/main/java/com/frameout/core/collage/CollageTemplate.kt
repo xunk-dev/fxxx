@@ -1,6 +1,8 @@
 package com.frameout.core.collage
 
 import kotlin.math.abs
+import kotlin.math.ceil
+import kotlin.math.sqrt
 import com.frameout.core.util.safeCoerceIn
 
 data class CellRect(
@@ -79,7 +81,24 @@ fun CollageTemplate.compacted(filled: Int): CollageTemplate {
             }
         }
     }
+    if (slots.any { it.empty }) return copy(cells = evenCells(n))
     return copy(cells = slots.map { it.rect })
+}
+
+/** Fallback for layouts (e.g. pinwheels) whose empty cells cannot be merged into a neighbour: n equal rows-of-cells that tile the canvas. */
+private fun evenCells(n: Int): List<CellRect> {
+    val perRow = ceil(sqrt(n.toDouble())).toInt().coerceAtLeast(1)
+    val rowCount = (n + perRow - 1) / perRow
+    val base = n / rowCount
+    val extra = n % rowCount
+    val out = ArrayList<CellRect>(n)
+    val h = 1f / rowCount
+    for (r in 0 until rowCount) {
+        val count = base + if (r < extra) 1 else 0
+        val w = 1f / count
+        for (c in 0 until count) out.add(CellRect(c * w, r * h, w, h))
+    }
+    return out
 }
 
 const val COLLAGE_GAP_MAX = 80
