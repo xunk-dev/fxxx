@@ -54,7 +54,7 @@ internal enum class Gesture { Pending, Drag, Pinch }
 internal class TimelinePaint(val primary: Color, val onPrimary: Color)
 
 @Composable
-fun TimelineBar(
+internal fun TimelineBar(
     durationMs: Long,
     positionMs: Long,
     range: TrimRange,

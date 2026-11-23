@@ -233,3 +233,33 @@ internal fun BoxScope.FrameScrubHint(state: FrameScrubState, atTop: Boolean = fa
         }
     }
 }
+
+@Composable
+internal fun BoxScope.FrameScrubBadge(state: FrameScrubState, @Suppress("UNUSED_PARAMETER") controller: PlayerController) {
+    val colors = FrameTheme.colors
+    AnimatedVisibility(
+        state.active,
+        Modifier.align(Alignment.TopCenter).padding(top = 10.dp),
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        val frames = state.frames
+        val label = when {
+            frames > 0 -> "+$frames"
+            frames < 0 -> "\u2212${-frames}"
+            else -> "0"
+        }
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+            FrameText(
+                label,
+                style = FrameTheme.typography.title,
+                color = colors.primary,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                modifier = Modifier
+                    .frameControl(FrameShapes.pill, selected = true, glowAlpha = 0.4f)
+                    .padding(horizontal = 14.dp, vertical = 6.dp)
+            )
+        }
+    }
+}
