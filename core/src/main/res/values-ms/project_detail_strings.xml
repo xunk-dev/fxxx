@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Butiran</string>
+    <string name="detail_date">Tarikh ditambah</string>
+    <string name="detail_duration">Tempoh</string>
+    <string name="detail_quality">Kualiti</string>
+    <string name="detail_codec">Kodek</string>
+    <string name="detail_fps">Kadar bingkai</string>
+    <string name="detail_status">Status</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Доступ не предоставлен</string>
+    <string name="perm_toast_forever">Доступ запрещён. Откройте Настройки</string>
+    <string name="perm_toast_granted">Доступ разрешён. Загружаем вашу библиотеку…</string>
+</resources>

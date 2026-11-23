@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Berechtigung nicht erteilt</string>
+    <string name="perm_toast_forever">Zugriff verweigert. Einstellungen öffnen</string>
+    <string name="perm_toast_granted">Zugriff erteilt. Deine Mediathek wird geladen …</string>
+</resources>

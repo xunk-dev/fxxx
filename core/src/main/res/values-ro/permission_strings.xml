@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Permisiune neacordată</string>
+    <string name="perm_toast_forever">Permisiune refuzată. Deschide Setări</string>
+    <string name="perm_toast_granted">Acces permis. Se încarcă biblioteca ta…</string>
+</resources>

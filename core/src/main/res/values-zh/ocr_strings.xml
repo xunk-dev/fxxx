@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">阿拉伯语文字</string>
+    <string name="ocr_ara_downloading">正在下载阿拉伯语文字模型… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">正在等待 Wi-Fi 以下载阿拉伯语文字模型</string>
+    <string name="ocr_ara_confirm">Google Play 需要你的批准才能下载阿拉伯语文字模型</string>
+    <string name="ocr_ara_failed">无法下载阿拉伯语文字模型</string>
+    <string name="ocr_ara_unavailable">下载阿拉伯语文字模型需要 Google Play。没有它就无法识别阿拉伯语文字。</string>
+    <string name="ocr_text_title">拉丁文字</string>
+    <string name="ocr_text_pending">文字模型尚未就绪。请检查网络连接后重试。</string>
+    <string name="ocr_text_no_play">缺少 Google Play 服务或已将其停用，因此无法识别拉丁文字和代码。</string>
+    <string name="ocr_text_outdated">请更新 Google Play 服务，以识别拉丁文字和代码。</string>
+</resources>

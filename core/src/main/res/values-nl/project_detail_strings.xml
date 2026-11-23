@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Details</string>
+    <string name="detail_date">Toegevoegd op</string>
+    <string name="detail_duration">Duur</string>
+    <string name="detail_quality">Kwaliteit</string>
+    <string name="detail_codec">Codec</string>
+    <string name="detail_fps">Framerate</string>
+    <string name="detail_status">Status</string>
+</resources>

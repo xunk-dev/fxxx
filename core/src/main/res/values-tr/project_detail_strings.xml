@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">Ayrıntılar</string>
+    <string name="detail_date">Eklenme tarihi</string>
+    <string name="detail_duration">Süre</string>
+    <string name="detail_quality">Kalite</string>
+    <string name="detail_codec">Codec</string>
+    <string name="detail_fps">Kare hızı</string>
+    <string name="detail_status">Durum</string>
+</resources>

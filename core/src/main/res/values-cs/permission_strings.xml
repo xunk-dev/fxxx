@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Oprávnění nebylo uděleno</string>
+    <string name="perm_toast_forever">Oprávnění zamítnuto. Otevřete Nastavení</string>
+    <string name="perm_toast_granted">Přístup povolen. Načítám tvou knihovnu…</string>
+</resources>

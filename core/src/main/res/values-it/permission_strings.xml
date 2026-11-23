@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Permesso non concesso</string>
+    <string name="perm_toast_forever">Permesso negato. Apri Impostazioni</string>
+    <string name="perm_toast_granted">Accesso consentito. Caricamento della libreria…</string>
+</resources>

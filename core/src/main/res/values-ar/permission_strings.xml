@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">لم يُمنح الإذن</string>
+    <string name="perm_toast_forever">تم رفض الإذن. افتح الإعدادات</string>
+    <string name="perm_toast_granted">تم منح الوصول. جارٍ تحميل مكتبتك…</string>
+</resources>

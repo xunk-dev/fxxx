@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">권한이 허용되지 않았어요</string>
+    <string name="perm_toast_forever">권한 거부됨. 설정을 여세요</string>
+    <string name="perm_toast_granted">접근이 허용되었어요. 라이브러리를 불러오는 중…</string>
+</resources>

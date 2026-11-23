@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_toast_once">Kebenaran tidak diberikan</string>
+    <string name="perm_toast_forever">Kebenaran ditolak. Buka Tetapan</string>
+    <string name="perm_toast_granted">Akses dibenarkan. Memuatkan pustaka anda…</string>
+</resources>

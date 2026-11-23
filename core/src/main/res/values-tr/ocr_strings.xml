@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ocr_ara_title">Arapça metin</string>
+    <string name="ocr_ara_downloading">Arapça metin modeli indiriliyor… %1$d%%</string>
+    <string name="ocr_ara_waiting_wifi">Arapça metin modelini indirmek için Wi-Fi bekleniyor</string>
+    <string name="ocr_ara_confirm">Google Play, Arapça metin modelini indirmek için onayınıza ihtiyaç duyuyor</string>
+    <string name="ocr_ara_failed">Arapça metin modeli indirilemedi</string>
+    <string name="ocr_ara_unavailable">Arapça metin modelini indirmek için Google Play gerekir. Bu olmadan Arapça metin okunamaz.</string>
+    <string name="ocr_text_title">Latin metin</string>
+    <string name="ocr_text_pending">Metin modeli henüz hazır değil. Bağlantınızı kontrol edip tekrar deneyin.</string>
+    <string name="ocr_text_no_play">Google Play hizmetleri eksik veya kapalı, bu yüzden Latin metin ve kodlar okunamıyor.</string>
+    <string name="ocr_text_outdated">Latin metin ve kodları okumak için Google Play hizmetlerini güncelleyin.</string>
+</resources>

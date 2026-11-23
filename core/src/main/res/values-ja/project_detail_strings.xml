@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="project_details">詳細</string>
+    <string name="detail_date">追加日</string>
+    <string name="detail_duration">再生時間</string>
+    <string name="detail_quality">画質</string>
+    <string name="detail_codec">コーデック</string>
+    <string name="detail_fps">フレームレート</string>
+    <string name="detail_status">状態</string>
+</resources>
