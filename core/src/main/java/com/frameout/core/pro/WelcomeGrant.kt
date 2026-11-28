@@ -90,6 +90,11 @@ class WelcomeGrant(private val store: GrantStore, private val persistent: Boolea
         return old
     }
 
+    fun resolveOnboarding(picked: String?, spent: Boolean) {
+        if (decided) return
+        if (picked == null || ProCatalog.accentIsFree(picked)) defer() else commit(picked, spent)
+    }
+
     fun adoptExisting(onboardingDone: Boolean, current: String) {
         if (decided || !onboardingDone) return
         commit(if (current in LEGACY_FREE) current else FALLBACK)

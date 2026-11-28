@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Walang nahanap na aktibong pagbili.</string>
     <string name="pro_billing_owned">Pagmamay-ari mo na ang Pro. I-tap ang Ibalik ang mga pagbili.</string>
     <string name="pro_billing_network">Walang koneksyon. Tingnan ang internet at subukan ulit.</string>
+    <string name="pro_billing_no_offering">Hindi available ang mga plano ngayon. Subukan muli mamaya.</string>
     <string name="pro_processing">Sandali lang…</string>
     <string name="pro_retry">Subukan ulit</string>
     <string name="pro_feature_smart">Smart extraction: laktawan ang malabo at duplicate na frame, mga tao lang, pagbabago ng eksena, mga slide, pinakamalinaw na frame</string>

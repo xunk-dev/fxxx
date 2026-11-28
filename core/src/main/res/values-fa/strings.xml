@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">خرید فعالی پیدا نشد.</string>
     <string name="pro_billing_owned">شما از قبل Pro دارید. «بازیابی خریدها» را بزنید.</string>
     <string name="pro_billing_network">اتصال برقرار نیست. اینترنت را بررسی و دوباره تلاش کنید.</string>
+    <string name="pro_billing_no_offering">طرح‌ها در حال حاضر در دسترس نیستند. بعداً دوباره امتحان کنید.</string>
     <string name="pro_processing">لطفاً صبر کنید…</string>
     <string name="pro_retry">تلاش دوباره</string>
     <string name="pro_feature_smart">استخراج هوشمند: رد کردن فریم‌های محو و تکراری، فقط افراد، تغییر صحنه، اسلایدها، واضح‌ترین فریم</string>

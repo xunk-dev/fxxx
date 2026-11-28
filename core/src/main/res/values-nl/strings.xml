@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Geen actieve aankoop gevonden.</string>
     <string name="pro_billing_owned">Je hebt Pro al. Tik op Aankopen herstellen.</string>
     <string name="pro_billing_network">Geen verbinding. Controleer je internet en probeer opnieuw.</string>
+    <string name="pro_billing_no_offering">De abonnementen zijn momenteel niet beschikbaar. Probeer het later opnieuw.</string>
     <string name="pro_processing">Even geduld…</string>
     <string name="pro_retry">Opnieuw proberen</string>
     <string name="pro_feature_smart">Slimme extractie: onscherpe en dubbele frames overslaan, alleen mensen, scènewissel, dia\'s, scherpste frame</string>

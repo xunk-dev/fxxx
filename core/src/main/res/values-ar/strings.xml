@@ -849,6 +849,7 @@
     <string name="pro_billing_owned">أنت تملك Pro بالفعل. اضغط «استعادة المشتريات».</string>
     <string name="pro_manage_offline">لا يوجد اتصال بالإنترنت. اشتراك Pro يبقى مفعّلاً — اتصل بالإنترنت لإدارة اشتراكك.</string>
     <string name="pro_billing_network">لا يوجد اتصال. تحقق من الإنترنت وحاول مجدداً.</string>
+    <string name="pro_billing_no_offering">الخطط غير متاحة حالياً. حاول لاحقاً.</string>
     <string name="pro_processing">يرجى الانتظار…</string>
     <string name="pro_retry">حاول مرة أخرى</string>
     <string name="pro_feature_smart">الاستخراج الذكي: تخطي الضبابي والمكرر، الأشخاص فقط، تغيّر المشهد، الشرائح، أوضح إطار</string>

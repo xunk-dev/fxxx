@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">未找到有效的購買記錄。</string>
     <string name="pro_billing_owned">你已擁有 Pro。請點選「還原購買」。</string>
     <string name="pro_billing_network">沒有網路連線。請檢查網路後重試。</string>
+    <string name="pro_billing_no_offering">目前無法取得訂閱方案，請稍後再試。</string>
     <string name="pro_processing">請稍候…</string>
     <string name="pro_retry">重試</string>
     <string name="pro_feature_smart">智慧提取：跳過模糊和重複影格、僅限人物、場景切換、投影片、最清晰影格</string>

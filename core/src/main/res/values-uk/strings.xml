@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Активних покупок не знайдено.</string>
     <string name="pro_billing_owned">Pro вже придбано. Натисніть «Відновити покупки».</string>
     <string name="pro_billing_network">Немає зʼєднання. Перевірте інтернет і спробуйте ще раз.</string>
+    <string name="pro_billing_no_offering">Тарифи зараз недоступні. Спробуйте пізніше.</string>
     <string name="pro_processing">Зачекайте…</string>
     <string name="pro_retry">Спробувати ще</string>
     <string name="pro_feature_smart">Розумне видобування: пропуск розмитих і дубльованих кадрів, лише люди, зміна сцени, слайди, найчіткіший кадр</string>

@@ -94,8 +94,7 @@ internal fun Entitlements.noteTrialPickImpl(key: String): Boolean {
 
 internal fun Entitlements.trialExpiredImpl(): Boolean {
     if (!welcome.trial.value) return false
-    val now = SystemClock.elapsedRealtime()
-    return now - trialLast > TRIAL_IDLE_MS || now - trialStart > TRIAL_CAP_MS
+    return TrialWindow.expired(SystemClock.elapsedRealtime(), trialLast, trialStart)
 }
 
 internal fun Entitlements.settleTrialImpl(current: String): Boolean {

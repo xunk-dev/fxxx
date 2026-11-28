@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.core.content.IntentCompat
 import com.frameout.core.db.FrameEntity
 import com.frameout.core.search.ImageSearchEngines
 import com.frameout.core.storage.FrameExporter
@@ -22,7 +23,7 @@ object ImageSearchLauncher {
 
     private suspend fun sendToApp(context: Context, exporter: FrameExporter, engine: com.frameout.core.search.SearchEngine, frame: FrameEntity): Boolean {
         val share = exporter.shareIntent(listOf(frame), includeLocation = false) ?: return false
-        val uri = share.getParcelableExtra<Uri>(Intent.EXTRA_STREAM) ?: return false
+        val uri = IntentCompat.getParcelableExtra(share, Intent.EXTRA_STREAM, Uri::class.java) ?: return false
         share.clipData = ClipData.newRawUri("", uri)
         share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         val targeted = target(context, share, engine) ?: return false
@@ -31,7 +32,7 @@ object ImageSearchLauncher {
 
     private suspend fun openSite(context: Context, exporter: FrameExporter, engine: com.frameout.core.search.SearchEngine, frame: FrameEntity): String? {
         val share = exporter.shareIntent(listOf(frame), includeLocation = false) ?: return SearchStrings.failed()
-        val uri = share.getParcelableExtra<Uri>(Intent.EXTRA_STREAM) ?: return SearchStrings.failed()
+        val uri = IntentCompat.getParcelableExtra(share, Intent.EXTRA_STREAM, Uri::class.java) ?: return SearchStrings.failed()
         val intent = Intent(context, ImageSearchActivity::class.java)
             .putExtra(ImageSearchActivity.EXTRA_URI, uri.toString())
             .putExtra(ImageSearchActivity.EXTRA_ENGINE, engine.id)

@@ -233,6 +233,15 @@ class ViewerViewModel(app: Application) : AndroidViewModel(app) {
         return true
     }
 
+    fun release() {
+        player.stop()
+        windowJob?.cancel()
+        navJob?.cancel()
+        inFlight.values.forEach { it.cancel() }
+        inFlight.clear()
+        cache.clear()
+    }
+
     override fun onCleared() {
         player.stop()
         savedDelete.commit()

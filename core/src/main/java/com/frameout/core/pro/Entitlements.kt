@@ -3,13 +3,16 @@ package com.frameout.core.pro
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.SystemClock
+import com.frameout.core.util.DiagLog
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class Entitlements(context: Context, val enforced: Boolean) {
     private val appContext = context.applicationContext
-    private val encrypted: SharedPreferences? = runCatching { ProPrefs.encrypted(context) }.getOrNull()
+    private val encrypted: SharedPreferences? = runCatching { ProPrefs.encrypted(context) }
+        .onFailure { DiagLog.append("billing", "pro prefs encryption unavailable (${it.javaClass.simpleName}), Pro lasts for this session only") }
+        .getOrNull()
 
     internal val trusted: Boolean = encrypted != null
     internal val prefs: SharedPreferences =

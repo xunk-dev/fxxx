@@ -100,7 +100,7 @@ private fun ZoomImage(item: PaneItem, zoom: CompareZoom) {
 }
 
 @Composable
-internal fun ZoomPane(item: PaneItem, zoom: CompareZoom, modifier: Modifier, primary: Boolean = false) {
+internal fun ZoomPane(item: PaneItem, zoom: CompareZoom, modifier: Modifier, primary: Boolean = false, tagged: Boolean = true) {
     var size by remember { mutableStateOf(IntSize.Zero) }
     LaunchedEffect(item.bitmap, size, primary, zoom) {
         val b = item.bitmap?.takeIf { !it.isRecycled }
@@ -115,12 +115,12 @@ internal fun ZoomPane(item: PaneItem, zoom: CompareZoom, modifier: Modifier, pri
             .pointerInput(zoom) { detectViewportGestures({ true }) { c, p, z -> zoom.gesture(c, p, z, this.size) } }
     ) {
         ZoomImage(item, zoom)
-        PaneTag(item, Modifier.align(Alignment.BottomStart).padding(8.dp))
+        if (tagged) PaneTag(item, Modifier.align(Alignment.BottomStart).padding(8.dp))
     }
 }
 
 @Composable
-internal fun SliderCompare(a: PaneItem, b: PaneItem, zoom: CompareZoom, modifier: Modifier) {
+internal fun SliderCompare(a: PaneItem, b: PaneItem, zoom: CompareZoom, modifier: Modifier, tagged: Boolean = true) {
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         var size by remember { mutableStateOf(IntSize.Zero) }
         val split = remember { mutableFloatStateOf(0.5f) }
@@ -144,8 +144,10 @@ internal fun SliderCompare(a: PaneItem, b: PaneItem, zoom: CompareZoom, modifier
             Box(Modifier.fillMaxSize().drawWithContent {
                 clipRect(left = split.floatValue * this.size.width, top = 0f, right = this.size.width, bottom = this.size.height) { this@drawWithContent.drawContent() }
             }) { ZoomImage(b, zoom) }
-            PaneTag(a, Modifier.align(Alignment.BottomStart).padding(8.dp))
-            PaneTag(b, Modifier.align(Alignment.BottomEnd).padding(8.dp))
+            if (tagged) {
+                PaneTag(a, Modifier.align(Alignment.BottomStart).padding(8.dp))
+                PaneTag(b, Modifier.align(Alignment.BottomEnd).padding(8.dp))
+            }
             SliderHandle(split, { size.width }) { dragging = it }
         }
     }

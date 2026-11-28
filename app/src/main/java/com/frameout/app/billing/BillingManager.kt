@@ -34,12 +34,16 @@ class BillingManager(
     private val _state = MutableStateFlow(OffersState.Loading)
     val state: StateFlow<OffersState> = _state.asStateFlow()
 
+    private val _failure = MutableStateFlow<OffersFailure?>(null)
+    val failure: StateFlow<OffersFailure?> = _failure.asStateFlow()
+
     private val _busy = MutableStateFlow(false)
     val busy: StateFlow<Boolean> = _busy.asStateFlow()
 
     fun start() {
         if (!entitlements.enforced) return
         if (!RevenueCatSync.isActive) {
+            DiagLog.append("billing", "offers unavailable: RevenueCat is not configured, see the earlier not configured line")
             _note.value = BillingNote.Unavailable
             _state.value = OffersState.Failed
             return
@@ -67,13 +71,26 @@ class BillingManager(
 
     suspend fun refresh() {
         _state.value = OffersState.Loading
+        _failure.value = null
         try {
-            val loaded = BillingCatalog.offersOf(RevenueCatSync.currentOffering())
-            if (loaded.isNotEmpty()) _offers.value = loaded
+            when (val load = RevenueCatSync.loadOffers()) {
+                is OfferingLoad.Loaded -> onOffersLoaded(load)
+                is OfferingLoad.Failed -> onOffersFailed(load)
+            }
         } finally {
             _state.value = if (_offers.value.isEmpty()) OffersState.Failed else OffersState.Ready
         }
         RevenueCatSync.refresh()
+    }
+
+    private fun onOffersLoaded(load: OfferingLoad.Loaded) {
+        _offers.value = load.offers
+        DiagLog.append("billing", "offerings loaded: plans=${load.offers.map { it.plan }}")
+    }
+
+    private fun onOffersFailed(load: OfferingLoad.Failed) {
+        DiagLog.append("billing", "offerings failed: reason=${load.reason} ${load.detail}")
+        if (_offers.value.isEmpty()) _failure.value = load.reason
     }
 
     fun restore() {

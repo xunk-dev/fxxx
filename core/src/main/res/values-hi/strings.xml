@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">कोई सक्रिय खरीदारी नहीं मिली।</string>
     <string name="pro_billing_owned">आपके पास पहले से Pro है। «खरीदारी पुनर्स्थापित करें» दबाएँ।</string>
     <string name="pro_billing_network">कनेक्शन नहीं है। इंटरनेट जाँचें और फिर कोशिश करें।</string>
+    <string name="pro_billing_no_offering">प्लान अभी उपलब्ध नहीं हैं। बाद में फिर कोशिश करें।</string>
     <string name="pro_processing">कृपया प्रतीक्षा करें…</string>
     <string name="pro_retry">फिर कोशिश करें</string>
     <string name="pro_feature_smart">स्मार्ट निकासी: धुंधले और डुप्लिकेट फ़्रेम छोड़ना, केवल लोग, दृश्य बदलना, स्लाइड, सबसे साफ़ फ़्रेम</string>

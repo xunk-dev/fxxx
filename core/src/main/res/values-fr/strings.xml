@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Aucun achat actif trouvé.</string>
     <string name="pro_billing_owned">Vous possédez déjà Pro. Touchez « Restaurer les achats ».</string>
     <string name="pro_billing_network">Pas de connexion. Vérifiez Internet et réessayez.</string>
+    <string name="pro_billing_no_offering">Les offres ne sont pas disponibles pour le moment. Réessayez plus tard.</string>
     <string name="pro_processing">Veuillez patienter…</string>
     <string name="pro_retry">Réessayer</string>
     <string name="pro_feature_smart">Extraction intelligente : ignorer les images floues et en double, personnes uniquement, changement de scène, diapositives, image la plus nette</string>

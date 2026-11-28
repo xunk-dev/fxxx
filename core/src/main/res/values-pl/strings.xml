@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Nie znaleziono aktywnego zakupu.</string>
     <string name="pro_billing_owned">Masz już Pro. Dotknij Przywróć zakupy.</string>
     <string name="pro_billing_network">Brak połączenia. Sprawdź internet i spróbuj ponownie.</string>
+    <string name="pro_billing_no_offering">Plany są teraz niedostępne. Spróbuj ponownie później.</string>
     <string name="pro_processing">Proszę czekać…</string>
     <string name="pro_retry">Spróbuj ponownie</string>
     <string name="pro_feature_smart">Inteligentne wyodrębnianie: pomijanie nieostrych i zduplikowanych klatek, tylko osoby, zmiana sceny, slajdy, najostrzejsza klatka</string>

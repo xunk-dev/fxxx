@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Nu s-a găsit nicio achiziție activă.</string>
     <string name="pro_billing_owned">Ai deja Pro. Atinge Restaurează achizițiile.</string>
     <string name="pro_billing_network">Fără conexiune. Verifică internetul și încearcă din nou.</string>
+    <string name="pro_billing_no_offering">Planurile nu sunt disponibile momentan. Încearcă din nou mai târziu.</string>
     <string name="pro_processing">Te rugăm să aștepți…</string>
     <string name="pro_retry">Încearcă din nou</string>
     <string name="pro_feature_smart">Extragere inteligentă: omiterea cadrelor neclare și duplicate, doar persoane, schimbare de scenă, diapozitive, cel mai clar cadru</string>

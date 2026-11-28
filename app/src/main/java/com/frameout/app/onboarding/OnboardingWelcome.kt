@@ -47,7 +47,6 @@ import com.frameout.app.FrameOutApp
 import com.frameout.app.applyAccent
 import com.frameout.app.billing.accentBrush
 import com.frameout.app.splash.BrandMark
-import com.frameout.core.pro.ProCatalog
 import com.frameout.core.pro.WelcomeGrant
 import com.frameout.core.util.FrameStrings
 import com.frameout.core.util.SettingStrings
@@ -234,12 +233,7 @@ internal fun commitWelcomeColor(context: Context) {
         return
     }
     val picked = WelcomeChoice.picked
-    if (picked == null || ProCatalog.accentIsFree(picked)) {
-        grant.defer()
-        app.applyAccent(picked ?: WelcomeGrant.FALLBACK)
-        return
-    }
-    grant.commit(picked, entitlements.welcomeSpent())
-    app.applyAccent(grant.key.value ?: picked)
-    entitlements.noteWelcomeCommitted()
+    grant.resolveOnboarding(picked, entitlements.welcomeSpent())
+    app.applyAccent(grant.key.value ?: picked ?: WelcomeGrant.FALLBACK)
+    if (grant.committed) entitlements.noteWelcomeCommitted()
 }

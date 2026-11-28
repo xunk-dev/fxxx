@@ -828,6 +828,7 @@
     <string name="pro_nothing_to_restore">هیچ کڕینێکی چالاک نەدۆزرایەوە.</string>
     <string name="pro_billing_owned">تۆ پێشتر Proت هەیە. «گەڕاندنەوەی کڕینەکان» دابگرە.</string>
     <string name="pro_billing_network">پەیوەندی نییە. ئینتەرنێتەکەت بپشکنە و دووبارە هەوڵبدەرەوە.</string>
+    <string name="pro_billing_no_offering">پلانەکان لە ئێستادا بەردەست نین. دواتر دووبارە هەوڵ بدەرەوە.</string>
     <string name="pro_processing">تکایە چاوەڕێ بکە…</string>
     <string name="pro_retry">دووبارە هەوڵبدەرەوە</string>
     <string name="pro_feature_smart">دەرهێنانی زیرەک: بازدان لە فرەیمی ناڕوون و دووبارە، تەنها خەڵک، گۆڕانی دیمەن، سلایدەکان، ڕوونترین فرەیم</string>

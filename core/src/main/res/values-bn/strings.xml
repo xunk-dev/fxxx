@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">কোনো সক্রিয় কেনাকাটা পাওয়া যায়নি।</string>
     <string name="pro_billing_owned">আপনার কাছে ইতিমধ্যে Pro আছে। «ক্রয় পুনরুদ্ধার» চাপুন।</string>
     <string name="pro_billing_network">সংযোগ নেই। ইন্টারনেট দেখে আবার চেষ্টা করুন।</string>
+    <string name="pro_billing_no_offering">প্ল্যান এখন পাওয়া যাচ্ছে না। পরে আবার চেষ্টা করুন।</string>
     <string name="pro_processing">অনুগ্রহ করে অপেক্ষা করুন…</string>
     <string name="pro_retry">আবার চেষ্টা করুন</string>
     <string name="pro_feature_smart">স্মার্ট এক্সট্র্যাকশন: ঝাপসা ও একই রকম ফ্রেম বাদ, শুধু মানুষ, দৃশ্য পরিবর্তন, স্লাইড, সবচেয়ে স্পষ্ট ফ্রেম</string>

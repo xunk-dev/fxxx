@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
@@ -38,9 +38,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.frameout.app.PreferredFrameTheme
-import com.frameout.app.viewer.formatPts
-import com.frameout.core.db.FrameEntity
-import com.frameout.core.util.FrameA11y
 import com.frameout.core.util.FrameStrings
 import com.frameout.designsystem.components.FrameSpinner
 import com.frameout.designsystem.components.FrameText
@@ -69,7 +66,7 @@ fun CompareScreen(frameIds: List<Long>, onClose: () -> Unit, vm: CompareViewMode
     val zoomA = remember { CompareZoom() }
     val zoomB = remember { CompareZoom() }
     val items = remember(state.frames, state.bitmaps, swapped) {
-        val base = state.frames.mapIndexed { i, f -> paneItem(i, f, state.bitmaps.getOrNull(i)) }
+        val base = state.frames.mapIndexed { i, _ -> paneItem(i, state.bitmaps.getOrNull(i)) }
         if (swapped && base.size > 1) listOf(base[1], base[0]) + base.drop(2) else base
     }
     val mode = userMode?.let(CompareMode::valueOf) ?: autoMode(items.firstOrNull())
@@ -97,6 +94,8 @@ private fun autoMode(first: PaneItem?): CompareMode {
 
 @Composable
 private fun CompareEffects(frameIds: List<Long>, mode: CompareMode, state: CompareState, vm: CompareViewModel) {
+    val activity = androidx.activity.compose.LocalActivity.current
+    androidx.compose.runtime.DisposableEffect(vm) { onDispose { if (activity?.isChangingConfigurations != true) vm.reset() } }
     LaunchedEffect(frameIds) { vm.open(frameIds) }
     LaunchedEffect(mode, state.fullReady) { if (mode == CompareMode.Diff) vm.ensureDiff() }
 }
@@ -188,31 +187,34 @@ private fun CompareBody(mode: CompareMode, items: List<PaneItem>, zooms: Compare
             CompareMode.Stack -> {
                 val pane = fitSize(maxWidth, (maxHeight - PaneGap) / 2, ratio)
                 Column(Modifier.size(pane.width, pane.height * 2 + PaneGap), Arrangement.spacedBy(PaneGap)) {
-                    ZoomPane(a, zooms.a, Modifier.fillMaxWidth().weight(1f), primary = true)
-                    ZoomPane(b, zooms.forB(), Modifier.fillMaxWidth().weight(1f), primary = !zooms.linked)
+                    ZoomPane(a, zooms.a, Modifier.fillMaxWidth().weight(1f), primary = true, tagged = false)
+                    ZoomPane(b, zooms.forB(), Modifier.fillMaxWidth().weight(1f), primary = !zooms.linked, tagged = false)
                 }
             }
             CompareMode.Side -> {
                 val pane = fitSize((maxWidth - PaneGap) / 2, maxHeight, ratio)
                 Row(Modifier.size(pane.width * 2 + PaneGap, pane.height), Arrangement.spacedBy(PaneGap)) {
-                    ZoomPane(a, zooms.a, Modifier.weight(1f).fillMaxHeight(), primary = true)
-                    ZoomPane(b, zooms.forB(), Modifier.weight(1f).fillMaxHeight(), primary = !zooms.linked)
+                    ZoomPane(a, zooms.a, Modifier.weight(1f).fillMaxHeight(), primary = true, tagged = false)
+                    ZoomPane(b, zooms.forB(), Modifier.weight(1f).fillMaxHeight(), primary = !zooms.linked, tagged = false)
                 }
             }
             CompareMode.Slider -> {
                 val box = fitSize(maxWidth, maxHeight, ratio)
-                SliderCompare(a, b, zooms.a, Modifier.size(box.width, box.height))
+                SliderCompare(a, b, zooms.a, Modifier.size(box.width, box.height), tagged = false)
             }
             CompareMode.Diff -> {
-                val box = fitSize(maxWidth, maxHeight, ratio)
-                DiffPane(diff, diffBusy, diffPercent, Modifier.size(box.width, box.height))
+                val box = fitSize(maxWidth, maxHeight - CaptionHeight, ratio)
+                Column(Modifier.size(box.width, box.height + CaptionHeight)) {
+                    DiffPane(diff, diffBusy, Modifier.fillMaxWidth().weight(1f))
+                    if (diff != null) DiffCaption(diffPercent, Modifier.fillMaxWidth()) else Box(Modifier.height(CaptionHeight))
+                }
             }
         }
     }
 }
 
 @Composable
-private fun DiffPane(diff: android.graphics.Bitmap?, busy: Boolean, percent: Float, modifier: Modifier) {
+private fun DiffPane(diff: android.graphics.Bitmap?, busy: Boolean, modifier: Modifier) {
     val colors = FrameTheme.colors
     Box(modifier.clip(FrameShapes.sm).background(colors.container), Alignment.Center) {
         val bitmap = diff?.takeIf { !it.isRecycled }
@@ -220,24 +222,11 @@ private fun DiffPane(diff: android.graphics.Bitmap?, busy: Boolean, percent: Flo
             if (busy) FrameText(CompareStrings.diffBusy(), color = colors.onSurfaceVariant) else FrameSpinner()
         } else {
             Image(remember(bitmap) { bitmap.asImageBitmap() }, CompareStrings.diff(), Modifier.fillMaxSize(), contentScale = ContentScale.Fit)
-            FrameText(
-                CompareStrings.diffPercent(percent),
-                style = FrameTheme.typography.label,
-                color = Color.White,
-                modifier = Modifier.align(Alignment.BottomStart).padding(8.dp).background(Color.Black.copy(alpha = 0.62f), FrameShapes.sm).padding(horizontal = 10.dp, vertical = 5.dp)
-            )
         }
     }
 }
 
-private fun paneItem(index: Int, frame: FrameEntity, bitmap: android.graphics.Bitmap?): PaneItem {
-    val time = formatPts(frame.ptsUs)
-    val size = bitmap?.takeIf { !it.isRecycled }?.let { "${it.width}×${it.height}" }.orEmpty()
-    return PaneItem(
-        tag = Tags.getOrElse(index) { "?" },
-        bitmap = bitmap,
-        title = "#${frame.index + 1}",
-        subtitle = if (size.isEmpty()) time else "$time · $size",
-        description = FrameA11y.frame(frame.index + 1, time)
-    )
+private fun paneItem(index: Int, bitmap: android.graphics.Bitmap?): PaneItem {
+    val tag = Tags.getOrElse(index) { "?" }
+    return PaneItem(tag = tag, bitmap = bitmap, title = "", subtitle = "", description = tag)
 }

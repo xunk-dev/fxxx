@@ -1,6 +1,5 @@
 package com.frameout.app.compare
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -13,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -44,6 +44,9 @@ import com.frameout.designsystem.theme.FrameShapes
 import com.frameout.designsystem.theme.FrameTheme
 import com.frameout.designsystem.theme.fieldFill
 
+internal val CaptionHeight = 36.dp
+private val ModeItemWidth = 78.dp
+
 @Composable
 internal fun PaneTag(item: PaneItem, modifier: Modifier) {
     val colors = FrameTheme.colors
@@ -68,6 +71,14 @@ internal fun PaneTag(item: PaneItem, modifier: Modifier) {
 }
 
 @Composable
+internal fun DiffCaption(percent: Float, modifier: Modifier = Modifier) {
+    val colors = FrameTheme.colors
+    Row(modifier.height(CaptionHeight), Arrangement.Center, Alignment.CenterVertically) {
+        FrameText(CompareStrings.diffPercent(percent), style = FrameTheme.typography.label, color = colors.success, maxLines = 1)
+    }
+}
+
+@Composable
 internal fun Chip(content: @Composable BoxScope.() -> Unit) {
     GlassSurface(shape = FrameShapes.pill) {
         Box(Modifier.padding(horizontal = 14.dp, vertical = 7.dp), content = content)
@@ -77,29 +88,30 @@ internal fun Chip(content: @Composable BoxScope.() -> Unit) {
 @Composable
 internal fun ModeSwitch(mode: CompareMode, onMode: (CompareMode) -> Unit) {
     GlassSurface(shape = FrameShapes.pill) {
-        Row(Modifier.padding(4.dp).animateContentSize(), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+        Row(Modifier.padding(4.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
             CompareMode.entries.forEach { m ->
                 val selected = m == mode
                 val colors = FrameTheme.colors
-                val tint = if (selected) colors.primary else colors.onSurfaceVariant
+                val tint = if (selected) colors.primary else colors.onSurface
                 val label = when (m) {
                     CompareMode.Stack -> CompareStrings.stack()
                     CompareMode.Side -> CompareStrings.side()
                     CompareMode.Slider -> CompareStrings.slider()
                     CompareMode.Diff -> CompareStrings.diff()
                 }
-                Row(
+                Column(
                     Modifier
+                        .width(ModeItemWidth)
                         .clip(FrameShapes.pill)
                         .then(if (selected) Modifier.background(colors.primary.copy(alpha = 0.18f)) else Modifier)
                         .frameClickable(role = Role.Tab, onClickLabel = label) { onMode(m) }
                         .semantics { contentDescription = label }
-                        .padding(horizontal = if (selected) 14.dp else 12.dp, vertical = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        .padding(vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ModeGlyph(m, tint)
-                    if (selected) FrameText(label, style = FrameTheme.typography.label, color = tint, maxLines = 1)
+                    FrameText(label, style = FrameTheme.typography.label, color = tint, maxLines = 1)
                 }
             }
         }

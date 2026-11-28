@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Etkin satın alım bulunamadı.</string>
     <string name="pro_billing_owned">Pro zaten sende. «Satın alımları geri yükle»ye dokun.</string>
     <string name="pro_billing_network">Bağlantı yok. İnterneti kontrol edip tekrar deneyin.</string>
+    <string name="pro_billing_no_offering">Planlar şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.</string>
     <string name="pro_processing">Lütfen bekleyin…</string>
     <string name="pro_retry">Tekrar dene</string>
     <string name="pro_feature_smart">Akıllı çıkarma: bulanık ve yinelenen kareleri atla, yalnızca insanlar, sahne değişimi, slaytlar, en net kare</string>

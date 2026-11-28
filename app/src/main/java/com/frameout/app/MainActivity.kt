@@ -91,7 +91,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) com.frameout.app.icon.AppIconSwitcher.healDuplicates(this, app.container.prefs)
         if (Build.VERSION.SDK_INT >= 26) window.colorMode = android.content.pm.ActivityInfo.COLOR_MODE_DEFAULT
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = androidx.activity.SystemBarStyle.auto(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
+            navigationBarStyle = androidx.activity.SystemBarStyle.auto(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT)
+        )
         com.frameout.core.util.LocaleHelper.apply(this, app.container.prefs.language.value)
         if (savedInstanceState == null && !launchedFromHistory(intent)) readIntent(intent)
         app.ads.attach(this)

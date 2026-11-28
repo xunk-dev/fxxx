@@ -48,6 +48,8 @@ jobs:
           bash scripts/check-binaries.sh
           bash scripts/check-function-lines.sh
           python3 scripts/check-contrast.py
+          bash scripts/test-check-store-build.sh
+          bash scripts/check-store-build.sh
       - name: Merge manifests
         run: gradle :app:processDebugMainManifest :app:processReleaseMainManifest --no-daemon
       - name: Check merged manifest
@@ -101,6 +103,8 @@ jobs:
           ADMOB_INTERSTITIAL_ID: ${{ secrets.AFTER_EXPORT }}
           ADMOB_REWARDED_ID: ${{ secrets.UNLOCK_FEATURE }}
         run: gradle :app:bundleRelease -PstoreBuild=true -PadsEnabled=true --no-daemon
+      - name: Verify the built bundle is a store build
+        run: bash scripts/check-store-build.sh --built
       - name: Collect bundle
         run: |
           mkdir -p dist

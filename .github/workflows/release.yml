@@ -55,6 +55,8 @@ jobs:
           bash scripts/check-binaries.sh
           bash scripts/check-function-lines.sh
           python3 scripts/check-contrast.py
+          bash scripts/test-check-store-build.sh
+          bash scripts/check-store-build.sh
       - name: Merge manifests
         run: gradle :app:processDebugMainManifest :app:processReleaseMainManifest --no-daemon
       - name: Check merged manifest

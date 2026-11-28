@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">کوئی فعال خریداری نہیں ملی۔</string>
     <string name="pro_billing_owned">آپ کے پاس پہلے سے Pro ہے۔ «خریداریاں بحال کریں» دبائیں۔</string>
     <string name="pro_billing_network">کنکشن نہیں ہے۔ انٹرنیٹ چیک کریں اور دوبارہ کوشش کریں۔</string>
+    <string name="pro_billing_no_offering">پلان اس وقت دستیاب نہیں ہیں۔ بعد میں دوبارہ کوشش کریں۔</string>
     <string name="pro_processing">براہ کرم انتظار کریں…</string>
     <string name="pro_retry">دوبارہ کوشش کریں</string>
     <string name="pro_feature_smart">اسمارٹ فریم نکالنا: دھندلے اور دہرائے ہوئے فریمز چھوڑنا، صرف لوگ، منظر کی تبدیلی، سلائیڈز، سب سے واضح فریم</string>

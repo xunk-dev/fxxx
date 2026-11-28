@@ -7,6 +7,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.frameout.app.FrameOutApp
+import com.frameout.core.pro.AccentAccess
 import com.frameout.core.pro.Entitlements
 import com.frameout.core.pro.ProCatalog
 import com.frameout.core.pro.ProFeature
@@ -18,7 +19,8 @@ class ProGate(
     val isPro: Boolean,
     private val skipArmed: Boolean = false,
     val welcomeKey: String? = null,
-    val welcomeOpen: Boolean = false
+    val welcomeOpen: Boolean = false,
+    val welcomeTrial: Boolean = false
 ) {
     val enforced: Boolean get() = entitlements.enforced
 
@@ -35,8 +37,7 @@ class ProGate(
         if (entitlements.rewarded(feature) || entitlements.tryOnce(feature, item)) action() else entitlements.showPaywall(feature, accentKey = accentKey)
     }
 
-    fun needsWelcomeClaim(key: String): Boolean =
-        enforced && !isPro && welcomeOpen
+    fun canClaimWelcome(key: String): Boolean = AccentAccess.canClaimWelcome(key, enforced, isPro, welcomeOpen)
 
     fun tryWelcomePick(key: String): Boolean = entitlements.noteTrialPick(key)
 
@@ -71,7 +72,8 @@ fun rememberProGate(): ProGate {
     val trial by entitlements.skipTrial.collectAsState()
     val welcome by entitlements.welcome.key.collectAsState()
     val welcomeOpen by entitlements.welcome.open.collectAsState()
-    return remember(entitlements, pro, epoch, trial, welcome, welcomeOpen) {
-        ProGate(entitlements, pro, trial == Entitlements.SKIP_ARMED, welcome, welcomeOpen)
+    val welcomeTrial by entitlements.welcome.trial.collectAsState()
+    return remember(entitlements, pro, epoch, trial, welcome, welcomeOpen, welcomeTrial) {
+        ProGate(entitlements, pro, trial == Entitlements.SKIP_ARMED, welcome, welcomeOpen, welcomeTrial)
     }
 }

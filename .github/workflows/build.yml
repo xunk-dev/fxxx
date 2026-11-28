@@ -36,6 +36,10 @@ jobs:
         id: check_comments
         continue-on-error: true
         run: bash scripts/check-comments.sh
+      - name: Check store build guard
+        run: |
+          bash scripts/test-check-store-build.sh
+          bash scripts/check-store-build.sh
       - name: Check binaries
         id: check_binaries
         continue-on-error: true

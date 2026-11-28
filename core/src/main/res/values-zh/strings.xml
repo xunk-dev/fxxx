@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">未找到有效的购买记录。</string>
     <string name="pro_billing_owned">你已拥有 Pro。请点按“恢复购买”。</string>
     <string name="pro_billing_network">无网络连接。请检查网络后重试。</string>
+    <string name="pro_billing_no_offering">当前无法获取订阅方案，请稍后再试。</string>
     <string name="pro_processing">请稍候…</string>
     <string name="pro_retry">重试</string>
     <string name="pro_feature_smart">智能提取：跳过模糊和重复帧、仅限人物、场景切换、幻灯片、最清晰帧</string>

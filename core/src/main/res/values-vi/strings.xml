@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Không tìm thấy giao dịch mua nào đang hoạt động.</string>
     <string name="pro_billing_owned">Bạn đã có Pro. Chạm Khôi phục giao dịch mua.</string>
     <string name="pro_billing_network">Không có kết nối. Kiểm tra internet rồi thử lại.</string>
+    <string name="pro_billing_no_offering">Hiện chưa có gói nào. Vui lòng thử lại sau.</string>
     <string name="pro_processing">Vui lòng chờ…</string>
     <string name="pro_retry">Thử lại</string>
     <string name="pro_feature_smart">Trích xuất thông minh: bỏ qua khung hình mờ và trùng lặp, chỉ có người, chuyển cảnh, trang chiếu, khung hình nét nhất</string>

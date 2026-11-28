@@ -60,16 +60,27 @@ object RevenueCatSync {
         }
     }
 
-    suspend fun currentOffering(): Offering? {
-        if (!isActive) return null
+    suspend fun loadOffers(): OfferingLoad {
+        if (!isActive) return OfferingLoad.Failed(OffersFailure.StoreFailed, "RevenueCat is not configured")
         return try {
-            Purchases.sharedInstance.awaitOfferings().current
+            val offerings = Purchases.sharedInstance.awaitOfferings()
+            offersFrom(offerings.all.keys, offerings.current)
         } catch (e: CancellationException) {
             throw e
         } catch (e: PurchasesException) {
-            DiagLog.append("billing", "RevenueCat offerings failed: ${e.error.message}")
-            null
+            val code = e.error.code.name
+            val failure = OffersDiagnosis.classify(code, false, 0, 0) ?: OffersFailure.StoreFailed
+            OfferingLoad.Failed(failure, OffersDiagnosis.describeError(code, e.error.message))
         }
+    }
+
+    private fun offersFrom(ids: Collection<String>, current: Offering?): OfferingLoad {
+        val packages = current?.availablePackages.orEmpty()
+        val offers = BillingCatalog.offersOf(current)
+        val failure = OffersDiagnosis.classify(null, current != null, packages.size, offers.size)
+            ?: return OfferingLoad.Loaded(offers)
+        val names = packages.map { it.identifier + ":" + it.packageType + ":" + it.product.id }
+        return OfferingLoad.Failed(failure, OffersDiagnosis.describeEmpty(ids, current?.identifier, names, offers.size))
     }
 
     fun isEntitled(info: CustomerInfo): Boolean {
@@ -82,7 +93,10 @@ object RevenueCatSync {
 
     fun apply(info: CustomerInfo) {
         val age = System.currentTimeMillis() - info.requestDate.time
-        if (age > MAX_INFO_AGE_MS || age < -MAX_CLOCK_SKEW_MS) return
+        if (age > MAX_INFO_AGE_MS || age < -MAX_CLOCK_SKEW_MS) {
+            DiagLog.append("billing", "RevenueCat customer info ignored: ageMs=$age outside the accepted window, check the device clock")
+            return
+        }
         val entitled = isEntitled(info)
         val plan = when {
             !entitled -> ""

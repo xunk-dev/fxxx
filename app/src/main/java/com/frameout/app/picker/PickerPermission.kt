@@ -130,7 +130,7 @@ internal fun rememberPermissionFlow(vm: PickerViewModel): PermissionFlow {
         state.onResult(context, activity)
     }
     OnResumeEffect(activity as? LifecycleOwner, vm) {
-        vm.refreshPermission()
+        vm.refreshPermission(force = state.fromSettings && PermissionHelper.isPartialMediaAccess(context))
         state.onResumeFromSettings(context)
     }
     val request = { launcher.launch(PermissionHelper.mediaPermissions()) }

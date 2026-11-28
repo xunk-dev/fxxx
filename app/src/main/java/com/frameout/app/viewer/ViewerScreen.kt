@@ -66,6 +66,8 @@ fun ViewerScreen(
     BackHandler(enabled = state.tool == EditTool.None && state.unsaved > 0 && !state.leavePrompt) { vm.requestLeave(onClose) }
     VolumeKeyNavigation(!state.editing) { forward -> vm.goTo(if (forward) 1 else -1) }
     var pendingEdit by androidx.compose.runtime.saveable.rememberSaveable(projectId, frameId) { androidx.compose.runtime.mutableStateOf(openEdit) }
+    val host = androidx.activity.compose.LocalActivity.current
+    androidx.compose.runtime.DisposableEffect(vm) { onDispose { if (host?.isChangingConfigurations != true) vm.release() } }
     LaunchedEffect(projectId, frameId, savedId) {
         val edit = pendingEdit
         pendingEdit = false

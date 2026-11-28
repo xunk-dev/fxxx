@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Nenhuma compra ativa encontrada.</string>
     <string name="pro_billing_owned">Você já tem o Pro. Toque em Restaurar compras.</string>
     <string name="pro_billing_network">Sem conexão. Verifique a internet e tente novamente.</string>
+    <string name="pro_billing_no_offering">Os planos não estão disponíveis agora. Tente novamente mais tarde.</string>
     <string name="pro_processing">Aguarde…</string>
     <string name="pro_retry">Tentar novamente</string>
     <string name="pro_feature_smart">Extração inteligente: ignore quadros borrados e duplicados, só pessoas, mudança de cena, slides, quadro mais nítido</string>

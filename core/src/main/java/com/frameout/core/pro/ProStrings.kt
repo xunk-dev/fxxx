@@ -36,6 +36,7 @@ object ProStrings {
     fun retry() = s(R.string.pro_retry)
     fun processing() = s(R.string.pro_processing)
     fun billingNetwork() = s(R.string.pro_billing_network)
+    fun billingNoOffering() = s(R.string.pro_billing_no_offering)
     fun manageOffline() = s(R.string.pro_manage_offline)
     fun billingOwned() = s(R.string.pro_billing_owned)
     fun settingsTitle() = s(R.string.pro_settings_title)

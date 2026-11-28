@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">有効な購入が見つかりません。</string>
     <string name="pro_billing_owned">Pro はすでに購入済みです。「購入を復元」をタップしてください。</string>
     <string name="pro_billing_network">接続がありません。ネットワークを確認して再試行してください。</string>
+    <string name="pro_billing_no_offering">現在プランをご利用いただけません。後でもう一度お試しください。</string>
     <string name="pro_processing">しばらくお待ちください…</string>
     <string name="pro_retry">再試行</string>
     <string name="pro_feature_smart">スマート抽出：ぼやけた・重複したフレームのスキップ、人物のみ、シーン切り替え、スライド、最も鮮明なフレーム</string>

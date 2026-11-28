@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">Nessun acquisto attivo trovato.</string>
     <string name="pro_billing_owned">Hai già Pro. Tocca «Ripristina acquisti».</string>
     <string name="pro_billing_network">Nessuna connessione. Controlla internet e riprova.</string>
+    <string name="pro_billing_no_offering">I piani non sono disponibili al momento. Riprova più tardi.</string>
     <string name="pro_processing">Attendi…</string>
     <string name="pro_retry">Riprova</string>
     <string name="pro_feature_smart">Estrazione intelligente: salta fotogrammi sfocati e duplicati, solo persone, cambio di scena, diapositive, fotogramma più nitido</string>

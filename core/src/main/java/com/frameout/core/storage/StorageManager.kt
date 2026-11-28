@@ -122,10 +122,8 @@ class StorageManager(private val context: Context) {
         null
     }
 
-    fun canReadMedia(): Boolean {
-        val permission = if (Build.VERSION.SDK_INT >= 33) android.Manifest.permission.READ_MEDIA_IMAGES else android.Manifest.permission.READ_EXTERNAL_STORAGE
-        return androidx.core.content.ContextCompat.checkSelfPermission(context, permission) == android.content.pm.PackageManager.PERMISSION_GRANTED
-    }
+    fun canReadMedia(): Boolean =
+        com.frameout.core.media.PermissionHelper.hasFullImageAccess(context) && com.frameout.core.media.PermissionHelper.hasFullVideoAccess(context)
 
     fun uriExists(uri: String): Boolean? {
         val parsed = runCatching { Uri.parse(uri) }.getOrNull() ?: return false

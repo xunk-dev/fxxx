@@ -130,6 +130,13 @@ private fun noteText(note: BillingNote): String? = when (note) {
     BillingNote.None -> null
 }
 
+private fun failureText(failure: OffersFailure?): String? = when (failure) {
+    OffersFailure.NoConnection -> ProStrings.billingNetwork()
+    OffersFailure.NoOffering -> ProStrings.billingNoOffering()
+    OffersFailure.StoreFailed -> ProStrings.billingError()
+    null -> null
+}
+
 private fun isProblem(note: BillingNote) = note == BillingNote.Error || note == BillingNote.Network || note == BillingNote.Unavailable
 
 private fun openLink(context: android.content.Context, url: String) {
@@ -146,8 +153,9 @@ fun PaywallFooterCompact(offer: PlanOffer?, manager: BillingManager) {
             manager.clearNote()
         }
     }
-    val noteLine = noteText(note)
-    val problem = isProblem(note)
+    val failure by manager.failure.collectAsState()
+    val noteLine = noteText(note) ?: failureText(failure)
+    val problem = isProblem(note) || failure != null
     val line = StatusLine(noteLine ?: offerFine(offer), noteLine != null, problem)
     val slot = with(LocalDensity.current) { (STATUS_LINE_HEIGHT * STATUS_LINES).toDp() }
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {

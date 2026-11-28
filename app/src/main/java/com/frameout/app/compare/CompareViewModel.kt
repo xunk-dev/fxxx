@@ -19,6 +19,7 @@ import com.frameout.core.util.FrameStrings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -39,7 +40,8 @@ class CompareViewModel(app: Application) : AndroidViewModel(app) {
     private val loader = FrameBitmapLoader(app)
     private val _state = MutableStateFlow(CompareState())
     val state: StateFlow<CompareState> = _state.asStateFlow()
-    private var opened = false
+    private var openedIds: List<Long>? = null
+    private var openJob: kotlinx.coroutines.Job? = null
 
     init {
         viewModelScope.launch {
@@ -53,9 +55,11 @@ class CompareViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun open(frameIds: List<Long>) {
-        if (opened) return
-        opened = true
-        viewModelScope.launch {
+        if (openedIds == frameIds) return
+        openedIds = frameIds
+        openJob?.cancel()
+        _state.update { CompareState() }
+        openJob = viewModelScope.launch {
             val frames = c.frames.getByIdsChunked(frameIds).sortedBy { frameIds.indexOf(it.id) }
             val edits = withContext(Dispatchers.IO) { frames.map { c.editHistory.current(it.id)?.toEdit() ?: FrameEdit(it.id) } }
             val previews = frames.mapIndexed { i, f -> EditedThumb.peek(f.thumbnailPath ?: f.fullPath, edits[i]) }
@@ -64,31 +68,40 @@ class CompareViewModel(app: Application) : AndroidViewModel(app) {
                 async { previews[i] ?: runCatching { EditedThumb.load(f.thumbnailPath ?: f.fullPath, edits[i]) }.getOrNull() }
             }.awaitAll()
             _state.update { cur -> if (cur.fullReady) cur else cur.copy(bitmaps = cur.bitmaps.mapIndexed { i, b -> b ?: quick.getOrNull(i) }, loading = false) }
-            val jobs = frames.mapIndexed { i, f ->
-                async {
-                    val full = withContext(Dispatchers.IO) {
-                        try {
-                            loadOne(f, edits[i])
-                        } catch (e: kotlinx.coroutines.CancellationException) {
-                            throw e
-                        } catch (e: Exception) {
-                            com.frameout.core.util.logFailure("CompareLoad", e)
-                            null
-                        } catch (e: OutOfMemoryError) {
-                            null
-                        }
-                    }
-                    _state.update { cur ->
-                        val list = cur.bitmaps.toMutableList()
-                        if (i < list.size && full != null) list[i] = full
-                        cur.copy(bitmaps = list)
-                    }
-                    full
-                }
-            }
-            val fulls = jobs.awaitAll()
+            val fulls = loadFulls(frames, edits)
             _state.update { it.copy(loading = false, fullReady = true, bitmaps = it.bitmaps.mapIndexed { i, b -> fulls.getOrNull(i) ?: b }) }
         }
+    }
+
+    fun reset() {
+        openedIds = null
+        openJob?.cancel()
+        _state.update { CompareState() }
+    }
+
+    private suspend fun loadFulls(frames: List<FrameEntity>, edits: List<FrameEdit>): List<Bitmap?> = coroutineScope {
+        frames.mapIndexed { i, f ->
+            async {
+                val full = withContext(Dispatchers.IO) {
+                    try {
+                        loadOne(f, edits[i])
+                    } catch (e: kotlinx.coroutines.CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        com.frameout.core.util.logFailure("CompareLoad", e)
+                        null
+                    } catch (e: OutOfMemoryError) {
+                        null
+                    }
+                }
+                _state.update { cur ->
+                    val list = cur.bitmaps.toMutableList()
+                    if (i < list.size && full != null) list[i] = full
+                    cur.copy(bitmaps = list)
+                }
+                full
+            }
+        }.awaitAll()
     }
 
     internal val lockGate = com.frameout.app.billing.LockGate { report -> _state.update { it.copy(lockPrompt = report) } }

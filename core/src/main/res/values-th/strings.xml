@@ -832,6 +832,7 @@
     <string name="pro_nothing_to_restore">ไม่พบการซื้อที่ใช้งานอยู่</string>
     <string name="pro_billing_owned">คุณมี Pro อยู่แล้ว แตะ «กู้คืนการซื้อ»</string>
     <string name="pro_billing_network">ไม่มีการเชื่อมต่อ ตรวจสอบอินเทอร์เน็ตแล้วลองอีกครั้ง</string>
+    <string name="pro_billing_no_offering">ขณะนี้ยังไม่มีแพ็กเกจให้บริการ โปรดลองอีกครั้งในภายหลัง</string>
     <string name="pro_processing">โปรดรอสักครู่…</string>
     <string name="pro_retry">ลองอีกครั้ง</string>
     <string name="pro_feature_smart">การแยกเฟรมอัจฉริยะ: ข้ามภาพเบลอและเฟรมซ้ำ เฉพาะคน การเปลี่ยนฉาก สไลด์ เฟรมที่คมชัดที่สุด</string>

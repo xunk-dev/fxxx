@@ -39,7 +39,8 @@ import com.frameout.app.billing.proBrush
 import com.frameout.app.billing.proOnBrush
 import com.frameout.app.billing.rememberProGate
 import com.frameout.core.ads.AdStrings
-import com.frameout.core.pro.ProCatalog
+import com.frameout.core.pro.AccentAccess
+import com.frameout.core.pro.AccentLock
 import com.frameout.core.pro.ProFeature
 import com.frameout.core.pro.ProStrings
 import com.frameout.core.util.FrameStrings
@@ -56,15 +57,15 @@ import com.frameout.designsystem.theme.resolveFrameAccent
 private const val SWATCH_DP = 40
 private const val COLUMNS = 4
 
-private enum class Lock { Open, Ad, Pro }
-
-private fun lockOf(key: String, gate: ProGate): Lock = when {
-    !gate.enforced || gate.isPro || ProCatalog.accentIsFree(key, gate.welcomeKey) -> Lock.Open
-    gate.welcomeOpen && ProCatalog.welcomePickable(key) -> Lock.Open
-    ProCatalog.accentIsProOnly(key) || !BuildConfig.ADS_ENABLED -> Lock.Pro
-    gate.rewarded(ProFeature.Accents) -> Lock.Open
-    else -> Lock.Ad
-}
+private fun lockOf(key: String, gate: ProGate): AccentLock = AccentAccess.lock(
+    key = key,
+    enforced = gate.enforced,
+    isPro = gate.isPro,
+    welcomeKey = gate.welcomeKey,
+    trialActive = gate.welcomeTrial,
+    adsEnabled = BuildConfig.ADS_ENABLED,
+    rewarded = gate.rewarded(ProFeature.Accents)
+)
 
 @Composable
 internal fun AccentPicker(value: String, onChange: (String) -> Unit) {
@@ -78,30 +79,29 @@ internal fun AccentPicker(value: String, onChange: (String) -> Unit) {
     val gate = rememberProGate()
     val guarded: (String, () -> Unit) -> Unit = { key, applied ->
         val apply = { applied(); onChange(key) }
-        when (lockOf(key, gate)) {
-            Lock.Open -> when {
-                !gate.needsWelcomeClaim(key) -> apply()
-                gate.tryWelcomePick(key) -> apply()
-                else -> gate.showProFor(ProFeature.Accents, key)
+        when {
+            gate.canClaimWelcome(key) && gate.tryWelcomePick(key) -> apply()
+            else -> when (lockOf(key, gate)) {
+                AccentLock.Open -> apply()
+                AccentLock.Pro -> gate.showProFor(ProFeature.Accents, key)
+                AccentLock.Ad -> gate.run(ProFeature.Accents, key, accentKey = key, action = apply)
             }
-            Lock.Pro -> gate.showProFor(ProFeature.Accents, key)
-            Lock.Ad -> gate.run(ProFeature.Accents, key, accentKey = key, action = apply)
         }
     }
-    val ordered = options.map { it to lockOf(it.key, gate) }.sortedBy { if (it.second == Lock.Open) 0 else 1 }
+    val ordered = options.map { it to lockOf(it.key, gate) }.sortedBy { if (it.second == AccentLock.Open) 0 else 1 }
     FrameScrollRow(spacing = 10.dp) {
         ordered.forEach { (accent, lock) -> AccentSwatch(accent, accent.key == value, guarded, lock) }
     }
 }
 
 @Composable
-private fun AccentSwatch(accent: FrameAccent, selected: Boolean, onChange: (String, () -> Unit) -> Unit, lock: Lock) {
+private fun AccentSwatch(accent: FrameAccent, selected: Boolean, onChange: (String, () -> Unit) -> Unit, lock: AccentLock) {
     val wave = rememberThemeWaveSource()
     val name = FrameStrings.settingValue(accent.key)
     val state = when (lock) {
-        Lock.Open -> ""
-        Lock.Ad -> ", " + AdStrings.rewardWatch()
-        Lock.Pro -> ", " + ProStrings.badge()
+        AccentLock.Open -> ""
+        AccentLock.Ad -> ", " + AdStrings.rewardWatch()
+        AccentLock.Pro -> ", " + ProStrings.badge()
     }
     val fill = remember(accent) { Brush.linearGradient(listOf(accent.previewA, accent.previewB, accent.previewC)) }
     val ring = if (selected) FrameTheme.colors.onSurface else Color.Transparent
@@ -128,6 +128,6 @@ private fun AccentSwatch(accent: FrameAccent, selected: Boolean, onChange: (Stri
                 Image(painterResource(FrameIcons.Check), null, Modifier.size(16.dp), colorFilter = ColorFilter.tint(checkTint))
             }
         }
-        if (lock != Lock.Open) TierPip(if (lock == Lock.Pro) ProTier.Pro else ProTier.Ad, Modifier.align(Alignment.BottomEnd))
+        if (lock != AccentLock.Open) TierPip(if (lock == AccentLock.Pro) ProTier.Pro else ProTier.Ad, Modifier.align(Alignment.BottomEnd))
     }
 }
